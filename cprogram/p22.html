@@ -1,0 +1,69 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+There is a new way to #include libraries 
+(the old method still works yet the compiler roars). The .h extension is no more written and the names of 
+standard C libraries are written beginning with a c. In order for the program to use 
+these libraries correctly using namespace std; has to be added:
+
+
+
+using namespace std;
+
+#include < iostream >        // This is a key C++ library
+#include < cmath >           // The standard C library math.h
+
+int main ()
+
+{   
+
+
+    double a;   
+    a = 1.2;  
+    a = sin (a);  
+
+
+  cout << a << endl;   return 0;
+
+
+}
+
+A few hints for beginners:
+
+To compile this program, type it inside (or copy & paste it to)
+a text editor (gedit, kwrite, kate, kedit, vi, emacs, nano, pico, mcedit, Notepad...), 
+save it as a file named say test01.cpp (if you are a newbie, best put this file inside your home directory,
+that is say /home/jones on a Unix-like box).
+
+To compile this source code file, 
+type this command (on most open-source Unix-like boxes) in a console or terminal window:
+
+g++ test01.cpp -o test01
+
+To run the binary executable file test01 that has been produced 
+by the compilation (if there were no errors), type this:
+
+./test01
+
+Each time you modify the test01.cpp source code file, 
+you need to compile it again if you want the modifications to echo in the test01 executable file 
+(type the upward arrow key on your keyboard to recall commands). 
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

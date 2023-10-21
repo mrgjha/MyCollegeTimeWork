@@ -1,0 +1,47 @@
+<html>
+<head>
+
+<title>concate the two strings</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<pre>
+//concate the two strings
+#include&lt;stdio.h&gt;
+void main()
+{
+char str1[20],str2[20],str3[20];
+int i,j,k=0;
+
+clrscr();
+printf("Enter name  :");
+gets(str1);
+
+printf("Enter title :");
+gets(str2);
+
+for(i=0;str1[i]!='\0';i++)
+{
+
+str3[k++]=str1[i];
+}
+str3[k++]=32;
+for(j=0;str1[j]!='\0';j++)
+{
+
+str3[k++]=str2[j];
+}
+str3[k]='\0';
+printf("\n\nThe resultant string are :%s",str3);
+getch();
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

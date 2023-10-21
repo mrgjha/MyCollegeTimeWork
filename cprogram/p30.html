@@ -1,0 +1,65 @@
+
+<html>
+<head>
+
+<title>The variables declared within a namespace can be used thanks to the :: operator: </title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+
+//Namespaces can be declared.
+//The variables declared within a namespace can be used thanks to the :: operator: 
+
+
+
+using namespace std;         // Using the standard library namespace.
+#include&lt;iostream&gt        // The iostream library is often used.
+
+#include&lt;cmath&gt
+
+namespace first
+
+{   
+
+int a;   int b;
+}
+
+
+namespace second
+
+{
+
+double a;   double b;
+
+}
+
+int main ()
+
+{   first::a = 2;   first::b = 5;
+
+
+   second::a = 6.453;
+   second::b = 4.1e4;
+   cout << first::a + second::a << endl; 
+   cout << first::b + second::b << endl;
+   return 0;
+
+
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

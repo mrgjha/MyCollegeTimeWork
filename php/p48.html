@@ -1,0 +1,41 @@
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+
+&lt;?php
+$a=true;
+
+if ($a) {
+function foo () {
+echo "I will not exist if $a evaluates to false!";
+}
+}
+/* need to check $a before calling foo() */
+if ($a)
+{
+  foo();
+  }
+?&gt;
+
+&lt;?php
+function foo() {
+function bar() {
+echo "I don't exist until foo() is called.\n";
+}
+}
+/* We can't call bar() yet since it doesn't exist. */
+foo();
+/* Now we can call bar(), foo()'s processesing has
+made it accessible. */
+bar();
+?&gt;
+
+</b>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</pre>
+</body>
+</html>

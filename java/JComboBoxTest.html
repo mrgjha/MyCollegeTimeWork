@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import javax.swing.*;
+
+public class JComboBoxTest extends JCloseableFrame {
+    public JComboBoxTest() {
+	super("JComboBoxTest (Swing)", 250, 50);
+
+	JComboBox comboBox = new JComboBox();
+	comboBox.addItem("One");
+	comboBox.addItem("Two");
+	comboBox.addItem("Three");
+	comboBox.addItem("Four");
+	comboBox.addItem("Five");
+
+	System.out.println("getItemAt(0): " + comboBox.getItemAt(0));
+	System.out.println("getItemCount(): " + comboBox.getItemCount());
+	System.out.println("getSelectedItem(): " + comboBox.getSelectedItem());
+
+	getContentPane().add(comboBox);
+    }
+
+    public static void main(String [] args) {
+	JComboBoxTest frame = new JComboBoxTest();
+	frame.setVisible(true);
+    }
+}
+	
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<h3>C++ VS. C#</h3>
+<li>In both C++ and C#, one can develop Console and Windows applications
+<li>Window apps in C++ use MFCs, in C# use the FCL for the .NET platform
+<li>FCL is composed of many namespaces 
+		using System.Windows.Forms;
+
+
+
+<li>Every program is a class! and Main is a method
+<li>Input can be in terms of strings or bytes Must be parsed to the desired type
+
+
+
+<li>Building blocks of C# programs
+<li>Every program is a class! (Like in Java)
+
+<pre>
+The Main method
+Each application must have exactly one
+
+1    // Welcome.cs
+2    // A first console program in C#.
+3    
+4    using System;
+5    
+6    class Welcome
+7    {
+8       static void Main( string[] args )
+9      {
+10         Console.WriteLine( "Welcome to C# Programming!" );
+11      }
+12   }
+
+// read second number from user as string
+Console.Write( "\nPlease enter the integer: " );
+String sNumber = Console.ReadLine();
+   
+// convert numbers from type string to type int
+int number = Int32.Parse(sNumber );
+int number = Int32.Parse( Console.ReadLine() );
+
+</pre>
+
+
+<li>if, if-else, switch similar to C++
+<li>Loops similar to C++
+<li>But there is a foreach for arrays
+
+
+<li>Class Math is located in namespace System (unnecessary to add an assembly reference)
+
+<li>Using methods of static classes
+<li>ClassName.MethodName( argument1, arument2, … ) Example:    Math.Sqrt (900.0)
+<li>Constants Math.PI = 3.1415926535…
+
+
+<li>Implicit Conversion<br> 
+Coercion of arguments to a higher  type when passed to methods or in mixed-type expressions;
+
+<li>Explicit Conversion <br>
+Done with cast or class Convert in namespace System
+<br>Cast Example:  int result = Square ( (int ) y );
+
+
+<h3>Value types</h3>
+<li>Contain data of the specified type
+<li>Built in types (int, float, double,…)
+<li>Programmer created - structs and enumerations 
+
+<h3>Reference types</h3>
+<li>Contain an address 
+<li>Built-in (array, object and string) 
+<li>Programmer created – Classes, Interfaces and Delegates  
+
+
+<li>Value types are passed by value and reference types are passed by reference by default
+
+<li>To pass a value type by reference so you can modify the original variable?
+<br>Use the ref keyword
+<li>with variables already initialized
+<br>Use the out keyword when the called method will initialize it
+
+
+<li>Must use new operator to allocate dynamically the number of elements in the array
+
+<pre>
+
+int[] x;          // declare reference to an array
+x = new int[10];  // dynamically allocate array
+
+</pre>
+
+<li>Since sorting data is important in many applications, .NET Framework includes high-speed <br>sorting capabilities
+
+<pre>
+// sort elements in array a
+Array.Sort( x );
+
+// Determine number of elements in x by property
+x.Length
+
+</pre>
+   
+<li>Rectangular arrays – syntax a little different from C++
+
+<h3>Jagged Arrays</h3>
+
+<li>An array of arrays of different lengths
+
+<pre>
+// declaration of rectangular array
+int[,] array1 = new int[5,10];
+
+   
+// declaration and initialization of jagged array
+int [][] array2 = new int[ 3 ][];
+array2[ 0 ] = new int[] { 1, 2 };
+array2[ 1 ] = new int[] { 3 };
+array2[ 2 ] = new int[] { 4, 5, 6 };
+
+</pre>
+
+<li>The foreach repetition structure is used to iterate through values in arrays 
+<li>No counter
+<li>A variable is used to represent the value of each element
+
+<pre>
+foreach ( int grade in gradeArray )
+{
+   if ( grade < lowGrade )
+     lowGrade = grade;
+}
+
+</pre>
+
+<li>If the constructor does not explicitly initialize data members, the data members are <br>initialized by default 
+<li>Primitive numeric types are set to 0
+<li>Boolean types are set to false
+<li>Reference types are set to null
+
+
+<li>Public properties allow clients to:
+<li>Get (obtain the values of) private data and may control formatting and display
+<li>Set (assign values to) private data and may scrutinize attempts to modify value
+<pre>
+
+class Time
+{
+  private int hour;
+
+  // property Hour
+  public int Hour
+  {
+    get 
+    { return hour; }
+   
+    set
+    { hour = ( ( value >= 0 && value < 24 ) ? value : 0 ); }
+  }
+
+}
+
+
+Use it in caller as  cout << time.Hour;  or     time.Hour = 5;
+ 
+</pre>
+
+<li>When objects are no longer referenced, the CLR performs garbage collection
+<li>Use finalizers in conjunction with the garbage collector to release resources (database connections, file access, etc.) explicitly
+
+
+<li>const members are implicitly static (they are shared by all instances of the class) and must be initialized when they are declared
+<li>Use keyword readonly to declare members that will be initialized in the constructor but not changed after that
+<br>public readonly int radius;
+
+<li>Everyone in C#.NET community uses ToString to obtain an object’s string representation.
+
+<pre>
+
+//Method of class Point to return string representation of Point
+public override string ToString ( )
+{
+   return “(" + x + ", " + y + “)";
+}
+
+// call method to display new point value
+string output  += "\n\nThe new location of point is " + point;   
+
+
+</pre>
+
+<li>abstract classes use keyword abstract
+<li>sealed classes that cannot be overridden
+<li>Interfaces use inheritance notation
+<li>Delegates provide mechanism for passing method references
+<li>Exception handling includes a finally block to release resources
+
+<li>Must use keyword abstract in the declaration of an abstract class.
+<li>Any class with an abstract method or property must be declared abstract
+
+<li>To declare a method or property abstract, use keyword abstract in the declaration;<br>abstract methods and properties have no implementation
+<li>virtual methods do have an implementation that may be overridden.
+
+
+<li>sealed methods cannot be overridden in a derived class
+<li>Methods that are declared static and private, are implicitly sealed
+<li>sealed classes cannot have any derived-classes
+<li>Creating sealed classes can allow some runtime optimizations
+<br>e.g., virtual method calls can be transformed into non-virtual method calls
+
+
+<li>Interfaces are defined using keyword interface
+<li>Use inheritance notation to specify a class implements an interface (ClassName : InterfaceName)
+<li>Classes may implement more then one interface (a comma separated list of interfaces)
+<li>Classes that implement an interface must provide implementations for every method and property in the interface definition
+
+<li>SYNTAX is differerent from C++ (and better)
+
+<li>C# does not allow passing of method references directly as arguments as in C++, but does provide delegates
+<li>A Delegate is a set of references to methods
+<li>Delegate objects can be passed to methods; methods can then invoke the methods the delegate objects refer to
+<li>Delegates that contain one method are known as singlecast delegates and are created or derived from class Delegate
+<li>Delegates that contain multiple methods are known as multicast delegates and are created or derived from class MulticastDelegate
+<li>Methods that can be referred to by a delegate, must have the same signature as the delegate
+
+
+<pre>
+#include <iostream>
+using namespace std;
+
+typedef int ( *fntype) (int x);
+
+ int  f (int x)
+{    return (x+1);
+}
+
+ int g (int x)
+{    return (x -1);
+}
+
+ int foo ( fntype h, int z)
+{    return (h(z));
+}
+
+
+int main ()
+{    int a = 5;  int b;
+
+     b = foo (f, a);  cout << b << endl;
+
+     b = foo (g, a);  cout << b << endl;
+
+    return 0;
+}
+</pre>
+<h3>Exception Handling</h3>
+<li>Same as in C++, except 
+<li>may include a finally block to release resources.
+<li>Exception classes have different names
+
+</ul>
+
+<br><br>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

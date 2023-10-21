@@ -1,0 +1,541 @@
+Other Network SitesAdobe PressAddison-Wesley ProfessionalCisco PressExam CramFT PressFair Shake PressIBM PressInformitPeachpit PressPearson Corporate StorePrentice Hall PTRQue PublishingSams PublishingWharton School PublishingSite HelpLoginMy AccountView Cart
+Entire SiteAuthorsBookstoreChapters & ArticlesEventsOther Site ContentPress ReleasesPromotions
+Advanced Search | Help
+Home > Articles > A Guided Tour through C#: Part I
+A Guided Tour through C#: Part I
+By Klaus Michelson.
+Sample Chapter is provided courtesy of Sams.
+Date: May 17, 2002.
+SaveDiscussPrintE-mail
+
+Article Information
+Contents
+Introduction
+Abstraction and Encapsulation
+An Interactive Hello World! Program
+Summary
+Review Questions
+Programming Exercises
+Article Description
+Klaus Michelson presents an overview of several important C# features, to give you an introductory feel for the language. 
+From the Book 
+C# Primer Plus
+
+$44.99 (Save 10%) 
+
+
+An Interactive Hello World! Program
+While you are digesting the OO information from the previous section, in the next few sections, I will present and analyze a C# source code example accompanied by an introduction to many of the fundamental aspects and features of the C# language. This will be a step toward your first object-oriented C# program presented in the last section of Chapter 5, which constitutes a simple, but working C# elevator simulation source program, directly related to our earlier, somewhat theoretical OO discussion.
+
+Presenting Hello.cs
+By tradition, the first program written in a new language prints the two words Hello World! onscreen. Because this is your second program (the first program Shakespeare.cs was in Chapter 2), we will write a similar program but slightly more advanced. Instead of merely printing out Hello World!, the user can interact with the program in Listing 3.1 and choose whether Hello World! is printed onscreen.
+
+NOTE
+
+Any professional interactive application allocates large amounts of source code dealing with invalid user input. Metaphorically speaking, the program attempts to prevent any user from inputting squares where the program expects triangles. To keep the source programs presented in this book compact and focused at the relevant features presented, most parts of the book do not include any user input validation code.
+
+A central facet of programming should be aimed at making programs user friendly. The end user of a program and the programmer are often different people. As the programmer, you cannot expect the user to know how to interact with your program. You must enable the program to guide the user and make the program easy to use, as shown in the sample output after Listing 3.1. There are two possible outputs from the program, depending on whether the user wants Hello World! to be printed. The text typed in by the user is shown in boldface. Notice how the sentence:
+
+Type y for yes; n for no.guides the user through the program.
+
+Listing 3.1  Source Code for Hello.cs
+01:  // This is a simple C# program
+02: class Hello
+03: {
+04:      // The program begins with a call to Main()
+05:     public static void Main()
+06:     {
+07:         string answer;
+08:
+09:         System.Console.WriteLine("Do you want me to write the two words?");
+10:         System.Console.WriteLine("Type y for yes; n for no. Then <enter>");
+11:         answer = System.Console.ReadLine();
+12:         if (answer == "y")
+13:             System.Console.WriteLine("Hello World!");
+14:         System.Console.WriteLine("Bye Bye!");
+15:     }
+16: }Sample output 1 results when the user answers y (yes):
+
+Do you want me to write the two words?
+Type y for yes; n for no. Then <enter>.
+y <enter>
+Hello World!
+Bye Bye! Sample output 2 results when the user answers n (no):
+
+Do you want me to write the two words?
+Type y for yes; n for no. Then <enter>.
+n <enter>
+Bye Bye!Listing 3.2 provides a brief analysis of each source code line in Listing 3.1. There is a one-to-one correspondence between the line numbers in the two listings. Each line of Listing 3.1 is thoroughly discussed in the following sections. Listing 3.2 is only meant as a quick reference when you return to Listing 3.1 for a reminder about how a particular construct is written.
+
+Listing 3.2  Analysis of Source Code for Hello.cs
+01: Make comment: This is a simple C# program
+02: Begin the definition of a class named Hello
+03: Begin the block of the Hello class definition
+04:     Make comment: The program begins with a call to Main()
+05:     Begin the definition of a method called Main()
+06:     Begin the block of the Main() method definition
+07:         Declare a variable called answer, which can store text
+08:         Empty line
+09:         Print out: Do you want me to write the two words? Move down
+                one line
+10:         Print out: Type y for yes; n for no. Then <enter>  Move down one
+                line
+11:         Store users answer in the answer variable. Move down one line.
+12, 13:     If answer stores a `y' then print: Hello World!
+            If answer does not store a `y' then jump over            
+            line 13 and continue with line 14.
+14:         Print out: Bye Bye! Move down one line.
+15:     End block containing Main() method definition
+16: End block containing Hello class definitionConvention 
+
+Output printed on the command console from the program is presented as Bye Bye!
+
+It's time to start up good old Notepad and type in the source code. You can call the source file Hello.cs. Compile Hello.cs, run the program by typing Hello after the console prompt, and compare the output with what is shown in the sample output from Listing 3.1.
+
+If the Screen Disappears Before You Can Read All the Output
+
+You might have decided to use a text editor other than Notepad, perhaps even an Integrated Development Environment (IDE) configured for C#. This is fine. However, you might encounter a small problem with some systems with the command console disappearing too early, certainly before you ever get a chance to read the onscreen output.
+
+Fortunately, there is a simple solution to this problem. Put the following line of code at the end of the Main method (just before the brace that ends the block containing the Main method):
+
+System.Console.ReadLine();When the program encounters this statement, it will wait for you to press the Enter key, allowing you time to study the output onscreen.
+
+The program in Listing 3.1 is relatively simple, but it contains many essential ingredients of a typical C# program. Let's take a closer look at each part of the program. After you have mastered the concepts presented in this section, they can be applied to most C# programs you will write.
+
+Basic Elements of Hello.cs
+Every line number contained in this section refers to the line numbers of Listing 3.1.
+
+Comments
+Line 1 contains a comment. The compiler ignores the contents of a comment. It is used purely to describe or explain the elements of the program to anyone reading through the source code. In this case, the comment simply tells you that the source code you are looking at represents a simple C# program.
+
+01:  // This is a simple C# programComments
+
+Comments are extremely valuable for your source code. They are as important as the other elements of the source code. Not only do they enable other people to understand your code, they also act as your own valuable reminders in source code you haven't seen for some time. It is only too easy to forget the structure and logic behind your own source code.
+
+The double forward slash (//) tells the compiler to ignore the rest of the line. In line 1, the comment is on its own line, but it can also be on the same line as code. Consequently lines 1 and 2 could have been combined as follows:
+
+class Hello  // This is a simple C# program but the following is invalid:
+
+// This is a simple C# program  class HelloThe whole line is suddenly regarded as a comment and so class Hello will be ignored completely by the compiler.
+
+Defining a Class
+To explain line 2, I must briefly introduce the concept keyword also called reserved word. A keyword has a special predefined meaning in the C# language and is recognized by the compiler.
+
+02: class HelloLine 2 uses the keyword class to declare that a class is being defined. Hello is the name of the class and must be positioned immediately after class.
+
+Every language, including spoken languages, contains words with a special meaning. In English, we call it a vocabulary; in science it's called terminology.
+
+Likewise, the C# language has its own vocabulary made up of keywords, also referred to as reserved words. Listing 3.1 introduces the following keywords: class, public, static, void, string, and if. It's wise to spend a moment locating these in Listing 3.1. You can find the remaining C# keywords in Appendix C, "Reserved Words in C#." which is found on www.samspublishing.com.
+
+Keywords have very special meanings to the compiler. They cannot, as the term reserved word indicates, be used for other objectives in C#.
+
+class, for instance, cannot be used as a name for any element in C#, such as a method or a variable.
+
+Let's give an example from the English language of why this makes sense. Look at the sentence, "Running is very helpful. Running fixed the washing machine today."
+
+Hmm...what is going on here? Well, the parents of Running didn't quite follow the traditional conventions when they named their son Running. Their strange naming preferences distorted our ability to communicate for a moment. Despite our brain's amazing capacity of deciphering information, we still were confused with the use of the word Running. Did Running refer to the English keyword running (as a verb) or the son's name Running?
+
+In contrast to our brain, the compiler is a very exact and non-forgiving creature. If for instance line 2 of Listing 3.1 was changed to class class; instead of class Hello, the compiler would be even more confused than us, causing it to report an error.
+
+Notice that a keyword can be part of a name, so classVariable is an acceptable name.
+
+The technical term for a name like Hello is identifier. Identifiers are, apart from classes, also used to name elements like methods and instance variables. 
+
+Had we implemented our Elevator class from the elevator simulation, we would most likely have used the identifier Elevator instead of Hello. 
+
+Identifiers (Names)
+
+Names in source code are often called identifiers. Many elements, such as classes, objects, methods and, variables must have identifiers. In contrast to the keywords of C#, which were decided by its designers, you as a programmer decide each identifier.
+
+A few rules apply here. An identifier must consist entirely of letters, digits (0-9), or the underscore character (_). An identifier cannot start with a digit and cannot be one of the keywords displayed in Appendix C which you can find on www.samspublishing.com.
+
+Examples:
+
+Legal identifiers:
+
+                         Elevator
+                        _elevator
+                         My2Elevators,
+                         My_Elevator
+                         MyElevatorIllegal identifiers:
+
+                         Ele vator
+                         6ElevatorsC# is case sensitive, so lowercase and uppercase letters are considered to be different characters. Hello and hello are as different to the compiler as Hello and Bye.
+
+Braces and Blocks of Source Code
+Line 3 contains a brace ({). It indicates the beginning of a block.
+
+A block is a piece of C# source code enclosed within braces. } indicates the end of a block. After a block of code has been created, it becomes a logical unit. Braces, which are used to indicate blocks of code, always work together in pairs. Whenever you see a {, you know there must be a matching } somewhere. The matching } to line 3 is found in line 16. We have another matching pair of braces in lines 6 and 15.
+
+03: {Because { of line 3 is positioned immediately after line 2, the compiler knows that the entire definition of the Hello class is contained in between { of line 3 and } of line 16. Methods and instance variables can now be inserted in this class definition block, as shown in Figure 3.5, by making sure that all method and instance variable declarations are written between the two braces.
+
+Figure 3.5 The class definition.
+
+TIP
+
+The following is a way to help prevent missing braces. Whenever you need to indicate the start of a block with a left brace ({), immediately type the right brace (}) under the left brace. Then position the cursor between the two braces and write the source code for this particular block.
+
+In line 4
+
+04:       // The program begins with a call to Main()we recognize the // indicating the beginning of a comment.
+
+The Main() Method and Its Definition
+Line 5 indicates the beginning of the definition for a method called Main. There is no special C# keyword such as "method" indicating that we are dealing with a method. The compiler, though, works this out by recognizing the parentheses () after Main.
+
+05:       public static void Main()The Main method has a special meaning in C#. Any C# application begins its execution at the Main method. This method is called by the .NET runtime when the program is started.
+
+For example, a sophisticated spreadsheet program written in C# might contain thousands of methods with different identifiers, but only a method named Main will be called by the .NET runtime to start the program.
+
+I will not attempt to provide you with the exact meaning of all the parts of line 5, because this involves a detailed understanding of how C# deals with certain object-oriented principles.
+
+However, Figure 3.3, presented earlier in this chapter, can certainly help illuminate parts of line 5. Remember that a class consists of an interface made up of public methods and a hidden part consisting of private methods and private instance variables.
+
+public, in line 5, is an access modifier. This keyword allows the programmer to control the visibility of a class member. By using public in line 5 somewhere in front of Main, we indicate that Main is a public method and so it is part of the interface of the Hello class. As a result, Main can be called from outside a Hello object. 
+
+Figure 3.6 A method definition.
+
+Figure 3.6 illustrates the major elements of a method definition.
+
+The Main Method
+
+Every C# program must contain a method called Main. When a program is executed, the .NET runtime will look for a Main method as a first step. When found, it will execute this method; thus, it is always the first method to be executed in a program. An error is reported if no Main method is found.
+
+Main is in Listing 3.1 located inside of the Hello class and the .NET runtime is located outside. When .NET attempts to execute the Main method, it will be regarded as just another object trying to access a method of the class. Therefore, we need to expose the Main method and make it part of the interface of its class.
+
+A Main method must always be declared public to let .NET gain access to it.
+
+Typically Main will cause other methods located in other objects to be executed but, as you can see, our first simple examples merely contain one class with one Main method
+
+To get an initial feel for the meaning of the static keyword, recall our discussion about the differences between a class and an object. A class is just a specification of how to create an object, just like an architectural drawing is only a plan of how to create a real house. A class usually cannot take any actions. Well, the static keyword lets us cheat a bit here. It enables us to use methods of a class without instantiating any objects first.
+
+When static is part of a method header, we tell the class that it does not need to be instantiated for an object outside the class to use the method. In this case, it allows us to specify that Main can be used without first instantiating a specific object based on the Hello class. This is necessary here because Main is called by the .NET runtime before any objects are created.
+
+NOTE
+
+A Main method must always be declared public and static.
+
+If the meaning of static seems a bit fuzzy and incomprehensible, don't worry. We will return to this concept in more detail later.
+
+To fully understanding the meaning of void in line 5, you need to know a bit more about how methods work. At this point, I will only give you a brief explanation. void indicates that Main() does not return a value to the caller.
+
+In line 6, { indicates the beginning of Main()'s block, which contains the source code comprising the method. The matching } ending this block can be found in line 15.
+
+06:      {TIP
+
+Choose meaningful variable names in your source code to improve clarity and readability. Avoid abbreviations; don't be afraid to choose long variable names. Which is clearer to you, avgSpPHr or averageSpeedPerHour?
+
+Source code that can be understood simply by reading it rather than having to consult manuals and look through excessive amounts of comments is said to be self-documenting.
+
+Variables: Representing Data Stored in Computer Memory
+answer in line 7 is a variable. answer is the identifier of this variable. 
+
+A variable is a named memory location representing a stored piece of data. The keyword string dictates answer to be of type string. 
+
+07:           string answer;The programmer can arbitrarily choose the identifier answer, whereas string is unchangeable because it is a keyword.
+
+By typing answer after string, as in line 7, we say in technical terms that we have declared answer to be a variable of type string.
+
+NOTE
+
+Any variable used in a C# program must be declared.
+
+We use the answer variable in lines 11 and 12. A variable of type string can contain text. For example, "Coco is a dog," "Julian is a boy," "y," or "n" are all examples of text and so are valid data storable in answer. In C#, strings of characters are denoted with " " (double quotes). I have illustrated the parts that make up a variable, such as answer, in Figure 3.7.
+
+The figure shows that a variable consists of three things:
+
+Its identifier, which is answer in this case.
+
+Figure 3.7 A variable's type, identifier, and value.
+
+Its type or the kind of information it can hold, which in this case is string, meaning a sequence of characters.
+
+Its value, which is the information presently stored. In the illustration, the current value is "Julian is a boy".
+
+I have not revealed all the facts about the string type here. String is actually a reference type so does not itself hold the text it seems to store; it merely refers to the memory location holding the text. For now, however, we can happily continue disregarding this knowledge. We will return to this aspect in Chapter 6, "Types Part I: The Simple Types."
+
+The only thing left to explain in line 7 is the semicolon character (;). Any task accomplished by a C# program can be broken down into a series of instructions. A simple instruction is called a statement. All statements must be terminated with a semicolon character. Line 7 is a declaration statement so a semicolon character must terminate the line.
+
+Line 8 is an empty line.
+
+08:The C# compiler will simply ignore an empty line. The empty line is inserted to improve the look and readability of the source code.
+
+Invoking Methods of the .NET Framework
+The program in line 9
+
+09:         System.Console.WriteLine("Do you want me to write the two words?");instructs the computer to print out the following:
+
+ Do you want me to write the two words? For now, you can consider System.Console.WriteLine to be a peculiar way of saying "print whatever is shown in parenthesis after WriteLine onscreen and then move down one line."
+
+Briefly, this is what happens behind the curtains of line 9. System.Console is a class from the .NET Framework. Recall that the .NET Framework is a class library containing numerous useful classes written by professional programmers from Microsoft. Here, we are essentially reusing a class referred to as System.Console in our program to print out text onscreen. System.Console contains a method, named WriteLine, that is called with the command System.Console.WriteLine. WriteLine carries out an action; it prints the text inside the parenthesis ("Do you want me to write the two words?").
+
+When a method is called to perform a task, we say the method is being invoked. The item inside the parenthesis (in this case, the text: "Do you want me to write the famous words?") is called an argument. An argument provides information needed by the invoked method to carry out its task. The argument is passed to the WriteLine method when invoked. WriteLine then has access to this data for its own statements. We can then describe the action of WriteLine as follows, "When WriteLine is invoked, print out the argument passed to it."
+
+Line 9 is a statement, like line 8, and so it must end with a semicolon.
+
+There is one problem with line 9 that we briefly need to address. It might not be obvious, but we are using a method of the class System.Console in line 9. How can we use the method of a class? Several times now we have emphasized classes as mere plans and objects as the doers. However, by using the keyword static (mentioned earlier) to cheat a little bit, it becomes possible to use the method of a class. The programmer who implemented the WriteLine method used static to make WriteLine available for use without first having to instantiate System.Console.
+
+The General Mechanics of Method Invocation
+The instructions of a method reside inside its method definition in the form of statements.
+
+To invoke a method means to initiate the statements it has been instructed to perform. They will be performed in a sequential manner, beginning at the topmost statement and in the same sequence as they are written in the source code.
+
+Methods can only be defined inside classes. A method is an action that an object is able to perform. It is invoked by writing the object name (or the class name if the method is declared static) followed by a period (full stop) ., called a dot, followed by the method name and ending with a pair of parenthesis () that may or may not contain arguments. Arguments are data passed to the method.
+
+A call to a non-static method residing in an object generally looks like the following:
+
+ObjectName.MethodName(Optional_Arguments)A call to a static method includes the class name as in the following:
+
+ClassName.MethodName(Optional_Arguments)
+
+By substituting the general terms with actual names, we can form the following valid statement, which is identical to line 14 of Listing 3.1.
+
+System.Console.WriteLine("Bye Bye!");
+
+When the method has finished, it will return to the position from which it was invoked. The program flow when invoking a method, as in line 14 of Listing 3.1, is shown in Figure 3.8. The following individual steps can be identified in the figure. The numbers correspond to those shown in the figure.
+
+Execute statements prior to line 14.
+
+Execute line 14.
+
+Call System.Console.WriteLine with the argument "Bye Bye!";.
+
+Execute the statements inside System.Console.WriteLine(...).
+
+Return to statement just after line 14.
+
+Execute the rest of the statements in the Main method.
+
+Figure 3.8 Program flow when invoking a method.
+
+Line 10 contains another method call to WriteLine 
+
+10:           System.Console.WriteLine("Type y for yes; n for no. Then <enter>");The result of this method call is as follows:
+
+Type y for yes; n for no. Then <enter>.is printed onscreen, and the cursor is moved down one line.
+
+Message: Another Term for Method Invocation
+
+Consider line 9 of Listing 3.1. It contains a statement invoking the WriteLine method. Another term is often used in object-oriented programming circles to denote the invocation of an object.
+
+When a method of object A contains a statement that is invoking the method of an object called B, we say A is sending a message to B. In line 10, our class Hello is sending a message to the System.Console class. The message is
+
+ WriteLine("Type y for yes; n for no. Then <enter>")In general, objects are thought of as performing actions triggered by messages received. In our example, the action taken is to print
+
+Type y for yes; n for no. Then <enter>on the console.
+
+Assigning a Value to a Variable
+In line 11, we again reuse the System.Console class. This time, we use another of its static methods called ReadLine, which will pause the execution and wait for a response from the user. The response must be in the form of text entered and the Enter key pressed. As its name suggests, ReadLine will read the input from the user.
+
+11:           answer = System.Console.ReadLine();When the Enter key is pressed, the text typed in by the user will be stored in the answer variable. Consequently, if the user types `y', answer will contain a "y". If the user types `n', answer will contain an "n". This is because of the equals sign (=) placed after answer.
+
+The equals sign (=) is used differently in C# than in standard arithmetic. In arithmetic, the equals sign usually denotes the equality of items to the left and right of the sign. For example, 4=2+2 is a valid expression in arithmetic and can be said to be true. In C#, the meaning is quite different. Instead, the equals sign says "Make answer equal to System.Console.ReadLine()" or, in other words, "Store the text read from the keyboard in answer."
+
+The mechanism of giving answer a new value is called assignment. The text typed in by the user is said to be assigned to the answer variable. Line 11 is called an assignment statement and the equals sign (=) is called an assignment operator when used in this context. The equals sign is involved in other contexts and then it will have different appropriate names.
+
+An Advantage of Declaring Variables
+
+Initially, variable declarations seem to complicate matters and be a waste of typing and time. Why can't we just use the variable when needed without any previous declaration? Well, in extremely short programs, such as the one presented, we could easily live without declarations. However, variable declarations have important benefits when writing larger programs. Consider a programming language like an older version of BASIC (not Visual Basic) where variable declarations are not required. Without further ado, BASIC allows us to involve, say, MyVariable in an assignment statement as in the following:
+
+MyVariable = 100
+MyVarable = 300  
+System.Console.WriteLine(MyVariable)Initially, we stored 100 in MyVariable and later wanted to store 300 instead. However, due to a spelling mistake in the second line shown, we ended up storing 300 in MyVarable, leaving MyVariable with the same value 100. This mistake was not picked up by the BASIC compiler, but would have been unveiled by the C# compiler, where all variables used throughout the program are checked for matching declarations.
+
+Now, try and put your trusty C# compiler to the test. Change the spelling of answer in line 11 or 12 and observe its reaction when you compile the now faulty program.
+
+Branching with the if Statement
+You saw one use for the equals sign in line 11. In line 12, it is used in a different context, this time resembling that of arithmetic's standard use of the equals sign. 
+
+12:           if (answer == "y")
+13:                 System.Console.WriteLine("Hello World!");C# uses two adjacent equals signs (==), called an equality operator, to denote a comparison between what is on its left with what is on its right. Consequently, the two following expressions articulate the same question:
+
+Using standard arithmetic: 
+
+2 + 3 = 6 meaning "Is 2 + 3 equal to 6?"
+
+Answer: false
+
+Is the same as
+
+Using the C# language
+
+2 + 3 == 6 meaning "Is 2 + 3 equal to 6?"
+
+Answer: false
+
+In line 12, we ask the question answer == "y", meaning "Is answer equal to "y"?" The answer can be either true or false.
+
+An expression that can only have the two values—true or false—is said to be a Boolean expression.
+
+CAUTION
+
+It is easy to confuse the equality operator == with the assignment operator =. The assignment operator = can be read "gets the value of" or "gets," whereas the equality operator == should be read "is equal to." To avoid confusion, some programmers refer to the assignment operator as equals equals or double equals.
+
+By putting the keyword if in front of the Boolean expression answer == "y" and surrounding this expression by parenthesis, we are saying that only if answer == "y" is true should the line immediately after line 12 (in this case line 13) be executed. Conversely, if answer == "y" is false, jump over line 13 and continue with line 14. In Figure 3.9 I have zoomed in on lines 12-14 and indicated the execution flow with arrows.
+
+Lines 12 and 13 contain a vital element for controlling the output of the computer and, in fact, achieve two different outputs as shown previously in sample output 1 and 2.
+
+Note a couple of important details:
+
+Regardless of whether we answer y or n, the program writes the line "Bye Bye!" at the end.
+
+Only the answer y will trigger the program to print Hello World!. Any other answer, such as horse, Peter, Y, yes, n, N, and so on will make the Boolean expression false and ignore line 13.
+
+Line 12 and 13 constitute an if statement. The if statement is said to control the flow of the execution because the execution at this point can choose to follow two different directions. The if statement is said to belong to a category of statements called branching statements.
+
+Figure 3.9 The flow of execution in an if statement.
+
+CAUTION
+
+The left and right parenthesis enclosing the condition of the if statement, as shown in the following:
+
+if (answer == "y")are always required. Omitting them will produce a syntax error.
+
+Ending the Main() Method and the Hello Class
+The } on line 15 ends the Main method block started in line 6.
+
+15:       }CAUTION
+
+The braces {} must occur in pairs. Failing to comply with this rule triggers a compiler error.
+
+In line 16, } ends the Hello class definition block.
+
+16: }This concludes the analysis of Listing 3.1.
+
+A Few Fundamental Observations
+The previous sections were able to extract many fundamental C# constructs and mechanisms from Listing 3.1, despite its simple appearance. This section looks at a few general C# concepts by summarizing and building on the knowledge you have gained from Listing 3.1. 
+
+C#'s Source Code Format
+Blank lines, space characters, tab characters, and carriage returns are collectively known as whitespace. To a large degree, the C# compiler ignores whitespace. Consequently, you can use blank lines, space characters, tab characters, and carriage returns interchangeably. Let's look at an example. From the C# compilers point of view, the three lines of source code in Figure 3.10 are all identical to line 5 of Listing 3.1.
+
+05:       public static void Main()Figure 3.10 Whitespace is ignored by the compiler.
+
+Notice how distorted the third line in Figure 3.10 has become; it is still valid code but incomprehensible and ugly.
+
+The indivisible elements in a line of source code are called tokens. One token must be separated from the next by whitespace, commas, or semicolons. However, it is unacceptable to separate the token itself into smaller pieces by using whitespace or separators.
+
+A token is a particular instance of a word with a special meaning attached to it. The term token is also frequently used in the scientific fields of logic and linguistics. 
+
+Don't break up tokens with whitespace; this causes invalid code as shown below, which contains three invalid versions of line 5: public static void Main():
+
+pub lic   stati c   void  Main()
+public static void Ma
+in()
+public static vo id Main()On the other hand, it is possible to aggregate statements and source code on the same line, as shown in the following line.
+
+class Hello { public static void Main() {  string answer;The following is better-styled original code:
+
+02: class Hello
+03: {
+04:      // The program begins with a call to Main()
+05:     public static void Main()
+06:     {
+07:         string answer;Although C# provides much freedom when formatting your source code, you can increase its clarity considerably by following a reasonable style. It is possible to write valid but ugly source code, as you have seen in a few of the previous examples. Ugly here refers to messy, unclear, confusing source code that is difficult for another person to comprehend.
+
+Listing 3.1 follows a certain style that is adhered to by a large proportion of the programming community. Let's have a look at a few general guidelines. Line numbers from Listing 3.1 are provided as examples.
+
+Have one statement per line (lines 7, 9, 10, 11, and 14).
+
+However, note the if statement; it's an exception. It should be spread over several lines (in the case of Listing 3.1 it is spread over two lines).
+
+After an opening brace ({) move down one line and indent (lines 4, and 7).
+
+Indent matching pairs of braces identically (lines 3, 16 and lines 6, 15).
+
+While observing the two previous rules, indent lines between matching pairs of braces identically. (Lines 4, 5 and lines 7-14). Keep in mind that statements after if conditions should be indented (line 13).
+
+Put in blank lines to separate distinctive logic parts of the source code (line 8).
+
+Do not use whitespace around the parentheses associated with a function name (line 5).
+
+Competent programmers apply other conventions, to improve the style of their source code. We will discuss these in the following chapters whenever relevant.
+
+A Brief Tour Around the .NET Framework
+We have already made extensive use of the .NET Framework class library in Listing 3.1. It's especially visible in lines 9, 10, 11, 13, and 14 with System.Console.WriteLine and System.Console.ReadLine. There is extensive support for equipping your program with a wide variety of functionality from this class library. But how do we know which particular classes and methods we have access to and can reuse and how do we know their characteristics and the functionality they provide? We can find answers to these questions in the comprehensive documentation provided for the class library. The simple aim of this section is to show you how to locate this documentation and confirm the existence of System.Console.WriteLine and System.Console.ReadLine inside the myriad of other classes and methods.
+
+At the time of writing, the following set of commands can be used to locate the .NET Framework documentation. This might change in later versions of the Software Development Kit (SDK).
+
+Open up the directory with the path D:\Program Files\Microsoft.Net\FrameworkSDK.
+
+Notice that D:\ could be another letter, depending on where your documentation has been installed.
+
+You should then see a window displaying the contents of the FrameworkSDK folder, similar to that shown in Figure 3.11.
+
+Figure 3.11 Contents of the FrameworkSDK folder.
+
+Double-click the StartHere icon to bring up the start page of the .NET Framework Reference. Display the start page of the .NET Framework Documentation by clicking the hyperlink called .NET Framework SDK documentation situated in the Documentation section. Expand the appearing .NET Framework SDK node on the left hand side of the window. Locate the .NET Framework Reference node and expand it. Among many other appearing nodes one is called .NET Framework Class Library which you can expand to display a window similar to that shown in Figure 3.12.
+
+Figure 3.12 The .NET Framework Class Library Documentation.
+
+You are now free to browse the documentation for the class library. 
+
+To locate the Console class, expand the System node and scroll down to find and expand the Console Class node. You can now find the WriteLine and ReadLine methods by clicking the Console Members node. Click the ReadLine hyperlink in the right part of the window to see the window shown in Figure 3.13.
+
+Figure 3.13 Displaying the Console.ReadLine specifications.
+
+Under the headline Console.ReadLine Method, you can read a short description of ReadLine. You can locate the WriteLine method in the same fashion.
+
+Many of the terms mentioned in the .NET Framework Reference will not make any sense to you right now. However, eventually this reference is most likely going to be an important source of information.
+
+As you are presented with more classes from the library, try to locate them and use the new terms introduced in the coming chapters to familiarize yourself with this very powerful set of tools.
+
+C# Statements
+As mentioned earlier, each method in C# contains a collection of statements. Many types of statements exist in C#. The following is a brief summary of the statements we encountered in Listing 3.1.
+
+Declaration statements (line 7)
+
+Assignment statements (line 11)
+
+Method call statements (lines 9, 10, 11, 13, and 14)
+
+Declaration statements create a variable that can be used in the program. They announce the type and identifier of the variable.
+
+Even though declaration statements may seem superfluous, they introduce several features that help eliminate bugs in computer programs.
+
+An assignment statement uses the assignment operator =. It assigns a value to a storage location that is represented by the identifier of the variable.
+
+A method call activates a method. It can send arguments to the invoked method that utilizes these to perform its actions. When the invoked method terminates, the program will return to the statement immediately following the method call statement.
+
+4. Summary | Next SectionPrevious Section
+Make a New Comment
+You must login in order to post a comment.
+
+You May Also Like
+.NET Meets Beans?
+By Dan Fox
+Feb 1, 2002
+Writing Code with Visual Basic .NET
+By Duncan Mackenzie , Kent Sharkey
+Jun 21, 2002
+DCOM is Dead — Long Live .NET Remoting
+By David Chappell
+Nov 20, 2001
+See All Related Articles
+
+Search Related Safari Books
+
+
+Search electronic versions of over 1500 technical books:
+
+
+
+
+
+Promotions
+Microsoft Office 2007 and Windows Vista
+Sams Publishing Holiday Sale
+Amazon Tech Sale
+Expires: Dec 15, 2006
+See All Promotions
+
+Most Popular Articles
+Installing Exchange Server 2003
+Sep 19, 2005
+MySQL SQL Syntax and Use
+Mar 14, 2005
+Using Java Database Connectivity (JDBC) with Oracle
+By Bulusu Lakshman
+Apr 5, 2002
+About | Legal Notice | Privacy Policy | Press | Jobs | Write For Us | Contact Us | Advertise | Site Map
+© 2006 Pearson Education, Sams Publishing. All rights reserved.
+800 East 96th Street Indianapolis, Indiana 46240
+

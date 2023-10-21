@@ -1,0 +1,73 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+#include&lt;graphics.h&gt;
+#include&lt;conio.h&gt;
+#include&lt;ctype.h&gt;
+#include&lt;stdlib.h&gt;
+
+
+void main()
+ {
+
+  int driver, mode;
+
+  driver = DETECT; /* autodetect */
+  mode = 0;
+  initgraph(&driver, &mode, "c:\\tc\\bgi");
+
+
+     while(1)
+     {
+     setcolor(15);
+      rectangle(190,270,420,340);
+       setfillstyle(1,7);
+	floodfill(195,280,15);
+	 setfillstyle(1,1);
+	  bar(194,275,416,292);
+     setcolor(15);
+      rectangle(193,273,417,337);
+       line(194,292,416,292);
+	setfillstyle(1,0);
+	 bar(198,341,425,351);
+	  bar(421,280,429,351);
+     settextstyle(12,0,1);
+      setcolor(0);
+       outtextxy(217,302,"Are you sure want to ");
+	outtextxy(258,318,"exit (y/n)");
+     setcolor(7);
+      settextstyle(11,0,1);
+       outtextxy(200,281,"Message");
+char c;
+   do
+    {
+      c=tolower(getch());
+    } while((c != 'n') && (c != 'y'));
+    if (c=='n')
+      {
+	setfillstyle(1,14);
+	bar(190,270,450,360);
+      }
+      else if(c=='y')
+	exit(0);
+}
+
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

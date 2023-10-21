@@ -1,0 +1,158 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt;script language="vbscript"&gt;
+Sub Button1_onclick
+  Dim a, b, c, d
+  a = 1
+  b = 2
+  c = 3
+  d = 4
+  MsgBox(a + b + c + d)
+End Sub
+&lt;/script&gt;
+&lt;input type="button" id="Button1" value="Test"&gt;
+
+
+&lt;script language="vbscript"&gt;
+Sub Button1_onclick
+  sum = 0
+  For i = 0 To 100
+    sum = sum + i
+  Next
+  MsgBox(sum)
+End Sub 
+&lt;/script&gt;
+&lt;input type="button" id="Button1" value="Test"&gt;
+
+&lt;script language="vbscript"&gt;
+Sub Button1_onclick
+  a = 1
+  b = 2
+  c = f(a, b)
+  MsgBox(c)
+End Sub
+Function f(ByVal x, ByVal y)
+  f1 = 1
+  f2 = 2
+  f3 = 3
+  f = f1 + f2 + f3 + x + y
+End Function
+&lt;/script&gt;
+&lt;input type="button" id="Button1" value="Test"&gt;
+
+&lt;script language="vbscript"&gt;
+Sub Button1_onclick
+  A()
+End Sub
+Sub A
+  B()
+End Sub
+Sub B
+  C()
+End Sub
+Sub C
+  MsgBox("Inside c")
+End Sub
+&lt;/script&gt;
+&lt;input type="button" id="Button1" value="Test"&gt;
+
+&lt;script language="vbscript"&gt;
+Sub Button1_onclick
+  x = Sqrt(25) // Error!
+  MsgBox(x)
+End Sub 
+&lt;/script&gt;
+&lt;input type="button" id="Button1" value="Test"&gt;
+
+&lt;%
+Dim a, b, c, d
+a = 1
+b = 2
+c = 3
+d = 4
+Response.Write(a + b + c + d)
+%&gt;
+
+Request.Form("direction") = East
+Request.Form("colors").Count = 1
+Blue
+.
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;form name="form1" method="post" action="Page1.asp"&gt;
+&lt;select name="direction"&gt;
+&lt;option&gt;North
+&lt;option&gt;South
+&lt;option&gt;East
+&lt;option&gt;West
+&lt;/select&gt;
+&lt;select name="colors" multiple&gt;
+&lt;option&gt;Red
+&lt;option&gt;Green
+&lt;option&gt;Blue
+&lt;option&gt;Yellow
+&lt;option&gt;Orange
+&lt;/select&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+Request.Form("direction") = 
+&lt;%= Request.Form("direction") %&gt;
+&lt;br&gt;
+Request.Form("colors").Count =
+&lt;%= Request.Form("colors").Count %&gt;
+&lt;br&gt;
+&lt;%
+for i = 1 to Request.Form("colors").Count 
+%&gt;
+&lt;%= Request.Form("colors")(i) %&gt;&lt;br&gt;
+&lt;% next %&gt;
+
+Server Time is: &lt;br&gt;&lt;%= Now %&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;script language="vbscript"&gt;
+Sub Button1_onclick
+  MsgBox("Client Time is " & Now())
+End Sub
+&lt;/script&gt;
+&lt;input type="button" id="Button1" value="Client Time"&gt;
+
+&lt;script language="vbscript" runat="server"&gt;
+
+Sub Application_OnStart
+  Application("TotalUsers") = 0
+  Application("CurrentUsers") = 0
+End Sub
+
+Sub Session_OnStart
+  Application.Lock
+  Application("TotalUsers") = Application("TotalUsers") + 1
+  Application("CurrentUsers") = Application("CurrentUsers") + 1
+  Application.UnLock
+End Sub
+
+Sub Session_OnEnd
+  Application.Lock
+  Application("CurrentUsers") = Application("CurrentUsers") - 1
+  Application.UnLock
+End Sub
+
+&lt;/script&gt;
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

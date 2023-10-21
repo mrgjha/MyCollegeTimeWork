@@ -1,0 +1,47 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+C# has a built in facility for Attributes
+using System; 
+public class DemoA {
+    private string name; 
+    public DemoA(string name){
+    	this.name = name; 
+    }   
+    // A read-only property for a member variable 
+    public string Name{
+    	get{
+        	Console.WriteLine("Getting Name Attribute");
+        	return name; 
+    	}   
+    	set {
+    		Console.WriteLine("Setting Name Attribute");
+    		this.name = value; 
+    	}
+    }
+    public static void Main(string[] args){
+    	DemoA var = new DemoA("Joe Bloggs"); 
+    	Console.WriteLine("Name: " + var.Name);       
+    	var.Name = "another";
+    	Console.WriteLine("Name: " + var.Name);   
+    }
+} // DemoA
+
+
+Getting Name Attribute
+Name: Joe Bloggs
+Setting Name Attribute
+Getting Name Attribute
+Name: another
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

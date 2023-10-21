@@ -1,0 +1,151 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+<h3>Visual Basic.Net object-orientation</h3>
+
+Here are the main changes in the direction of object-orientation.
+
+<h3>Inheritance</h3>
+
+<p align="left">
+VB .NET supports object-oriented inheritance (but not multiple inheritance). This means that a class can derive from another (base) class, thereby inheriting all of the properties, methods, and events of the base class. Since forms are also classes, inheritance applies to forms as well. This allows new forms to be created based on existing forms.</p>
+
+<h3>Overloading</h3>
+<p align="left">
+VB .NET supports a language feature known as function overloading. The idea is simple and yet quite useful. We can use the same name for different functions (or subroutines), as long as the functions can be distinguished by their argument signature. The argument signature of a function (or subroutine) is the sequence of data types of the arguments of the function. Thus, in order for two functions to have the same argument signature, they must have the same number of arguments, and the corresponding arguments must have the same data type. For example, the following declarations are legal in the same code module because they have different argument signatures:
+</p>
+
+<pre>
+Overloads Sub OpenFile(  )
+    ' Ask user for file to open and open it
+End Sub
+ 
+Overloads Sub OpenFile(ByVal sFile As String)
+    ' Open file sFile
+End Sub
+</pre>
+
+
+<h3>Object Creation</h3>
+<p align="left">
+VB 6 supports a form of object creation called implicit object creation. If an object variable is declared using the New keyword:
+
+Dim obj As New SomeClass
+
+then the object is created the first time it is used in code. More specifically, the object variable is initially given the value Nothing, and then every time the variable is encountered during code execution, VB checks to see if the variable is Nothing. If so, the object is created at that time.
+<p align="left">
+
+<p align="left">
+
+VB .NET does not support implicit object creation. If an object variable contains Nothing when it is encountered, it is left unchanged, and no object is created.
+
+In VB .NET, we can create an object in the same statement as the object-variable declaration, as the following code shows:
+</p>
+
+<pre>
+Dim obj As SomeClass = New SomeClass
+
+As a shorthand, we can also write:
+
+Dim obj As New SomeClass
+
+If the object's class constructor takes parameters, then they can be included, as in the following example:
+
+Dim obj As SomeClass = New SomeClass(argument1, argument2,...)
+
+As a shorthand, we can also write:
+
+Dim obj As New SomeClass(argument1, argument2,...)
+
+</pre>
+
+
+<h3>Properties</h3>
+<p align="left>
+There have been a few changes in how VB handles properties, particularly with respect to default properties and property declarations.
+</p>
+<he>Default properties</h3>
+
+<pre>
+As you know, you can use default properties in VB 6. For instance, if txt is a textbox control, then:
+
+txt = "To be or not to be"
+
+assigns the string "To be or not to be" to the default Text property of the textbox txt.
+
+However, there is a price to pay for default properties: ambiguity. For example, if txt1 and txt2 are object variables referencing two TextBox controls, what does:
+
+txt1 = txt2
+
+mean? Are we equating the default properties or the object variables? In VB 6, this is interpreted as equating the default properties:
+
+txt1.Text = txt2.Text
+
+and we require the Set statement for object assignment:
+
+Set txt1 = txt2
+
+In VB .NET, default properties are not supported unless the property takes one or more parameters, in which case there is no ambiguity.
+
+As Microsoft points out, default properties occur most commonly with collection classes. For example, in ActiveX Data Objects (ADO), the Fields collection of the Recordset object has a default Item property that returns a particular Field object. Thus, we can write:
+
+rs.Fields.Item(1).Value
+
+or, since the default Item property is parameterized:
+
+rs.Fields(1).Value
+
+Although we may not be used to thinking of this line as using default properties, it does.
+
+Thus, in VB .NET, the line:
+
+txt1 = txt2
+
+is an object assignment. To equate the Text properties, we must write:
+
+txt2.Text = txt1.Text
+
+Since it is no longer needed, the Set keyword is not supported under VB .NET, nor is the companion Let keyword.
+
+This settles the issue of equating object variables. For object variable comparison, however, we must use the Is operator, rather than the equal sign, as in:
+
+If txt1 Is txt2 Then
+
+or:
+
+If Not (txt1 Is txt2) Then
+</pre>
+
+<h3>Property declarations</h3>
+
+
+
+<p align="left">
+In VB 6, properties are defined using Property Let, Property Set, and Property Get procedures. However, VB .NET uses a single property-declaration syntax of the form shown in the following example. Note also that there is no longer a need to distinguish between Property Let and Property Set because of the changes in default property support.</p>
+
+<pre>
+
+Property Salary(  ) As Decimal
+    Get
+        Salary = mdecSalary
+    End Get
+    Set
+        mdecSalary = Value
+    End Set
+End Property
+</pre>
+
+<ul>
+<li>
+Note the use of the implicitly defined Value variable that holds the value being passed into the property procedure when it is being set.
+<li>
+Note also that VB .NET does not support ByRef property parameters. All property parameters are passed by value.
+</ul>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

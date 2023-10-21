@@ -1,0 +1,168 @@
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<b>
+<pre>
+create folder business in C:\Tomcat 4.1\webapps\examples\WEB-INF\classes
+User.java
+******************
+package business;
+
+public class User{
+    private String firstName;
+    private String lastName;
+    private String emailAddress;
+
+    public User(){}
+
+    public User(String first, String last, String email){
+        firstName = first;
+        lastName = last;
+        emailAddress = email;
+    }
+
+    public void setFirstName(String f){
+        firstName = f;
+    }
+    public String getFirstName(){ return firstName; }
+
+    public void setLastName(String l){
+        lastName = l;
+    }
+    public String getLastName(){ return lastName; }
+
+    public void setEmailAddress(String e){
+        emailAddress = e;
+    }
+    public String getEmailAddress(){ return emailAddress; }
+}
+
+put User class in business folder
+create folder data in classes
+UserIo.java
+**********************
+package data;
+
+import java.io.*;
+import business.User;
+
+public class UserIO
+
+{
+    public synchronized static void addRecord(User user, String filename)
+
+
+throws IOException{
+        PrintWriter out = new PrintWriter(new FileWriter(filename, true));
+        out.println(user.getEmailAddress()+ "|"
+                    + user.getFirstName() + "|"
+                    + user.getLastName());
+        out.close();
+   }
+}
+
+put UserIO class in data folder
+Emaillist.html
+***************************
+
+
+
+&lt!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN"&gt
+&lthtml&gt
+ &lthead&gt
+  &lttitle&gtChapter 4 - Email List application&lt/title&gt
+ &lt/head&gt
+   &ltbody&gt
+ &lth1&gtJoin our email list&lt/h1&gt
+   &ltp&gtTo join our email list, enter your name and
+     email address below. &ltbr&gt
+     Then, click on the Submit button.&lt/p&gt
+
+  &ltform action="showemail.jsp" method="get"&gt
+  &lttable cellspacing="5" border="0"&gt
+    &lttr&gt
+      &lttd align="right"&gtFirst name:&lt/td&gt
+      &lttd&gt
+&ltinput type="text" name="firstName"&gt&lt/td&gt
+    &lt/tr&gt
+    &lttr&gt
+      &lttd align="right"&gtLast name:&lt/td&gt
+      &lttd&gt
+&ltinput type="text" name="lastName"&gt&lt/td&gt
+    &lt/tr&gt
+    &lttr&gt
+      &lttd align="right"&gtEmail address:&lt/td&gt
+      &lttd&gt
+&ltinput type="text" name="emailAddress"&gt&lt/td&gt
+    &lt/tr&gt
+    &lttr&gt
+      &lttd&gt&lt/td&gt
+      &lttd&gt&ltbr&gt
+&ltinput type="submit" value="Submit"&gt&lt/td&gt
+    &lt/tr&gt
+  &lt/table&gt
+  &lt/form&gt
+ &lt/body&gt
+&lt/html&gt
+
+
+showemail.jsp
+*****************
+
+
+&lt!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN"&gt
+&lthtml&gt
+
+&lthead&gt
+  &lttitle&gtChapter 4 - Email List application&lt/title&gt
+&lt/head&gt
+
+&ltbody&gt
+&lt%@ page import="business.*, data.*" %&gt
+&lt%
+    String firstName = request.getParameter("firstName");
+    String lastName = request.getParameter("lastName");
+    String emailAddress = request.getParameter("emailAddress");
+
+    User user = new User(firstName, lastName, emailAddress);
+    UserIO.addRecord(user, "c:/tomcat 4.1/webapps/examples/WEB-INF/etc/t.txt");
+%&gt
+
+&lth1&gtThanks for joining our email list&lt/h1&gt
+
+&ltp&gtHere is the information that you entered:&lt/p&gt
+
+  &lttable cellspacing="5" cellpadding="5" border="1"&gt
+    &lttr&gt
+      &lttd align="right"&gtFirst name:&lt/td&gt
+      &lttd&gt&lt%= user.getFirstName() %&gt&lt/td&gt
+    &lt/tr&gt
+    &lttr&gt
+      &lttd align="right"&gtLast name:&lt/td&gt
+      &lttd&gt&lt%= user.getLastName() %&gt&lt/td&gt
+    &lt/tr&gt
+    &lttr&gt
+      &lttd align="right"&gtEmail address:&lt/td&gt
+      &lttd&gt&lt%= user.getEmailAddress() %&gt&lt/td&gt
+    &lt/tr&gt
+  &lt/table&gt
+
+&ltp&gtTo enter another email address, click on the Back &ltbr&gt
+button in your browser or the Return button shown &ltbr&gt
+below.&lt/p&gt
+
+&ltform action="Emaillist.html" method="post"&gt
+  &ltinput type="submit" value="Return"&gt
+&lt/form&gt
+
+&lt/body&gt
+&lt/html&gt
+
+
+
+
+</pre>
+</b>
+</body>
+</html>

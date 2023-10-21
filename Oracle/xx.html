@@ -1,0 +1,43 @@
+<html>
+<head><title>Using Between and Not Between Operator</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<h3>Using exists and not exists</h3>
+<pre>
+SQL>  create table Ordinals(
+      Ordinal varchar2(10),
+      Abbreviation varchar2(15),
+      primary key(Ordinal));
+
+Table created.
+
+SQL> create table Cardinals(
+     Cardinal varchar2(10),
+     Ordinal varchar2(10),
+     Abbreviation varchar2(15),
+     foreign key(Ordinal) references Ordinals(Ordinal));
+
+Table created.
+
+SQL>insert into Ordinals values('&Ordinal','&Abbreviation');
+
+SQL>insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation');
+
+
+SQL> drop table Cardinals;
+
+Table dropped.
+
+SQL> drop table Ordinals;
+
+Table dropped.
+</pre>
+
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

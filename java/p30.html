@@ -1,0 +1,51 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import java.io.*;
+public class readFile {
+    public static void main(String args[]) {
+        try   {
+            FileInputStream infile = new FileInputStream("name.txt");
+            byte buffer[] = new byte[50];
+            int nBytesRead;
+            do   {
+                nBytesRead = infile.read(buffer);
+     	 System.out.write(buffer, 0, nBytesRead);
+            } while (nBytesRead == buffer.length);
+        }
+        catch (FileNotFoundException e)  {
+            System.err.println("File not found");
+        }  
+        catch (IOException e) { System.err.println("Read failed"); }
+    }
+}
+
+/*
+basic classes for file IO
+FileInputStream, for reading from a file
+FileOutputStream, for writing to a file
+Example:
+Open a file "myfile.txt" for reading 
+FileInputStream fis = new FileInputStream("myfile.txt");
+
+Open a file "outfile.txt" for writing 
+FileOutputStream fos = new FileOutputStream ("myfile.txt");
+ 
+*/
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

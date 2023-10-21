@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!-- The next line calls an XSLT "stypesheet" -->
+<?xml-stylesheet type="text/xsl" href="salesOrderConfirmation.xsl"?>
+<salesOrder>
+	<orderInformation>
+          <date>2/10/2003</date>
+          <orderNumber>123456</orderNumber >
+          <item>
+	      <id>rs100</id>
+	      <brandName>Saucony</brandName>
+	      <model>Grid 2003</model>
+	      <gender>male</gender>
+	      <size units="us">7.5</size>
+	      <retailPrice units="usd">70.00</retailPrice>
+	       </item>
+          <item>
+	      <id>ns1234</id>
+	      <brandName>Nike</brandName>
+	      <model>Slim shorts</model>
+	      <gender>male</gender>
+	      <size units="us">m</size>
+	      <retailPrice units="usd">25.00</retailPrice>
+	       </item>
+          <methodOfPayment>VISA</methodOfPayment>
+         </orderInformation>
+
+<customerInformation>
+	     <name>Jane Smith</name>
+	     <customerId>2003120</customerId>
+	     <address type="billing">
+		<streetOrBox>897 Main Street</streetOrBox>
+		<city>Newark</city>
+		<state>DE</state>
+		<zip>19716</zip>
+	                 </address>
+               <address type="shipping">
+		<streetOrBox>897 Main Street</streetOrBox>
+		<city>Newark</city>
+		<state>DE</state>
+		<zip>19716</zip>
+	                 </address>
+             <preferredShipping>UPS ground</preferredShipping>
+	  <shippingCharge>9.5</shippingCharge>
+	  </customerInformation>
+
+   </salesOrder>

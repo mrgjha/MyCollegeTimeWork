@@ -1,0 +1,72 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+<h3>Visual Basic.Net Arrays and array declarations</h3>
+
+<p align="left">
+VB 6 permitted you to define the lower bound of a specific array, as well as the default lower bound of arrays whose lower bound was not explicitly specified. In VB .NET, the lower bound of every array dimension is 0 and cannot be changed.</p>
+
+<p align="left">
+The following examples show how to declare a one-dimensional array, with or without an explicit size and with or without initialization:
+</p>
+
+
+<pre>
+
+
+' Implicit constructor: No initial size and no initialization
+Dim Days(  ) As Integer
+ 
+' Explicit constructor: No initial size and no initialization
+Dim Days(  ) As Integer = New Integer(  ) {}
+ 
+' Implicit constructor: Initial size but no initialization
+Dim Days(6) As Integer
+ 
+' Explicit constructor: Initial size but no initialization
+Dim Days(  ) As Integer = New Integer(6) {}
+ 
+' Implicit constructor: Initial size implied by initialization
+Dim Days(  ) As Integer = {1, 2, 3, 4, 5, 6, 7}
+ 
+' Explicit constructor, Initial size and initialization
+Dim Days(  ) As Integer = New Integer(6) {1, 2, 3, 4, 5, 6, 7}
+
+Note that in the declaration:
+
+Dim ArrayName(X) As ArrayType
+
+the number X is the upper bound of the array. Thus, the array has size X+1.
+
+Multidimensional arrays are declared similarly. For instance, the following example declares and initializes a two-dimensional array:
+
+Dim X(,) As Integer = {{1, 2, 3}, {4, 5, 6}}
+
+and the following code displays the contents of the array:
+
+Debug.Write(X(0, 0))
+Debug.Write(X(0, 1))
+Debug.Writeline(X(0, 2))
+Debug.Write(X(1, 0))
+Debug.Write(X(1, 1))
+Debug.Write(X(1, 2))
+ 
+123
+456
+</pre>
+
+
+<p align="left">
+In VB .NET, all arrays are dynamic; there is no such thing as a fixed-size array. The declared size should be thought of simply as the initial size of the array, which is subject to change using the ReDim statement. Note, however, that the number of dimensions of an array cannot be changed.</p>
+<p align="left">
+Moreover, unlike VB 6, the ReDim statement cannot be used for array declaration, but only for array resizing. All arrays must be declared initially using a Dim (or equivalent) statement.
+
+</p>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

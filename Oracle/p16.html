@@ -1,0 +1,30 @@
+
+<html>
+<head><title>Write a trigger to avoid null value entry</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<H2>Write a trigger to avoid null value entry</H2>
+ <pre>
+ 
+
+ create or replace trigger emp_insert before insert on emp for each row
+ begin
+ if :new.ename is null then
+ raise_application_error(-20000,'employee must have a name');
+ end if;
+ end;
+ 
+
+ SQL>insert into emp(empno,ename) values(1000,'')
+ /
+<pre>
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

@@ -1,0 +1,104 @@
+ 
+
+<html>
+<head>
+<title>C# Function</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+  using System;
+
+ namespace Properties
+ {
+     public class Time
+     {
+
+         // private member variables
+         private int year;
+         private int month;
+         private int date;
+         private int hour;
+         private int minute;
+         private int second;
+
+         // create a property
+         public int Hour
+         {
+             get
+             {
+                 return hour;
+             }
+
+             set
+             {
+                 hour = value;
+             }
+         }
+
+         // public accessor methods
+         public void DisplayCurrentTime()
+         {
+             System.Console.WriteLine(
+                 "Time: {0}/{1}/{2} {3}:{4}:{5}",
+                 month, date, year, hour, minute, second);
+         }
+
+
+         // constructors
+         public Time(System.DateTime dt)
+         {
+             year =      dt.Year;
+             month =     dt.Month;
+             date =      dt.Day;
+             hour =      dt.Hour;
+             minute =    dt.Minute;
+             second =    dt.Second;
+         }
+
+
+    }
+    class Tester
+    {
+       public void Run()
+       {
+           System.DateTime currentTime = System.DateTime.Now;
+           Time t = new Time(currentTime);
+           t.DisplayCurrentTime();
+
+           // access the hour to a local variable
+           int theHour = t.Hour;
+
+           // display it
+           System.Console.WriteLine("Retrieved the hour: {0}",
+               theHour);
+
+           // increment it
+           theHour++;
+
+           // reassign the incremented value back through
+           // the property
+           t.Hour = theHour;
+
+           // display the property
+           System.Console.WriteLine("Updated the hour: {0}", t.Hour);
+       }
+
+       [STAThread]
+       static void Main()
+       {
+          Tester t = new Tester();
+          t.Run();
+       }
+    }
+ }
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

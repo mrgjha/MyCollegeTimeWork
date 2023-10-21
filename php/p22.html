@@ -1,0 +1,191 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+&lt?
+
+function display_footer($site_name) {
+
+         function display_copyright($site_name) {
+              print "Copyright &copy ". date("Y"). " $site_name. All Rights Reserved.";
+         }
+
+          print "&ltcenter&gt
+          &lta href = \"\"&gthome&lt/a&gt | &lta href = \"\"&gtrecipes&lt/a&gt | &lta href = \"\"&gtevents&lt/a&gt&ltbr&gt
+          &lta href = \"\"&gttutorials&lt/a&gt | &lta href = \"\"&gtabout&lt/a&gt | &lta href = \"\"&gtcontact us&lt/a&gt&ltbr&gt";
+
+         display_copyright($site_name);
+
+         print "&lt/center&gt";
+
+}
+
+$site_name = "PHP Recipes";
+
+
+
+display_footer($site_name);
+display_copyright($site_name);
+?&gt
+
+
+
+********************************************
+
+
+&lt?
+
+$price = 24.99;
+$tax = .06;
+
+function calculate_cost($tax, $price) {
+
+     $sales_tax = $tax;
+     return $price + ($price * $sales_tax);
+
+}
+
+// Notice how calculate_cost() returns a value.
+$total_cost = calculate_cost ($tax, $price);
+// round the cost to two decimal places.
+$total_cost = round($total_cost, 2);
+
+print "Total cost: $".$total_cost;
+// $total_cost = 26.49
+
+?&gt
+
+***********************************************
+&lt?
+
+$cost = 456.22;
+$limit = 1000.00;
+
+function check_limit($total_cost, $credit_limit) {
+
+     if ($total_cost &gt $credit_limit) :
+          return 0;
+     endif;
+
+     return 1;
+
+}
+
+if (check_limit($cost, $limit)) :
+// let the user keep shopping
+print "Keep shopping!";
+else :
+print "Please lower your total bill to less than $".$limit."!";
+endif;
+
+?&gt
+******************************************
+
+&lt?
+
+
+// wine for which best years will be displayed
+$label = "merlot";
+
+// This function merely makes use of various arrays and a variable to return multiple values.
+function best_years($label) {
+
+     $merlot = array("1987", "1983", "1977");
+     $zinfandel = array("1992", "1990", "1989");
+
+     return $$label;
+
+}
+// a list() is used to display the wine's best years.
+list ($yr_one, $yr_two, $yr_three) = best_years($label);
+
+print "$label had three particularly remarkable years: $yr_one, $yr_two, and $yr_three.";
+
+?&gt
+**************************************************
+
+&lt?
+
+function summation ($count) {
+
+	if ($count != 0) :
+
+		return $count + summation($count-1);
+
+	endif;
+
+}
+
+
+$sum = summation(10);
+
+print "Summation = $sum";
+
+?&gt
+
+*************************************************
+&lt?
+
+// italian welcome message.
+function italian() {
+     print "Benvenuti al PHP Recipes.";
+}
+
+// english welcome message
+function english() {
+     print "Welcome to PHP Recipes.";
+}
+
+// set the user language to italian
+$language = "english";
+
+// execute the variable function
+$language();
+
+?&gt
+*********************************************
+
+&lt?
+// file: array_sorting.inc
+// purpose: library containing functions used for sorting arrays.
+// date: July 17, 2000
+
+function merge_sort($array, $tmparray, $right, $left) {
+. . . 
+}
+
+function bubble_sort($array, $n) {
+. . . 
+}
+
+function quick_sort($array, $right, $left) {
+. . . 
+}
+
+?&gt
+
+*******************************************
+&lt?
+// this assumes that the array_sorting.inc library resides in the same folder as this script.
+include("array_sorting.inc");
+
+// you are now free to use any function in array_sorting.inc
+$some_array = array(50, 42, 35, 46);
+
+// make use of the bubble_sort() function
+
+$sorted_array = bubble_sort($some_array, 1);
+
+?&gt
+
+
+
+</b>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</pre>
+</body>
+</html>

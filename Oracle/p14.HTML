@@ -1,0 +1,48 @@
+
+<html>
+<head><title>Write a procedure to update salary based on condition using IN,OUT parameter</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<H2>Write a procedure to update salary based on condition using IN,OUT parameter</H2>
+ <pre>
+ 
+
+ create or replace procedure give_raise(P_ename in varchar2,newsal out number)
+ as
+ t_sal number;
+ t_deptno number;
+ begin
+ select sal,deptno into t_sal,t_deptno from emp where ename=P_ename;
+ if t_deptno=10 then newsal:=t_sal*1.1;
+ elsif
+ t_deptno=20 then
+ newsal:=t_sal*1.08;
+ else
+ newsal:=t_sal*1.05;
+ end if;
+ end;
+
+ 
+
+ declare
+ emp_name emp.ename%type;
+ new_salary number;
+ begin
+ give_raise('KING',new_salary);
+ dbms_output.put_line('king''s new salary is'||to_char(new_salary,'$999,999.99'));
+ emp_name:='SCOTT';
+ give_raise(emp_name,new_salary);
+ dbms_output.put_line('king''s new salary is'||to_char(new_salary,'$999,999.99'));
+ end;
+
+<pre>
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

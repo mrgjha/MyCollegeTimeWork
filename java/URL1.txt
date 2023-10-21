@@ -1,0 +1,34 @@
+import java.net.*;
+import java.io.*;
+public class URL1
+
+
+    {
+
+
+        public static void main(String[] args) throws Exception {
+        URL url = new URL("http://www.coryvia.net");
+        InputStream html = url.openStream();
+        int c = 0;
+        String a = "";
+
+
+            while(c != -1) {
+            a = "";
+            c = html.read();
+
+
+                if(c == (char)60) {
+
+
+                    while(c != (char)62) {
+                    a = a + (char)c;
+                    c = html.read();
+                }
+            }
+            if(a == "") {}
+            else
+            System.out.println(a + ">");
+        }
+    }
+}

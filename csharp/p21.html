@@ -1,0 +1,104 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<h3>Threads in C#</h3>
+
+<p align="left">
+Imagine if you could do multiple things at the same time, like driving a car and typing a letter on your laptop. If I have that ability, I probably could complete a lot of tasks in no time.
+<p>
+<p align="left">
+The Windows&trade operating system has the ability to run multiple tasks or applications at the same time. Technically it's not really running tasks at the same time and explaining it here would be out of scope for this article. We'll just assume at this stage that Windows&trade can run multiple applications at the same time.
+<p>
+<p align="left">
+The term Thread in .Net, and Windows, means a series of commands executed in sequence. For example, an application is considered single threaded when the application is started, does some processing and then terminates. An application would be considered multi-threaded when the application braches off, creating two streams of execution.
+<p>
+<p align="left">
+Why would a program want to create multiple threads? Threaded applications are very useful if you are writing server-type applications. A very good example of a server-type application is a Web Server.
+<p>
+<p align="left">
+If a web server finishes processing of each connection request before servicing the next request, it would not be suited to run high volume web sites. What normally happens is that as soon as a client requests for a page, the web server creates a thread to service this request and then as the newly created thread processes the request, the main thread waits for the next connection request.<p>
+
+<pre>
+
+using System;
+using System.Threading;
+
+public class ExampleThreads
+{
+
+public static void Main()
+{
+ExampleThreads sample = new ExampleThreads();
+sample.CreateThreads();
+}
+
+public void CreateThreads()
+      {
+Thread firstThread = new Thread( new ThreadStart( FirstEntryPoint ) );
+Thread secondThread = new Thread( new ThreadStart( SecondEntryPoint ) );
+
+firstThread.Start();
+secondThread.Start();
+          
+      }
+
+public void FirstEntryPoint()
+      {
+System.Console.WriteLine("FirstEntryPoint");
+      }
+
+public void SecondEntryPoint()
+      {
+System.Console.WriteLine("SecondEntryPoint");
+      }
+   }
+
+
+</pre>
+
+
+<p align="left">
+<h3>Creating a Thread</h3>
+C# has support to create threads through .Net's base class library. The Thread class also has other helper methods to help manage and control threads. The sample code above is an example of how to create two threads. To create a thread, you would have to create two classes, Thread and ThreadStart.
+</p>
+<p align="left">
+You tell ThreadStart the entry point of the thread. In our example, we are creating two threads with two separate and distinct entry points. Once the thread class is instantiated, threads do not start until the Start() method is called.
+</p>
+<p align="left">
+Stopping a Thread
+Normally, when a thread is started, it is let to run until the thread is finished. However, it is possible to stop a thread by calling the Abort() method. In our example, 
+</p>
+
+<p align="left">
+if we want to stop firstThread, you would add the following code. 
+firstThread.Abort()
+Due to the built in garbage collection of .Net, calling the Abort() method does not immediately terminate a thread.
+</p>
+<p align="left">
+Suspending a Thread
+It is possible to suspend the execution of a thread by calling the Suspend() method. Suspending a thread allows other applications to access system resources. If your thread requires some computing power, suspending it from time to time allows other applications to run.
+</p>
+<p align="left">
+The Suspend() method takes sleeping period as a parameter, in milliseconds. By passing a parameter, a thread is suspended for that period. Alternatively, the Sleep method can also be used to suspend thread execution.
+</p>
+firstThread.Suspend( 5000 )
+</p>
+<p align="left">
+If you have a thread that is already in suspend or sleep mode, you can wake it up by calling the Interrupt() method. 
+
+firstThread.Interrupt()
+</p>
+
+<p align="left">
+
+Threads is a good strategy to employ to maximize computer resources. However, the C# programmer should be aware that creating threads is not an easy business. Next month, we'll deal with different strategies for creating threads.
+</p>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

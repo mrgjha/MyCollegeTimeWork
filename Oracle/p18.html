@@ -1,0 +1,44 @@
+
+<html>
+<head><title>Write a procedure to show input string is palindrom</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<H2>Write a procedure to show input string is palindrom</H2>
+ <pre>
+ 
+
+create or replace procedure palindrom(str in varchar2)
+is
+ 
+x varchar2(20);
+ 
+begin
+for i in 0..length(str)-1
+loop
+x := x||substr(str,length(str)-i,1);
+end loop;
+if str=x then
+ 
+dbms_output.put_line('is palindrom');
+else
+ 
+dbms_output.put_line('is not palindrom');
+end if;
+end;
+/
+
+
+SQL>exec palindrom('121');
+
+ /
+<pre>
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

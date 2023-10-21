@@ -1,0 +1,121 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+<h3>Miscellaneous Language Changes</h3>
+
+
+<h3>Line numbers</h3>
+
+<p align="left">
+Visual Basic .NET requires that every line number be followed immediately by a colon (:). A statement can optionally follow the colon. In VB 6, line labels, which were used in particular for error handling by the On Error GoTo statement, had to be followed immediately by a colon, but line numbers did not.</p>
+
+<h3>On GoTo</h3>
+<p align="left">
+The On...GoSub and On...GoTo constructions are not supported. However, VB .NET still supports the On Error GoTo statement.</p>
+
+<h3>While</h3>
+<p align="left">
+The While...Wend construction loops through code while a specified condition is True. VB .NET retains that construction, but replaces the Wend keyword with the End While statement. The Wend keyword is not supported.
+</p>
+
+<h3>GoSub and Return statements</h3>
+<p align="left">
+In VB .NET, the GoSub statement is not supported.
+As remarked earlier, in VB .NET, the Return statement is used to return control to the calling program from a function or subroutine. The VB 6 Exit Sub and Exit Function statements continue to be supported in VB .NET; however, the advantage of the Return statement is that it allows you to specify the function's return value as an argument to the Return statement.
+</p>
+
+<h3>Changes to Programming Elements</h3>
+<p align="left">
+VB .NET has removed support for several programming elements because the underlying .NET Framework class library and the Common Language Runtime (CLR) contain equivalent functionality. Here are the victims and their replacements. (We discuss the class library and CLR in Chapters and .)
+</p>
+
+<h3>Constants</h3>
+
+<p align="left">
+The Microsoft.VisualBasic.Constants class in the Base Class Library defines a number of constants, such as the familiar vbCrLf constant, so these can be used as always. However, some constants, such as the color constants vbRed and vbBlue, are no longer directly supported. Indeed, the color constants are part of the System.Drawing namespace's Color structure, so they are accessed as follows:<br><br>
+
+Me.BackColor = System.Drawing.Color.BlanchedAlmond<br><br>
+
+In most cases, to access a particular constant that is not a field in the Microsoft.VisualBasic.Constants class, you must designate the enumeration (or structure) to which it belongs, along with the constant name. For example, the vbYes constant in VB 6 continues to exist as an intrinsic constant in VB .NET. However, it has a counterpart in the MsgBoxResult enumeration, which can be accessed as follows:<br>
+
+If MsgBoxResult.Yes = MsgBox("OK to proceed?", ...<br>
+
+<p align="left">
+
+<h3>String Functions</h3>
+
+<p align="left">
+The LSet and RSet functions have been replaced by the PadLeft and PadRight methods of the System.String class. For instance, the following code pads the name "Donna" with spaces on the left to make the total string length equal to 15:<br><br>
+
+Dim sName As String = "Donna"
+Msgbox(sName.PadLeft(15))<br><br>
+
+The String function has been removed from the language. In its place, we simply declare a string and initialize it, using syntax such as:<br><br>
+
+Dim str As New String("A"c, 5)<br><br>
+
+which will define a string containing five As. Note the use of the modifier c in "A"c to define a character (data type Char), as opposed to a String of length 1. 
+</p>
+
+<h3>Emptiness</h3>
+
+<p align="left">
+In VB 6, the Empty keyword indicates an uninitialized variable, and the Null keyword is used to indicate that a variable contains no valid data. VB .NET does not support either keyword, but uses the Nothing keyword in both of these cases.
+
+According to the documentation: "Null is still a reserved word in Visual Basic .NET 7.0, even though it has no syntactical use. This helps avoid confusion with its former meanings." Whatever.
+
+In addition, the IsEmpty function is not supported in VB .NET.
+</p>
+
+<h3>Graphical Functionality</h3>
+
+<p align="left">
+The System.Drawing namespace contains classes that implement graphical methods. For instance, the Graphics class contains methods such as DrawEllipse and DrawLine. As a result, the VB 6 Circle and Line methods have been dropped.
+
+Note that the VB 6 PSet and Scale methods are no longer supported and that there are no direct equivalents in the System.Drawing namespace.
+
+</p>
+
+
+
+<h3>Mathematical Functionality</h3>
+
+<p align="left">
+Mathematical functions are implemented as members of the Math class of the System namespace. Thus, the VB 6 math functions, such as the trigonometric functions, have been dropped. Instead, we can use statements such as:<br><br>
+
+Math.Cos(1)<br><br>
+
+Note also that the Round function has been replaced by Round method of the System.Math class.
+</p>
+
+<h3>Diagnostics</h3>
+<p align="left">
+The System.Diagonstics namespace provides classes related to programming diagnostics. Most notably, the VB 6 Debug object is gone, but its functionality is implemented in the System.Diagnostics.Debug class, which has methods such as Write, WriteLine (replacing Print), WriteIf, and WriteLineIf. (You won't believe it, but there is still no method to clear the Output window!)</p>
+
+<h3>Miscellaneous</h3>
+Here are a few additional changes to consider:
+
+
+<p align="left">
+The VB 6 DoEvents function has been replaced by the DoEvents method of the Application class of the System.Windows.Forms namespace. <p>
+<p align="left">
+The VB 6 IsNull and IsObject functions have been replaced by the IsDBNull and IsReference methods of the Information class of the Microsoft.VisualBasic namespace. Since this namespace is implicitly loaded by VB as part of the project template when a project is created in Visual Studio, no Imports statement is required, and the members of its classes can be accessed without qualification. <p>
+<p align="left">
+Several VB 6 functions have two versions: a String version and a Variant version. An example is provided by the Trim$ and Trim functions. In VB .NET, these functions are replaced by a single overloaded function. Thus, for instance, we can call Trim using either a String or Object argument. <p>
+
+
+
+<h3>Structured Exception Handling</h3>
+<p align="left">
+VB .NET has added a significant new technique for error handling. Along with the traditional unstructured error handling through On Error Goto statements, VB .NET adds structured exception handling, using the Try...Catch...Finally syntax supported by other languages, such as C++. </p>
+
+
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+import java.awt.*;
+import java.awt.event.*;
+
+
+public class TestChoices extends Frame implements ItemListener
+{
+   Choice clBread;
+      
+   TextField tField;
+   
+   /** Creates new TestChoices*/
+   public TestChoices()
+   {
+      clBread = new Choice();
+      clBread.add("White Bread");
+      
+      clBread.add("Wheat Bread");
+      
+      clBread.add("Rye Bread");
+      clBread.addItemListener(this);
+      
+      tField = new TextField(30);
+      
+      setLayout(new FlowLayout());
+      add(clBread);
+      add(tField);
+      
+      addWindowListener(new WinCloser());
+      setTitle("Using Choices");
+      setBounds( 100, 100, 300, 300);
+      setVisible(true);
+   }
+   
+   public void itemStateChanged(ItemEvent ie)
+   {
+      Choice selBread = (Choice)ie.getItemSelectable();
+      tField.setText("You selected " + selBread.getSelectedItem());
+   }
+   
+   public static void main(String[] args)
+   {
+      TestChoices tc = new TestChoices();
+   }
+   
+}
+
+class WinCloser extends WindowAdapter
+{
+   public void windowClosing(WindowEvent e)
+   {
+      System.exit(0);
+   }
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

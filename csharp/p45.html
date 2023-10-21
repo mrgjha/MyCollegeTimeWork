@@ -1,0 +1,43 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+using System;
+
+ namespace StringManipulation
+ {
+    class Tester
+    {
+       public void Run()
+       {
+           string s1 = "abcd";
+           string s2 = "ABCD";
+
+           // the string copy method
+           string s5 = string.Copy(s2);
+           Console.WriteLine(
+               "s5 copied from s2: {0}", s5);
+
+           // use the overloaded operator
+           string s6 = s5;
+           Console.WriteLine("s6 = s5: {0}", s6);
+       }
+
+       static void Main()
+       {
+          Tester t = new Tester();
+          t.Run();
+       }
+    }
+ }
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

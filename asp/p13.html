@@ -1,0 +1,55 @@
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;html&gt;
+&lt;%
+dim cars
+cars=Request.Form("cars")
+%&gt;
+&lt;body&gt;
+&lt;form action="demo_radiob.asp" method="post"&gt;
+&lt;p&gt;Please select your favorite car:&lt;/p&gt;
+
+&lt;input type="radio" name="cars"
+&lt;%if cars="Volvo" then Response.Write("checked")%&gt;
+value="Volvo"&gt;Volvo&lt;/input&gt;
+&lt;br /&gt;
+&lt;input type="radio" name="cars"
+&lt;%if cars="Saab" then Response.Write("checked")%&gt;
+value="Saab"&gt;Saab&lt;/input&gt;
+&lt;br /&gt;
+&lt;input type="radio" name="cars"
+&lt;%if cars="BMW" then Response.Write("checked")%&gt;
+value="BMW"&gt;BMW&lt;/input&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+&lt;%
+if cars&lt;&gt;"" then
+   Response.Write("&lt;p&gt;Your favorite car is: " & cars & "&lt;/p&gt;")
+end if
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

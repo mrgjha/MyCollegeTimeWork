@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE cities[
+
+<!ELEMENT cities (city*)>
+<!ELEMENT city (name,temp,baron)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT temp (#PCDATA)>
+<!ELEMENT barom (#PCDATA)>
+]>
+
+<?xml-stylesheet type="text/xsl" href="weather.xsl"?>
+
+<cities>
+	<city>
+		<name>Los Angeles</name>
+		<temp>72</temp>
+		<barom>37.20</barom>
+    </city>
+    
+<city>
+       <name>New York</name>
+       <temp>53</temp> 
+       <barom>31.20</barom>
+</city>
+
+<city>
+       <name>chicago</name>
+       <temp>60</temp> 
+       <barom>35.20</barom>
+</city>
+
+</cities>

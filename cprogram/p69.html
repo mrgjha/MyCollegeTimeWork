@@ -1,0 +1,55 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &lt;conio.h&gt;
+
+void border(int, int, int, int);
+
+int main(void)
+{
+  clrscr();
+  /* create first window */
+  window(3, 2, 40, 9);
+  border(3, 2, 40, 9);
+  gotoxy(1,1);
+  cputs("This line will be wrapped at the end of the window.");
+  getche();
+  return 0;
+}
+
+/* Draws a border around a text window. */
+void border(int startx, int starty, int endx, int endy)
+ {
+  register int i;
+
+  gotoxy(1, 1);
+  for(i=0; i&lt;=endx-startx; i++)
+    putch('-');
+
+  gotoxy(1, endy-starty);
+  for(i=0; i&lt;=endx-startx; i++)
+    putch('-');
+
+  for(i=2; i&lt;endy-starty; i++) {
+    gotoxy(1, i);
+    putch('|');
+    gotoxy(endx-startx+1, i);
+    putch('|');
+  }
+}
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

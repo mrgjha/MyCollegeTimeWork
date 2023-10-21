@@ -1,0 +1,126 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+//Enter a amount that tell you how many number of<br>100,50,20,10,5,2 and 1 Rs note are there.
+
+#include&lt;stdio.h&gt;
+#include<stdio.h>
+void main()
+{
+int n,c,m,p,q,r,s,t,u;
+clrscr();
+printf("Enter the Rs:");
+scanf("%d",&n);
+printf("*********Main Menu*******");
+printf("1. Begining from 100\n");
+printf("1. Begining from 50\n");
+printf("1. Begining from 20\n");
+printf("1. Begining from 10\n");
+printf("1. Begining from 5\n");
+printf("1. Begining from 2\n");
+printf("1. Begining from 1\n");
+printf("\n\n\n\nEnter Your option 1 2 3 4 5 6 7 :");
+scanf("%d",&c);
+printf("\n\n\n\n");
+switch(c)
+{
+case 1:
+goto zero;
+
+
+case 2:
+goto first;
+
+
+case 3:
+goto second;
+
+
+case 4:
+goto third;
+
+case 5:
+goto four;
+
+
+case 6:
+goto five;
+
+
+case 7:
+goto six;
+
+}
+
+printf("\n\n\n\n");
+zero:
+{
+m=n/100;
+printf("No. of 100 Rs notes=%d\n",m);
+n=n%100;
+goto first;
+}
+
+first:
+{
+p=n/50;
+printf("No. of 50  Rs notes=%d\n",p);
+n=n%50;
+goto second;
+}
+second:
+{
+q=n/20;
+printf("No. of 20  Rs notes=%d\n",q);
+n=n%20;
+goto third;
+}
+third:
+{
+r=n/10;
+printf("No. of 10  Rs notes=%d\n",r);
+n=n%10;
+goto four;
+}
+
+four:
+{
+s=n/5;
+printf("No. of 5   Rs notes=%d\n",s);
+n=n%5;
+goto five;
+}
+five:
+{
+t=n/2;
+printf("No. of 2   Rs notes=%d\n",t);
+n=n%2;
+goto six;
+}
+six:
+{
+u=n/1;
+printf("No. of 1   Rs notes=%d\n",u);
+goto end;
+}
+end:
+printf("\n");
+getch();
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

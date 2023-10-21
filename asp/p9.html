@@ -1,0 +1,190 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+Sub thisPage_onenter
+  If thisPage.firstEntered Then
+    Recordset1.open
+  End If
+End Sub
+
+Sub Recordset1_ondatasetcomplete
+  FillListbox2
+End Sub
+
+Sub FillListbox2
+  Listbox2.clear
+  If Recordset2.isOpen() Then
+    Recordset2.close
+  End If
+  sql = "SELECT Products.ProductName FROM Products, Categories " & _
+    "WHERE Products.CategoryID = Categories.CategoryID " & _
+    "AND (Categories.CategoryName = ’" & _
+    Listbox1.getValue(Listbox1.selectedIndex) & _
+    "’)"
+  Recordset2.setSQLText(sql)
+  Recordset2.open
+End Sub
+
+Sub Listbox1_onchange
+  FillListbox2
+End Sub
+
+Create Procedure authorsroyalty @percentage int
+AS
+SELECT authors.au_lname, authors.au_fname
+FROM titleauthor INNER JOIN
+  authors ON titleauthor.au_id = authors.au_id
+WHERE (titleauthor.royaltyper = @percentage)
+
+&lt;form action="AuthorsRoyalty1.asp" method="post"&gt;
+
+Sub Recordset1_onbeforeopen( )
+  Recordset1.setParameter 1, Request("Percentage")
+End Sub
+
+Sub Recordset1_onbeforeopen( )
+  Recordset1.setParameter 0, Request("Percentage")
+End Sub
+
+Sub thisPage_onEnter
+  If thisPage.firstEntered Then
+    Recordset1.open
+  End If
+End If
+
+Sub queryBtn_onclick
+  sql = "SELECT * FROM Flights WHERE (" & _
+    "DepartureCity = ’" & _
+    Listbox1.getValue(Listbox1.selectedIndex) & _
+    "’ AND " & _
+    "ArrivalCity = ’" & _
+    Listbox2.getValue(Listbox2.selectedIndex) & _
+    "’)"
+  If Recordset2.isOpen() Then
+    Recordset2.close()
+  End If
+  Recordset2.setSQLText(sql)
+  Recordset2.open
+End Sub
+
+&lt;FORM action="FlightInfo.asp" method=POST&gt;
+
+
+Sub Recordset1_onbeforeopen()
+  sql = "SELECT * FROM Flights " & _
+    "WHERE (FlightNumber = " & _
+    Request.Form("FlightNumber") & _
+    ")"
+  Recordset1.setSQLText(sql)
+End Sub
+
+Sub Recordset1_ondatasetcomplete()
+  If Recordset1.getCount() &gt; 0 Then
+    Response.Write("&lt;table border=1&gt;")
+    Response.Write("&lt;tr&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write("Departure City")
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write(Recordset1.fields.getValue("DepartureCity"))
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;/tr&gt;")
+    Response.Write("&lt;tr&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write("Departure Time")
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write(Recordset1.fields.getValue("DepartureTime"))
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;/tr&gt;")
+    Response.Write("&lt;tr&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write("Arrival City")
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write(Recordset1.fields.getValue("ArrivalCity"))
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;/tr&gt;")
+    Response.Write("&lt;tr&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write("Arrival Time")
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;td&gt;&lt;B&gt;")
+    Response.Write(Recordset1.fields.getValue("ArrivalTime"))
+    Response.Write("&lt;/td&gt;")
+    Response.Write("&lt;/tr&gt;")
+    Response.Write("&lt;/table&gt;")
+  Else
+    Response.Write("&lt;B&gt;There is no flight with that number")
+  End If
+End Sub
+
+Sub addBtn_onclick
+  Recordset1.addRecord
+  Recordset1.moveLast
+  Textbox1.value = ""
+  Textbox2.value = ""
+  Textbox3.value = ""
+  Textbox4.value = ""
+  Textbox5.value = ""
+End Sub
+
+Sub deleteBtn_onclick
+  Recordset1.deleteRecord
+  Recordset1.moveFirst
+End Sub
+
+function thisPage_onbeforeserverevent(obj, event) {
+  if(obj == "deleteBtn") {
+    if(event == "onclick") {
+      if(confirm("Delete record?")) {
+        alert("Deleted!");
+      }
+      else {
+        alert("Not deleted!");
+        thisPage.cancelEvent = true;
+      }
+    }
+  }
+}
+
+&lt;SCRIPT LANGUAGE=vbscript&gt;
+&lt;!--
+function lookupBtn_onclick()
+  Set co = Symbol.execute.Lookup(thisForm.symbolTxt.value)
+  thisForm.nameTxt.value = co.return_value
+end function
+//- -&gt;
+&lt;/SCRIPT&gt;
+
+&lt;SCRIPT LANGUAGE=vbscript RUNAT=Server&gt;
+function Lookup(symbol)
+  Set connection = Server.CreateObject("ADODB.Connection")
+  connection.Open "SymbolsDSN"
+  sql = "SELECT name FROM Symbols " & _
+    "WHERE (symbol = ’" & symbol & "’)"
+  Set recordset = connection.Execute(sql)
+  If recordset.EOF Then
+    Lookup = "Not found"
+  Else
+    Lookup = recordset("name")
+  End If
+end function
+&lt;/SCRIPT&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

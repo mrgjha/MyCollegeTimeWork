@@ -1,0 +1,107 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+using namespace std;
+#include&lt;iostream&gt
+
+
+//The OPERATORS OVERLOAD can be used 
+to define the basic symbolic 
+operators for new sorts of parameters: 
+
+
+
+struct vector
+{   
+
+double x;   double y;
+}
+;
+
+
+vector operator * (double a, vector b)
+
+{   
+
+vector r;   
+r.x = a * b.x;   
+r.y = a * b.y;   
+
+
+return r;
+
+}
+
+int main (){   
+
+vector k, m;              // No need to type "struct vector"   
+
+k.x =  2;                 // To be able to write   
+k.y = -1;                 // k = vector (2, -1)                             
+                          
+
+m = 3.1415927 * k;        // Magic!   
+cout << "(" << m.x << ", " << m.y << ")" << endl;   
+return 0;
+
+
+}
+
+
+//Besides multiplication, 43 other 
+basic C++ operators can be overloaded, 
+//including +=, ++, 
+the array [], and so on... 
+
+//The operation cout << is an 
+//overload of the binary shift of integers. 
+//That way the << operator is used a 
+//completely different way. 
+//It is possible to overload the << operator for the output of vectors: 
+
+
+
+using namespace std;
+#include&lt;iostream&gt
+
+
+struct vector{   double x;   double y;};
+
+ostream& operator << (ostream& o, vector a)
+
+{   o << "(" << a.x << ", " << a.y << ")";   
+return o;
+
+}
+
+
+int main ()
+
+{   
+
+vector a;   a.x = 35;   a.y = 23;   
+
+cout << a << endl;     // Displays (35, 23)   
+return 0;
+
+
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

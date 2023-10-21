@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<h3>Visual Basic.Net</h3>
+<ul>
+
+<li>Form Text Property = “Sum of 1 to 100”
+
+<li>Label: Name = Label1 (default) 
+<li>Label1.Text = “Sum of 1 to 100 is: “<br><br>
+
+<li>Label: name = “lblSum”
+<li>lblSum.Text = 0
+<li>lblSum.BorderStyle = FixedSingle<br><br>
+
+<li>Button: Name is btnCompute
+<li>btnCompute.Text = “Computer”<br><br>
+
+<li>Double-click on the Compute button to create a Click Event Procedure
+</ul>
+
+<img src="x1.gif"><br><br>
+Add code 
+<pre>
+
+Dim i As Integer
+Dim Sum As Integer
+Sum = 0
+
+For i = 1 To 100 Step 1
+	Sum = Sum + i
+Next
+
+lblSum.Text = Sum.ToString()
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

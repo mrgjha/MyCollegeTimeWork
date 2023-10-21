@@ -1,0 +1,418 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.table.*;
+
+import java.net.*;
+import java.io.*;
+import java.sql.*;
+
+
+class GUIDatabase extends JFrame implements ActionListener
+{
+private Statement st;
+private Connection con;	
+	
+private JLabel lblFirstName;
+private JLabel lblLastName;
+private JLabel lblAddress;
+private JLabel lblPhone;	
+private JLabel lblEmail;
+private JLabel lblOldPhone;
+private JTextField txtFirstName;	
+private JTextField txtLastName;
+private JTextField txtAddress;
+private JTextField txtPhone;
+private JTextField txtEmail;
+private JTextField txtOldPhone;
+private JButton btnSaveAdd;
+private JButton btnSaveEdit;
+private JButton btnSaveDelete;
+private JButton btnAdd;
+private JButton btnEdit;
+private JButton btnDelete;
+private JButton btnExit;
+private JButton btnRefresh;
+private JButton btnCancel;	
+private JPanel btnpanel;
+private JPanel panel;	
+private JTable table;
+	
+private DefaultTableModel tmodel;
+	
+private Container cpane;
+	
+GUIDatabase()
+	{	}
+	
+GUIDatabase(int choice)
+	{
+switch(choice)
+		{
+case 1:		
+				//window
+setTitle("Database Screen...");
+setBounds(0, 0, 500, 500);
+setResizable(false);
+				
+				//cotainer
+cpane = getContentPane();	
+				
+				//components				
+tmodel = new DefaultTableModel();
+table = new JTable(tmodel);
+SetColHeader();
+				
+btnpanel = new JPanel(new GridLayout(1, 5, 5, 5));			
+btnAdd = new JButton ("Add");
+btnEdit = new JButton ("Edit");
+btnDelete = new JButton ("Delete");
+btnRefresh = new JButton ("Refresh");
+btnExit = new JButton ("Exit");
+				
+btnAdd.addActionListener(this);
+btnEdit.addActionListener(this);
+btnDelete.addActionListener(this);		
+btnRefresh.addActionListener(this);	
+btnExit.addActionListener(this);
+				
+btnpanel.add(btnAdd);
+btnpanel.add(btnEdit);
+btnpanel.add(btnDelete);		
+btnpanel.add(btnRefresh);
+btnpanel.add(btnExit);
+cpane.add(new JScrollPane(table));	
+cpane.add(btnpanel, BorderLayout.SOUTH);	
+break;			
+case 2:
+		//window
+setTitle("Addition of data...");
+setBounds(0, 0, 400, 400);
+setResizable(false);
+			
+//cotainer
+cpane = getContentPane();
+cpane.setLayout(new FlowLayout());	
+
+panel = new JPanel(new GridLayout(10, 2, 5, 5));
+				
+lblFirstName = new JLabel("FirstName: ");
+lblLastName = new JLabel("LastName: ");
+lblAddress = new JLabel("Address: ");
+lblPhone=new JLabel("Phone: ");			
+lblEmail=new JLabel("Email: ");			
+txtFirstName = new JTextField(15);
+txtLastName = new JTextField(15);
+txtAddress=new JTextField(15);
+                               
+txtPhone=new JTextField(15);
+txtEmail = new JTextField(15);
+				
+				
+panel.add(lblFirstName);
+panel.add(txtFirstName);
+panel.add(lblLastName);
+panel.add(txtLastName);
+panel.add(lblAddress);
+panel.add(txtAddress);
+	
+	                        
+
+panel.add(lblPhone);
+panel.add(txtPhone);
+
+panel.add(lblEmail);
+panel.add(txtEmail);
+			
+btnpanel = new JPanel(new GridLayout(2,1,5,5));			
+btnSaveAdd = new JButton ("Save");
+btnCancel = new JButton ("Cancel");
+				
+btnSaveAdd.addActionListener(this);
+btnCancel.addActionListener(this);
+				
+btnpanel.add(btnSaveAdd);
+btnpanel.add(btnCancel);
+				
+cpane.add(panel);
+cpane.add(btnpanel, BorderLayout.EAST);				
+break;
+case 3:
+	//window
+setTitle("Updation of data...");
+setBounds(0, 0, 400, 400);
+setResizable(false);
+				
+//cotainer
+cpane = getContentPane();
+cpane.setLayout(new FlowLayout());	
+				
+panel = new JPanel(new GridLayout(15, 2, 5, 5));
+lblOldPhone = new JLabel("Phone No: ");
+lblFirstName = new JLabel("FirstName: ");
+lblLastName = new JLabel("LastName: ");
+lblAddress = new JLabel("Address: ");
+lblPhone=new JLabel("Phone: ");			
+lblEmail=new JLabel("Email: ");			
+txtFirstName = new JTextField(15);
+txtLastName = new JTextField(15);
+txtAddress=new JTextField(15);
+txtPhone=new JTextField(15);
+txtEmail = new JTextField(15);
+txtOldPhone=new JTextField(15);	
+panel.add(lblOldPhone);			
+panel.add(txtOldPhone);				
+panel.add(lblFirstName);
+panel.add(txtFirstName);
+panel.add(lblLastName);
+panel.add(txtLastName);
+panel.add(lblAddress);
+panel.add(txtAddress);
+panel.add(lblPhone);
+panel.add(txtPhone);
+
+panel.add(lblEmail);
+panel.add(txtEmail);
+				
+btnpanel = new JPanel(new GridLayout(2,1, 5, 5));			
+btnSaveEdit = new JButton ("Save");
+btnCancel = new JButton ("Cancel");
+			
+btnSaveEdit.addActionListener(this);
+btnCancel.addActionListener(this);
+				
+btnpanel.add(btnSaveEdit);
+btnpanel.add(btnCancel);
+				
+cpane.add(panel);
+cpane.add(btnpanel, BorderLayout.EAST);				
+break;				
+case 4:
+//window
+setTitle("Updation of data...");
+setBounds(0, 0, 300, 200);
+setResizable(false);
+				
+//cotainer
+cpane = getContentPane();
+cpane.setLayout(new FlowLayout());	
+				
+panel = new JPanel(new GridLayout(2, 1, 5, 5));
+lblPhone=new JLabel("Person having Phone No. this to be deleted: ");
+txtPhone = new JTextField(15);
+			
+panel.add(lblPhone);
+panel.add(txtPhone);
+				
+btnpanel = new JPanel(new GridLayout(2,1,5,5));			
+btnSaveDelete = new JButton ("Delete");
+btnCancel = new JButton ("Cancel");
+				
+btnSaveDelete.addActionListener(this);
+btnCancel.addActionListener(this);
+				
+btnpanel.add(btnSaveDelete);
+btnpanel.add(btnCancel);
+				
+cpane.add(panel);
+cpane.add(btnpanel, BorderLayout.EAST);				
+break;				
+	}
+		//window
+setDefaultCloseOperation(HIDE_ON_CLOSE);
+setVisible(true);
+		
+//conection to database
+ConnectToDatabase();
+	}
+	
+public void actionPerformed (ActionEvent ae)
+	{
+if (ae.getSource() == btnAdd)
+{
+new GUIDatabase(2);			
+}
+else if (ae.getSource() == btnEdit)
+		{
+new GUIDatabase(3);
+		}
+else if (ae.getSource() == btnDelete)
+		{
+new GUIDatabase(4);
+		}
+else if (ae.getSource() == btnExit)
+		{
+System.exit(0);
+		}
+else if (ae.getSource() == btnCancel)
+		{
+setVisible(false);
+		}
+else if(ae.getSource() == btnSaveAdd)
+		{
+AddData(txtFirstName.getText(), txtLastName.getText(), txtAddress.getText(),txtPhone.getText(),txtEmail.getText());
+txtFirstName.setText("");
+txtLastName.setText("");
+txtAddress.setText("");
+txtPhone.setText("");
+txtEmail.setText("");	
+RetrieveData();
+	}
+else if(ae.getSource() == btnSaveEdit)
+		{		
+EditData(txtFirstName.getText(), txtLastName.getText(),txtAddress.getText(),txtPhone.getText(),txtEmail.getText(),txtOldPhone.getText());
+txtFirstName.setText("");
+txtLastName.setText("");
+txtAddress.setText("");
+txtPhone.setText("");
+txtEmail.setText("");		
+		}
+else if(ae.getSource() == btnSaveDelete)
+		{
+DeleteData(txtPhone.getText());
+txtPhone.setText("");
+		}
+else if(ae.getSource() == btnRefresh)
+		{
+RetrieveData();
+		}
+	}
+	
+public static void main(String arg[])
+	{
+GUIDatabase c = new GUIDatabase(1);		
+c.RetrieveData();
+	}
+	
+private void SetColHeader()
+	{
+tmodel.addColumn("First Name");
+tmodel.addColumn("Last Name");
+tmodel.addColumn("Address");
+tmodel.addColumn("Phone");
+tmodel.addColumn("Email");
+	}
+	
+private void ConnectToDatabase ()
+	{
+try
+		{
+String dsn = "CourseDSN";
+		
+//load driver
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+			
+//make connection
+con = DriverManager.getConnection("jdbc:odbc:" + dsn);
+			
+//create statement
+st = con.createStatement();
+		}
+catch (Exception e) {System.out.println(e);}
+	}
+	
+private void AddData (String firstname,String lastname, String address,String phone,String email)
+	{
+try
+		{
+			//prepare statement			
+String qry = "Insert into Address values (?,?,?,?,?)";
+
+
+PreparedStatement ps = con.prepareStatement(qry);
+			
+ps.setString(1, firstname);
+ps.setString(2, lastname);
+ps.setString(3, address);
+ps.setString(4, phone);
+ps.setString(5, email);
+
+ps.executeUpdate();
+		}
+catch(Exception e) {System.out.println(e + "\t" + e.getMessage());	}
+	}
+	
+private void EditData (String firstname,String lastname, String address,String phone,String email,String fphone)
+	{
+try
+		{
+			//prepare statement
+String qry = "Update Address set FirstName = ?,LastName = ?,Address = ?,Phone = ? ,Email= ? where Phone = ?";
+PreparedStatement ps = con.prepareStatement(qry);
+			
+ps.setString(1, firstname);
+ps.setString(2, lastname);
+ps.setString(3, address);
+ps.setString(4, phone);
+ps.setString(5, email);
+ps.setString(6, fphone);
+			
+ps.executeUpdate();
+		}
+catch(Exception e) {System.out.println(e);	}
+	}
+	
+private void DeleteData (String phone)
+	{
+try
+	{
+//prepare statement
+String qry = "Delete from Address where phone = ?";
+PreparedStatement ps = con.prepareStatement(qry);
+			
+ps.setString(1, phone);
+			
+ps.executeUpdate();
+	}
+catch(Exception e) {System.out.println(e);	}
+	}
+	
+private void RetrieveData ()
+{
+try
+{	
+int row = tmodel.getRowCount();			
+while(row > 0)
+			{	
+row--;				
+tmodel.removeRow(row);
+			}	
+			
+//execute query			
+ResultSet rs = st.executeQuery("Select * from Address");
+			
+//get metadata
+ResultSetMetaData md = rs.getMetaData();
+int colcount = md.getColumnCount();
+			
+Object[] data = new Object[colcount];
+//extracting data		
+				
+while (rs.next())
+{				
+for (int i=1; i<=colcount; i++)
+{
+data[i-1] = rs.getString(i);
+		}				
+tmodel.addRow(data);
+		}
+		}
+catch(Exception e) {System.out.println(e);	}
+	}
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

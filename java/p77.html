@@ -1,0 +1,77 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import java.io.*;
+import java.net.*;
+
+class Server11
+{
+public static void main(String args[])
+{
+try
+{
+	int ch;
+	String str;
+	ServerSocket ss=new ServerSocket(4444);
+	Socket s=ss.accept();
+	System.out.println("SUCCESSFUL");
+	InetAddress add=InetAddress.getLocalHost();
+	System.out.println(add);
+
+	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	BufferedInputStream bis=new BufferedInputStream(s.getInputStream());
+	BufferedOutputStream bout=new BufferedOutputStream(s.getOutputStream());
+
+	
+	int num=bis.read();
+	int ans=num*2;
+	System.out.println(ans);
+	s.close();
+	ss.close();
+}
+catch(Exception e)
+	{}
+}
+}
+
+
+import java.io.*;
+import java.net.*;
+
+class Client11
+{
+public static void main (String args[])
+{
+try
+{
+	int ch;
+	String str;
+	Socket s=new Socket("127.0.0.1",4444);
+	BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+	BufferedInputStream bis=new BufferedInputStream(s.getInputStream());
+	BufferedOutputStream bout=new BufferedOutputStream(s.getOutputStream());
+	System.out.println("Enter Number");	
+	int number=br.read();
+	bout.write(number);
+	bout.flush();
+        s.close();
+
+}
+catch(Exception e)
+	{}
+}
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

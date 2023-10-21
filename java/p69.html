@@ -1,0 +1,260 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Swing Components
+
+Component
+
+
+JComboBox, JLabel, JList, JMenuBar, JPanel, JPopupMenu, JScrollBar, JScrollPane, 
+JTable, JTree, JInternalFrame, JOptionPane, JProgressBar, JRootPane, JSeparator, JSlider, 
+JSplitPane, JTabbedPane, JToolBar, JToolTip, Jviewport, JColorChooser, JTextComponent, 
+
+
+JLabels are components that you can fill with text.
+When creating a label you can specify the initial value and the alignment you wish to use within the label.
+You can use getText() and setText() to get and change the value of the label.
+
+import javax.swing.*;
+
+public class SwingFrame {
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "My First GUI Program" );
+
+	JLabel label = new JLabel( "Hello World" );
+
+	win.getContentPane().add( label );
+
+	win.pack();
+	win.setVisible(true);
+    }
+} // SwingFrame
+
+
+Sizing a Frame
+
+You can specify the size
+Height and width given in pixels
+The size of a pixel will vary based on the resolution of the device on which 
+the frame is rendered
+The method pack() will set the size of the frame automatically, 
+based on the size of the components contained in the content pane
+Note that pack does not look at the title bar
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class SwingFrameSize {
+
+    static Dimension windowSize = new Dimension( 250, 150 );
+
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "My First GUI Program" );
+	win.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+
+	win.setSize( windowSize );
+	win.setVisible(true);
+    }
+} // SwingFrame
+
+
+JButton extends Component , displays a string, and delivers an ActionEvent 
+for each mouse click.
+Normally buttons are displayed with a border
+In addition to text, JButtons can also display icons
+
+button = new JButton( ”text“ );
+ 
+
+import javax.swing.*;
+
+public class SwingFrameButton {
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "My First GUI Program" );
+
+	JButton button = new JButton( "Click Me!!" );
+
+	win.getContentPane().add( button );
+
+	win.pack();
+	win.setVisible(true);
+    }
+} // SwingFrame
+
+
+Layout Manager 
+
+An interface that defines methods for positioning and sizing objects within a container. 
+Java defines several default implementations of LayoutManager.
+Geometrical placement in a Container is controlled by a LayoutManager object 
+
+Containers may contain components (which means containers can contain containers!!). 
+All containers come equipped with a layout manager which positions and 
+shapes (lays out) the container's components. 
+Much of the action in Swing occurs between components, containers, and their layout managers. 
+
+
+Layouts allow you to format components on the screen in a platform-independent way 
+The standard JDK provides many classes that implement the LayoutManager interface, including: 
+
+FlowLayout 
+GridLayout 
+BorderLayout 
+BoxLayout
+CardLayout 
+OverlayLayout
+GridBagLayout 
+
+To change the layout used in a container you first need to create the layout. 
+Then the setLayout() method is invoked on the container to use the new layout.
+
+JPanel p = new JPanel() ;
+p.setLayout( new FlowLayout() );
+
+
+The layout manager should be established before any components are added to the container
+
+
+FlowLayout is the default layout for the JPanel class. 
+When you add components to the screen, they flow left to right (centered) 
+based on the order added and the width of the screen. 
+Very similar to word wrap and full justification on a word processor. 
+If the screen is resized, the components' flow will change based on the new width and height 
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class ShowFlowLayout {
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "My First GUI Program" );
+	win.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+
+	win.getContentPane().setLayout( new FlowLayout() );
+
+	for ( int i = 0; i < 10; i++ )
+	    win.getContentPane().add(
+		new JButton( String.valueOf( i ) ) );
+
+	win.pack();
+	win.setVisible(true);
+    }
+} // ShowFlowLayout
+
+
+Arranges components in rows and columns
+If the number of rows is specified
+columns = number of components / rows
+If the number of columns is specified
+Rows = number of components / columns
+The number of columns is ignored unless the number of rows is zero. 
+The order in which you add components matters
+Component 1 -> (0,0), Component 2-> (0,1), …...
+Components are resized to fit the row-column area
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class ShowGridLayout {
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "My First GUI Program" );
+	win.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+
+	win.getContentPane().setLayout( new GridLayout( 2, 0 ) );
+
+	for ( int i = 0; i < 10; i++ )
+	    win.getContentPane().add(
+		new JButton( String.valueOf( i ) ) );
+
+	win.pack();
+	win.setVisible(true);
+    }
+} // ShowGridLayout
+
+
+BoxLayout provides an easy way to lay out components horizontally or vertically.
+Components are added in order. 
+BoxLayout attempts to arrange components at their 
+preferred widths (for horizontal layout) or 
+preferred heights (for vertical layout). 
+Static methods in Box class are available for “glue and “struts.”
+
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class ShowBoxLayout {
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "My First GUI Program" );
+	win.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+
+	win.getContentPane().setLayout( 
+		new BoxLayout( win.getContentPane(), BoxLayout.X_AXIS ) );
+
+	for ( int i = 0; i < 10; i++ ){
+	    win.getContentPane().add( new JButton( String.valueOf( i ) ) );
+	    win.getContentPane().add( Box.createHorizontalGlue() );
+	}
+
+	win.pack();
+	win.setVisible(true);
+    }
+} // ShowBoxLayout
+
+BorderLayout provides 5 areas to hold components. 
+These are named after the four different borders of the screen, North, South, East, West, and Center. 
+When a Component is added to the layout, you must specify which area to place it in. 
+The order in which components are added is not important. 
+The center area will always be resized to be as large as possible 
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class ShowBorderLayout {
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "My First GUI Program" );
+	win.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+
+	Container content = win.getContentPane();
+	content.setLayout( new BorderLayout() );
+	content.add( "North",  new JButton( "North" ) );
+	content.add( "South",  new JButton( "South" ) );
+	content.add( "East",   new JButton( "East" ) );
+	content.add( "West",   new JButton( "West" ) );
+	content.add( "Center", new JButton( "Center" ) );
+
+	win.pack(); win.setVisible(true);
+    }
+} // ShowBorderLayout
+
+A JFrame is not the only type of container that you can use in Swing
+
+The subclasses of Container are: 
+JPanel 
+JWindow 
+JApplet
+
+Window is subclassed as follows: 
+JDialog 
+JFrame  
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

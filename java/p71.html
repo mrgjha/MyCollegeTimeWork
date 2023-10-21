@@ -1,0 +1,40 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import javax.swing.*;
+
+public class Hello extends JApplet {
+	public void init(){
+		JButton b = new JButton("press me");
+		getContentPane().add(b);
+	}
+}
+
+
+JApplet is like a JFrame
+Already has a panel
+Access panel with JApplet.getContentPane( )
+
+
+Called by browser:
+
+init( )  	- initialization
+start( )  	- resume processing (e.g. animations)
+stop( )	        - pause
+destroy( )	- cleanup
+paint( )	- redraw stuff (‘expose’ event)
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

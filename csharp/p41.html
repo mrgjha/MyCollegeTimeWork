@@ -1,0 +1,130 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+using System;
+
+ namespace JaggedArray
+ {
+     class Tester
+     {
+         public void Run()
+         {
+             
+const int rows = 4;
+             
+const int rowZero = 5;  // num elements
+             
+const int rowOne = 2;
+             
+const int rowTwo = 3;
+             
+const int rowThree = 5;
+
+             // declare the jagged array as 4 rows high
+             
+int[][] jaggedArray = new int[rows][];
+
+             // declare the rows of various lengths
+             
+jaggedArray[0] = new int[rowZero];
+             
+jaggedArray[1] = new int[rowOne];
+             
+jaggedArray[2] = new int[rowTwo];
+             
+jaggedArray[3] = new int[rowThree];
+
+             // Fill some (but not all) elements of the rows
+             
+jaggedArray[0][3] = 15;
+             
+jaggedArray[1][1] = 12;
+             
+jaggedArray[2][1] = 9;
+             
+jaggedArray[2][2] = 99;
+             
+jaggedArray[3][0] = 10;
+             
+jaggedArray[3][1] = 11;
+             
+jaggedArray[3][2] = 12;
+             
+jaggedArray[3][3] = 13;
+             
+jaggedArray[3][4] = 14;
+
+             
+for (int i = 0;i <  rowZero; i++)
+             
+{
+                 
+Console.WriteLine("jaggedArray[0][{0}] = {1}",
+                     i,jaggedArray[0][i]);
+             
+}
+
+             
+for (int i = 0;i < rowOne; i++)
+             
+{
+                 
+Console.WriteLine("jaggedArray[1][{0}] = {1}",
+                     i,jaggedArray[1][i]);
+             
+}
+
+             
+for (int i = 0;i < rowTwo; i++)
+             {
+                 
+Console.WriteLine("jaggedArray[2][{0}] = {1}",
+                     i,jaggedArray[2][i]);
+             }
+             
+for (int i = 0;i < rowThree; i++)
+             {
+                 
+Console.WriteLine("jaggedArray[3][{0}] = {1}",
+                     i,jaggedArray[3][i]);
+             }
+         }
+
+         [STAThread]
+         
+static void Main()
+         {
+             Tester t = new Tester();
+             t.Run();
+         }
+     }
+ }
+
+
+jaggedArray[0][0] = 0
+jaggedArray[0][1] = 0
+jaggedArray[0][2] = 0
+jaggedArray[0][3] = 15
+jaggedArray[0][4] = 0
+jaggedArray[1][0] = 0
+jaggedArray[1][1] = 12
+jaggedArray[2][0] = 0
+jaggedArray[2][1] = 9
+jaggedArray[2][2] = 99
+jaggedArray[3][0] = 10
+jaggedArray[3][1] = 11
+jaggedArray[3][2] = 12
+jaggedArray[3][3] = 13
+jaggedArray[3][4] = 14
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

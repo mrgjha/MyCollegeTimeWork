@@ -1,0 +1,80 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+<h3>Visual Basic.Net Data Types</h3>
+
+<p align="left">
+There have been fundamental changes to data types in VB .NET, which we outline in this section. The most important change is that all of the languages under the .NET umbrella (VB, C#, and Managed C++) now implement a subset of a common set of data types, defined in the .NET Framework's Base Class Library (BCL). We say subset because VB .NET does not implement all of these data types. In any case, each data type in the BCL is implemented either as a class or as a structure (which is similar to a class) and, as such, has members. The VB .NET data types are wrappers for the corresponding BCL data type. While this need not concern the VB programmer, it can be used in some cases to expose a bit more functionality from a data type. For more on data types</p>
+
+Now let us consider the specifics.
+
+<h3>Strings</h3>
+
+
+<p align="left">
+As you may know, in VB 6, strings were implemented as a data type known as the BSTR. A BSTR is a pointer to a character array that is preceded by a 4-byte Long specifying the length of the array. In VB .NET, strings are implemented as objects of the String class, which is part of the .NET Framework's System namespace.
+</p>
+
+<p align="left">
+
+One consequence of this reimplementation of strings is that VB .NET does not have fixed-length strings, as does VB 6. Thus, the following code is illegal:
+
+Dim Name As String * 30 
+
+Note, though, that strings in VB .NET are immutable. That is, although you do not have to declare a string's length in advance, once a value is assigned to a string, its length cannot change. If you change that string, the .NET Common Language Runtime actually gives you a reference to a new String object. (For more on this, see Chapter 2.)
+</p>
+
+<ul>
+<li>Integer/Long data type changes
+<br>VB .NET defines the following signed-integer data types:
+
+<li>Short 
+<br>The 16-bit integer data type. It is the same as the Int16 data type in the Base Class Library. 
+
+<li>Integer 
+<br>The 32-bit integer data type. It is the same as the Int32 data type in the Base Class Library. 
+
+<li>Long 
+<br>The 64-bit integer data type. It is the same as the Int64 data type in the Base Class Library. <br>
+
+Thus, with respect to the changes from VB 6 to VB .NET, we can say:
+
+<li>The VB 6 Integer data type has become the VB .NET Short data type. 
+<li>The VB 6 Long data type has become the VB .NET Integer data type. 
+</ul>
+
+<h3>Variant data type</h3>
+
+<p align="left">
+VB .NET does not support the <b>Variant</b> data type. The Object data type is VB .NET's universal data type, meaning that it can hold data of any other data type. According to the documentation, all of the functionality of the Variant data type is supplied by the Object data type.</p>
+
+
+<p align="left">
+We cannot resist the temptation to add that there are several penalties associated with using a universal data type, including poor performance and poor program readability. Thus, while VB .NET still provides this opportunity through the Object data type, its use is not recommended whenever it can be avoided.</p>
+
+
+<p align="left">
+The <b>VarType</b> function, which was used in VB 6 to determine the type of data stored in a variant variable (that is, the variant's data subtype), now reports the data subtype of the Object type instead. In addition, the TypeName function, which can be used to return a string that indicates the data type of a variable of type Object, is still supported.
+</p>
+
+<p align="left">
+Other data type changes
+Here are some additional changes in data types:
+
+The <b>Deftype statements (DefBool, DefByte, etc.),</b> which were used to define the default data type for variables whose names began with particular letters of the alphabet, are not supported in VB .NET. </p>
+
+
+<p align="left">
+The <b>Currency</b> data type is not supported in VB .NET. However, in VB .NET, the Decimal data type can handle more digits on both sides of the decimal point, and so it's a superior replacement. In VB .NET, Decimal is a strong data type; in VB 6, it was a Variant subtype, and a variable could be cast as a Decimal only by calling the CDec conversion function. </p>
+
+<p align="left">
+In VB 6, a <b>date</b> is stored in a Double format using four bytes. In VB .NET, the Date data type is an 8-byte integer data type whose range of values is from January 1, 1 to December 31, 9999. </p>
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

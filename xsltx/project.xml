@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="project.css" ?>
+<!DOCTYPE PROJECT_DB SYSTEM "project.dtd">
+<PROJECT_DB>
+  <PROJECT pid="0511-001" director="Kell Attain" 
+           type="Web Development" start_date="11/1/05">
+    <PROJ_NAME> Xray Mind Learners Web Site </PROJ_NAME>
+    <CONTACT cid="kat001" contractor="WebRavin" pref_contact="email" type="primary">
+     <NAME> Kell Attain </NAME>
+      <ADDRESS> Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999</ADDRESS>
+      <PHONE type="business"> 111-555-1111 </PHONE>
+      <FAX type="business"> 111-555-2222 </FAX>
+      <EMAIL type="business"> kattain@webravin.com </EMAIL>
+    </CONTACT>
+    <CONTACT cid="fch001" contractor="WebRavin" 
+             pref_contact="phone" type="marketing">
+     <NAME > Francis Chillington </NAME>
+      <ADDRESS> Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999</ADDRESS>
+      <PHONE type="business"> 111-555-1112 </PHONE>
+      <FAX type="business"> 111-555-2222 </FAX>
+      <EMAIL type="business"> fchillington@webravin.com </EMAIL>
+    </CONTACT>
+    <CONTACT cid="lfi001" contractor="WebRavin" pref_contact="email" type="graphics">
+     <NAME > Lara Firewalker </NAME>
+      <ADDRESS> Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999</ADDRESS>
+      <PHONE type="business"> 111-555-1113 </PHONE>
+      <FAX type="business"> 111-555-2222 </FAX>
+      <EMAIL type="business"> lfirewalker@webravin.com </EMAIL>
+    </CONTACT>
+    <NOTES>
+      <ENTRY date="11/03/05" contact="kta001"> Development on the Web site 
+      has started. The primary graphics - logo | backgrounds | navigation 
+      system - should be done by 11/8/00.
+      </ENTRY>
+    </NOTES>
+  </PROJECT>
+  <PROJECT pid="0511-002" director="Tom Phannon" type="Database Development">
+    <PROJ_NAME> XML Database for Site Visitors </PROJ_NAME>
+    <CONTACT cid="tph001" contractor="WebRavin" 
+             pref_contact="telephone" type="primary">
+     <NAME> Tom Phannon </NAME>
+      <ADDRESS> Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999</ADDRESS>
+      <PHONE type="business"> 111-555-1122 </PHONE>
+      <FAX type="business"> 111-555-2222 </FAX>
+      <EMAIL type="business"> tphannon@webravin.com </EMAIL>
+    </CONTACT>
+    <NOTES>
+      <ENTRY date="11/10/05" contact="tph001"> 
+        Database structure is complete. Ready to start propagating the data.
+      </ENTRY>
+    </NOTES>
+  </PROJECT>
+  <PROJECT pid="0511-003" contractor="Lara Firewalker" type="Tech Support AI">
+    <PROJ_NAME> House of Glass </PROJ_NAME>
+    <CONTACT cid="swi001" contractor="WebRavin" 
+             pref_contact="email" type="primary">
+     <NAME> Shamu Wagonride </NAME>
+      <ADDRESS> Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999</ADDRESS>
+      <PHONE type="business"> 111-555-1133 </PHONE>
+      <FAX type="business"> 111-555-2222 </FAX>
+      <EMAIL type="personal"> shamu@wagonride.com </EMAIL>
+    </CONTACT>
+    <NOTES>
+      <ENTRY date="11/01/05" contact="swa001"> 
+      AI logic model software has been picked out and ordered, as well 
+      as the equipment required to run it. Networking (MIS) has been notified 
+      of the machine's arrival and networking needs.
+      </ENTRY>
+      <ENTRY date="11/11/05" contact="swa001"> 
+      MIS has received equipment and software and is starting the installation.
+      Expected date for network connection is 11/15/05.
+      </ENTRY>
+    </NOTES>
+  </PROJECT>
+</PROJECT_DB>

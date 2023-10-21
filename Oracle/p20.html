@@ -1,0 +1,72 @@
+
+<html>
+<head><title>Write a procedure to show fib series</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<H2>Write a procedure to show fib series</H2>
+ <pre>
+ 
+declare
+old_number integer:=1;     
+current_number integer:=1;
+next_number integer;
+begin
+while (current_number < 30)
+loop
+        dbms_output.put_line(current_number);
+        next_number    :=  current_number + old_number;
+        old_number     :=  current_number;
+        current_number :=  next_number;
+end loop;
+end;
+
+
+
+create or replace procedure fib(n in positive)
+is
+old_number integer:=1;     
+current_number integer:=1;
+next_number integer;
+begin
+while (current_number < n)
+loop
+        dbms_output.put_line(current_number);
+        next_number    :=  current_number + old_number;
+        old_number     :=  current_number;
+        current_number :=  next_number;
+end loop;
+end;
+/
+
+
+
+create or replace procedure fib(n positive)
+is
+pos1 integer:=1;
+pos2 integer:=0;
+cum integer;
+begin
+if (n=1) or (n=2)
+then
+dbms_output.put_line(n);
+else
+cum:=pos1+pos2;
+for i in 3..n loop
+pos2:=pos1;
+pos1:=cum;
+cum:=pos1+pos2;
+dbms_output.put_line(cum);
+end loop;
+end if;
+end fib;
+<pre>
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

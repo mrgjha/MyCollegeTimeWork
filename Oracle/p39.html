@@ -1,0 +1,75 @@
+<html>
+<head><title>Joining of Two Table</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<h3>Joining of Two Table</h3>
+<pre>
+SQL> select * from emp;
+
+    EMPNO ENAME      JOB             MGR HIREDATE        SAL      COMM    DEPTNO
+--------- ---------- --------- --------- --------- --------- --------- ---------
+     7369 SMITH      CLERK          7902 17-DEC-80       800                  20
+     7499 ALLEN      SALESMAN       7698 20-FEB-81      1600       300        30
+     7521 WARD       SALESMAN       7698 22-FEB-81      1250       500        30
+     7566 JONES      MANAGER        7839 02-APR-81      2975                  20
+     7654 MARTIN     SALESMAN       7698 28-SEP-81      1250      1400        30
+     7698 BLAKE      MANAGER        7839 01-MAY-81      2850                  30
+     7782 CLARK      MANAGER        7839 09-JUN-81      2450                  10
+     7788 SCOTT      ANALYST        7566 19-APR-87      3000                  20
+     7839 KING       PRESIDENT           17-NOV-81      5000                  10
+     7844 TURNER     SALESMAN       7698 08-SEP-81      1500         0        30
+     7876 ADAMS      CLERK          7788 23-MAY-87      1100                  20
+     7900 JAMES      CLERK          7698 03-DEC-81       950                  30
+     7902 FORD       ANALYST        7566 03-DEC-81      3000                  20
+     7934 MILLER     CLERK          7782 23-JAN-82      1300                  10
+     1000 john
+
+15 rows selected.
+
+SQL> select * from dept;
+
+   DEPTNO DNAME          LOC
+--------- -------------- ------------
+       10 ACCOUNTING     NEW YORK
+       20 RESEARCH       DALLAS
+       30 SALES          CHICAGO
+       40 OPERATIONS     BOSTON
+
+SQL> select EMPNO,
+  2   ENAME,
+  3   SAL,
+  4   COMM,
+  5   d.DEPTNO,
+  6   DNAME,
+  7   LOC from emp e,dept d
+  8  where e.deptno=d.deptno;
+
+    EMPNO ENAME            SAL      COMM    DEPTNO DNAME          LOC
+--------- ---------- --------- --------- --------- -------------- -------------
+     7369 SMITH            800                  20 RESEARCH       DALLAS
+     7499 ALLEN           1600       300        30 SALES          CHICAGO
+     7521 WARD            1250       500        30 SALES          CHICAGO
+     7566 JONES           2975                  20 RESEARCH       DALLAS
+     7654 MARTIN          1250      1400        30 SALES          CHICAGO
+     7698 BLAKE           2850                  30 SALES          CHICAGO
+     7782 CLARK           2450                  10 ACCOUNTING     NEW YORK
+     7788 SCOTT           3000                  20 RESEARCH       DALLAS
+     7839 KING            5000                  10 ACCOUNTING     NEW YORK
+     7844 TURNER          1500         0        30 SALES          CHICAGO
+     7876 ADAMS           1100                  20 RESEARCH       DALLAS
+     7900 JAMES            950                  30 SALES          CHICAGO
+     7902 FORD            3000                  20 RESEARCH       DALLAS
+     7934 MILLER          1300                  10 ACCOUNTING     NEW YORK
+
+14 rows selected.
+
+</pre>
+
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

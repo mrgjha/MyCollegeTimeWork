@@ -1,0 +1,45 @@
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+import java.io.*;
+class RenterChecker {
+public static void main (String[] args) throws IOException {
+
+InputStreamReader inStream = new InputStreamReader( System.in ) ;
+BufferedReader stdin = new BufferedReader( inStream );
+
+String inData;
+int age, credit;
+ 
+
+// get the age of the renter
+System.out.println("How old are you?");
+inData = stdin.readLine();
+age = Integer.parseInt( inData );
+
+// get the credit line
+System.out.println("How much credit do you have?");
+inData = stdin.readLine();
+credit = Integer.parseInt( inData );
+
+// check that both qualifications are met
+if (age>=21 && credit>=500000)
+System.out.println("Enough to rent this car!" );
+else
+System.out.println("Have you considered a bicycle?" );
+}
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

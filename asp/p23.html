@@ -1,0 +1,55 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+  &lt;title&gt;Form Results Displayed by Key&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#ADD8E6"&gt;
+  &lt;center&gt;&lt;h1&gt;HTML &amp; Web Design Tips &amp; Techniques&lt;/h1&gt;&lt;/center&gt;
+  &lt;hr /&gt;
+&lt;%
+  DIM symbol(6), i
+
+'** retrieve the form results **
+
+  symbol(1) = Request.QueryString("s1")
+  symbol(2) = Request.QueryString("s2")
+  symbol(3) = Request.QueryString("s3")
+  symbol(4) = Request.QueryString("s4")
+  symbol(5) = Request.QueryString("s5")
+  symbol(6) = Request.QueryString("s6")
+
+'** display the form results **
+
+  With Response
+    For i=1 To Request.QueryString.count
+      .write "&lt;b&gt;Symbol " & i & "&lt;/b&gt;: " & symbol(i) & "&lt;br /&gt;"
+    Next
+  End With
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

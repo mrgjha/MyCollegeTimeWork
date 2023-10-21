@@ -1,0 +1,53 @@
+
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<b>
+<pre>
+
+
+
+Hello.html
+*******************
+&ltform method=“get”          
+          action=servlet/Hello&gt
+       Name:  &ltinput type=text name="who" size=32&gt &ltp&gt
+       &ltinput type=submit&gt
+&lt/form&gt
+
+
+
+
+
+
+
+
+
+
+
+
+Hello.java
+********************
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+public class Hello extends HttpServlet {
+     public void doGet(HttpServletRequest request,
+                                  HttpServletResponse response) 
+                                  throws IOException, ServletException {
+           response.setContentType("text/html") ;
+           PrintWriter out = response.getWriter() ;
+           out.println("&lthtml&gt&ltbody&gt") ;
+           out.println("Hello " + request.getParameter("who") + "!") ;  
+           out.println("&lt/html&gt&lt/body&gt") ;
+     }
+}
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</pre>
+</b>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+java.awt
+
+
+the original GUI package: java.awt
+limited functionality
+easier to use
+
+
+
+javax.swing
+
+
+available with JDK1.2: javax.swing
+much more sophisticated
+more complex
+slower
+not in browsers
+
+
+
+
+//SimpleButton.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class SimpleButton extends java.applet.Applet {
+//Create a button named helloButton with the caption Hello World!
+	Button helloButton = new Button("Hello World!");
+
+	public void init() {
+//Add the button to the screen
+		add(helloButton);
+	}
+}
+
+
+//EmailLabel.java
+
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class EmailLabel extends java.applet.Applet {
+//Create a label named eMailLable with the caption E-mail address: 
+	Label eMailLabel = new Label("E-mail address: ");
+
+	public void init() {
+//Add the label to the screen
+		add(eMailLabel);
+	}
+}
+
+
+//TextFieldName.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class TextFieldName extends java.applet.Applet {
+//Create a text field named TextFieldName with the 
+//text Donny in it and make it big enough to hold 10 characters
+	TextField TextFieldName = new TextField("Donny", 10);
+
+	public void init() {
+//Add it to the screen
+		add(TextFieldName);
+	}
+}
+
+
+//TextAreaComments.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class TextAreaComments extends java.applet.Applet {
+//Create a text area named comments with the text:
+//This is on line 1
+//This is on line 2
+//And make it 3 characters tall and 20 characters wide
+	TextArea comments = new TextArea("This is on line 1\nThis is on line 2", 3,20);
+
+	public void init() {
+//Add it to the screen
+		add(comments);
+	}
+}
+
+//CheckBoxGoodTutorial.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class CheckBoxGoodTutorial extends java.applet.Applet {
+//Create a checkbox named goodTutorial with the caption Is this a good tutorial?
+	Checkbox goodTutorial = new Checkbox("Is this a good tutorial?");
+
+	public void init() {
+//Add it to the screen
+		add(goodTutorial);
+	}
+}
+
+
+//CheckBoxGoodTutorialb.java
+
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class CheckBoxGoodTutorialb extends java.applet.Applet {
+//Create a checkbox named goodTutorial with the caption:
+//Is this a good tutorial? and set the starting value to true
+	Checkbox goodTutorial = new Checkbox("Is this a good tutorial?", true);
+
+	public void init() {
+//Add it to the screen
+		add(goodTutorial);
+	}
+}
+
+//RadioButtonAge.java
+
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class RadioButtonAge extends java.applet.Applet {
+//Create a checkbox group named age (these hold other
+//Checkboxes making them radio buttons or option boxes
+	CheckboxGroup age = new CheckboxGroup();
+//Create 4 checkboxes in the age group, the third one's
+//Starting value is true
+	Checkbox chkUnder10 = new Checkbox("Under 10 years old", false, age);
+	Checkbox chk10to15 = new Checkbox("10 to 14 years old", false, age);
+	Checkbox chk15to20 = new Checkbox("15 to 19 years old", true, age);
+	Checkbox chkOver20 = new Checkbox("Over 20 years old", false, age);
+
+
+	public void init() {
+//Add them all to the screen
+		add(chkUnder10);
+		add(chk10to15);
+		add(chk15to20);
+		add(chkOver20);
+	}
+}
+
+//DropDownListFont.java
+
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class DropDownListFont extends java.applet.Applet {
+//Create a drop down list named textAlignment
+	Choice textAlignment = new Choice();
+
+	public void init() {
+//Add 4 different options to it:
+		textAlignment.add("Left");
+		textAlignment.add("Center");
+		textAlignment.add("Right");
+		textAlignment.add("Random");
+//Then add the drop down list to the screen
+		add(textAlignment);
+	}
+}
+
+//SimplePanel.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class SimplePanel extends java.applet.Applet {
+//Create a panel named myPanel
+	Panel myPanel = new Panel();
+//Create two buttons
+	Button helloButton = new Button("Hello World!");
+	Button goodbyeButton = new Button("Goodbye!");
+
+	public void init() {
+//Add the two buttons to the panel
+		myPanel.add(helloButton);
+		myPanel.add(goodbyeButton);
+//And then add the panel to the screen
+		add(myPanel);
+	}
+}
+
+
+
+
+//ManyButtons.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class ManyButtons extends java.applet.Applet {
+//Create a new layout manager
+	BorderLayout myLayout = new BorderLayout();
+//Create a few buttons
+	Button btnHey = new Button("Hey");
+	Button btnHow = new Button("how");
+	Button btnAre = new Button("are");
+	Button btnYou = new Button("you");
+	Button btnQuestion = new Button("?");
+
+	public void init() {
+//Set the layout manager to the layout created
+		setLayout(myLayout);
+//And then add the buttons to different locations
+		add(btnHey, "North");
+		add(btnHow, "West");
+		add(btnAre, "Center");
+		add(btnYou, "East");
+		add(btnQuestion, "South");
+	}
+}
+
+
+//ManyButtons.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class ManyButtons extends java.applet.Applet {
+//Create the layout manager and set it to leave 10 pixels
+//horizontal and 15 pixels of vertical space between all components
+	BorderLayout myLayout = new BorderLayout(10,15);
+//Create a few buttons
+	Button btnHey = new Button("Hey");
+	Button btnHow = new Button("how");
+	Button btnAre = new Button("are");
+	Button btnYou = new Button("you");
+	Button btnQuestion = new Button("?");
+
+	public void init() {
+//Set the layout
+		setLayout(myLayout);
+//And add the buttons to the screen
+		add(btnHey, "North");
+		add(btnHow, "West");
+		add(btnAre, "Center");
+		add(btnYou, "East");
+		add(btnQuestion, "South");
+	}
+}
+
+//ManyButtons.java
+
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class ManyButtons extends java.applet.Applet {
+//Since this uses the default layout manager, we don't need to do anything
+//Other than create a few butons
+	Button btnHey = new Button("Hey");
+	Button btnHow = new Button("how");
+	Button btnAre = new Button("are");
+	Button btnYou = new Button("you");
+	Button btnQuestion = new Button("?");
+
+	public void init() {
+//And add them to the screen
+		add(btnHey);
+		add(btnHow);
+		add(btnAre);
+		add(btnYou);
+		add(btnQuestion);
+	}
+}
+
+
+//ManyButtons.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class ManyButtons extends java.applet.Applet {
+//Create the grid layout with 3 horizontal squares
+//And 2 vertical squares
+	GridLayout myLayout = new GridLayout(2, 3);
+//Create a few buttons
+	Button btnHey = new Button("Hey");
+	Button btnHow = new Button("how");
+	Button btnAre = new Button("are");
+	Button btnYou = new Button("you");
+	Button btnQuestion = new Button("?");
+
+	public void init() {
+//Set the layout to the one we created
+		setLayout(myLayout);
+//And add the buttons to the screen
+		add(btnHey);
+		add(btnHow);
+		add(btnAre);
+		add(btnYou);
+		add(btnQuestion);
+	}
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

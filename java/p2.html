@@ -1,0 +1,42 @@
+<html>
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+//input integer and print its square
+
+
+import java.io.*;
+public class EchoSquare{
+
+public static void main (String[] args) throws IOException {
+
+InputStreamReader inStream = new InputStreamReader(System.in);
+BufferedReader stdin = new BufferedReader( inStream );
+
+String inData;
+int num, square; // declaration of two int variables
+
+System.out.println("Enter an integer:");
+
+inData = stdin.readLine();
+num = Integer.parseInt( inData ); // convert inData to int
+
+square = num * num ; // compute the square
+
+System.out.println("The square of " + inData + " is " + square );
+}
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

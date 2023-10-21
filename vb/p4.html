@@ -1,0 +1,34 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+Private Sub Form_Load()
+  ' find the number of digits in a number before the decimal point
+  Dim Numerals$, DecimalPointAt As Integer, NumOfDigits As Integer
+  Numerals$ = InputBox("Enter a number and I'll tell you how many digits before the decimal point it has.")
+  Numerals$ = Trim(Numerals$)
+  DecimalPointAt = InStr(Numerals$, ".")
+  If DecimalPointAt <> 0 Then
+    NumOfDigits = DecimalPointAt - 1
+  Else
+    NumOfDigits = Len(Numerals$)
+  End If
+  MsgBox "The number of digits before the decimal point " & _
+  "in " & Numerals & " was " & NumOfDigits
+  End
+End Sub
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v3.5 (http://www.xmlspy.com) by Heather de Leon (Wagonboss.net) -->
+<?xml-stylesheet type="text/xsl" href="sample27a.xsl"?>
+<InvList xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:noNamespaceSchemaLocation="D:\Osborn-McGraw\XML-ComRef\Chapter27\sample27.xsd">
+	<ItemInfo LastUpdated="2005-02-01">
+		<ItemName>Widget Works Pro</ItemName>
+		<ItemNum>W22-34</ItemNum>
+		<ItemDesc>This is the perfect Widget for all major projects.</ItemDesc>
+		<ItemCost>14.55</ItemCost>
+		<ItemLocation>Chicago</ItemLocation>
+		<NumInStock>2345</NumInStock>
+	</ItemInfo>
+	<ItemInfo LastUpdated="2004-12-09">
+		<ItemName>Widget Basics</ItemName>
+		<ItemNum>W22-03</ItemNum>
+		<ItemDesc>Widget for smaller jobs.</ItemDesc>
+		<ItemCost>9.06</ItemCost>
+		<ItemLocation>SanDiego</ItemLocation>
+		<NumInStock>123333</NumInStock>
+	</ItemInfo>
+	<ItemInfo LastUpdated="2003-13-19">
+		<ItemName>Widget Regular</ItemName>
+		<ItemNum>W22-19</ItemNum>
+		<ItemDesc>Widget for the majority of jobs you will encounter</ItemDesc>
+		<ItemCost>12.34</ItemCost>
+		<ItemLocation>Over-seas</ItemLocation>
+		<NumInStock>40325</NumInStock>
+	</ItemInfo>
+</InvList>

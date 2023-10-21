@@ -1,0 +1,788 @@
+<html>
+<head>
+
+
+
+
+<title>MySql Tutorial</title>
+
+
+<style type="text/css">
+<!--
+h3{font style:italic;color:red}
+-->
+</style>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black">
+<h3>Connecting to the Server</h3>
+
+<li>Use a command prompt that sets the path to c:\mysql\bin
+<li>The following command connects to the server:
+<li>mysql -u root -p
+<li>you are prompted for the root password.
+<li>you can now send comands and SQL statements to the server
+
+
+<h3>WARNING</h3>
+
+<li>Always assume that everything is case sensitive, especially table names.
+<li>This is not the case in Windows XP but it is the case in Linux
+
+
+
+<h3>Entering commands</h3> 
+<li>Show all the databases
+<li>SHOW DATABASES;
+<pre>
+
+mysql> SHOW DATABASES;
++-------------+
+| Database    |
++-------------+
+| bookstore   |
+| employee_db |
+| mysql       |
+| student_db  |
+| test        |
+| web_db      |
++-------------+
+
+</pre>
+
+
+
+
+
+
+<h3>Entering commands (2)</h3>
+
+<li>Choosing a database and showing its tables
+<li>USE test;
+SHOW tables;
+
+<pre>
+mysql> USE test;
+Database changed
+mysql> SHOW tables;
++----------------+
+| Tables_in_test |
++----------------+
+| books          |
+| name2          |
+| names          |
+| test           |
++----------------+
+4 rows in set (0.00 sec)
+mysql>
+
+</pre>
+
+
+<h3>Entering commands (3)</h3>
+<li>Show the structure of a table
+<li>DESCRIBE names;
+
+<pre>
+mysql> DESCRIBE names;
+
+
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     |      | PRI | NULL    | auto_increment |
+| firstName | varchar(20) |      |     |         |                |
+| lastName  | varchar(20) |      |     |         |                |
++-----------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+mysql>
+
+</pre>
+
+
+<h3>Entering commands (4)</h3>
+<li>Show the rows of a table (all columns)
+<li>SELECT * FROM names;
+<pre>
+
+mysql> SELECT * FROM names;
++----+-----------+------------+
+| id | firstName | lastName   |
++----+-----------+------------+
+| 1  | Fred      | Flintstone |
+| 2  | Barney    | Rubble     |
++----+-----------+------------+
+2 rows in set (0.00 sec)
+mysql>
+</pre>
+
+
+<h3>Entering commands (5)</h3>
+<li>Inserting a new record
+<li>INSERT INTO names (firstName,
+lastName) VALUES ('Rock','Quarry');
+<li>SELECT * FROM names;
+
+<pre>
+mysql> INSERT INTO names (firstName, lastName) VALUES ('Ralph', 'Quarry');
+Query OK, 1 row affected (0.02 sec)
+mysql> SELECT * FROM names;
++----+-----------+------------+
+| id | firstName | lastName   |
++----+-----------+------------+
+| 1  | Fred      | Flintstone |
+| 2  | Barney    | Rubble     |
+| 3  | Ralph     | Quarry     |
++----+-----------+------------+
+3 rows in set (0.00 sec)
+mysql>
+
+</pre>
+
+
+<h3>Entering commands (6)</h3>
+<li>Updating a record
+<li>UPDATE names SET lastName = 'Stone'
+WHERE id=3;
+<li>SELECT * FROM names;
+<pre>
+mysql> UPDATE names SET lastName = 'Stone' WHERE id=3;
+Query OK, 1 row affected (0.28 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+mysql> SELECT * FROM names;
++----+-----------+------------+
+| id | firstName | lastName   |
++----+-----------+------------+
+| 1  | Fred      | Flintstone |
+| 2  | Barney    | Rubble     |
+| 3  | Ralph     | Stone      |
++----+-----------+------------+
+3 rows in set (0.00 sec)
+mysql>
+
+</pre>
+
+<h3>Logging output</h3>
+<li>The commands you type and their ouput can be logged to a file by using the following command inside the MySQL command line client
+<li>tee log.txt
+<li>Here log.txt is the name of the file
+
+
+
+<h3>Executing SQL files (1)</h3>
+<li>It is usually better to use an editor to write an SQL script and send it to the server.
+<li>A file of SQL commands such as books.sqlcan be executed by the server by using a command such as
+<li>C:\mysql\bin\mysql -u root -p < books.sql
+<li>This assumes that books.sqlis in your current directory. Otherwise the complete path to books.sqlmust be supplied
+
+
+<li>A file of SQL commands such as books.sql can also be executed from inside the MySQL client using the source command source c:\.....\books.sql
+<li>Here the full path to books.sql should be used.
+
+<li>MySQL comes with a tutorial and complete documentation in a HUGE file:c:\mysql\Docs\manual.html
+<li>Table of contents with links: c:\mysql\Docs\manual_toc.html
+<br>Use this file to locate the link to the topic you are interested in.
+
+<h3>Database concepts (1)</h3>
+<li>A relational database management system consists of a number of databases.
+<li>Each database consists of a number of tables.
+
+
+
+
+
+<h3>Some SQL data types (1)</h3>
+<li>Each entry in a row has a type specified by the column.
+<li>Numeric data types
+<li>TINYINT, SMALLINT, MEDIUMINT,
+<li>INT, BIGINT
+<li>FLOAT(display_length, decimals)
+<li>DOUBLE(display_length, decimals)
+<li>DECIMAL(display_length, decimals)
+<li>NUMERICis the same as DECIMAL
+
+
+<h3>Some SQL data types (2)</h3>
+<li>Date and time types
+<li>DATE
+<li>format is YYYY-MM-DD
+<li>DATETIME
+<li>format YYYY-MM-DD HH:MM:SS
+<li>TIMESTAMP
+<li>format YYYYMMDDHHMMSS
+<li>TIME
+<li>format HH:MM:SS
+<li>YEAR
+<li>default length is 4
+
+
+<h3>SQL data types (3)</h3>
+<li>String types
+<li>CHAR
+<li>fixed length string, e.g., CHAR(20)
+<li>VARCHAR
+<li>variable length string, e.g., VARCHAR(20)
+<li>BLOB, TINYBLOB, MEDIUMBLOB, LONGBLOB
+<li>same as TEXT, TINYTEXT...
+<li>ENUM
+<li>list of items from which value is selected
+
+
+<h3>SQL commands SHOW, USE</h3>
+<li>SHOW
+<li>Display databases or tables in current database;
+<li>Example (command line client):
+<li>show databases;
+<li>show tables;
+<li>USE
+<li>Specify which database to use
+<li>Example
+<li>use bookstore;
+
+
+<h3>The CREATE Command (1)</h3>
+<li>CREATE creates a database table
+<pre>
+CREATE TABLE table_name
+(
+column_name1 column_type1,
+column_name2 column_type2,
+...
+column_nameN column_typeN
+);
+Note: To create a database use the statement
+CREATE db_name;
+</pre>
+
+
+<li>The CREATE Command (2)
+<li>Specifying primary keys
+<pre>
+CREATE TABLE table_name
+(
+column_name1 column_type1 NOT NULL
+DEFAULT '0',
+column_name2 column_type2,
+...
+column_nameN column_typeN,
+PRIMARY KEY (column_name1)
+);
+
+
+</pre>
+
+
+<h3>The CREATE Command (3)</h3>
+<li>autoincrement primary integer keys
+<pre>
+CREATE TABLE table_name
+(
+column_name1 column_type1 PRIMARY
+KEY NOT NULL DEFAULT '0'
+AUTO_INCREMENT,
+column_name2 column_type2,
+...
+column_nameN column_typeN,
+);
+
+</pre>
+
+
+<h3>The CREATE Command (4)</h3>
+<li>Can also create UNIQUE keys. They are similar to PRIMARY KEYS but can have NULL values.
+<li>Can also create INDEX fields.
+
+
+
+
+<h3>Conditional Creation</h3>
+
+<li>Conditional database creation
+<li>CREATE DATABASE IF NOT EXISTS db_name;
+<li>Conditional table creation
+
+
+
+
+<h3>The DROP Command</h3>
+<li>To delete databases and tables use the DROP command
+<li>Examples
+<li>DROP DATABASE db_name;
+<li>DROP DATABASE IF EXISTS db_name;
+<li>DROP TABLE table_name;
+<li>DROP TABLE IF EXISTS table_name;
+Note: Don't confuse DROPwith DELETEwhich deletes rows
+of a table.
+<li>CREATE TABLE IF NOT EXISTS table_name;
+
+
+
+
+<h3>The INSERT Command</h3>
+<li>Inserting rows into a table
+<pre>
+INSERT INTO table_name
+( col_1, col_2, ..., col_N)
+VALUES
+( val_1, val_2, ..., val_N);
+String values are enclosed in single quotes by default
+but double quotes are also allowed. Literal quotes
+need to be escaped using \' and \"
+
+</pre>
+
+
+
+
+<h3>The SELECT Command (1)</h3>
+<li>Selecting rows from a table<br>SELECT * FROM table_name;
+<li>Simplest form: select all columns
+<li>Select specified columns<br>SELECT column_list FROM table_name;
+<li>Conditional selection of rows<br>SELECT column_list FROM table_name
+WHERE condition;
+
+
+
+<h3>The SELECT Command (2)</h3>
+<li>Specifying ascending row ordering<br>SELECT column_list FROM table_name
+<br>WHERE condition
+<br>ORDER by ASC;
+<li>Specifying descending row ordering<br>SELECT column_list FROM table_name
+<br>WHERE condition
+<br>ORDER by DESC;
+
+
+<h3>The SELECT Command (3)</h3>
+<li>There are many other variations of the select command.
+<li>Example: finding the number of records in a table assuming a primary key called id:
+<li>Can also perform searching using the WHERE option
+SELECT COUNT(id) FROM table_name
+
+
+
+<h3>The UPDATE Command</h3>
+<li>Used to modify an existing record<li>Conditional update versionUPDATE table_nameSET col_1 = 'new_value1',..., col_n = 'new_value2';UPDATE table_nameSET col_1 = 'new_value1',..., col_n = 'new_value2'WHERE condition;
+
+
+<pre>
+marks.sql (1)
+
+USE test;
+CREATE TABLEmarks (
+studentID SMALLINT AUTO_INCREMENTNOT NULL,
+first_name VARCHAR(20) NOT NULL,
+last_name VARCHAR(20) NOT NULL,
+mark SMALLINTDEFAULT 0 NOT NULL,
+PRIMARY KEY (studentID)
+);
+
+
+marks.sql (2)
+--Insert some rows into marks table
+INSERT INTOmarks (first_name, last_name,
+mark) VALUES('Fred', 'Jones', 78);
+INSERT INTOmarks (first_name, last_name,
+mark) VALUES('Bill', 'James', 67);
+INSERT INTOmarks (first_name, last_name,
+mark) VALUES('Carol', 'Smith', 82);
+INSERT INTOmarks (first_name, last_name,
+mark) VALUES('Bob', 'Duncan', 60);
+INSERT INTOmarks (first_name, last_name,
+mark) VALUES('Joan', 'Davis', 86);
+
+</pre>
+
+
+<h3>Executing The Script</h3>
+<li>within MySQL use a command such as
+<li>source c:/.........../marks.sql
+<li>This adds the markstable to the testdatabase
+
+
+
+<h3>The Marks Table</h3>
+<li>Selecting the complete table
+<pre>
+SELECT* FROM marks;
++-----------+------------+-----------+------+
+| studentID | first_name | last_name | mark |
++-----------+------------+-----------+------+
+| 1         | Fred       | Jones     | 78   |
+| 2         | Bill       | James     | 67   |
+| 3         | Carol      | Smith     | 82   |
+| 4         | Bob        | Duncan    | 60   |
+| 5         | Joan       | Davis     | 86   |
++-----------+------------+-----------+------+
+5 rows in set (0.00 sec)
+</pre>
+
+
+
+<h3>The WHERE Clause (1)</h3>
+
+<li>Select rows according to some criterion
+SELECT* FROM marks WHERE studentID > 1
+AND studentID < 5;
+<pre>
++-----------+------------+-----------+------+
+| studentID | first_name | last_name | mark |
++-----------+------------+-----------+------+
+| 2         | Bill       | James     | 67   |
+| 3         | Carol      | Smith     | 82   |
+| 4         | Bob        | Duncan    | 60   |
++-----------+------------+-----------+------+
+3 rows in set (0.01 sec)
+
+</pre>
+
+
+<h3>The WHERE Clause (2)</h3>
+<li>Select rows with marks >= 80
+SELECT* FROM marks WHERE mark >= 80;
+<pre>
++-----------+------------+-----------+------+
+| studentID | first_name | last_name | mark |
++-----------+------------+-----------+------+
+| 3 | Carol | Smith | 82 |
+| 5 | Joan | Davis | 86 |
++-----------+------------+-----------+------+
+2 rows in set (0.00 sec)
+
+</pre>
+
+
+
+<h3>The ORDER BY Clause</h3>
+<li>Select rows according to some criterion
+SELECT* FROM marks ORDER BY mark DESC;
+<pre>
++-----------+------------+-----------+------+
+| studentID | first_name | last_name | mark |
++-----------+------------+-----------+------+
+| 5 | Joan  | Davis      | 86        |
+| 3 | Carol | Smith      | 82        |
+| 1 | Fred  | Jones      | 78        |
+| 2 | Bill  | James      | 67        |
+| 4 | Bob   | Duncan     | 60        |
++-----------+------------+-----------+------+
+5 rows in set (0.00 sec)
+</pre>
+
+
+
+<h3>Searching Using LIKE (1)</h3>
+<li>LIKE is used to search a table for values containing a search string:
+<li>There are two wild-card characters used to specifiy patterns:
+<li>_ matches a single character
+<li>% matches zero or more characters
+<li>Can also use NOT LIKE
+<li>Searching is case insensitive
+
+
+
+<h3>Searching Using LIKE (2)</h3>
+<li>Example: last names in marks table that begin with J<br>SELECT* FROM marks WHERE last_name LIKE'J%';<li>Example: first names that have 3 letters<br>SELECT * FROM marks WHERE first_name LIKE'_ _ _';
+
+
+<h3>Quoting strings</h3>
+<li>If a string contains a single quote it must be backquoted (escaped) before it can be used in a query
+<li>Example: find records containing O'Reillyin the last_namefield.
+SELECT* FROM marks WHERE last_name
+= 'O\'Reilly';
+
+
+<h3>Limiting number of rows</h3>
+<li>LIMIT can be used to specify the maximum number of rows that are to be returned by a select query. Example
+
+<li>This query will return only the first 3 rows from the marks table
+<br>SELECT * FROM marks LIMIT 3;
+<li>To return 15 rows beginning at row 5 use
+<br>SELECT * FROM marks LIMIT 4, 15;
+
+
+
+<h3>MySQL Functions (1)</h3>
+<li>How many rows are there ? FROM marks;
+<pre>
++----------+
+|COUNT(*)  |
++----------+
+| 5        |
++----------+
+
+1 row in set (0.00 sec)
+</pre>
+
+<li>Can use COUNT(marks) instead of COUNT(*) SELECT COUNT(*)
+
+
+
+<h3>MySQL Functions (2)</h3>
+<li>What is the sum of all the marks?
+<pre>
+SELECT SUM(mark) FROM marks;
++-----------|
+ SUM(mark) 
+|+----------+
+| 373       |
++-----------+
+
+1 row in set (0.00 sec)
+</pre>
+
+
+
+
+<h3>MySQL Functions (3)</h3>
+<li>What is the average mark?
+<pre>
+SELECT AVG(mark) FROM marks;
++-----------+
+| AVG(mark) |
++-----------| |  74.6000  |
++-----------+
+
+1 row in set (0.00 sec)
+
+</pre>
+
+
+MySQL Functions (4)
+
+<li>What is the minimum mark?
+<pre>
+SELECT MIN(mark) FROM marks;
++-----------+
+| MIN(mark) |
++-----------+
+|60         |
++-----------+
+
+1 row in set (0.00 sec)
+
+</pre>
+MySQL Functions (5)
+
+<li>What is the maximum mark? 
+<pre>
+SELECT MAX(mark) FROM marks;
++-----------+
+| MAX(mark) |
++-----------+
+|86         |
++-----------+
+1 row in set (0.00 sec)
+
+
+</pre>
+
+
+<pre>
+
+books.sql (1)
+
+USE web_db;
+CREATE TABLEbooks (
+isbn CHAR(15) PRIMARY KEY NOT NULL,
+title VARCHAR(100) NOT NULL,
+author VARCHAR(100) NOT NULL,
+pub VARCHAR(20) NOT NULL,
+year YEAR NOT NULL,
+price DECIMAL(9,2) DEFAULT NULL
+);
+
+
+
+
+
+books.sql (2)
+--Insert some books into books table
+INSERT INTObooks VALUES('0-672-31784-2',
+'PHP and MySQL Web Development',
+'Luke Welling, Laura Thomson',
+'Sams', 2001, 74.95
+);
+INSERT INTObooks VALUES('1-861003-02-1',
+'Professional Apache',
+'Peter Wainwright',
+'Wrox Press Ltd', 1999, 74.95
+);
+
+</pre>
+
+<h3>Executing The Script</h3>
+
+<li>within MySQL use a command such as
+<li>source c:/.........../books.sql
+<li>This adds the books table to the web_dbdatabase
+
+
+<pre>
+
+employee_db.sql (1)
+
+
+CREATE DATABASE IF NOT EXISTSemployee_db;
+USEemployee_db;
+DROP TABLE IF EXISTSemployees;
+DROP TABLE IF EXITSjobs;
+
+
+
+
+employee_db.sql (1)
+
+CREATE TABLEemployees (
+employeeID SMALLINT NOT NULL,
+name VARCHAR(20) NOT NULL,
+position VARCHAR(20) NOT NULL,
+address VARCHAR(40) NOT NULL,
+PRIMARY KEY(employeeID)
+);
+INSERT INTOemployees VALUES(1001, 'Fred',
+'programmer', '13 Windle St');
+INSERT INTOemployees VALUES(1002, 'Joan',
+'programmer', '23 Rock St');
+INSERT INTOemployees VALUES(1003, 'Bill',
+'manager', '37 Front St');
+
+
+
+employee_db.sql (2)
+
+CREATE TABLEjobs (
+employeeID SMALLINT NOT NULL,
+hours DECIMAL(5,2) NOT NULL,
+);
+INSERT INTOjobs VALUES(1001, 13.5);
+INSERT INTOjobs VALUES(1002, 2);
+INSERT INTOjobs VALUES(1002, 6.25);
+INSERT INTOjobs VALUES(1003, 4);
+INSERT INTOjobs VALUES(1001, 1);
+INSERT INTOjobs VALUES(1003, 7);
+INSERT INTOjobs VALUES(1003, 9.5);
+
+</pre>
+<h3>Executing The Script</h3>
+<li>within MySQL use a command such as
+<li>source c:/......./employee_db.sql
+<li>This creates the employee_dbdatabase and adds the employees and jobs tables to it
+
+
+
+
+<h3>Select Queries With Joins (1)</h3>
+<li>Cartesian product query
+SELECT * FROM employees, jobs;
+
+<pre>
++------------+------+------------+--------------+------------+-------+
+| employeeID | name | position   | address      | employeeID | hours |
++------------+------+------------+--------------+------------+-------+
+| 1001       | Fred | programmer | 13 Windle St | 1001       | 13.50 |
+| 1002       | Joan | programmer | 23 Rock St   | 1001       | 13.50 |
+| 1003       | Bill | manager    | 37 Front St  | 1001       | 13.50 |
+| 1001       | Fred | programmer | 13 Windle St | 1002       | 2.00  |
+| 1002       | Joan | programmer | 23 Rock St   | 1002       | 2.00  |
+| 1003       | Bill | manager    | 37 Front St  | 1002       | 2.00  |
+| 1001       | Fred | programmer | 13 Windle St | 1002       | 6.25  |
+| 1002       | Joan | programmer | 23 Rock St   | 1002       | 6.25  |
+| 1003       | Bill | manager    | 37 Front St  | 1002       | 6.25  |
+| 1001       | Fred | programmer | 13 Windle St | 1003       | 4.00  |
+| 1002       | Joan | programmer | 23 Rock St   | 1003       | 4.00  |
+| 1003       | Bill | manager    | 37 Front St  | 1003       | 4.00  |
+| 1001       | Fred | programmer | 13 Windle St | 1001       | 1.00  |
+| 1002       | Joan | programmer | 23 Rock St   | 1001       | 1.00  |
+| 1003       | Bill | manager    | 37 Front St  | 1001       | 1.00  |
+| 1001       | Fred | programmer | 13 Windle St | 1003       | 7.00  |
+| 1002       | Joan | programmer | 23 Rock St   | 1003       | 7.00  |
+| 1003       | Bill | manager    | 37 Front St  | 1003       | 7.00  |
+| 1001       | Fred | programmer | 13 Windle St | 1003       | 9.50  |
+| 1002       | Joan | programmer | 23 Rock St   | 1003       | 9.50  |
+| 1003       | Bill | manager    | 37 Front St  | 1003       | 9.50  |
++------------+------+------------+--------------+------------+-------+
+21 rows in set (0.01 sec)
+The cartesian product query is rarely what we want.
+
+
+</pre>
+
+
+<h3>Select Queries With Joins (3)</h3>
+<li>Substitution
+SELECT name, hours FROM employees, jobs WHERE
+employees.employeeID = jobs.employeeID;
+
+<pre>
++------+-------+
+| name | hours |
++------+-------+
+| Fred | 13.50 |
+| Joan | 2.00  |
+| Joan | 6.25  |
+| Bill | 4.00  |
+| Fred | 1.00  |
+| Bill | 7.00  |
+| Bill | 9.50  |
++------+-------+
+7 rows in set (0.00 sec)
+Here we are replacing the employeeID numbers in the jobs table by the employee's name
+
+
+</pre>
+
+
+<h3>Select Queries With Joins (4)</h3>
+<li>Entries only for Fred
+SELECT name, hours FROM employees, jobs WHERE
+employees.employeeID = jobs.employeeID AND
+name = 'Fred';
+<pre>
+
++------+-------+
+| name | hours |
++------+-------+
+| Fred | 13.50 |
+| Fred | 1.00  |
++------+-------+
+2 rows in set (0.00 sec)
+
+</pre>
+
+<h3>Select Queries With Joins (5)</h3>
+<li>Total hours worked for each person
+SELECT name, SUM(hours) FROM employees, jobs
+WHERE employees.employeeID = jobs.employeeID
+GROUP BY name;
+
+<pre>
++------+------------+
+| name | SUM(hours) |
++------+------------+
+| Bill | 20.50      |
+| Fred | 14.50      |
+| Joan | 8.25       |
++------+------------+
+3 rows in set (0.00 sec)
+
+</pre>
+<h3>Select Queries With Joins (6)</h3>
+<li>Total hours worked, for Fred
+SELECT name, SUM(hours) FROMemployees, jobs
+WHERE employees.employeeID = jobs.employeeID
+AND name = 'Fred' GROUP BYname;
+
+<pre>
++------+------------+
+| name | SUM(hours) |
++------+------------+
+| Fred | 14.50      |
++------+------------+
+1 row in set (0.00 sec)
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</ul>
+</body>
+</html>

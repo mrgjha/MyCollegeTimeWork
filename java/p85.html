@@ -1,0 +1,244 @@
+
+
+<html>
+<head><style type="text/css">
+<!--
+h3{font style:italic;color:red}
+h4{font style:italic;color:white}
+h5{font style:italic;color:black}
+-->
+</style>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+interface Shape {
+    
+// display the shape name
+// Note: subclass is required to implement this method
+    
+    public abstract void name();
+
+    
+// draw the shape
+// Note: subclass is required to implement this method
+   
+    public abstract void draw();
+
+// compute area for the shape
+// Note: subclass is required to implement this method
+
+    public abstract float area();
+}
+
+
+class Circle implements Shape {
+    private double radius;
+
+  
+// constructor for Circle
+    
+    public Circle(double radius) {
+	this.radius = radius;
+    }
+
+    
+// display name of circle
+   
+    public void name() {
+	System.out.println("circle");
+    }
+
+  
+// draw the circle
+   
+    public void draw() {
+	System.out.println("draw circle");
+    }
+
+// compute area for circle
+    
+
+    public float area() {
+	System.out.println("circle area");
+	return 0;
+    }
+}
+
+
+
+class Cylinder extends Circle {
+    private double height;
+  
+// constructor for Cylinder
+
+    public Cylinder(double radius, double height) {
+	super(radius);
+	this.height = height;
+    }
+
+// display name of cylinder
+
+
+    public void name() {
+	System.out.println("cylinder");
+    }
+
+// draw the cylinder
+
+    public void draw() {
+	System.out.println("draw cylinder");
+    }
+
+// compute area for cylinder
+
+
+    public float area() {
+	System.out.println("cylinder area");
+	return 0;
+    }
+}
+
+
+class Rectangle implements Shape {
+    private double width;
+    private double height;
+
+// constructor for Rectangle
+
+
+    public Rectangle(double width, double height) {
+	this.width = width;
+	this.height = height;
+    }
+
+// display name for rectangle
+
+
+    public void name() {
+	System.out.println("rectangle");
+    }
+
+// draw the rectangle
+
+    public void draw() {
+	System.out.println("draw rectangle");
+    }
+
+// compute area for rectangle
+
+    public float area() {
+	System.out.println("rectangle area");
+	return 0;
+    }
+}
+
+
+
+class Square extends Rectangle {
+
+    // constructor for Square
+
+
+    public Square(double size) {
+	super(size, size);
+    }
+
+
+    // display name for square
+
+
+    public void name() {
+	System.out.println("square");
+    }
+
+    // draw the square
+
+
+    public void draw() {
+	System.out.println("draw square");
+    }
+
+
+    // compute area for square
+
+
+    public float area() {
+	System.out.println("square area");
+	return 0;
+    }
+}
+
+
+
+public class InterfaceTest {
+    public static void main(String [] args) {
+	Circle circle = new Circle(5);
+	Cylinder cylinder = new Cylinder(5, 10);
+	Rectangle rectangle = new Rectangle(5, 10);
+	Square square = new Square(5);
+
+	System.out.println("Circle");
+	circle.name();
+	circle.draw();
+	circle.area();
+	System.out.println();
+
+	System.out.println("Cylinder");
+	cylinder.name();
+	cylinder.draw();
+	cylinder.area();
+	System.out.println();
+
+	System.out.println("Rectangle");
+	rectangle.name();
+	rectangle.draw();
+	rectangle.area();
+	System.out.println();
+
+	System.out.println("Square");
+	square.name();
+	square.draw();
+	square.area();
+    }
+}
+
+Output
+
+
+
+Circle
+circle
+draw circle
+circle area
+
+Cylinder
+cylinder
+draw cylinder
+cylinder area
+
+Rectangle
+rectangle
+draw rectangle
+rectangle area
+
+Square
+square
+draw square
+square area
+
+
+</pre>
+
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+
+                                                                                                                                            
+

@@ -1,0 +1,22 @@
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="note.xsl"?>
+
+<note>
+
+<date>
+<day>17</day>
+<month>05</month>
+<year>2002</year>
+
+
+</date>
+
+
+<to>Michaela</to>
+<from>Justin</from>
+<heading>Reminder</heading>
+<body>You have a meeting today</body>
+
+
+</note>

@@ -1,0 +1,288 @@
+Username and password, please.
+Site User Logon with XML, Java Beans and JSP 
+by Donovan Cowie 
+By asking a user for a logon and password, you can verify the user's access to the site and ensure they are shown only the information they need. During this tutorial, we will use XML and Java Server Pages to verify the user's logon - and then store the results in a session Java Bean for easy access.
+October 3, 2000 
+
+Overview:
+
+
+
+
+1. The visitor enters his or her userID and password into an HTML form.
+2. processLogon.jsp opens userTable.xml and searches for the visitor's details. If a match is found, the visitor is allowed through to the rest of the site. Their userID is stored in a session Bean to be accessed by other pages. The Bean also keeps track of the fact that the user has been through a security check successfully.
+If no match is found, the visitor is routed back to the logon form.
+
+Environment:
+The application discussed in this tutorial was tested on Windows NT, using Apache's Tomcat server. It has also been tested on Java Web Server 2.0 running on Windows 98. You can download both - Tomcat from the Apache site - and an evaluation version of Java Web Server from the Sun site. 
+
+The XML parser I used was the Java API for XML Parsing (JAXP). If you're new to XML parsing, I recommend you download JAXP from the Sun site. JAXP has quite a nifty install - even adding the classes to your classpath during the install. I also recommend browsing through the documentation that comes bundled with JAXP. The JAXP tutorial will provide you with quite a thorough background for your projects in XML.
+
+
+
+
+
+Logon Form:
+The Logon page is the entrance to your site, or a part of your site that you only want a special type of user to view. Examples of this can be seen on e-commerce sites where visitors access their personal accounts, developer areas (like the Sun or Nokia sites), or application sites with personalized user application areas. 
+
+
+<form method="POST" action="processLogon.jsp" name="logon">
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="200">
+<tr>
+      <td width="50%">Name</td>
+      <td width="50"><input type="text" name="userID"></td>
+</tr>
+<tr>
+      <td width="50%">Password</td>
+      <td width="50%"><input type="password" name="pwd"></td>
+</tr>
+
+<tr>
+      <td width="50%" colspan="2" align="center">
+      <input type="submit" value="submit">
+      </td>
+</tr>
+</table>
+</center>
+
+</form>
+
+This is pretty straight HTML stuff. The page contains a form, which in turn contains the input fields for the userID and pwd parameters. 
+
+I included the logon form in a JSP page, so that Tomcat knows to compile and cache the page. The page will work just fine as an HTML page as well.
+
+When the visitor hits submit on the form, the userID and pwd parameters are submitted to processLogon.jsp for further processing.
+
+userTable.xml:
+Before going on to processLogon.jsp, let's take a quick look at the contents of the XML file that we will be reading from:
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<userTable> 
+<user userID="Joe" pwd="Soap" profession="researcher" level="user"> Joe </user> 
+<user userID="Dude" pwd="Dude" profession="developer" level="user"> Some Dude </user> 
+<user userID="James" pwd="sunny skies" profession="sales" level="sales admin"> McCarthy </user> 
+
+</userTable>
+
+The document makes use of a quick-and-easy schema for storing data. The root element is userTable and the only child elements off it are user.
+
+processLogon.jsp:
+processLogon is the page responsible for doing most of this part of the application's thinking. It accepts the userID and pwd parameters and then reads through an XML file for the user's details. If the user's record is not found, they are redirected back to the logon page. If the user is found, their security settings are set in the session Bean and they are forwarded to the next page.
+
+Page Directives
+
+The imports I've used cover the tasks of opening and parsing the XML document. 
+
+<%@ page language="java" %>
+<%@ page import="javax.xml.parsers.*" %>
+<%@ page import="org.w3c.dom.Document" %>
+<%@ page import="org.w3c.dom.Element" %>
+<%@ page import="org.w3c.dom.DOMException" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.IOException" %>
+
+
+Page Variables
+
+The first set of variables keep track of constants about the server environment, such as the file root for the application and URLs for the data. Note that on a site where security is a consideration, you might want to keep these elsewhere, possibly in a Bean, or an included file.
+
+<%! String fileRoot = "e:/www/testpro/";%>
+<%! String root = "http://fugazi/testpro/";%>
+<%! String dataRoot = "http://fugazi/testpro/data/";%>
+<%! String fileName= dataRoot + "userTable.xml";%>
+
+The logon Bean is instantiated at this point. This Bean will be responsible for keeping track of information about, and for, the visitor.
+
+<jsp:useBean id="logon" scope="session" class="logonBean.logon" />
+
+<%! String msg="Parse Successful!";%>
+<%! String nodeValue="No Value";%>
+<%! String userID="";%>
+<%! String pwd = "";%>
+<%! String routeURL="";%>
+<%! int listLength;%>
+
+
+HTML Header
+
+<html>
+<head>
+<title>processLogon</title>
+</head>
+<body>
+
+Get Page Parameters
+
+The first bit of business we need to attend to is the retrieval of page parameters that were sent from the logon form. Note that I check each of the parameters to make sure that 'userID' and 'pwd' are not assigned null values if no values are sent from the user form.
+
+<%
+
+//Get page parameters:
+if(request.getParameter("userID") != null)
+{
+      userID = request.getParameter("userID");
+} 
+
+if(request.getParameter("pwd") != null)
+{
+      pwd = request.getParameter("pwd");
+} 
+
+
+Declare and Initialize Variables
+
+Some of our most important variables are initialized at this point. The document object is declared, and a DocumentBuilderFactory is instantiated. The DocumentBuilderFactory will later be used to create a DocumentBuilder, which in turn will parse the XML file and build a Document object, which we will store in the document object.
+
+//Declare variables
+Document document;
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+The msg variable is used for debugging. routeURL is used at the end of the page in a JavaScript rerouting script. The default is 'logon.jsp'. The visitor will be rerouted to the logon page if he or she is not found. 
+
+If the user is found, routeURL will be changed to contain 'frame.htm' - or in fact any secure page that you would like the user to view after having logged on.
+
+//Initialize variables:
+msg="Parse Successful!";
+routeURL = "logon.jsp";
+
+
+Read the XML file
+
+The next section of code handles the opening of the file, the parsing of the XML document, and the generation of a set of user nodes. The NodeList can be accessed in your JSP page pretty much like a record set object. Later we will be looping through it, searching for the current user's record.
+
+try {
+//Open the file for reading:
+URL u = new URL(fileName);
+InputStream inputXML = u.openStream();
+
+//Build document:
+DocumentBuilder builder = factory.newDocumentBuilder();
+document = builder.parse(inputXML);
+
+//Generate the NodeList;
+org.w3c.dom.NodeList nodeList = document.getElementsByTagName("user");
+
+
+Search for User's Record
+
+I've used a loop to get hold of the user record. Each time the loop iterates, a new Node object is created, which contains all the user data. This Node object is cast to an Element. The Element object curElm is queried, using the getAttribute() method, to supply the userID and pwd attributes of the current user in the loop. 
+
+The Node's userID and pwd attributes are compared to the userID and pwd parameters sent from the logon page. If the user is found, the routeURL variable is changed point to frame.htm - the secure frameset.
+
+outer:
+
+for (int i=0; i<nodeList.getLength(); i++) 
+{
+org.w3c.dom.Node curNode = nodeList.item(i); 
+
+//Get userID attribute:
+Element curElm = (Element)nodeList.item(i);
+String curUserID = curElm.getAttribute("userID");
+
+//Get pwd attribute:
+String curPwd = curElm.getAttribute("pwd");
+
+
+if (curUserID.equals(userID) && curPwd.equals(pwd))
+{
+routeURL = "frame.htm"
+logon.setUserID(userID);
+logon.setSecure();
+break outer;
+} //end if
+}//end for 
+
+Exception Handling
+
+I use quite a simple mechanism for debugging. A catch is declared for all possible exceptions. Should an exception occur during the run of my JSP page, it will be caught - and the exception's value is converted to String and stored in the msg variable. 
+
+The msg variable's contents can be displayed in the HTML part of the page, using <%=msg%>. Once the page has been tested, you may want to comment out the <%=msg%> tag.
+
+}catch(Exception e)
+{
+      msg = msg + e.toString();
+}
+
+
+%>
+
+<%=msg%>
+
+Page Routing
+
+The simple JavaScript below will reroute the visitor to the desired page.
+
+<script language="javascript">document.location='<%=routeURL%>'</script>
+
+</body>
+</html>
+
+
+
+Logon.java:
+This application's logon session Bean is an illustration of how simple and useful a Bean can be. By making use of a session Bean, we are able to check on any of the pages on our site if the visitor has access to the secure information. 
+
+The Bean keeps track of the user's userID. In the other application pages I use the userID from this bean to unlock information specific to the user. 
+
+Getting to the userID is easy. Simply declare the Bean and then use the getUserID() method to retrieve the String. Similarly, the boolean secure can be accessed via the getSecure() method. 
+
+The setUserID() and setSecure() methods should be called once the user's identity has been validated. These are the methods we called in processLogon.jsp.
+
+package logonBean;
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class logon 
+{
+
+// Variables
+String userID = "";
+boolean secure = false;
+
+
+public String getUserID()
+{
+return userID;
+}
+
+public void setUserID(String userID)
+{
+this.userID = userID;
+}
+
+public void setSecure()
+{
+secure = true;
+}
+
+public boolean getSecure()
+{
+return secure;
+}
+
+}
+
+
+Conclusion:
+This tutorial acts an introductory overview of quite a few new technologies. JSP pages provide the server page processing, HTML framework and manipulation. The XML userTable file provides a simple example of the use of an XML file to store your application's data.
+
+Finally, we use a session Java Bean to store information about the user. The functionality of the Java Bean can be extended quite a lot. It would be possible to use JDBC in the Bean to connect to a database, or add methods to handle the processing of XML data. 
+
+By asking the user for a logon, and using a session Java Bean, it will be possible to keep track of all sorts of information about the user - such as their banking or credit-card information and their email address. By keeping track of this information, it is possible to offer visitors some great functionality, like shopping carts, email address books or to store the visitor's personal preferences for easy access.
+
+You can download files associated with this tutorial using Save Link/Target As on the following links:
+
+logon.java
+
+logon.jsp
+
+processLogon.jsp
+
+userTable.xml
+
+ 

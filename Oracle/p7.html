@@ -1,0 +1,100 @@
+
+<html>
+<head><title>Normal Form</title></head>
+
+<body background="MEDAQUA.gif" text="white">
+
+<b>
+
+A logical design method which minimizes data redundancy and reduces design flaws.
+Consists of applying various “normal” forms to the database design.
+The normal forms break down large tables into smaller subsets.
+
+
+<h3>First Normal Form (1NF)</h3>
+
+<ul>
+<li>Each attribute must be atomic
+<li>No repeating columns within a row.
+<li>No multi-valued columns.
+</ul>
+
+<p>1NF simplifies attributes
+ <br>Queries become easier.</p>
+
+<h3>Employee  (unnormalized)</h3>
+<img src="x7.gif">
+
+<h3>Employee  (normalized)</h3>
+<img src="x8.gif">
+
+
+<h3>Second Normal Form (2NF)</h3>
+<ul>
+<li>Each attribute must be functionally dependent on the primary key.
+<li>Functional dependence - the property of one or more attributes that uniquely determines the value of other attributes.
+<li>Any non-dependent attributes are moved into a smaller (subset) table.
+</ul>
+
+<p>2NF improves data integrity.
+<br>Prevents update, insert, and delete anomalies.</p>
+<h3>Employee (1NF)</h3>
+<img src="x8.gif">
+<h3>Employee (2NF)</h3>
+<img src="x9.gif">
+
+<h3>Skills(2NF)</h3>
+<img src="x10.gif">
+
+
+<h3>Third Normal Form (3NF)</h3>
+
+<ul><li>Remove transitive dependencies.
+<li>Transitive dependence - two separate entities exist within one table.
+<li>Any transitive dependencies are moved into a smaller (subset) table.
+</ul>
+
+<p>3NF  further improves data integrity.
+<br>Prevents update, insert, and delete anomalies.</p>
+
+<h3>Employee (2NF)</h3>
+<img src="x9.gif">
+<h3>Employee (3NF)</h3>
+<img src="x11.gif">
+<h3>Department (3NF)</h3>
+<img src="x12.gif">
+<h3>Other Normal Forms</h3>
+
+<ul>
+<li>Boyce-Codd Normal Form (BCNF)----Strengthens 3NF by requiring the keys in the functional <br>dependencies to be superkeys (a column or columns that uniquely identify a row)<br>
+An entity type e is in BOYCE-CODD NORMAL FORM (BCNF) if and only if 
+<ul><li>
+
+	e is in 3NF AND
+<li>	all determinants of e are candidate keys.<br><br>
+</ul>
+<li>Fourth Normal Form (4NF)----Eliminate trivial multivalued dependencies.
+In a “many to many” relationship, independent entities cannot be stored in the same table.
+<img src="x13.gif">
+<img src="x15.gif">
+
+<img src="x14.gif">
+<img src="x16.gif">
+
+
+
+<li>Fifth Normal Form (5NF)-----Eliminate dependencies not determined by keys.<br>
+The “very esoteric” one that is probably not required to get the most out of your database.
+“The original table must be reconstructed from the tables into which it has been broken down.”
+The rule ensures that you have not created any extraneous columns and all the tables are only as large as they need to be.
+
+</ul>
+
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

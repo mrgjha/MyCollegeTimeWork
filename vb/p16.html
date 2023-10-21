@@ -1,0 +1,142 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+
+
+<h3>DAO, RDO, ODBC, ADO, ODBC, OLEDB</h3>
+<p align="left">
+Database Access in Visual Basic is an ocean of terminology. The terms we will define here are Jet, ISAM, OLEDB, ODBC, DAO, RDO and ADO.</p>
+
+
+<h3>Jet, ISAM, ODBC, OLEDB</h3>
+
+<p align="left">
+If your Visual Basic program connects to Access databases, it uses a layer of translators called the Jet engine. The Jet Engine, with various limitations can also communicate with: Paradox, dBase.<br>
+If your Visual Basic program needs to connect to other databases, enter ODBC.
+</p>
+
+
+<h3>DAO, RDO, ADO</h3>
+<p align="left">
+
+First point. These are different ways to accomplish exactly the same task. They all three can open and manipulate databases.</p>
+<p align="left">
+DAO is Microsoft's first object structure/code library to manipulate databases. Invented in Access 1, Draft 2 in Access 1.1, Draft 3 in Access 2.0, Draft 4 in Access 95 and VB4, Draft 5 in Access 97 and VB5.... Many DAO commands that have been retained for backward compatibility can make the syntax quite ugly at times.</p>
+<p align="left">
+DAO code assumes database is local and while it can deal with ODBC data (Oracle, DB2, SQL Server, Paradox, FoxPro) it has no special facilities for dealing with the data. It won't break with non-local data, but you can't get certain things that make sense with remote data done.
+</p>
+
+<h3>DAO (Data Access Objects)</h3>
+<pre>
+DAO Code to open database and print message book of first field looks like this:
+
+Dim wstemp As Workspace
+Dim dbtemp As Database
+Dim rstemp As Recordset
+' if your data is ODBC, uncomment this line below for speed
+' DBEngine.DefaultType = dbUseODBC
+Set wstemp = DBEngine.Workspaces(0)
+Set dbtemp = wstemp.OpenDatabase _
+    ("", dbrivernoprompt, False, "DSN= ;UID= ;PWD= ;")
+                                ^    ^    ^
+Set rstemp = dbtemp.OpenRecordset _
+(myquery.Text)
+howmany = 0
+Combo1.Clear
+Do Until rstemp.EOF
+msgbox rstemp(0)
+rstemp.MoveNext
+howmany = howmany + 1
+Loop
+
+RDO Code to do the same looks like this:
+
+Dim contemp As New rdoConnection
+Dim rstemp As rdoResultset
+Dim envtemp As rdoEnvironment
+Set envtemp = rdoEngine.rdoEnvironments(0)
+envtemp.CursorDriver = rdUseServer
+' or rdUseOdbc, rdUseNone, rdUseIfNeeded, rdUseClientBatch
+With contemp
+  .Connect = "DSN= ;UID= ;PWD= ;"
+                ' ^     ^     ^
+  .EstablishConnection rdDriverNoPrompt, false, rdoForwardOnly
+  ' or rdoStatic, rdoKeyset, rdoDynamic
+End With
+
+
+Set rstemp = contemp.OpenResultset(" ")
+' ^ Your SQL here
+End If
+
+howmany = 0
+With rstemp
+Do Until .EOF Or howmany > 2000
+msgbox .rdoColumns(0)
+' Give a message box of the 1st column
+.MoveNext
+howmany = howmany + 1
+Loop
+</pre>
+
+<h3>DAO vs. RDO Queries and Client/Server</h3>
+<p align="left">
+DAO is automatic and RDO is stick shift. There are 100 parameters you can
+adjust about a RDO conversation with a database that have no counterpart in
+DAO. Major Difference:
+</p>
+
+<p align="left">
+
+DAO Queries, i.e. here is pseudocode
+<ol>
+<li>DAO setup code
+<li>open database
+<li>execute query that adds, updates or deletes
+<li>do next step
+</ol></p>
+
+<p align="left">
+Line 4 will not execute until Line 3's Query request has been fulfilled.
+And if the query takes 10 seconds on the server, the client is idle and
+will not go to Step 4 until the server says I'm done or generates a runtime
+error (maybe the data is faulty or query is bad).
+</p>
+<p align="left">
+RDO is different<ol>
+<li>RDO setup code
+<li>open database
+<li>execute query that adds, updates or deletes
+<li>do next step
+</ol>
+</p>
+
+<p align="left">
+Step 4 happens almost instantly after Step3 in RDO. On the other hand the server will not bring your program down with a runtime error, you have to explicitly check some Error/status objects to see if it's complete,a nd if 5 or 6 queries are all executing on the server, there will be 5 or 6 different successes, failures or "still executing" values to check in the Error/Status objects while they are running. More complex than DAO but extremely useful in a C/S app.</p>
+
+New Technology: ADO
+<p align="left">
+Designed as a replacment for DAO and RDO. RDO and DAO will always work in
+VB for backwards compatibility, but Microsoft wants this simpler model they
+invented that is easier than DAO and RDO and almost as powerful as RDO. VB can use ADO</p>
+<pre>
+dim conn as ADODB.Connection
+dim rs as recordset
+Conn.Open "...", "...", "..."
+'           ^DSN   ^User  ^Password
+Set RS = Conn.Execute( "SELECT * FROM theTable" )
+do while not rs.eof
+   msgbox RS(i).Value<% Next %>
+   rs.movenext
+loop
+</p>
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+

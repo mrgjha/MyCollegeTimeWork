@@ -1,0 +1,57 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;HTML&gt;&lt;HEAD&gt;&lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;APPLET
+        CODE     = "HelloApplet.class"
+        WIDTH    = 400
+        HEIGHT   = 300&gt;
+        
+    &lt;/APPLET&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+
+// HelloApplet.java: for processing applet methods
+import java.awt.*;
+import java.applet.*;
+public class HelloApplet extends Applet
+{
+   public void init()   {	   
+      setBackground(Color.yellow);
+      System.out.println("init() method invoked");
+   }
+   public void start()
+   {
+      System.out.println("start() method invoked");                
+   }
+   public void paint( Graphics g )
+   {
+      System.out.println("paint() method invoked");                
+      g.drawString( "Hi there", 24, 25 );
+   }
+   public void stop()
+   {
+      System.out.println("stop() method invoked");                
+   }
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

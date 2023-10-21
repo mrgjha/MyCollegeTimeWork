@@ -1,0 +1,35 @@
+<?
+
+// declare associative array of countries and languages
+$languages = array ("Country" => "Language",
+                    "Spain" => "Spanish",
+                    "USA" => "English",
+                    "France" => "French",
+                    "Russia" => "Russian");
+
+// begin new table
+print "<table border=1>";
+
+// move pointer to first element position
+reset ($languages);
+// extract the first key and element
+$hd1 = key ($languages);
+$hd2 = $languages[$hd1];
+
+// Print first key and element as table headers
+print "<tr><th>$hd1</th><th>$hd2</th></tr>";
+
+next($languages);
+
+// Print table rows including keys and elements of array
+while ( list ($ctry,$lang) = each ($languages)) :
+     print "<tr><td>$ctry</td><td>$lang</td></tr>";
+endwhile;
+
+// close table
+print "</table>";
+
+?>
+
+***********************************************
+

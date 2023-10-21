@@ -1,0 +1,14 @@
+Frmtutorial = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmsecurity = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmchangepassword = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmSplash = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmDialog01 = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmMain = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+Gradients = 0, 0, 0, 0, C
+frmabout = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+Frmhelp = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmread = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+Frmmessage = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+Module1 = 0, 0, 0, 0, C
+Frmglobe = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmbye = 0, 0, 0, 0, C, 0, 0, 0, 0, C

@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+&lt;html&gt;
+&lt;body&gt;&lt;form action="demo_classicasp.aspx" method="post"&gt;
+Your name: &lt;input type="text" name="fname" size="20"&gt;
+&lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+&lt;%
+dim fname
+fname=Request.Form("fname")
+If fname&lt;&gt;"" Then
+Response.Write("Hello " & fname & "!")
+End If
+%&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;script runat="server"&gt;
+Sub submit(sender As Object, e As EventArgs)
+lbl1.Text="Hello " & txt1.Text & "!"
+End Sub
+&lt;/script&gt;&lt;html&gt;
+&lt;body&gt;&lt;form runat="server"&gt;
+Your name: &lt;asp:TextBox id="txt1" runat="server" /&gt;
+&lt;asp:Button OnClick="submit" Text="Submit" runat="server" /&gt;
+&lt;p&gt;&lt;asp:Label id="lbl1" runat="server" /&gt;&lt;/p&gt;
+&lt;/form&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

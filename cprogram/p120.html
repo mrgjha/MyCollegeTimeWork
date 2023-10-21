@@ -1,0 +1,63 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// A safe array example.
+#include &lt;iostream.h&gt;
+#include &lt;stdlib.h&gt;
+
+
+const int SIZE = 3;
+
+class atype {
+  int a[SIZE];
+public:
+  atype() {
+    register int i;
+
+    for(i=0; i&lt;SIZE; i++) a[i] = i;
+  }
+  int &operator[](int i);
+};
+
+// Provide range checking for atype.
+int &atype::operator[](int i)
+{
+  if(i&lt;0 || i&gt; SIZE-1) {
+    cout &lt;&lt; "\nIndex value of ";
+    cout &lt;&lt; i &lt;&lt; " is out-of-bounds.\n";
+    exit(1);
+  }
+  return a[i];
+}
+
+int main()
+{
+  atype ob;
+
+  cout &lt;&lt; ob[2];  // displays 2
+  cout &lt;&lt; " ";
+
+  ob[2] = 25;  // [] appears on left
+
+  cout &lt;&lt; ob[2];  // displays 25
+
+  ob[3] = 44; // generates runtime error, 3 out-of-range
+  return 0;
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

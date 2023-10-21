@@ -1,0 +1,87 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// Demonstrate a custom inserter.
+#include &lt;iostream.h&gt;
+
+class three_d {
+public:
+  int x, y, z; // 3-D coordinates
+  three_d(int a, int b, int c) { x = a; y = b; z = c; }
+} ;
+
+// Display X, Y, Z coordinates - three_d inserter.
+ostream &operator&lt;&lt;(ostream &stream, three_d obj)
+{
+  stream &lt;&lt; obj.x &lt;&lt; ", ";
+  stream &lt;&lt; obj.y &lt;&lt; ", ";
+  stream &lt;&lt; obj.z &lt;&lt; "\n";
+  return stream;  // return the stream
+}
+
+int main()
+{
+  three_d a(1, 2, 3), b(3, 4, 5), c(5, 6, 7);
+
+  cout &lt;&lt; a &lt;&lt; b &lt;&lt; c;
+
+  return 0;
+}
+
+
+// Demonstrate a custom extractor.
+#include &lt;iostream.h&gt;
+
+class three_d {
+  int x, y, z; // 3-D coordinates
+public:
+  three_d(int a, int b, int c) { x = a; y = b; z = c; }
+  friend ostream &operator&lt;&lt;(ostream &stream, three_d obj);
+  friend istream &operator&gt;&gt;(istream &stream, three_d &obj);
+} ;
+
+// Display X, Y, Z coordinates - three_d inserter.
+ostream &operator&lt;&lt;(ostream &stream, three_d obj)
+{
+  stream &lt;&lt; obj.x &lt;&lt; ", ";
+  stream &lt;&lt; obj.y &lt;&lt; ", ";
+  stream &lt;&lt; obj.z &lt;&lt; "\n";
+  return stream; // return the stream
+}
+
+// Get three dimensional values - three_d extractor.
+istream &operator&gt;&gt;(istream &stream, three_d &obj)
+{
+  cout &lt;&lt; "Enter X,Y,Z values: ";
+  stream &gt;&gt; obj.x &gt;&gt; obj.y &gt;&gt; obj.z;
+  return stream;
+}
+
+int main()
+{
+  three_d a(1, 2, 3);
+
+  cout &lt;&lt; a;
+
+  cin &gt;&gt; a;
+  cout &lt;&lt; a;
+
+  return 0;
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

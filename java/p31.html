@@ -1,0 +1,45 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;HTML&gt;&lt;HEAD&gt;&lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;APPLET
+        CODE     = "MyimageApplet.class"
+        WIDTH    = 500
+        HEIGHT   = 400&gt;
+       
+    &lt;/APPLET&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+
+import java.applet.*;
+import java.awt.*;
+public class MyimageApplet  extends Applet {
+        Image im; 
+        public void init () {
+                        				// load
+          im = getImage(getDocumentBase(),"gyan27.JPG");
+          setBackground(Color.yellow);
+        }
+        public void paint(Graphics g ) {
+            g.drawImage(im, 50, 50, this);	// display
+        } 
+} // end class MyApplet1 
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

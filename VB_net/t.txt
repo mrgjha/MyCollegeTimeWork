@@ -1,0 +1,121 @@
+Tutorial: How do I do it in VB.NET?
+ 
+This tutorial explain some of the more common migrating problems from VB to VB.NET. 
+ 
+DoEvents 
+
+VB6
+DoEvents
+
+VB7 
+System.Windows.Forms.Application.DoEvents 
+
+App Object
+
+Get the full application filepath
+
+VB6 
+App.Path & App.EXEName
+
+VB7 System.Reflection.Assembly.GetExecutingAssembly.Location.ToString
+
+Get the app's instance
+
+VB6 App.hInstance
+
+VB7
+System.Runtime.InteropServices.Marshal.GetHINSTANCE _(System.Reflection.Assembly.GetExecutingAssembly.GetModules() _(0)).ToInt32()
+
+Check for a previous instance
+
+VB6 
+App.PrevInstance 
+
+VB7
+Function PrevInstance() As Boolean
+If Ubound(Diagnostics.Process.GetProcessesByName(Diagnostics.Process.GetCurrentProcess).ProcessName)) > 0 Then
+     Return True 
+Else 
+     Return False  
+End If
+
+End Sub
+
+Graphics
+
+Load a picture
+
+VB6 
+Picture1.Picture = LoadPicture(path)
+
+VB7 
+Dim img As Image = Image.FromFile(path)
+Picture1.Image = img
+
+Load a icon
+
+VB6
+Me.Icon = LoadPicture(path)
+
+VB7
+Dim ico As New Icon(path)
+Me.Icon = ico
+
+
+File I/0
+
+Read from a file
+
+VB6
+Open path For Input As #1
+Line Input #1, buffer
+Close #1
+
+VB7
+Dim fs As FileStream = File.Open(path, FileMode.OpenOrCreate, _ FileAccess.Read)
+Dim sr As New StreamReader(fs) 
+Buffer = sr.ReadLine
+sr.Close
+
+Write to a file
+
+VB6
+Open path For Output As #1
+Write #1, buffer
+Close #1
+
+VB7 
+Dim fs As FileStream = File.Open(path, FileMode.OpenOrCreate, _
+FileAccess.Write)
+Dim sr As New StreamWriter(fs)
+sr.Write(buffer)
+sr.Close
+
+
+Errors
+
+Check for an error
+
+VB6
+On Error Goto errhandler
+...
+errhandler:
+MsgBox(err.Description)
+
+VB7
+Try
+     ...
+     Throw New Exception("error description goes here")
+     ...
+Catch e as Exception
+     MsgBox(e.Description)
+End Try
+
+
+Events 
+
+Handling an event
+
+In VB7, there is a new keyword called AddHandler. AddHandler makes handling events a snap.
+
+AddHandler object.event, AddressOf procedure

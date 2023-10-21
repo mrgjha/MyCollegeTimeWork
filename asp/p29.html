@@ -1,0 +1,117 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;
+&lt;HTML&gt;
+
+
+&lt;HEAD&gt;
+&lt;TITLE&gt;Using a VBScript Class&lt;/TITLE&gt;
+
+&lt;SCRIPT LANGUAGE = "VBScript"&gt;
+&lt;!--
+   Option Explicit 
+
+   Class Person
+      Private name, yearsOld, ssn
+      
+      Public Property Let FirstName( fn )
+         name = fn
+      End Property
+
+      Public Property Get FirstName()
+         FirstName = name
+      End Property
+
+      Public Property Let Age( a )
+         yearsOld = a
+      End Property
+
+      Public Property Get Age()
+         Age = yearsOld
+      End Property
+
+      Public Property Let SocialSecurityNumber( n )
+
+         If Validate( n ) Then
+            ssn = n
+         Else
+            ssn = "000-00-0000"
+            Call MsgBox( "Invalid Social Security Format" )
+         End If
+
+      End Property
+
+      Public Property Get SocialSecurityNumber()
+         SocialSecurityNumber = ssn
+      End Property
+
+      Private Function Validate( expression )
+         Dim regularExpression
+         Set regularExpression = New RegExp
+
+         regularExpression.Pattern = "^\d{3}-\d{2}-\d{4}$"
+
+         If regularExpression.Test( expression ) Then
+            Validate = True
+         Else
+            Validate = False
+         End If
+
+      End Function
+
+      Public Function ToString()
+         ToString = name & Space( 3 ) & age & Space( 3 ) _
+                    & ssn
+      End Function
+
+   End Class
+
+   Sub cmdButton_OnClick()
+      Dim p                 ' Declare object reference
+      Set p = New Person    ' Instantiate Person object
+
+      With p
+         .FirstName = Document.Forms(0).txtBox1.Value
+         .Age = CInt( Document.Forms(0).txtBox2.Value )
+         .SocialSecurityNumber = Document.Forms(0).txtBox3.Value
+         Call MsgBox( .ToString() ) 
+      End With    
+
+   End Sub
+--&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+&lt;FORM&gt;Enter first name
+&lt;INPUT TYPE = "text" NAME = "txtBox1" SIZE = "10"&gt; 
+&lt;P&gt;Enter age
+&lt;INPUT TYPE = "text" NAME = "txtBox2" SIZE = "5"&gt;  
+&lt;P&gt;Enter social security number
+&lt;INPUT TYPE = "text" NAME = "txtBox3" SIZE = "10"&gt; &lt;P&gt; 
+&lt;INPUT TYPE = "button" NAME = "cmdButton" VALUE = "Enter"&gt;              
+&lt;/SCRIPT&gt;
+&lt;/FORM&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

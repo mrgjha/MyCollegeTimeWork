@@ -1,0 +1,103 @@
+You can run ASP on your own PC without an external server. To do that, you must install Microsoft's Personal Web Server (PWS) or Internet Information Services (IIS) on your PC.
+
+
+--------------------------------------------------------------------------------
+
+How to Run ASP on your own PC
+You can run ASP on your own PC without an external server. To do that, you must install Microsoft's Personal Web Server (PWS) or Internet Information Services (IIS) on your PC.
+
+If you are serious about using ASP, you should have at least Windows 98, Second Edition. 
+
+If you are really serious about using ASP, you should go for Windows 2000.
+
+
+--------------------------------------------------------------------------------
+
+How to install PWS and run ASP on Windows 95
+Personal Web Server (PWS) is not shipped with Windows 95 !!
+
+To run ASP on Windows 95, you will have to download "Windows NT 4.0 Option Pack" from Microsoft.
+
+Download the "Windows NT 4.0 Option Pack"
+
+
+--------------------------------------------------------------------------------
+
+How to install PWS and run ASP on Windows NT
+Personal Web Server (PWS) is not shipped with Windows NT !!
+
+To run ASP on Windows NT, you will have to download "Windows NT 4.0 Option Pack" from Microsoft.
+
+Download the "Windows NT 4.0 Option Pack"
+
+
+--------------------------------------------------------------------------------
+
+How to install PWS and run ASP on Windows 98
+Open the Add-ons folder on your Windows98 CD, find the PWS folder and run the setup.exe file. 
+An Inetpub folder will be created on your harddrive. Open it and find the wwwroot folder. 
+Create a new folder, like "MyWeb", under wwwroot. 
+Use a text editor to write some ASP code, save the file as "test1.asp" in the "MyWeb" folder. 
+Make sure your Web server is running - The installation program has added a new icon on your task bar (this is the PWS symbol). Click on the icon and press the Start button in the window that appears. 
+Open your browser and type in "http://localhost/MyWeb/test1.asp", to view your first ASP page. 
+
+--------------------------------------------------------------------------------
+
+How to install PWS and run ASP on Windows ME
+Personal Web Server (PWS) is not included with Windows Me !!
+
+Read article from Microsoft
+
+A workaround!
+
+
+--------------------------------------------------------------------------------
+
+How to install IIS and run ASP on Windows 2000
+From your Start Button, go to Settings, and Control Panel 
+In the Control Panel window select Add/Remove Programs 
+In the Add/Remove window select Add/Remove Windows Components 
+In the Wizard window check Internet Information Services, click OK 
+An Inetpub folder will be created on your harddrive 
+Open the Inetpub folder, and find a folder named wwwroot 
+Create a new folder, like "MyWeb", under wwwroot. 
+Use a text editor to write some ASP code, save the file as "test1.asp" in the "MyWeb" folder 
+Make sure your Web server is running - The installation program has added a new icon on your task bar (this is the IIS symbol). Click on the icon and press the Start button in the window that appears. 
+Open your browser and type in "http://localhost/MyWeb/test1.asp", to view your first ASP page 
+
+--------------------------------------------------------------------------------
+
+How to install IIS and run ASP on Windows XP Professional
+Note: You cannot run ASP on Windows XP Home Edition.
+
+Insert the Windows XP Professional CD-Rom into your CD-Rom Drive 
+From your Start Button, go to Settings, and Control Panel 
+In the Control Panel window select Add/Remove Programs 
+In the Add/Remove window select Add/Remove Windows Components 
+In the Wizard window check Internet Information Services, click OK 
+An Inetpub folder will be created on your harddrive 
+Open the Inetpub folder, and find a folder named wwwroot 
+Create a new folder, like "MyWeb", under wwwroot. 
+Use a text editor to write some ASP code, save the file as "test1.asp" in the "MyWeb" folder 
+Make sure your Web server is running - its status can be checked by going into the Control Panel, then Administrative Tools, and double-click the "IIS Manager" icon 
+Open your browser and type in "http://localhost/MyWeb/test1.asp", to view your first ASP page 
+
+--------------------------------------------------------------------------------
+
+How to install IIS and run ASP on Windows Server 2003 (Windows .NET Server)
+When you start the Windows Server 2003, you should see the Manage Your Server wizard 
+If the wizard is not displayed, go to Administrative Tools, and select Manage Your Server 
+In the wizard, click Add or Remove a Role, click Next 
+Select Custom Configuration, click Next 
+Select Application Server role, click Next 
+Select Enable ASP.NET, click Next 
+Now, the wizard may ask for the Server 2003 CD. Insert the CD and let it run until it is finished, then click the Finish button 
+The wizard should now show the Application Server role installed 
+Click on Manage This Application Server to bring up the Application Server Management Console (MMC) 
+Expand the Internet Information Services (IIS) Manager, then expand your server, and then the Web Sites folder 
+You should see the Default Web Site, and it should not say (Stopped) 
+IIS is running! 
+In the Internet Information Services (IIS) Manager click on the Web Service Extensions folder 
+Here you will see that Active Server Pages are Prohibited (this is the default configuration of IIS 6) 
+Highlight Active Server Pages and click the Allow button 
+ASP is now active! 

@@ -1,0 +1,10 @@
+#! /usr/bin/perl
+
+$x = 5;
+
+$y = 9;
+
+$cost = $x+$y;
+
+print "That comes to a total of $$cost";
+

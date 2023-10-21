@@ -1,0 +1,33 @@
+
+<?xml version="1.0"?>
+
+<!DOCTYPE Students [
+
+
+
+
+
+<!ELEMENT Students (Student*)>
+<!ELEMENT Student (Lastname, Firstname,Male?, Female?)>
+<!ATTLIST Student age CDATA #REQUIRED>
+<!ATTLIST Student weight CDATA #IMPLIED>
+<!ELEMENT Lastname (#PCDATA)>
+<!ELEMENT Firstname (#PCDATA)>
+<!ELEMENT Male EMPTY>
+<!ELEMENT Female EMPTY>
+
+]>
+
+
+<Students>
+<Student age="20" weight="150">
+<Lastname>Smith</Lastname>
+<Firstname>John</Firstname>
+<Male/>
+</Student>
+<Student age="21">
+<Lastname>Brown</Lastname>
+<Firstname>Jane</Firstname>
+<Female/>
+</Student>
+</Students>

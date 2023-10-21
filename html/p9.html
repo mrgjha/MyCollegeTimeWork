@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<h3>What is an XML DTD ?</h3>
+<ul>
+
+<li>DTD stands for Document Type Definition.
+<li>DTD is a formal model for defining the role of each element
+<li>It formally defines the relationship between
+<li>the various elements that form the documents.
+<li>The purpose of a Document Type Definition is to define the legal<br>building blocks of an XML document.
+<Li>It defines the document structure with a list of legal elements.
+<li>An XML DTD allows computers to check that each component of document occurs in a
+<br>valid place within the document.
+<li>For example it allows computers to check that users do not accidentally enter a third
+<br>level of heading without first having a second level heading, etc.
+
+<li>The DTD can be Internal or external
+<li>An internal DTD refers to a case where
+<li>the XML document has the DTD inline Where as an external DTD is one where
+<li>the document instance is separated from the formal definition of elements
+</ul>
+<pre>
+
+
+
+
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE Metadata [
+&lt;!ELEMENT Metadata (thesesinfo+)&gt;
+&lt;!ELEMENT thesesinfo
+(title,author,contributor,subject,language,university,date)&gt;
+&lt;!ELEMENT title (#PCDATA)&gt;
+&lt;!ELEMENT author (#PCDATA)&gt;
+&lt;!ELEMENT contributor (#PCDATA)&gt;
+&lt;!ELEMENT subject (#PCDATA)&gt;
+&lt;!ELEMENT language (#PCDATA)&gt;
+&lt;!ELEMENT university (#PCDATA)&gt;
+&lt;!ELEMENT date (#PCDATA)&gt;
+]&gt;
+&lt;?xml version="1.0" encoding="UTF-8"
+standalone="no" ?&gt;
+
+&lt;Metadata&gt;
+&lt;thesesinfo&gt;
+&lt;title&gt;Discrete coded wave forms for signal processing
+Radar&lt;/title&gt;
+&lt;creator&gt;Abbasi, Zia Ahmad&lt;/creator&gt;
+&lt;contributor&gt;Prof.Farid Ghani&lt;/contributor&gt;
+&lt;subject&gt;Electronic Engineering&lt;/subject&gt;
+&lt;language&gt;English&lt;/language&gt;
+&lt;university&gt;Aligarh Muslim University,Aligarh, Uttar
+Pradesh&lt;/university&gt;
+&lt;date&gt;1998&lt;/date&gt;
+&lt;/thesesinfo&gt;
+&lt;/Metadata&gt;
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

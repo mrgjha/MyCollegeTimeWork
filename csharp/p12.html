@@ -1,0 +1,121 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Delegates are reference types which allow indirect calls to methods().
+A delegates instance holds references to some number of methods,and
+by invoking the delegate one causes all of these methods to be called.
+
+Delegates are reference types rather than value types.
+Some single delegates can reference multiple methods.
+
+
+
+In OOP object expose encapsulated functions called methods.
+Methods are encapsulated functions which run when they are invoked
+
+Sometimes however , We think of the process of method 
+invokation grandly In such a case,the method invocation
+is termed an 'event' and the running
+of the method is the 'handling of the event.
+
+The 'event' Keyword is used to declare a particular 
+a particular multicast delegate.
+
+
+using System;
+public class Messages {
+
+public void Hello(string name) {
+Console.WriteLine("Hello {0}!",name);
+}
+
+public void Goodbye(string name) {
+Console.WriteLine("Goodbye {0}!",name);
+}
+}
+
+delegate void Notifier(string str);
+
+//delegate "return type" DelegateName("parameter type list");
+
+class DelegateExample {
+
+public static void Main()
+{
+
+Messages m = new Messages(); 
+Notifier notify = null;
+notify += new Notifier(m.Hello);
+
+//we add an object and method
+
+notify += new Notifier(m.Goodbye);
+
+notify("Harry");
+
+//all stored methods are invoked
+
+}
+}
+
+
+
+
+
+using System;
+using System.IO;
+ 
+public class DelegateTest
+ 
+{
+public delegate void Print (String s);
+public static void Main()
+{
+ 
+Print s = new Print (toConsole);
+Print v = new Print (toFile);
+
+Display (s);
+Display (v);
+
+}
+ 
+
+public static void toConsole (String str)
+{
+Console.WriteLine(str);
+}
+ 
+
+public static void toFile (String s)
+{
+ 
+StreamWriter fileOut = File.CreateText("fred.txt");
+fileOut.WriteLine(s);
+fileOut.Flush();
+fileOut.Close();
+}
+
+public static void Display(Print pMethod)
+
+{
+
+pMethod("This should be displayed in the console");
+
+}
+
+}
+ 
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

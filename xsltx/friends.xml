@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE friends [
+<!ELEMENT friends (list*)>
+<!ELEMENT list (name,address)>
+<!ATTLIST list No CDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT address (location,place,city,phone)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT place (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT phone (#PCDATA)>
+
+]>
+ 
+
+
+
+
+
+
+
+
+<friends>
+
+<list No="1">
+<name>lina</name>
+
+<address>
+
+<location>21,L5,B.H.Area,kadma</location>
+<place>jamshedpur</place>
+<city>Jharkhand</city>
+<phone>230455</phone>
+
+</address>
+</list>
+
+
+<list No="2">
+<name>lina</name>
+
+<address>
+
+<location>2A,sector IV</location>
+<place>Bokaro</place>
+<city>Bokaro</city>
+<phone>230455</phone>
+
+</address>
+</list>
+
+
+<list No="3">
+<name>lina</name>
+
+<address>
+
+<location>22,lajpat nagar</location>
+<place>Near india gate</place>
+<city>delhi</city>
+<phone>230455</phone>
+
+</address>
+</list>
+
+</friends>

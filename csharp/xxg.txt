@@ -1,0 +1,16 @@
+The FileSystemObject is part of the Microsoft Windows scripting API and contains routines for creating and manipulating local files. One poorly documented feature of the FileSystemObject is that the source parameters of the copyFile and copyFolder methods accept the wildcard charactor (*). You can use the wildcard character to copy all files/folders in a given folder.
+
+The example source code below copies all files and folders in the folder c:\my_source to folder c:\my_destination
+
+<script type="text/javascript">
+   
+var fso = new ActiveXObject("Scripting.FileSystemObject");
+
+fso.CopyFile("c:\\my_source\\*", "c:\\my_destination");
+fso.CopyFolder("c:\\my_source\\*", "c:\\my_destination"); 
+
+</script>
+
+Top ? | Home | Bookmark Page | Printer Friendly Page | Contact
+This page was created on: 05/30/2004
+Copyright © CodeHouse.com, 1997-2006. All rights reserved. CodeHouse™ is a registered trademark. Use of the CodeHouse™ name is prohibited unless it is done in conjunction with the trademark symbol and used in reference to this company or one of our products. Use of the CodeHouse™ logo is prohibited without the express written consent of CodeHouse™.

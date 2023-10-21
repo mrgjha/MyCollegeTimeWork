@@ -1,0 +1,67 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lthtml&gt
+
+&lthead&gt
+&lttitle&gtHello World Page&lt/title&gt
+&lt/head&gt
+&ltbody&gt
+&ltp&gt
+&ltdiv align="center"&gt
+&lttable border=1&gt
+&lttr&gt&lttd&gt
+
+&ltapplet code="HelloWorld.class" height=35 width=300&gt
+  &ltparam name="name" value="Chris"&gt
+  &ltparam name="age" value=20&gt
+  You must use a Java-enabled browser to view this applet.
+&lt/applet&gt
+
+&lt/td&gt&lt/tr&gt
+&lt/table&gt
+&lt/div&gt
+&lt/p&gt
+
+&lt/body&gt
+&lt/html&gt
+
+
+
+
+
+
+
+
+
+import java.awt.*;
+import java.applet.*;
+
+/**
+ * This class displays a message based on parameters.
+ */
+public class HelloWorld extends Applet
+{
+    public void paint(Graphics g)
+    {
+	    String userName = getParameter("name");
+        int userAge = Integer.parseInt(getParameter("age"));
+      
+        String message1 = "Hello " + userName + ".";
+	    String message2 = "On your next birthday, you will be " +(userAge+1) + " years old.";
+		
+	    g.drawString(message1, 10, 10);
+	    g.drawString(message2, 10, 30);
+    }
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

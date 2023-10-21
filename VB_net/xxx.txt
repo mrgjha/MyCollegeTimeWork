@@ -1,0 +1,80 @@
+Ok, here is a code snipet to determine who is online on your web site. Essentially there are 2 tables Users and OnlineUsers. I did it this way to not attach the sessionID field to each user (text about 20 chars long) and waste DB space. 
+
+the UserID can be autonumeric (PK) . 
+
+First of all, when a user log in, we insert a record on the OnlineUsers table. The values are the UsserID that loged in (duh) and the sessionID property of the Session Object. 
+
+Here is a code snippet: (for the login form, assuming you are using forms authentication) 
+
+Private Sub LoginButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoginButton.Click 
+Response.cookies(“UserID”)=txtUsername.Text 
+Dim cnn as new oledb.oledbconnection(ConfigurationSettings.Appsettings(“cnnString”)
+Dim strInsert as string = “Insert into OnlineUsers (UserID,SessionID) Values(‘ “ & txtUserName.Text & “’,’” & Session.SessionID & “’)” 
+Dim oldbInsert as new oledbCommand(strInsert,cnn)
+Cnn.open()
+OldbInsert.ExecuteNonQuery()
+Dim strUpdate as string = “Update Users set Online = True where UserID =’“ & txtUserName.Text & “’” 
+Dim oldbUpdate as new oledbCommand(strUpdate,cnn)
+OldbUpdate.ExecuteNonQuery()
+
+End Sub
+
+Now, when the users click logout somewhere in your page:
+
+Private Sub LogoutButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogoutButton.Click
+
+Dim cnn as new oledb.oledbconnection(ConfigurationSettings.Appsettings(“cnnString”)
+Dim strDelete as string = “Delete from OnlineUsers where SessionID =’” & Session.SessionID & “’” 
+
+Dim oldbDelete as new oledbCommand(strdelete,cnn)
+Cnn.open()
+OldbDelete.ExecuteNonQuery()
+
+
+Dim strUpdate as string = “Update Users set Online = false where UserID =’“ & Response.cookies(“UserID”).value & “’” 
+Dim oldbUpdate as new oledbCommand(strUpdate,cnn)
+OldbUpdate.ExecuteNonQuery()
+
+End Sub 
+
+Now, what for am I using the session ID?
+
+What happens if a user doesn’t press the logout button? It will be online until it hits the logout button.
+
+So in your Session_End event. In your Global.asx.vb you can put this code so when the session expires, the app automatically deletes the record from the users table and put the online status = False.
+
+Sub Session_End(ByVal sender As Object, ByVal e As EventArgs) 
+
+Dim cnn As New
+OleDb.OleDbConnection(ConfigurationSettings.AppSettings("ConnectionString") & ConfigurationSettings.AppSettings("DBPath")) 
+Dim strUserID As String = "" 
+Dim rdr As OleDb.OleDbDataReader 
+Dim com As New OleDb.OleDbCommand("Select UserID from OnlineUsers where SessionID ='" & Session.SessionID & "'", cnn) 
+
+cnn.Open() 
+rdr = com.ExecuteReader 
+While rdr.Read() 
+strUserID = CStr(rdr.GetValue(0)) 
+End While 
+rdr.Close() 
+If strUserID <> "" Then 
+com.CommandText = "Delete from OnlineUsers where UserID =" & strUserID 
+com.ExecuteNonQuery() 
+com.CommandText = "Update Users Set Online = False where UserID =" & strUserID 
+com.ExecuteNonQuery() 
+End If 
+
+cnn.Close() 
+End Sub
+
+Now you can present the users with the Online=true on a datagrid or other bound control =) 
+Note:
+You cannot call subs or functions from the session_end events, or it will not execute.
+
+Also When an error occurs you don’t get notified, even in debug, because this is executed in a background process.
+
+So I hope you learn a little from this tut, I passed long hours to get to this =)
+
+And a final note: sorry about my English, I’m from Mexico (heheh)
+
+Vote! 

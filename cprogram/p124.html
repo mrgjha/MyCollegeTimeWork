@@ -1,0 +1,76 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include&lt;conio.h&gt;
+#include&lt;graphics.h&gt;
+#include&lt;dos.h&gt;
+
+///////////////////////Buttons////////////////////////////
+void Button(int x1, int y1, int x2, int y2, char* label);
+void Button_Push(int x1, int y1, int x2, int y2, char* label);
+/////////////////////////Buttons//////////////////////////////
+void Button(int x1, int y1, int x2, int y2, char* label)    
+ // draws a normal button
+{
+  setfillstyle(SOLID_FILL, 7);
+  bar(x1, y1, x2, y2);
+  setcolor(WHITE);
+  setlinestyle(SOLID_LINE, 1, 3);
+  line(x1, y1, x2, y1);
+  line(x1, y1, x1, y2);
+  setcolor(DARKGRAY);
+  line(x2, y1, x2, y2);
+  line(x1, y2, x2, y2);
+  setcolor(BLACK);
+  outtextxy(x1 + 10, (y1 + y2)/2, label);
+}
+//////////////////To push Button/////////////////////////////
+void Button_Push(int x1, int y1, int x2, int y2, char* label)
+{
+  setfillstyle(SOLID_FILL, 7);
+  bar(x1, y1, x2, y2);
+  setcolor(DARKGRAY);
+  setlinestyle(SOLID_LINE, 1, 3);
+  line(x1, y1, x2, y1);
+  line(x1, y1, x1, y2);
+  setcolor(BLACK);
+  line(x2, y1, x2, y2);
+  line(x1, y2, x2, y2);
+  setcolor(WHITE);
+  outtextxy(x1 + 10, (y1 + y2)/2, label);
+}
+void  main()
+{
+char ch;
+clrscr();
+
+int gdriver = DETECT, gmode, errorcode;
+initgraph(&gdriver, &gmode, "c:\\tc\\bgi");
+
+Button(230,400,330,430, "  Submit");
+ch=getche();
+if(ch==13)
+{
+delay(90);
+Button_Push(230,400,330,430,"  Submit");
+delay(100);
+Button(230,400,330,430,"  Submit");
+}
+getch();
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

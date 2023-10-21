@@ -1,0 +1,697 @@
+
+An ASP file can contain text, HTML tags and scripts. Scripts in an ASP file are executed on the server
+
+
+--------------------------------------------------------------------------------
+
+What you should already know
+Before you continue you should have some basic understanding of the following:
+
+HTML / XHTML 
+A scripting language like JavaScript or VBScript 
+If you want to study these subjects first, find the tutorials on our Home page.
+
+
+--------------------------------------------------------------------------------
+
+What is ASP?
+ASP stands for Active Server Pages 
+ASP is a program that runs inside IIS 
+IIS stands for Internet Information Services 
+IIS comes as a free component with Windows 2000 
+IIS is also a part of the Windows NT 4.0 Option Pack 
+The Option Pack can be downloaded from Microsoft 
+PWS is a smaller - but fully functional - version of IIS 
+PWS can be found on your Windows 95/98 CD 
+ASP Compatibility
+ASP is a Microsoft Technology 
+To run IIS you must have Windows NT 4.0 or later 
+To run PWS you must have Windows 95 or later 
+ChiliASP is a technology that runs ASP without Windows OS 
+InstantASP is another technology that runs ASP without Windows 
+What is an ASP File?
+An ASP file is just the same as an HTML file 
+An ASP file can contain text, HTML, XML, and scripts 
+Scripts in an ASP file are executed on the server 
+An ASP file has the file extension ".asp" 
+How Does ASP Differ from HTML?
+When a browser requests an HTML file, the server returns the file 
+When a browser requests an ASP file, IIS passes the request to the ASP engine. The ASP engine reads the ASP file, line by line, and executes the scripts in the file. Finally, the ASP file is returned to the browser as plain HTML 
+
+--------------------------------------------------------------------------------
+
+What can ASP do for you?
+Dynamically edit, change or add any content of a Web page 
+Respond to user queries or data submitted from HTML forms 
+Access any data or databases and return the results to a browser 
+Customize a Web page to make it more useful for individual users 
+The advantages of using ASP instead of CGI and Perl, are those of simplicity and speed 
+Provides security since your ASP code can not be viewed from the browser 
+Since ASP files are returned as plain HTML, they can be viewed in any browser 
+Clever ASP programming can minimize the network traffic 
+
+
+
+
+
+
+<html>
+<body>
+
+<%
+response.write("Hello World!")
+%>
+
+</body>
+</html>
+
+
+
+
+<html>
+<body>
+<%
+response.write("<h2>You can use HTML tags to format the text!</h2>")
+%>
+
+<%
+response.write("<p style='color:#0000ff'>This text is styled with the style attribute!</p>")
+%>
+</body>
+</html>
+
+
+
+
+
+<html>
+<body>
+
+<%
+dim name
+name="Donald Duck"
+response.write("My name is: " & name)
+%>
+
+</body>
+</html>
+
+
+
+
+<html>
+<body>
+
+<%
+Dim famname(6),i
+famname(1) = "Jan Egil"
+famname(2) = "Tove"
+famname(3) = "Hege"
+famname(4) = "Stale"
+famname(5) = "Kai Jim"
+famname(6) = "Borge"
+
+For i = 1 to 6
+      response.write(famname(i) & "<br />")
+Next
+%>
+
+</body>
+</html>
+
+
+
+
+<html>
+<body>
+
+<%
+dim i 
+for i=1 to 6
+   response.write("<h" & i & ">Header " & i & "</h" & i & ">")
+next
+%>
+
+</body>
+</html>
+
+
+<html>
+<body>
+<%
+dim h
+h=hour(now())
+
+response.write("<p>" & now())
+response.write(" (Norwegian Time) </p>")
+If h<12 then
+   response.write("Good Morning!")
+else
+   response.write("Good day!")
+end if
+%>
+</body>
+</html>
+
+
+
+<%@ language="javascript" %>
+<html>
+<body>
+<%
+var d=new Date()
+var h=d.getHours()
+
+Response.Write("<p>")
+Response.Write(d + " (Norwegian Time)")
+Response.Write("</p>")
+if (h<12)
+   {
+   Response.Write("Good Morning!")
+   }
+else
+   {
+   Response.Write("Good day!")
+   }
+%>
+</body>
+</html>
+
+
+<html>
+<body>
+
+Today's date is: <%response.write(date())%>.
+<br>
+The server's local time is: <%response.write(time())%>.
+
+</body>
+</html>
+
+
+<html>
+<body>
+
+<p>
+VBScripts' function <b>WeekdayName</b> is used to get a weekday:
+</p>
+<%
+response.Write(WeekDayName(1))
+response.Write("<br>")
+response.Write(WeekDayName(2))
+%>
+
+<p>Abbreviated name of a weekday:</p>
+<%
+response.Write(WeekDayName(1,true))
+response.Write("<br>")
+response.Write(WeekDayName(2,true))
+%>
+
+<p>Current weekday:</p>
+<%
+response.Write(WeekdayName(weekday(date)))
+response.Write("<br>")
+response.Write(WeekdayName(weekday(date), true))
+%>
+
+</body>
+</html>
+
+
+
+<html>
+<body>
+
+<p>VBScripts' function <b>MonthName</b> is used to get a month:</p>
+<%
+response.Write(MonthName(1))
+response.Write("<br>")
+response.Write(MonthName(2))
+%>
+
+<p>Abbreviated name of a month:</p>
+<%
+response.Write(MonthName(1,true))
+response.Write("<br>")
+response.Write(MonthName(2,true))
+%>
+
+<p>Current month:</p>
+<%
+response.Write(MonthName(month(date)))
+response.Write("<br>")
+response.Write(MonthName(month(date), true))
+%>
+
+</body>
+</html>
+
+
+
+<html>
+<body>
+
+Today it is
+<%response.write(WeekdayName(weekday(date)))%>,
+<br />
+and the month is
+<%response.write(MonthName(month(date)))%>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<body>
+<%
+response.write(DateAdd("d",30,date()))
+%>
+
+<p>
+Syntax for DateAdd: DateAdd(interval,number,date). You can use <b>DateAdd</b> to for example calculate a date 30 days from today.
+</p>
+
+</body>
+</html>
+
+
+
+
+
+<html>
+<body>
+
+<%
+response.write(FormatDateTime(date(),vbgeneraldate))
+response.write("<br />")
+response.write(FormatDateTime(date(),vblongdate))
+response.write("<br />")
+response.write(FormatDateTime(date(),vbshortdate))
+response.write("<br />")
+response.write(FormatDateTime(now(),vblongtime))
+response.write("<br />")
+response.write(FormatDateTime(now(),vbshorttime))
+%>
+
+<p>
+Syntax for FormatDateTime: FormatDateTime(date,namedformat).
+</p>
+
+</body>
+</html>
+
+
+
+<html>
+<body>
+
+<%
+somedate="10/30/99"
+response.write(IsDate(somedate))
+%>
+
+</body>
+</html>
+
+
+
+<html>
+<body>
+
+<%
+name = "Bill Gates"
+response.write(ucase(name))
+response.write("<br>")
+response.write(lcase(name))
+%>
+
+</body>
+</html>
+
+
+
+<html>
+<body>
+
+<%
+name = " Gopal "
+response.write("visit" & name & "now<br />")
+response.write("visit" & trim(name) & "now<br />")
+response.write("visit" & ltrim(name) & "now<br />")
+response.write("visit" & rtrim(name) & "now")
+%>
+
+</body>
+</html>
+
+
+<html>
+<body>
+
+<%
+sometext = "Hello Everyone!"
+response.write(strReverse(sometext))
+%>
+
+</body>
+</html>
+
+
+<html>
+<body>
+
+<%
+i = 48.66776677
+j = 48.3333333
+response.write(Round(i))
+response.write("<br>")
+response.write(Round(j))
+%>
+
+</body>
+</html>
+
+
+<html>
+<body>
+
+<%
+randomize()
+response.write(rnd())
+%>
+
+</body>
+</html>
+
+
+<html>
+<body>
+
+<%
+sometext="Welcome to this Web"
+response.write(Left(sometext,5))
+response.write("<br>")
+response.write(Right(sometext,5))
+%>
+
+</body>
+</html>
+
+
+
+<html>
+<body>
+
+<%
+sometext="Welcome to this Web!!"
+response.write(Replace(sometext, "Web", "Page"))
+%>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+<html>
+<body>
+
+<%
+sometext="Welcome to this Web!!"
+response.write(Mid(sometext, 9, 2))
+%>
+
+</body>
+</html>
+
+
+
+
+
+
+<html>
+
+<head>
+<%
+sub vbproc(num1,num2)
+response.write(num1*num2)
+end sub
+%>
+</head>
+
+<body>
+<p>
+You can call a procedure like this:
+</p>
+<p>
+Result: <%call vbproc(3,4)%>
+</p>
+<p>
+Or, like this:
+</p>
+<p>
+Result: <%vbproc 3,4%>
+</p>
+</body>
+
+</html>
+
+
+<%@ language="javascript" %>
+<html>
+<head>
+<%
+function jsproc(num1,num2)
+{
+Response.Write(num1*num2)
+}
+%>
+</head>
+
+<body>
+<p>
+Result: <%jsproc(3,4)%>
+</p>
+</body>
+
+</html>
+
+
+
+
+<html>
+<head>
+<%
+sub vbproc(num1,num2)
+Response.Write(num1*num2)
+end sub
+%>
+<script  language="javascript" runat="server">
+function jsproc(num1,num2)
+{
+Response.Write(num1*num2)
+}
+</script>
+</head>
+
+<body>
+<p>Result: <%call vbproc(3,4)%></p>
+<p>Result: <%call jsproc(3,4)%></p>
+</body>
+
+</html>
+
+
+<html>
+<body>
+<form action="demo_reqquery.asp" method="get">
+Your name: <input type="text" name="fname" size="20" />
+<input type="submit" value="Submit" />
+</form>
+<%
+dim fname
+fname=Request.QueryString("fname")
+If fname<>"" Then
+      Response.Write("Hello " & fname & "!<br />")
+      Response.Write("How are you today?")
+End If
+%>
+</body>
+</html>
+
+
+<html>
+<body>
+<form action="demo_simpleform.asp" method="post">
+Your name: <input type="text" name="fname" size="20" />
+<input type="submit" value="Submit" />
+</form>
+<%
+dim fname
+fname=Request.Form("fname")
+If fname<>"" Then
+      Response.Write("Hello " & fname & "!<br />")
+      Response.Write("How are you today?")
+End If
+%>
+</body>
+</html>
+
+
+
+<html>
+<%
+dim cars
+cars=Request.Form("cars")
+%>
+<body>
+<form action="demo_radiob.asp" method="post">
+<p>Please select your favorite car:</p>
+
+<input type="radio" name="cars"
+<%if cars="Volvo" then Response.Write("checked")%>
+value="Volvo">Volvo</input>
+<br />
+<input type="radio" name="cars"
+<%if cars="Saab" then Response.Write("checked")%>
+value="Saab">Saab</input>
+<br />
+<input type="radio" name="cars"
+<%if cars="BMW" then Response.Write("checked")%>
+value="BMW">BMW</input>
+<br /><br />
+<input type="submit" value="Submit" />
+</form>
+<%
+if cars<>"" then
+   Response.Write("<p>Your favorite car is: " & cars & "</p>")
+end if
+%>
+</body>
+</html>
+
+
+
+<%
+dim numvisits
+response.cookies("NumVisits").Expires=date+365 
+numvisits=request.cookies("NumVisits")
+
+if numvisits="" then
+   response.cookies("NumVisits")=1
+   response.write("Welcome! This is the first time you are visiting this Web page.")
+else
+   response.cookies("NumVisits")=numvisits+1
+   response.write("You have visited this ")
+   response.write("Web page " & numvisits)
+   if numvisits=1 then
+     response.write " time before!"
+   else
+     response.write " times before!"
+   end if
+end if
+%>
+<html>
+<body>
+</body>
+</html>
+
+
+<html>
+<body>
+<%
+response.write("<h2>You can use HTML tags to format the text!</h2>")
+%>
+
+<%
+response.write("<p style='color:#0000ff'>This text is styled with the style attribute!</p>")
+%>
+</body>
+</html>
+
+
+
+<%
+if Request.Form("select")<>"" then
+       Response.Redirect(Request.Form("select"))
+end if
+%>   
+
+<html>
+<body>
+
+<form action="demo_redirect.asp" method="post">
+
+<input type="radio" name="select" 
+value="demo_server.asp">
+Server Example<br>
+
+<input type="radio" name="select" 
+value="demo_text.asp">
+Text Example<br><br>
+<input type="submit" value="Go!">
+
+</form>
+
+</body>
+</html> 
+
+
+
+
+
+
+
+
+
+<html>
+<body>
+<p>I am writing some text. This text will never be<br>
+<%
+Response.End
+%>
+finished! It's too late to write more!</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

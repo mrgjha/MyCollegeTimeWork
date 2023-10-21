@@ -1,0 +1,47 @@
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Retrieve "Posted" Form Results by Index&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#ADD8E6"&gt;
+  &lt;center&gt;&lt;h1&gt;HTML &amp; Web Design Tips &amp; Techniques&lt;/h1&gt;&lt;/center&gt;
+  &lt;hr /&gt;
+&lt;%
+  DIM i
+
+'** display element names and form results **
+
+  With Response
+    For i = 1 To Request.Form.Count
+      .Write "&lt;b&gt;" & Request.Form.Key(i) & " : &lt;/b&gt;" & _
+        Request.Form(i) & "&lt;br /&gt;"
+    Next
+  End With
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

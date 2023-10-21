@@ -1,0 +1,59 @@
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+import java.io.*;
+
+public class addUpNumbers {
+public static void main (String[] args ) throws IOException {
+
+InputStreamReader inStream = new InputStreamReader(System.in ) ;
+
+BufferedReader userin = new BufferedReader( inStream );
+String inputData;
+
+
+int value; // data entered by the user
+int sum = 0; // initialize the sum
+
+
+
+
+//Program to Add up User-entered Integers
+// get the first value 
+
+
+System.out.println( "Enter first integer :" );
+inputData = userin.readLine();
+value = Integer.parseInt( inputData );
+
+ do{
+
+sum=sum+value;  //add value to sum
+
+//get the next value from the user
+
+System.out.println("Enter next integer (enter 0 to quit):");
+
+inputData=userin.readLine();
+value=Integer.parseInt(inputData);
+
+}
+while (value!=0 );
+System.out.println("sum of the integers:"+sum);
+}
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

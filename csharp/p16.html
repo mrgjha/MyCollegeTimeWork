@@ -1,0 +1,71 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// Demonstrate a namespace. 
+using System; 
+ 
+// Declare a namespace for counters. 
+namespace Counter { 
+  // A simple countdown counter. 
+  class CountDown { 
+    int val; 
+ 
+    public CountDown(int n) { val = n; } 
+ 
+    public void reset(int n) { 
+      val = n; 
+    } 
+ 
+    public int count() { 
+      if(val > 0) return val--; 
+      else return 0; 
+    } 
+  } 
+} 
+ 
+class NSDemo { 
+  public static void Main() { 
+    Counter.CountDown cd1 = new Counter.CountDown(10); 
+    int i; 
+ 
+    do { 
+      i = cd1.count(); 
+      Console.Write(i + " "); 
+    } while(i > 0); 
+    Console.WriteLine(); 
+ 
+    Counter.CountDown cd2 = new Counter.CountDown(20); 
+ 
+    do { 
+      i = cd2.count(); 
+      Console.Write(i + " "); 
+    } while(i > 0); 
+    Console.WriteLine(); 
+ 
+    cd2.reset(4); 
+    
+    do { 
+      i = cd2.count(); 
+      Console.Write(i + " "); 
+    } while(i > 0); 
+    Console.WriteLine(); 
+  } 
+} 
+
+
+10 9 8 7 6 5 4 3 2 1 0 
+20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0 
+4 3 2 1 0 
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

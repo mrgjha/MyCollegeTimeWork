@@ -1,0 +1,78 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+&ltHTML&gt&ltHEAD&gt&lt/HEAD&gt
+	&ltBODY&gt
+		&ltAPPLET code="Hybrid.class"
+			   WIDTH="100" 
+			   HEIGHT="100"&gt
+                Any text placed here shows in 
+		non-Java enabled browsers	
+		&lt/APPLET&gt
+	&lt/BODY&gt
+	&lt/HTML&gt
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Hybrid extends JApplet {
+	
+	public void init() {
+		Container contentPane = getContentPane();
+		Icon icon = new ImageIcon("balls10.gif");
+		JLabel label = new JLabel(icon);
+		contentPane.setLayout(new FlowLayout());	
+		contentPane.add(label = new JLabel(icon));
+		contentPane.add(label);
+	} // init method
+	public static void main(String args[]) {
+		final JFrame f = new JFrame();
+		JApplet applet = new Hybrid();
+		applet.init();
+		f.setContentPane(applet.getContentPane());
+		f.setBounds(100,100,308,199);
+		f.setTitle("An Application");
+		f.setVisible(true);
+		f.setDefaultCloseOperation(
+			WindowConstants.DISPOSE_ON_CLOSE);
+		f.addWindowListener(new WindowAdapter() {
+			public void windowClosed(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+	} // main method
+} // Hybrid class
+
+
+/*
+Is it an application?
+	All applications need a main method
+Is it an applet?
+ 	There are other methods we need:
+init perhaps
+paint or paintComponent methods perhaps
+Can it be both an application and an applet??
+	YES!
+Most IDEs can do this magic for you automatically
+How can you do it?  - Easy, the steps are pretty mechanical…*/
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

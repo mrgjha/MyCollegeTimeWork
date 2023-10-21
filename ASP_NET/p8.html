@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+&lt;%@ Page Language=VB Debug=true %&gt;
+&lt;script runat=server&gt;
+Sub SubmitBtn_Click(Sender As Object, E As EventArgs)
+    Dim TotalCorrect as Integer
+    If ddlAnswer1.SelectedItem.Text = "C Sharp" Then
+        TotalCorrect = TotalCorrect + 1
+    End If
+    If ddlAnswer2.SelectedItem.Text = "Visual Basic" Then
+        TotalCorrect = TotalCorrect + 1
+    End If
+    If ddlAnswer3.SelectedItem.Text = "SelectedItem" Then
+        TotalCorrect = TotalCorrect + 1
+    End If
+    lblMessage.Text = "You scored " & TotalCorrect _
+        & " correct."
+End Sub
+&lt;/SCRIPT&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Quiz Page&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;form runat="server"&gt;
+&lt;asp:Label 
+    id="lblMessage" 
+    Font-Size="12pt"
+    Font-Name="Tahoma"
+    runat="server"
+    Text="Complete each question before submitting."
+/&gt;
+&lt;BR&gt;
+How is the new version of "C" pronounced"?
+&lt;BR&gt;
+&lt;asp:dropdownlist 
+    id="ddlAnswer1" 
+    runat=server 
+&gt;
+    &lt;asp:listitem&gt;C Pound&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;C Triple Plus&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;C Plus Plus Plus&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;C Sharp&lt;/asp:listitem&gt;
+&lt;/asp:dropdownlist&gt;
+&lt;BR&gt;
+What does VB stand for?
+&lt;BR&gt;
+&lt;asp:dropdownlist 
+    id="ddlAnswer2" 
+    runat=server 
+&gt;
+    &lt;asp:listitem&gt;Virtual Basic&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;Visual Basic&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;Visual Basic&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;Vehicle Basic&lt;/asp:listitem&gt;
+&lt;/asp:dropdownlist&gt;
+&lt;BR&gt;
+What object do you use to retrieve the 
+item selected by the visitor in a DropDownList control?
+&lt;BR&gt;
+&lt;asp:dropdownlist 
+    id="ddlAnswer3" 
+    runat=server 
+&gt;
+    &lt;asp:listitem&gt;SelectedItem&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;SelectItem&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;SelectionItem&lt;/asp:listitem&gt;
+    &lt;asp:listitem&gt;SelItem&lt;/asp:listitem&gt;
+&lt;/asp:dropdownlist&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:button 
+    id="butOK"
+    text="  OK  "
+    OnClick="SubmitBtn_Click" 
+    runat="server"
+/&gt;
+&lt;/form&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

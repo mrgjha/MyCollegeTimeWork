@@ -1,0 +1,71 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+    public class Exec extends JFrame{
+    	private String sFileName;
+    	private JTextField fFileName;
+    	private JLabel lFileName;
+    	private JButton bRun;
+    	
+
+
+        	public Exec(){
+        		super("Executing other program in Java Environment");
+        		
+        		Container container = getContentPane();
+        		container.setLayout(new FlowLayout());
+        		
+        		lFileName = new JLabel("Enter the file in correct Path");
+        		container.add(lFileName);
+        		
+        		fFileName = new JTextField(25);
+        		container.add(fFileName);
+        		
+        		bRun = new JButton("Run");
+        		container.add(bRun);
+        		bRun.addActionListener(
+
+
+            			new ActionListener(){
+
+
+                				public void actionPerformed(ActionEvent e){
+                					sFileName = fFileName.getText(); // file that execute
+                					fFileName.setText("");
+                					
+
+
+                    					try{
+                    						Process p = null; //it encapsulates an executing 
+                    program
+                    						Runtime r = Runtime.getRuntime();
+                    						
+                    						p = r.exec(sFileName);
+                    						p.waitFor(); // this methods doesn't return until the 
+                    process on which it's called terminate
+                    					}
+
+
+                        					catch(Exception ob){
+                        						JOptionPane.showMessageDialog(null, "An Error 
+                        Caught: " + ob, "Error", JOptionPane.ERROR_MESSAGE);
+                        					}
+                        				}
+                        			}
+                        		);
+                        		
+                        		
+                        		setSize(300, 150);
+                        		setVisible(true);
+                        	}	
+                        	
+
+
+                            	public static void main(String args[]){
+                            		Exec window = new Exec();
+                            		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                            	}
+                        }	
+

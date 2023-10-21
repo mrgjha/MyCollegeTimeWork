@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+@ Page Language=VB Debug=true %&gt;
+&lt;%@ Import Namespace="System.Data" %&gt;
+&lt;%@ Import Namespace="System.Data.OLEDB" %&gt;
+&lt;script runat=server&gt;
+Sub Page_Load(ByVal Sender as Object, ByVal E as EventArgs)
+    If Not IsPostBack Then
+        Dim DBConn as OleDbConnection
+        Dim DBCommand As OleDbDataAdapter
+        Dim DSPageData as New DataSet
+        DBConn = New OleDbConnection( _
+            "PROVIDER=Microsoft.Jet.OLEDB.4.0;" _
+            & "DATA SOURCE=" _
+            & Server.MapPath _
+            ("PhoneDir.mdb;"))
+        DBCommand = New OleDbDataAdapter _
+            ("Select EmpName as [Employee Name], " _
+            & "Department, PhoneNumber as " _
+            & "[Phone Number] From Emps " _
+            & "Order By EmpName", DBConn)
+        DBCommand.Fill(DSPageData, _
+            "Employees")
+        dgEmps.DataSource = _
+            DSPageData.Tables("Employees").DefaultView
+        dgEmps.DataBind()
+        DBCommand = New OleDbDataAdapter _
+            ("Select Distinct Department From Emps " _
+            & "Order By Department", DBConn)
+        DBCommand.Fill(DSPageData, _
+            "Departments")
+        ddlDepartments.DataSource = _
+            DSPageData.Tables("Departments").DefaultView
+        ddlDepartments.DataBind()
+    End If
+End Sub
+Sub ddl1_Changed(Sender As Object, E As EventArgs)
+    Dim DBConn as OleDbConnection
+    Dim DBCommand As OleDbDataAdapter
+    Dim DSPageData as New DataSet
+    DBConn = New OleDbConnection( _
+        "PROVIDER=Microsoft.Jet.OLEDB.4.0;" _
+        & "DATA SOURCE=" _
+        & Server.MapPath _
+        ("PhoneDir.mdb;"))
+    DBCommand = New OleDbDataAdapter _
+        ("Select EmpName as [Employee Name], " _
+        & "Department, PhoneNumber as " _
+        & "[Phone Number] From Emps " _
+        & "Where Department = '" _
+        & ddlDepartments.SelectedItem.Text _
+        & "' Order By EmpName", DBConn)
+    DBCommand.Fill(DSPageData, _
+        "Employees")
+    dgEmps.DataSource = _
+        DSPageData.Tables("Employees").DefaultView
+    dgEmps.DataBind()
+End Sub
+&lt;/SCRIPT&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Phone Directory&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;Body LEFTMARGIN="40"&gt;
+&lt;form runat="server"&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:label 
+    id="lblMessage1" 
+    font-size="12pt"
+    font-bold="True"
+    font-name="Lucida Console"
+    text="Phone Number List"
+    runat="server"
+/&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:datagrid
+    id="dgEmps" 
+    runat="server" 
+    autogeneratecolumns="True"
+/&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:label 
+    id="lblMessage2" 
+    font-size="10pt"
+    font-name="Lucida Console"
+    text="Filter by Department"
+    runat="server"
+/&gt;
+&lt;BR&gt;
+&lt;asp:dropdownlist
+    id="ddlDepartments"
+    datatextfield="Department" 
+    autopostback="True"
+    onselectedindexchanged="ddl1_Changed"
+    runat="server"
+/&gt;
+&lt;/form&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

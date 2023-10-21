@@ -1,0 +1,33 @@
+
+<html>
+<head><title>PL/SQL program to know the name of employee whose salary is minimum?</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<H2>PL/SQL program to know the name of employee whose salary is minimum?</H2>
+ <pre>
+ create or replace procedure show_name
+ is
+ cursor name_cur is
+ select ename from emp order by sal desc;
+ rec name_cur%rowtype;
+ begin
+ open name_cur;
+ for rows in 1..100
+ loop
+ fetch name_cur into rec;
+ end loop;
+ dbms_output.Put_Line(name_cur%rowcount);
+ dbms_output.put_line(rec.ename);
+ close name_cur;
+ end;
+<pre>
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

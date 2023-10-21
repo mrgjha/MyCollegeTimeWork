@@ -1,0 +1,42 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &lt;graphics.h&gt;
+#include &lt;conio.h&gt;
+
+int main(void)
+{
+  int driver, mode;
+  driver = DETECT; /* autodetect */
+  mode = 0;
+  initgraph(&driver, &mode, "c:\\tc\\bgi");
+
+  /* display a green 2-d bar */
+  setfillstyle(SOLID_FILL, GREEN);
+  bar(100, 100, 120, 200);
+
+  /* now show a red 3-d bar */
+  setfillstyle(SOLID_FILL, RED);
+  bar3d(200, 100, 220, 200, 10, 1);
+
+  getch();
+  restorecrtmode();
+  return 0;
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

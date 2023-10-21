@@ -1,0 +1,47 @@
+
+
+<html>
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+//input two numbers and output the sum
+
+import java.io.*;
+public class AddTwo {
+
+public static void main (String[] args) throws IOException {
+
+InputStreamReader inStream = new InputStreamReader( System.in ) ;
+BufferedReader stdin = new BufferedReader( inStream );
+
+String line1, line2; // declaration of input Strings
+int first, second, sum ; // declaration of int variables
+
+System.out.println("Enter first integer:");
+
+line1 = stdin.readLine();
+first = Integer.parseInt( line1 ); // convert line1 to first int
+
+System.out.println("Enter second integer:");
+line2 = stdin.readLine();
+
+second = Integer.parseInt( line2 ); // convert line2 to second int
+
+sum = first + second; // add the two ints, put result insum
+System.out.println("The sum of " + first + " plus " + second +" is " + sum);
+}
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

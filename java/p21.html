@@ -1,0 +1,65 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class SimpleAp extends JFrame {
+	public SimpleAp() {
+		super("An Application");
+		Container contentPane = getContentPane();
+		Icon icon = new ImageIcon("balls10.gif", 
+			"An animated GIF on a swing");
+		JLabel label = new JLabel("Swing!", icon,
+			SwingConstants.CENTER);
+		contentPane.add(label, BorderLayout.CENTER);
+	} // SimpleAp( )
+	
+public static void main(String args[]) {
+		final JFrame f = new SimpleAp();
+
+		f.setBounds(100,100,300,250);
+		f.setVisible(true);
+		f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+		f.addWindowListener(new WindowAdapter() {
+			public void windowClosed(WindowEvent e) {
+				System.exit(0);
+			}
+		});
+	} // main( )
+} // SimpleAp
+
+/*
+
+Applet code is shorter
+Need no main method for an applet
+Browser does many things for us
+Instantiates the class
+Sets the applet size
+Deals with closing events
+
+*************************
+
+Application main needs to:
+Create the instance
+Set the size
+Set the visibility
+Handle closing events */
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

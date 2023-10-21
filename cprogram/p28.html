@@ -1,0 +1,44 @@
+<html>
+<head>
+
+<title>A global variable can be accessed even if another variable with the same name has been declared inside the function: 
+</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+//A global variable can be accessed even if another variable with the same name 
+has been declared inside the function: 
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+
+double a = 128;
+
+int main ()
+{   
+
+double a = 256;
+  
+cout << "Local a:  " << a   << endl;  
+cout << "Global a: " << ::a << endl;  
+ 
+return 0;
+
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

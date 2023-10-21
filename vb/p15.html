@@ -1,0 +1,41 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Private Sub Form_Resize()
+  'this routine calculates the necessary fudge factors
+  ' so as to make text perfectly centered
+  'and readjusts CurrentX, CurrentY accordingly
+  Dim Message As String
+  Dim WidthFudgefactor As Integer
+  Dim HeightFudgefactor As Integer
+  Dim LeftCoord As Integer, TopCoord As Integer
+  
+  Cls  'clear any text already there
+  Message = "Welcome to Visual Basic!"
+  LeftCoord = Me.ScaleWidth / 2
+  TopCoord = Me.ScaleHeight / 2
+  LeftCoord = Me.ScaleLeft + LeftCoord
+  TopCoord = Me.ScaleTop + TopCoord
+  WidthFudgefactor = Me.TextWidth(Message) / 2
+  HeightFudgefactor = Me.TextHeight(Message) / 2
+  CurrentX = LeftCoord - WidthFudgefactor
+  CurrentY = TopCoord - HeightFudgefactor
+  Print Message
+End Sub
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

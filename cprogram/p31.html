@@ -1,0 +1,58 @@
+<html>
+<head>
+
+<title>C++ functions can be declared inline
+</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+//If they contain just simple lines of code, use no for loops or the like, 
+//C++ functions can be declared inline. This means their code will be inserted 
+//right everywhere the function is used. That's somehow like a macro. 
+//Main advantage is the program will be faster. A little drawback is it will be bigger,
+// because the full code of the function was inserted everywhere it is used: 
+
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+
+
+
+inline double hypothenuse (double a, double b)
+
+{   
+
+return sqrt (a * a + b * b);}
+int main ()
+
+{   
+
+double k = 6, m = 9;   // Next two lines produce exactly the same code:  
+
+cout << hypothenuse (k, m) << endl;   
+cout << sqrt (k * k + m * m) << endl;   
+return 0;
+
+}
+
+(The possibility to use inline functions has been added to C in C99 and ANSI C 2000.)
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

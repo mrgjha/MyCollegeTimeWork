@@ -1,0 +1,5 @@
+Sending Mail is very easy in ASP.NET. Before you run this program you need to do some settings in SMTP server. 
+
+Plz open IIS--> SMTP --> Properties-->Access Tab-->Click Relay Button-->Select Only the List below Radio Button and then Press Add Button-->Select Single User Radio button and then enter IP address as 127.0.0.1-->Click OK and Apply.
+
+Once you do all the settings above then run the asp.net program. Then it works perfectly. Remeber you must do the above settings. If it won't work plz e-mail me.

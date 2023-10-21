@@ -1,0 +1,106 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+//Server.java
+
+
+import java.net.*;
+import java.io.*;
+public class Server {
+public static void main(String[] ar) {
+ int port = 6666; // just a random port. make sure you enter something between 1025 and 65535.
+ try {
+    ServerSocket ss = new ServerSocket(port); // create a server socket and bind it to the above port number.
+    System.out.println("Waiting for a client...");
+ Socket socket = ss.accept(); // make the server listen for a connection, and let you know when it gets one.
+ System.out.println("Got a client :) ... Finally, someone saw me through all the cover!");
+    System.out.println();
+ // Get the input and output streams of the socket, so that you can receive and send data to the client.
+    InputStream sin = socket.getInputStream();
+    OutputStream sout = socket.getOutputStream();
+ // Just converting them to different streams, so that string handling becomes easier.
+    DataInputStream in = new DataInputStream(sin);
+    DataOutputStream out = new DataOutputStream(sout);
+ String line = null;
+    while(true) {
+ line = in.readUTF(); // wait for the client to send a line of text.
+ System.out.println("The dumb client just sent me this line : " + line);
+    System.out.println("I'm sending it back...");
+ out.writeUTF(line); // send the same line back to the client.
+    out.flush(); // flush the stream to ensure that the data reaches the other end.
+ System.out.println("Waiting for the next line...");
+    System.out.println();
+}
+
+
+} catch(Exception x) {
+x.printStackTrace();
+}
+}
+}
+
+
+//Client.java
+import java.net.*;
+import java.io.*;
+public class Client {
+public static void main(String[] ar) {
+ int serverPort = 6666; // make sure you give the port number on which the server is listening.
+String address = "127.0.0.1"; // this is the IP address of the server program's computer. // the address given here means "the same computer as the client".
+
+try {
+InetAddress ipAddress = InetAddress.getByName(address); // create an object that represents the above IP address.
+System.out.println("Any of you heard of a socket with IP address " + address + " and port " + serverPort + "?");
+ Socket socket = new Socket(ipAddress, serverPort); // create a socket with the server's IP address and server's port.
+System.out.println("Yes! I just got hold of the program.");
+ // Get the input and output streams of the socket, so that you can receive and send data to the client.
+InputStream sin = socket.getInputStream();
+OutputStream sout = socket.getOutputStream();
+ // Just converting them to different streams, so that string handling becomes easier.
+DataInputStream in = new DataInputStream(sin);
+DataOutputStream out = new DataOutputStream(sout);
+ // Create a stream to read from the keyboard.
+BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+ String line = null;
+System.out.println("Type in something and press enter. Will send it to the server and tell ya what it thinks.");
+System.out.println();
+ while(true) {
+line = keyboard.readLine(); // wait for the user to type in something and press enter.
+ System.out.println("Sending this line to the server...");
+out.writeUTF(line); // send the above line to the server.
+out.flush(); // flush the stream to ensure that the data reaches the other end.
+line = in.readUTF(); // wait for the server to send a line of text.
+ System.out.println("The server was very polite. It sent me this : " + line);
+System.out.println("Looks like the server is pleased with us. Go ahead and enter more lines.");
+System.out.println();
+}
+
+
+} catch(Exception x) {
+x.printStackTrace();
+}
+}
+}
+
+//javac Server.java Client.java 
+
+//Open two command windows (DOS prompts). In one of those, enter
+
+ //java Server
+//and in the other,
+
+ //java Client
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

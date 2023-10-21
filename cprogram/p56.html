@@ -1,0 +1,121 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+// This program won't compile.
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+class base {
+  int i, j;
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout &lt;&lt; i &lt;&lt; " " &lt;&lt; j &lt;&lt; "\n"; }
+};
+
+// Public elements of base are private in derived.
+class derived : private base {
+  int k;
+public:
+  derived(int x) { k = x; }
+  void showk() { cout &lt;&lt; k &lt;&lt; "\n"; }
+};
+
+int main()
+{
+  derived ob(3);
+  clrscr();
+  ob.set(1, 2); // Error, can't access set()
+  ob.show();    // Error, can't access show()
+
+  return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+class X {
+protected:
+  int i;
+  int j;
+public:
+  void get_ij() {
+    cout &lt;&lt; "Enter two numbers: ";
+    cin &gt;&gt; i &gt;&gt; j;
+  }
+  void put_ij() { cout &lt;&lt; i &lt;&lt; " " &lt;&lt; j &lt;&lt; "\n"; }
+} ;
+
+// Now, i and j are converted to private members of Y.
+class Y : private X {
+  int k;
+public:
+  int get_k() { return k; }
+  void make_k() { k = i*j; }
+} ;
+
+/* Because i and j are private in Y, they
+   may not be inherited by Z. */
+class Z : public Y {
+public:
+  void f();
+} ;
+
+// This function no longer works.
+void Z::f()
+{
+//  i = 2;  i and j are no longer accessible
+//  j = 3;
+}
+
+int main()
+{
+  Y var;
+  Z var2;
+
+clrscr();
+
+//  var.get_ij();  no longer accessible
+//  var.put_ij();  no longer accessible
+
+  var.make_k();
+  cout &lt;&lt; var.get_k();
+  cout &lt;&lt; "\n";
+
+  var2.f();
+//  var2.put_ij();  no longer accessible
+
+getch();
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

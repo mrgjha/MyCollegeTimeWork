@@ -1,0 +1,181 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include &lt;graphics.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;dos.h&gt;
+
+void chk(int,char *);
+int button,tx,ty;
+int y=0;
+
+int startmouse()
+{
+	union REGS ii,oo;
+	ii.x.ax=0;
+	int86(0x33,&ii,&oo);
+	return (oo.x.ax);
+}
+void showmouse()
+{
+	union REGS ii,oo;
+	ii.x.ax=1;
+	int86(0x33,&ii,&oo);
+}
+void hidemouse()
+{
+	union REGS ii,oo;
+	ii.x.ax=2;
+	int86(0x33,&ii,&oo);
+}
+void getmousepos(int *but,int *x,int *y)
+{
+	union REGS ii,oo;
+	ii.x.ax=3;
+	int86(0x33,&ii,&oo);
+	*but=oo.x.bx;
+	*x=oo.x.cx;
+	*y=oo.x.dx;
+}
+
+void main(void)
+{
+	/* request auto detection */
+	int gdriver = DETECT, gmode, errorcode,i,maxx,maxy;
+	char *ch[]={"Tamil","English","Malayalam","Hindi","French"};
+	/* initialize graphics mode */
+	initgraph(&gdriver, &gmode, "c:\\tc\\bgi");
+	//********* Mouse Initiate function *********
+	if(startmouse()==0)
+	{
+		cleardevice();
+		setbkcolor(3);
+		setcolor(4);
+		outtextxy(100,100,"Mouse not initialised");
+		getch();
+		closegraph();
+		exit(1);
+	}//****** Startmouse over ******
+	/* read result of initialization */
+	errorcode = graphresult();
+	if (errorcode != grOk)  /* an error occurred */
+	{
+		printf("Graphics error: %s\n", grapherrormsg(errorcode));
+		printf("Press any key to halt:");
+		getch();
+		exit(1); /* return with error code */
+	}
+     
+	setcolor(14);
+	settextstyle(0,0,1);
+	for(i=0;i&lt;5;i++)
+		outtextxy(120,157+(i*40),ch[i]);
+      	
+setcolor(15);
+for(i=0;i&lt;5;i++)	     	
+rectangle(95,155+(i*40),105,165+(i*40));
+setcolor(14);
+outtextxy(320,410,"Exit");
+setcolor(0);
+for(i=0;i&lt;5;i++)
+	{       {
+line(95,155+(i*40),100,160+(i*40));
+line(100,160+(i*40),105,155+(i*40));
+	}
+
+       }
+setcolor(4);
+outtextxy(365,257,"Tamil");
+while(1)
+	{
+showmouse();
+getmousepos(&button,&tx,&ty);
+if(tx&gt;=300&&tx&lt;=370&&ty&gt;=400&&ty&lt;=425)//** Exit Button **
+		{
+if((button&1)==1)
+		{
+hidemouse();
+cleardevice();
+closegraph();
+exit(0);
+		}
+		}//*** Exit over ***
+
+
+
+if(tx>=95&&tx<=105&&ty>=155&&ty<=165)//** Tamil **
+		  chk(0,ch[0]);
+if(tx>=95&&tx<=105&&ty>=195&&ty<=205)//** English **
+		  chk(1,ch[1]);
+if(tx>=95&&tx<=105&&ty>=235&&ty<=245)//** Malayalam **
+		  chk(2,ch[2]);
+if(tx>=95&&tx<=105&&ty>=275&&ty<=295)//** Hindi **
+		  chk(3,ch[3]);
+if(tx>=95&&tx<=105&&ty>=305&&ty<=335)//** French **
+		  chk(4,ch[4]);
+ }//*** While loop over ***
+}
+
+void chk(int k,char *c)
+{
+int i=0,j;
+showmouse();
+getmousepos(&button,&tx,&ty);
+if(((button&1)==1))
+  {
+hidemouse();
+for(;i&lt;5;i++)
+	{
+if(i==k)
+		{
+if(y==0)
+		{
+setcolor(15);
+		   
+line(95,155+(i*40),100,160+(i*40));
+line(100,160+(i*40),105,155+(i*40));
+
+y=1;
+		  }
+
+else
+{
+setcolor(0);
+		   
+line(95,155+(i*40),100,160+(i*40));
+line(100,160+(i*40),105,155+(i*40));
+y=0;
+	}
+	}
+
+
+}
+
+
+
+setfillstyle(1,15);
+bar(364,254,487,267);
+setcolor(4);
+outtextxy(365,257,c);
+
+	       }
+  }
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

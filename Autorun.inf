@@ -1,0 +1,9 @@
+[autorun]
+
+open=tutorial.exe
+
+icon=Point14.ico
+
+
+shell\readit\command=tutorial.exe
+shell\readit=MS OFFICE &TUTORIAL

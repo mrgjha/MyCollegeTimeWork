@@ -1,0 +1,46 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;HTML&gt;&lt;HEAD&gt;&lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;APPLET
+        CODE     = "MyApplet.class"
+        WIDTH    = 400
+        HEIGHT   = 300&gt;
+        
+    &lt;/APPLET&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+
+import java.applet.*; // for Applet class
+import java.awt.*;      // for Graphics class
+public class MyApplet extends Applet {
+        public void paint( Graphics g ) {
+                g.drawString("Hi there", 40, 40);
+                g.drawOval(40, 60, 45, 45);
+                g.drawRect(100, 60, 50, 50);
+                g.drawLine(170, 60, 250, 170);
+        } // end paint()
+        public void init() {
+                setBackground(Color.yellow);
+        }
+} // end class MyApplet
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

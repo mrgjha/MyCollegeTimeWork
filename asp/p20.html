@@ -1,0 +1,88 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Form Posted Using the GET Method&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#ADD8E6"&gt;
+  &lt;center&gt;&lt;h1&gt;HTML &amp; Web Design Tips &amp; Techniques&lt;/h1&gt;&lt;/center&gt;
+  &lt;hr /&gt;
+
+  &lt;form action="http://www.NVBizNet2.com/hwdtt/Chapter11/StockQuotes.asp"
+        method="GET"&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th colspan="3"&gt;Stocks to Watch&lt;/th&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type="text" name="s1" size="6" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="s2" size="6" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="s3" size="6" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+
+      &lt;tr&gt;
+        &lt;td&gt;&lt;input type="text" name="s4" size="6" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="s5" size="6" /&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" name="s6" size="6" /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;p&gt;&lt;input type="submit" value="Submit" /&gt; 
+       &lt;input type="reset" value="Reset" /&gt;&lt;/p&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Form Posted Using the GET Method&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#ADD8E6"&gt;
+  &lt;center&gt;&lt;h1&gt;HTML &amp; Web Design Tips &amp; Techniques&lt;/h1&gt;&lt;/center&gt;
+  &lt;hr /&gt;
+&lt;%
+  DIM i
+
+'** retrieve & display the form results both values and names **
+
+  With Response
+    For i=1 To Request.QueryString.count
+      .Write "&lt;b&gt;" & Request.QueryString.Key(i) & " : &lt;/b&gt;" & _
+        Request.QueryString(i) & "&lt;br /&gt;"
+    Next
+  End With
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &lt;graphics.h&gt;
+#include &lt;conio.h&gt;
+
+int main(void)
+{
+  int driver, mode;
+  driver = DETECT; /* autodetect */
+  mode = 0;
+  initgraph(&driver, &mode, "c:\\tc\\bgi");
+
+  circle(200, 200, 20);
+  circle(200, 200, 30);
+  circle(200, 200, 40);
+  circle(200, 200, 50);
+  circle(200, 200, 60);
+
+  getch();
+  restorecrtmode();
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

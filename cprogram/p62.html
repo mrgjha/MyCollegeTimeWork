@@ -1,0 +1,40 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include &lt;graphics.h&gt;
+#include &lt;conio.h&gt;
+
+int main(void)
+{
+  int driver, mode;
+
+  driver = DETECT; /* autodetect */
+  mode = 0;
+  initgraph(&driver, &mode, "c:\\tc\\bgi");
+
+  setcolor(WHITE);
+  arc(100, 100, 0, 90, 20);
+
+  getch(); /* wait until keypress */
+  restorecrtmode();
+
+  return 0;
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

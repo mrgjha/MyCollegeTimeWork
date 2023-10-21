@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<pre>
+&lt;pre&gt;
+&lt;script runat="server"&gt;
+Sub Page_Load
+link1.HRef="http://www.w3schools.com"
+End Sub
+&lt;/script&gt;
+
+&lt;html&gt;
+&lt;body&gt;&lt;form runat="server"&gt;
+&lt;a id="link1" runat="server"&gt;Visit W3Schools!&lt;/a&gt;
+&lt;/form&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+
+&lt;script runat="server"&gt;
+Sub submit(Source As Object, e As EventArgs)
+button1.Text="You clicked me!"
+End Sub
+&lt;/script&gt;
+
+
+&lt;html&gt;
+&lt;body&gt;&lt;form runat="server"&gt;
+&lt;asp:Button id="button1" Text="Click me!"
+runat="server" OnClick="submit"/&gt;
+&lt;/form&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+&lt;html&gt;
+&lt;body&gt;&lt;form runat="server"&gt;
+Enter a number from 1 to 100:
+&lt;asp:TextBox id="tbox1" runat="server" /&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;asp:Button Text="Submit" runat="server" /&gt;
+&lt;br /&gt;
+&lt;asp:RangeValidator
+ControlToValidate="tbox1"
+MinimumValue="1"
+MaximumValue="100"
+Type="Integer"
+EnableClientScript="false"
+Text="The value must be from 1 to 100!"
+runat="server" /&gt;
+&lt;/form&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

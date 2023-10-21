@@ -1,0 +1,131 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+
+<h3>Cardinality</h3>
+
+<ul>
+<li>[none] Default (One and Only One instance)
+<li>? 0,1
+<li>* 0,1,......N
+<li>+ 1,2,......N
+</ul>
+
+<h3>List Operators</h3>
+<ul>
+<li>, Sequence (in order)
+<li>| Choice(One of Several)
+</ul>
+<h3>Grouping Elements</h3>
+<ul>
+<li>Set of elements can be grouped within parantheses (Elem1?,Elem2?)+
+<br>Elem1 can occur 0 or 1 times followed by 0 or 1 occurrences of Elem2
+<br>The group(sequence) must occur 1 or more times
+</ul>
+<h3>OR</h3>
+<UL>
+<li>((Elem1,Elem2)|Elem3)*
+<br>Either the group of Elem1 or Elem2 is present(in order) or Elem3 is present,0 or more times
+</ul>
+
+<h3>Attribute Modifiers</h3>
+
+<ul>
+<li>#IMPLIED (Attribute is not required)
+<li>#REQUIRED (Attribute must be present)
+<li>#FIXED "value" (Attribute is present and always has this value)
+<li>Default value (applie to enumeration)
+</ul>
+
+
+
+
+<pre>
+
+&lt;?xml version="1.0" standalone="yes"?&gt;
+  &lt;!DOCTYPE NFR [
+  &lt;!ELEMENT NFR (PARTICIPANT*)&gt;
+  &lt;!ELEMENT PARTICIPANT (NAME, ADDRESS, EVENT*)&gt;
+  &lt;!ELEMENT NAME (#PCDATA)&gt;
+  &lt;!ELEMENT ADDRESS (#PCDATA)&gt;
+  &lt;!ELEMENT EVENT (#PCDATA)&gt;
+  ]&gt;
+&lt;NFR&gt;
+  &lt;PARTICIPANT&gt;
+    &lt;NAME&gt; John Doe &lt;/NAME&gt;
+    &lt;ADDRESS&gt; Katy, TX &lt;/ADDRESS&gt;
+    &lt;EVENT&gt; Bull Riding &lt;/EVENT&gt;
+    &lt;EVENT&gt; Team Roping &lt;/EVENT&gt;
+  &lt;/PARTICIPANT&gt;
+  &lt;PARTICIPANT&gt;
+    &lt;NAME&gt; Billy Bob Cowboy &lt;/NAME&gt;
+    &lt;ADDRESS&gt; Nashville, TN &lt;/ADDRESS&gt;
+    &lt;EVENT&gt; Bareback Bronc &lt;/EVENT&gt;
+    &lt;EVENT&gt; Team Roping &lt;/EVENT&gt;
+  &lt;/PARTICIPANT&gt; 
+&lt;/NFR&gt;
+
+
+
+
+
+&lt;?xml version="1.0" standalone="yes"?&gt;
+&lt;!DOCTYPE ADDRESSBOOK [
+  &lt;!ELEMENT ADDRESSBOOK (CONTACT)&gt;
+ &lt;!ELEMENT CONTACT (NAME, STREET, SUITE, CITY, STATE, ZIP, PHONE, FAX, CELL)&gt;
+ &lt;!ELEMENT NAME (#PCDATA)&gt;
+ &lt;!ELEMENT STREET (#PCDATA)&gt;
+ &lt;!ELEMENT SUITE (#PCDATA)&gt;
+ &lt;!ELEMENT CITY (#PCDATA)&gt;
+ &lt;!ELEMENT STATE (#PCDATA)&gt;
+ &lt;!ELEMENT ZIP (#PCDATA)&gt;
+ &lt;!ELEMENT PHONE (#PCDATA)&gt;
+ &lt;!ELEMENT FAX (#PCDATA)&gt;
+ &lt;!ELEMENT CELL (#PCDATA)&gt;
+ ]&gt;
+&lt;ADDRESSBOOK&gt;
+  &lt;CONTACT&gt;
+    &lt;NAME&gt; George Jones Sr. &lt;/NAME&gt;
+    &lt;STREET&gt; 1235 Nolichucky Drive &lt;/STREET&gt;
+    &lt;SUITE-APT&gt; Apt. 15 &lt;/SUITE-APT&gt;
+    &lt;CITY&gt; Houston &lt;/CITY&gt;
+    &lt;STATE&gt; TX &lt;/STATE&gt;
+    &lt;ZIP&gt; 07711&lt;/ZIP&gt;
+    &lt;PHONE&gt; 555-555-1212 &lt;/PHONE&gt;
+    &lt;FAX&gt; 555-555-1313 &lt;/FAX&gt;
+    &lt;CELL&gt; 555-555-1414&lt;/CELL&gt;
+    &lt;EMAIL&gt; gj@nolichucky.com&lt;/EMAIL&gt;
+  &lt;/CONTACT&gt;
+  &lt;CONTACT&gt;
+    &lt;NAME&gt; Jenny "Mug" Beer &lt;/NAME&gt;
+    &lt;STREET&gt; 4323 Natchitoches Lane&lt;/STREET&gt;
+    &lt;SUITE-APT&gt; Suite 4B &lt;/SUITE-APT&gt;
+    &lt;CITY&gt; Enterprise &lt;/CITY&gt;
+    &lt;STATE&gt; MS &lt;/STATE&gt;
+    &lt;ZIP&gt; 09988&lt;/ZIP&gt;
+    &lt;PHONE&gt; 555-555-3131 &lt;/PHONE&gt;
+    &lt;FAX&gt; 555-555-3535 &lt;/FAX&gt;
+    &lt;CELL&gt; 555-555-3939&lt;/CELL&gt;
+    &lt;EMAIL&gt; mug@enterprise.com&lt;/EMAIL&gt;
+  &lt;/CONTACT&gt;
+&lt;/ADDRESSBOOK&gt;
+
+
+
+
+
+
+</pre>
+</b>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+
+
+
+</body>
+</html>

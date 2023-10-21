@@ -1,0 +1,54 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class JRadioButtonEventTest extends JCloseableFrame implements ItemListener {
+    public JRadioButtonEventTest() {
+	super("JRadioButtonEventTest (Swing)", 300, 100);
+
+	JPanel panel = new JPanel(new FlowLayout());
+
+	JRadioButton rb = new JRadioButton("One", false);
+	rb.addItemListener(this);
+	panel.add(rb);
+
+	rb = new JRadioButton("Two", true);
+	rb.addItemListener(this);
+	panel.add(rb);
+
+	rb = new JRadioButton("Three", false);
+	rb.addItemListener(this);
+	panel.add(rb);
+
+	setContentPane(panel);
+    }
+
+    public void itemStateChanged(ItemEvent event) {
+	JRadioButton radioButton = (JRadioButton)event.getSource();
+	System.out.println(radioButton.getText());
+    }
+
+    public static void main(String [] args) {
+	JRadioButtonEventTest frame = new JRadioButtonEventTest();
+	frame.setVisible(true);
+    }
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

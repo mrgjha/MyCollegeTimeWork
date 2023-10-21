@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<title>DatagridPaging</title>
+</HEAD>
+<body>
+<form id="Form1" runat="server">
+
+<asp:DataGrid ID="dgrdAccounts" runat="server" 
+AllowPaging="True" PageSize="5" 
+OnPageIndexChanged="drdaccounts_pageIndexChanged" 
+cellpadding="3">
+</asp:DataGrid>
+</form>
+</body>
+</HTML>
+
+Write the following code in the Code behind window
+
+Imports System.Data.SqlClient
+
+Dim myConnection As SqlConnection = New SqlConnection("Data Source=SYS1;Integrated Security=SSPI;Initial Catalog=FinAccounting")
+Const strSQL As String = "SELECT AccountCode,Accountname,AccountDescription FROM AccountsTable"
+Dim myDataAdapter As SqlDataAdapter = New SqlDataAdapter(strSQL, myConnection)
+Dim dstaccounts As New DataSet()
+
+Private Sub Page_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+If Not IsPostBack() Then
+BindDataGrid()
+End If
+End Sub
+
+Sub BindDataGrid()
+myConnection.Open()
+myDataAdapter.Fill(dstaccounts, "AccountsTable")
+dgrdAccounts.DataSource = dstaccounts
+dgrdAccounts.DataBind()
+End Sub
+
+Sub drdaccounts_pageIndexChanged(ByVal s As Object, ByVal e As DataGridPageChangedEventArgs)
+dgrdAccounts.CurrentPageIndex = e.NewPageIndex
+BindDataGrid()
+End Sub

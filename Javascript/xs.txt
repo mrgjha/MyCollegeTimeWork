@@ -1,0 +1,12 @@
+The DataGrid control has built-in support for paging through the records of a data source.
+For example, there may be a large number of records in the AccountsTable. If we divide the records 
+into multiple pages, it is convenient for the user to see the data. 
+We enable paging for a DataGrid by enabling the AllowPaging property and 
+creating a subroutine to change the current page. 
+
+This example displays five records at a time from the AccountsTable. By clicking the 
+< and > links displayed at the bottom of the DataGrid, 
+we can navigate forward or backward. A new page is selected 
+with the drdaccounts_pageIndexChanged subroutine. 
+This subroutine assigns the value of the NewPageIndex to the DataGrid control's CurrentPageIndex. 
+The subroutine then rebinds the DataGrid to the data source, displaying the new page of records.

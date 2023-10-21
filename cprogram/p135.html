@@ -1,0 +1,77 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include&lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;bios.h&gt;
+
+
+int getkey(void)
+/* Uses the BIOS to read the next keyboard character */
+{
+ int key, lo, hi;
+
+ key = bioskey(0);
+ lo = key & 0X00FF;
+ hi = (key & 0XFF00) &gt;&gt; 8;
+ return((lo == 0) ? hi + 256 : lo);
+} /* getkey */
+
+
+
+void inout(int *y)
+{
+
+unsigned character;
+
+for(int index=0;index&lt;10;index++)
+{
+
+character = getkey();
+cout&lt;&lt;(char)character&lt;&lt;endl;
+y[index] = ((char)character);
+
+}
+
+}
+
+
+
+void main()
+{
+clrscr();
+int x;
+int *z;
+
+inout(&x);
+z=&x;
+
+for(int index=0;index&lt;10;index++)
+{
+cout&lt;&lt;*z&lt;&lt;endl;
+*z++;
+
+
+}
+
+getch();
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

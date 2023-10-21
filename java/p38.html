@@ -1,0 +1,47 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+The interface Runnable specifies only one method ,
+the run() method,however,we can't use methods
+like stop,sleep,getName(),...
+which are member functions of the thread class
+
+
+A class that implements Runnable interface works
+in the same way as a class that extends Thread class
+
+We can create an instance of that class and pass
+that instance to the constructor for making a new
+thread
+
+
+
+class MyThreadRunnable implements Runnable  {
+        public void run() {
+                System.out.println(" this thread is running ... ");
+        }
+} // end class MyThread
+
+class ThreadEx21 {
+        public static void main(String [] args  ) {
+                Thread t = new Thread(new MyThreadRunnable());
+                            // due to implementing the Runnable interface
+                           // I can call start(), and this will call run().
+                t.start();
+        } // end main()
+}       // end class ThreadEx2
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,74 @@
+Java Programming Tips
+Object Persistence Made Easy 
+by David Reilly 
+With object serialization, your Java applets and applications can save and load the state of objects to disk or over a network. In this article, we'll examine the benefits of object serialization, and how to implement it in your own programs. 
+September 22, 1999 
+
+One of the most critical tasks that applications have to perform is to save and restore data. Whether it be a word processing application that saves documents to disk, a utility that remembers its configuration for next time, or a game that sets aside world domination for the night, the ability to store data and later retrieve it is a vital one. Without it, software would be little more effective that the typewriter - users would have to re-type the data to make further modifications once the application exits. 
+Writing the code for saving data, however, can become boring repetitive work. First, the programmer must create a specification document for the proposed file structure. Next, the programmer must implement save and restore functions that convert object data to & from primitive data types, and test it with sample data. 
+
+If the application later requires new data to be stored, the file specification must be modified, as well as the save and restore methods. Take it from someone who's been there - creating save & restore functions is not a fun task. 
+
+The solution to this is object serialization. Object serialization takes an object's state, and converts it to a stream of data for you. With object serialization, its an easy task to take any object, and make it persistent, without writing custom code to save object member variables. The object can be restored at a later time, and even a later location. With persistence, we can move an object from one computer to another, and have it maintain its state. This very cool feature, in Java, also happens to be very easy to use. 
+
+Serializing Objects
+Java makes it easy to serialize objects. Any object whose class implements the java.io.Serializable interface can be made persistent with only a few lines of code. No extra methods need to be added to implement the interface, however - the purpose of the interface is to identify at run-time which classes can be safely serialized, and which cannot. You, as a programmer, need only add the implements keyword to your class declaration, to identify your classes as serializable. 
+
+public class UserData implements
+       java.io.Serializable
+Now, once a class is serializable, we can write the object to any OutputStream, such as to disk or a socket connection. To achieve this, we must first create an instance of java.io.ObjectOutputStream, and pass the constructor an existing OutputStream instance. 
+
+// Write to disk with FileOutputStream
+FileOutputStream f_out = new 
+        FileOutputStream("myobject.data");
+
+// Write object with ObjectOutputStream
+ObjectOutputStream obj_out = new
+        ObjectOutputStream (f_out);
+
+// Write object out to disk
+obj_out.writeObject ( myObject );
+Note that any Java object that implements the serializable interface can be written to an output stream this way - including those that are part of the Java API. Furthermore, any objects that are referenced by a serialized object will also be stored. This means that arrays, vectors, lists, and collections of objects can be saved in the same fashion - without the need to manually save each one. This can lead to significant time and code savings. 
+
+Restoring Objects From a Serialized State
+Reading objects back is almost as easy. The one catch is that at runtime, you can never be completely sure what type of data to expect. A data stream containing serialized objects may contain a mixture of different object classes, so you need to explicitly cast an object to a particular class. If you've never cast an object before, the procedure is relatively straightforward. First check the object's class, using the instanceof operator. Then cast to the correct class.
+
+// Read from disk using FileInputStream
+FileInputStream f_in = new 
+        FileInputStream("myobject.data");
+
+// Read object using ObjectInputStream
+ObjectInputStream obj_in = 
+        new ObjectInputStream (f_in);
+
+// Read an object
+Object obj = obj_in.readObject();
+
+if (obj instanceof Vector)
+{
+        // Cast object to a Vector
+        Vector vec = (Vector) obj;
+
+        // Do something with vector....
+}
+Further Issues With Serialization
+As you can see, its relatively easy to serialize an object. Whenever new fields are added to an object, they will be saved automatically, without requiring modification to your save and restore code. However, there are some cases where this behavior is not desirable. For example, a password member variable might not be safe to transmit to third parties over a network connection, and might need to be left blank. In this case, the transient keyword can be used. The transient field indicates that a particular member variable should not be saved. Though not used often, it's an important keyword to remember.
+
+public class UserSession implements 
+         java.io.Serializable
+{
+        String username;
+        transient String password;
+}
+Summary
+Java's support for object serialization makes the implementation of persistent objects extremely easy. In contrast, the amount of code required to save and restore every field of an object is complex and repetitive work. While it is certainly possible to write your own serialization mechanism, the simplicity of that provided by Java would be hard to beat.
+
+Serialization benefits programmers by 
+
+Reducing time taken to write code for save and restoration of object or application state 
+Eliminating complexity of save and restore operations, and avoiding the need for creating a new file format 
+Making it easier for objects to travel over a network connection. 
+With relatively little effort, you can apply serialization to a variety of tasks. Not only do applications benefit from serialization, but also applets. Rather than specifying a long list of parameters, or performing time consuming initialization and parsing, an applet can simple reload a configuration object whose member variables contain all the information needed to execute. It's not just useful for Java applications - even applets can benefit, by loading their configuration details or parameters. With a little imagination, serialization may just have a place in your next project. 
+
+
+ 

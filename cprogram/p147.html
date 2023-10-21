@@ -1,0 +1,237 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;dos.h&gt;
+
+#define datafile "l:\\xq\\database\\data.dat"
+#define tempfile "l:\\xq\\database\\temp.dat"
+
+struct rec
+{
+int code;
+char name[20];   //structure of a file record used to store in data.dat file
+int q;
+float cost;
+}r;
+
+union REGS i,o;
+void display(),list(int*);
+int count=1,nor=0,count1=0,pagecount=1;
+void clr()
+ {
+
+ i.h.ah=6;
+ i.h.al=0;
+ i.h.ch=0;
+ i.h.cl=0;
+ i.h.dh=24;
+ i.h.dl=79;
+ i.h.bh=7;
+ int86(16,&i,&o);
+ }
+void main()
+ {
+char ch;
+clr();        //clears the screen
+
+
+textmode(3);
+  
+
+while(1)
+  {
+
+display();             //to create gui
+list(&count);          //   highlight the item count
+     
+
+fflush(stdin);
+ch=getch();
+     
+
+if(ch==0)
+	{
+fflush(stdin);
+ch=getch();              //to get scan codes of arrow keys
+	 }
+
+switch(ch)
+      {
+case 27:  exit(1);         // ascii code for escape key
+break;
+case 72:                                    //up arrow key
+
+if((nor&gt;18)&&(count%18==1)&&(count!=1))
+		   {
+
+pagecount--;
+clr();
+		   }
+
+if((nor&gt;18)&&(count==1))
+		   ;
+else
+count--;
+
+if((count&lt;1)&&(nor&lt;=18))
+count=nor;
+break;
+
+case 80:                            //down arrow key
+
+if((nor&gt;18)&&(count%18==0))
+		     {
+pagecount++;
+clr();
+		     }
+
+if((pagecount&gt;1)&&(count==nor))
+		     ;
+else
+count++;
+
+if((count&gt;nor)&&(nor&lt;=18))
+count=1;
+
+
+		   break;
+
+
+    }
+
+}
+
+}
+
+void display()
+{
+int i,k[5]={2,8,18,27,13},j=0;
+char q[5][25];
+
+_setcursortype(_NOCURSOR);
+textcolor(15);
+textbackground(5);
+gotoxy(18,2);
+cprintf("               Store Details              ");
+
+strcpy(q[0]," Sno ");
+strcpy(q[1],"   Item Code   ");
+strcpy(q[2],"    Item Description    ");
+strcpy(q[3]," Quantity ");
+strcpy(q[4]," Price/unit ");
+for(i=0;i&lt;5;i++)
+{
+  j=j+k[i];
+  gotoxy(j,4);
+  textcolor(15);
+  textbackground(RED);
+  cprintf("%s",q[i]);
+
+}
+}
+
+ void list(int *c)
+ {
+ int j[5]={2,8,19,27,12},i=0,rp=0,m=0,rc=0;
+ FILE *fp;
+ long int recsize;
+ recsize=sizeof(r);
+ count1++;
+ fp=fopen(datafile,"rb+");
+ if(fp==NULL)
+ {
+ clr();
+ gotoxy(3,5);
+ printf("\nFile Creation Error\n\nPlease verify and set the path of ur data.dat file\nif the file does not exist,create a dummy file as data.dat keep it in the \npath specified above or u can change the path in the #define statement\nif u know where the file exists\nPress ESC to exit.");
+
+ }
+ rewind(fp);
+
+while(fread(&r,recsize,1,fp)==1)
+		     {
+i=0;
+m=0;
+
+if(count1==1)
+nor++;                     //no.of records
+
+rp++;      //record pointer
+
+if((rp&gt;18*(pagecount-1))&&(rp&lt;=18*(pagecount)))      
+
+//this formula will print the required records
+		 
+
+{
+		      
+
+rc++;
+		      
+if(rp==(*c))
+		       {
+			 
+textcolor(15);
+			 
+textbackground(10);
+		       }
+		       
+else
+		       {
+		       
+textcolor(15);
+		       
+textbackground(0);
+		       }
+		      
+m=m+j[i];		      
+gotoxy(m,rc+5);
+cprintf("%d.",rp);
+i++;
+m=m+j[i];
+gotoxy(m,rc+5);
+cprintf("%d",r.code);
+i++;
+m=m+j[i];
+gotoxy(m,rc+5);
+cprintf("%s",r.name);
+i++;
+m=m+j[i];
+gotoxy(m,rc+5);
+cprintf("%d",r.q);
+i++;
+m=m+j[i];
+gotoxy(m,rc+5);
+cprintf("%.2f",r.cost);
+
+		      }
+
+
+	       }
+
+      fcloseall();
+
+ }
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+
+
+

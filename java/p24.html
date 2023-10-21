@@ -1,0 +1,49 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+&ltHTML&gt&ltHEAD&gt&lt/HEAD&gt
+  &ltBODY&gt
+    &ltAPPLET
+        CODE     = "AppletWithParams.class"
+        WIDTH    = 400
+        HEIGHT   = 300&gt
+        &ltPARAM NAME   = "someText" 
+                         VALUE = "This text is from HTML file!"&gt
+    &lt/APPLET&gt
+  &lt/BODY&gt
+&lt/HTML&gt
+
+
+import java.awt.*;
+import javax.swing.JApplet;
+public class AppletWithParams extends JApplet {
+  String someText;
+  public String myGetParameter(String key, 
+                             String def) {
+    return (getParameter(key) != null ?           
+		getParameter(key) : def);
+  } // myGetParameter
+  public void init() {
+      someText = myGetParameter("someText", 
+                 "You can change this text!");
+  } // init
+  public void paint(Graphics g) {
+    g.drawString(someText, 100, 200);
+  } // paint
+} // AppletWithParams
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

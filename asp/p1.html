@@ -1,0 +1,337 @@
+
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Option Explicit
+Dim x, y 
+x = 5
+y = "This is a string"
+
+Option Explicit
+Dim z
+z = true
+z = "This is another string"
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim r 
+r = MsgBox("Press one of these buttons", vbAbortRetryIgnore, "Message Box")
+MsgBox("You entered " & r)
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Rem This program illustrates arithmetic operators
+Option Explicit
+Dim a
+a = 1 * 2 + 3 / 4 - 6 \ 5 + 2 ^ 2 + 9 Mod 2
+MsgBox(a)  ' Displays result
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim number
+number = -10
+If number &gt 0 Then
+  MsgBox number & " is positive"
+ElseIf number = 0 Then
+  MsgBox number & " is zero"
+Else
+  MsgBox number & " is negative"
+End If
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim number
+number = 3
+Select Case number
+  Case 0
+    MsgBox "Number is 0"
+  Case 1
+    MsgBox "Number is 1"
+  Case 2
+    MsgBox "Number is 2"
+  Case Else
+    MsgBox "Number is not 0, 1, or 2"
+End Select
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim number, sum
+For number = 0 to 9
+  sum = sum + number
+Next
+MsgBox "sum is " & sum
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim cube, number
+Do
+  number = number + 1
+  cube = number * number * number
+Loop Until cube &gt 1000
+MsgBox "The cube of " & number & " is " & cube
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim cube, number
+While cube &lt;= 1000
+  number = number + 1
+  cube = number * number * number
+Wend
+MsgBox "The cube of " & number & " is " & cube
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim s
+s = InputBox("Enter a string")
+MsgBox "You entered " & s
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim i(9), index
+For index = 0 To 9
+  i(index) = index
+Next
+Dim sum
+For index = 0 To 9
+  sum = sum + i(index)
+Next
+MsgBox "The sum is " & sum
+MsgBox "The lower bound is " & LBound(i)
+MsgBox "The upper bound is " & UBound(i)
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim data(3, 3), i, j, sum
+For i = 0 To 3
+  For j = 0 To 3
+    data(i, j) = i * j
+  Next
+Next
+For i = 0 To 3
+  For j = 0 To 3
+    sum = sum + data(i, j)
+  Next
+Next
+MsgBox "The sum of all elements is " & sum
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim data(5), i
+For i = 0 To 5
+  data(i) = i
+Next
+Dim sum
+For Each i In data
+  sum = sum + i
+Next
+MsgBox "Sum is " & sum
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim data(), i, sum
+
+' Work with four element array
+ReDim data(3)
+For i = 0 To 3
+  data(i) = i
+Next
+For i = 0 To 3
+  sum = sum + data(i)
+Next
+MsgBox("Sum of digits 0-3 is " & sum)
+
+' Expand it to a six element array
+ReDim Preserve data(5)
+For i = 4 To 5
+  data(i) = i
+Next
+For i = 4 To 5
+  sum = sum + data(i)
+Next
+MsgBox("Sum of digits 0-5 is " & sum)
+
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Randomize
+MsgBox "A random number is " & Rnd
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim s
+s = "This is line one" & vbCrLf & _
+"This is line two" & vbCrLf & _
+"This is line three"
+MsgBox(s)
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim s1, s2
+s1 = Trim(InputBox("Enter s1"))
+s2 = Trim(InputBox("Enter s2"))
+If StrComp(s1, s2) = 0 Then
+  MsgBox("The strings are equal")
+Else
+  MsgBox("The strings are not equal")
+End If
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+MsgBox "Now: " & Now
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Const TristateTrue = -1
+Const TristateFalse = 0
+Const TristateUseDefault = -2
+Dim s
+
+s = "FormatCurrency(1000000, 2) = " & _
+FormatCurrency(1000000, 2) & vbCrLf & _
+_
+"FormatCurrency(.45, 2, TristateTrue) = " & _
+FormatCurrency(.45, 2, TristateTrue) & vbCrLf & _
+_
+"FormatCurrency(-1000000, 2, TristateFalse, TristateTrue) = " & _
+FormatCurrency(-1000000, 2, TristateFalse, TristateTrue) & vbCrLf & _
+_
+"FormatCurrency(1000000, 2, TristateFalse, TristateTrue, TristateFalse) = " & _
+FormatCurrency(1000000, 2, TristateFalse, TristateTrue, TristateFalse) & vbCrLf
+
+MsgBox(s)
+
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Const TristateTrue = -1
+Const TristateFalse = 0
+Const TristateUseDefault = -2
+Dim s 
+
+s = "FormatNumber(1000000, 2) = " & _
+FormatNumber(1000000, 2) & vbCrLf & _
+_
+"FormatNumber(.45, 2, TristateTrue) = " & _
+FormatNumber(.45, 2, TristateTrue) & vbCrLf & _
+_
+"FormatNumber(-1000000, 2, TristateFalse, TristateTrue) = " & _
+FormatNumber(-1000000, 2, TristateFalse, TristateTrue) & vbCrLf & _
+_
+"FormatNumber(1000000, 2, TristateFalse, TristateTrue, TristateFalse) = " & _
+FormatNumber(1000000, 2, TristateFalse, TristateTrue, TristateFalse) & vbCrLf
+
+MsgBox(s)
+
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Const TristateTrue = -1
+Const TristateFalse = 0
+Const TristateUseDefault = -2
+Dim s
+
+s = "FormatPercent(.84, 2) = " & _
+FormatPercent(.84, 2) & vbCrLf & _
+_
+"FormatPercent(.0045, 2, TristateTrue) = " & _
+FormatPercent(.0045, 2, TristateTrue) & vbCrLf & _
+_
+"FormatPercent(-.0045, 2, TristateTrue, TristateTrue) = " & _
+FormatPercent(-.0045, 2, TristateTrue, TristateTrue) & vbCrLf & _
+_
+"FormatPercent(2.05, 2, TristateFalse, TristateTrue, TristateFalse) = " & _
+FormatPercent(2.05, 2, TristateFalse, TristateTrue, TristateFalse) & vbCrLf
+
+MsgBox(s)
+
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Dim s
+
+s = "FormatDateTime(Now) = " & _
+FormatDateTime(Now) & vbCrLf & _
+_
+"FormatDateTime(Now, vbGeneralDate) = " & _
+FormatDateTime(Now, vbGeneralDate) & vbCrLf & _
+_
+"FormatDateTime(Now, vbLongDate) = " & _
+FormatDateTime(Now, vbLongDate) & vbCrLf & _
+_
+"FormatDateTime(Now, vbShortDate) = " & _
+FormatDateTime(Now, vbShortDate) & vbCrLf & _
+_
+"FormatDateTime(Now, vbShortTime) = " & _
+FormatDateTime(Now, vbShortTime)
+
+MsgBox(s)
+
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+Sub s(ByVal a, ByRef b)
+  a = a + 1
+  b = b + 1
+End Sub
+Dim i, j
+i = 4
+j = 5
+Call s(i, j)
+MsgBox("i = " & i & "; j = " & j)
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+function f(ByVal a, ByVal b)
+  f = a + b
+End Function
+Dim i, j
+i = 4
+j = 5
+MsgBox("f(i,j) = " & f(i,j))
+&lt;/script&gt
+
+&lt;script language="vbscript"&gt
+Option Explicit
+On Error Resume Next
+Dim s
+s = "Hello"
+MsgBox("Before Bad Syntax s = " & s)
+s = "Bad Syntax"/3
+MsgBox("After Bad Syntax s = " & s)
+&lt;/script&gt
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

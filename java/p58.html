@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+
+public class JKeyListenerTest extends JCloseableFrame implements KeyListener {
+    public JKeyListenerTest(){
+	super("JKeyListenerTest (Swing)", 300, 100);
+    
+	addKeyListener(this);
+    }
+
+    public void keyPressed(KeyEvent event) { 
+	System.out.println("keyPressed");
+    }
+
+    public void keyTyped(KeyEvent event) {
+	System.out.println("keyTyped");
+    }
+
+    public void keyReleased(KeyEvent event) {
+	System.out.println("keyReleased");
+    }
+
+    public static void main(String [] args) {
+	JKeyListenerTest frame = new JKeyListenerTest();
+	frame.setVisible(true);
+    }
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

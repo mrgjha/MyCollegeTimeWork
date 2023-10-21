@@ -1,0 +1,143 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Interface are contrasts between two desparate piece of code.
+Once an interface is designed and a class is defined implementing
+that interface 
+
+Clients of the class are guaranteed that the class has implemented
+all methods defined in the interface
+
+
+//expicit interface
+
+using System;
+
+public interface result
+{
+void pass();
+void fail();
+}
+
+public class BCA : result
+{
+
+public void pass()
+{
+Console.WriteLine("80%..");
+}
+
+
+void result.fail()
+{
+Console.WriteLine("20%..");
+}
+
+}
+
+
+class BCAexam
+
+{
+public static void Main()
+{
+
+BCA studentresult =new BCA();
+Console.WriteLine("Pass...");
+
+studentresult.pass();
+
+result percentage=studentresult;
+Console.WriteLine("Fail...");
+
+percentage.fail();
+}
+}
+
+
+
+
+  
+using System;
+
+public class Welcome
+
+{
+
+protected string Data;
+
+public string data
+{
+
+get
+
+{
+
+return this.Data;
+
+}
+
+set
+
+{
+
+this.Data=value;
+}
+
+}
+}
+
+interface I
+{
+
+bool validate();
+
+}
+
+class Printwelcome :Welcome,I
+{
+
+public Printwelcome()
+{
+data="Welcome to C#";
+}
+
+public bool validate()
+{
+Console.WriteLine("Validating....{0}",data);
+return true;
+}
+}
+
+class InterfaceApp
+{
+
+public static void Main()
+{
+
+Printwelcome print=new Printwelcome();
+
+I val=print;
+
+bool success=val.validate();
+
+Console.WriteLine("The validation of '{0}' was {1} successful",print.data,(true==success?"":"not"));
+}
+}
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

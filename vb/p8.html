@@ -1,0 +1,40 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+Private Sub Form_Load()
+  MsgBox "Your average is " & Average(1, 2, 3, 4, 5)
+  End
+End Sub
+
+
+Function Average(ParamArray Numbers()) As Single
+
+Dim Count As Integer, I As Integer
+Dim Sum As Single
+
+Count = UBound(Numbers) - -LBound(Numbers) + 1
+
+For I = LBound(Numbers) To UBound(Numbers)
+  Sum = Sum + Numbers(I)
+Next I
+
+Average = Sum / Count
+
+End Function
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

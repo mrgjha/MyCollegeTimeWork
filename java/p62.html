@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class JPopupMenuTest extends JCloseableFrame {
+    private JPopupMenu popupMenu;
+
+    public JPopupMenuTest() {
+	super("JPopupMenuTest (Swing)", 240, 100);
+
+	popupMenu = new JPopupMenu();
+	popupMenu.add(JMenuItemTest.createFileMenu());
+
+	addMouseListener(new MouseAdapter() {
+	    public void mouseClicked(MouseEvent event) {
+		popupMenu.show((JPopupMenuTest)event.getSource(), 
+			       event.getX(), event.getY());
+	    }
+	});
+    }
+
+    public static void main(String [] args) {
+	JPopupMenuTest frame = new JPopupMenuTest();
+	frame.setVisible(true);
+    }
+}
+	
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

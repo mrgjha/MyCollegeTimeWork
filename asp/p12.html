@@ -1,0 +1,51 @@
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+ASP sample code which shows how to connect to a database, create a recordset containing data<br>from a table, and then display the results.
+
+
+
+
+Dim Conn AS ADODB.Connection
+Dim rs AS ADODB.Recordset 
+
+
+&lt;% Set Conn = Server.CreateObject("ADODB.Connection")
+Conn.Open "mydatabase"  'DSN
+SQL = "SELECT * FROM tblEmployee where Age &lt; 50 order by Name"
+Set rs = Conn.Execute(SQL)
+%&gt;
+
+'Display results
+&lt;% do while not rs.EOF %&gt;
+&lt;% =rs("Name") %&gt;, &lt;% =rs("Surname") %&gt;, &lt;% =rs("Age") %&gt;&lt;br&gt;
+&lt;% rs.movenext
+loop %&gt;
+&lt;% rs.close
+set rs = nothing %&gt;
+
+
+
+
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

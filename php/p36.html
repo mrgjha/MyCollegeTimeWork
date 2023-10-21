@@ -1,0 +1,119 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+
+//page1.php
+
+&lt?php 
+   // ini_set("session.cookie_lifetime", "30"); 
+   session_start(); 
+
+   // if a background color has not been set display a form 
+   // with a text field to enter one, else register the 
+   // color as a session variable. 
+
+   if (isset($_REQUEST['bgcolor'])) 
+   { 
+      $_SESSION['bgcolor'] = $_REQUEST['bgcolor']; 
+      display_page_one(); 
+   } 
+   else 
+   { 
+      display_form_page(); 
+   } 
+?&gt 
+
+&lt?php 
+function display_form_page() 
+{ 
+   $self = $_SERVER['PHP_SELF']; 
+?&gt 
+   &lthtml&gt 
+   &lthead&gt&lttitle&gtSession bgcolor page 1&lt/title&gt&lt/head&gt 
+   &ltbody&gt 
+   &lth1&gtSession bgcolor page 1&lt/h1&gt 
+   &ltform method="post" action="&lt?php echo $self?&gt?&lt?php echo SID?&gt"&gt 
+   Enter color code as &ltcode&gt#HHHHHH&lt/code&gt:  
+   &ltinput type="text" name="bgcolor" value=""&gt 
+   &ltinput type="submit" value="Submit Color"&gt 
+   &lt/form&gt 
+   &lt/body&gt 
+   &lt/html&gt 
+&lt?php 
+}    
+?&gt 
+
+&lt?php 
+function display_page_one() 
+{ 
+?&gt 
+   &lthtml&gt 
+   &lthead&gt&lttitle&gtSession bgcolor page 1&lt/title&gt&lt/head&gt 
+   &ltbody bgcolor="&lt?php echo $_REQUEST['bgcolor']?&gt"&gt 
+   &lth1&gtSession bgcolor page1&lt/h1&gt 
+   Background color is &lt?php $_SESSION['bgcolor']?&gt 
+   &ltp&gt&lta href="page2.php?&lt?php echo SID?&gt"&gtGo to page 2&lt/a&gt&lt/p&gt 
+   &lt/body&gt 
+   &lt/html&gt 
+&lt?php 
+} 
+?&gt 
+
+//page2.php
+
+&lt?php 
+   // Retrieve the value of the session variable and display a 
+   // page showing its value. Then unset the variable so it will 
+   // be undefined on the next page. 
+    
+   // ini_set("session.cookie_lifetime", "30"); 
+   session_start(); 
+   $bgcolor = isset($_SESSION['bgcolor']) ? $_SESSION['bgcolor'] : "#FFFFFF"; 
+   unset($_SESSION['bgcolor']); 
+?&gt 
+
+&lthtml&gt 
+&lthead&gt&lttitle&gtSession bgcolor page 2&lt/title&gt&lt/head&gt 
+&ltbody bgcolor="&lt?php echo $bgcolor ?&gt"&gt 
+&lth1&gtSession bgcolor page 2&lt/h1&gt 
+&lt?php echo "Background color is $bgcolor" ?&gt 
+&ltp&gt&lta href = "page3.php?&lt?php echo SID?&gt"&gtGo to page 3&lt/a&gt&lt/p&gt 
+&lt/body&gt 
+&lt/html&gt 
+
+
+
+//page3.php
+
+&lt?php 
+   // Retrieve the value of the session variable and display a 
+   // page showing its value. Then unset the variable so it will 
+   // be undefined on the next page. 
+    
+   // ini_set("session.cookie_lifetime", "30"); 
+   session_start(); 
+   $bgcolor = isset($_SESSION['bgcolor']) ? $_SESSION['bgcolor'] : "#FFFFFF"; 
+   unset($_SESSION['bgcolor']); 
+?&gt 
+
+&lthtml&gt 
+&lthead&gt&lttitle&gtSession bgcolor page 2&lt/title&gt&lt/head&gt 
+&ltbody bgcolor="&lt?php echo $bgcolor ?&gt"&gt 
+&lth1&gtSession bgcolor page 2&lt/h1&gt 
+&lt?php echo "Background color is $bgcolor" ?&gt 
+&ltp&gt&lta href = "page3.php?&lt?php echo SID?&gt"&gtGo to page 3&lt/a&gt&lt/p&gt 
+&lt/body&gt 
+&lt/html&gt 
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</b>
+
+
+</pre>
+</body>
+</html>

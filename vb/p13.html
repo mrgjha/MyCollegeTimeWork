@@ -1,0 +1,34 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Option Explicit
+
+Private Sub Form_Load()
+Dim MyFileSystem As New FileSystemObject
+Dim ADrive As Drive
+Show
+For Each ADrive In MyFileSystem.Drives
+  If ADrive.IsReady Then
+    Print "Drive " & ADrive.DriveLetter & _
+    " has "; FormatNumber(ADrive.AvailableSpace, 0) & _
+    " bytes available from " & _
+    FormatNumber(ADrive.TotalSize, 0)
+  End If
+  Print
+Next
+End Sub
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

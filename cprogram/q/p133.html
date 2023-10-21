@@ -1,0 +1,513 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+#include &lt;dos.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;process.h&gt;
+
+
+
+#define TRUE 1
+#define FALSE 0
+
+/* Codes for Non-ASCII keys */
+#define BS 8
+#define FORMFEED 12
+#define CR 13
+#define ESC 27
+#define HOME 327
+#define END 335
+#define UP 328
+#define DOWN 336
+#define PGUP 329
+#define PGDN 337
+#define LEFT 331
+#define INS 338
+#define RIGHT 333
+#define DEL 339
+#define CTRLLEFT 371
+#define CTRLRIGHT 372
+#define CTRLDOWN
+#define F1 315
+#define F2 316
+#define F3 317
+#define F4 318
+#define F5 319
+#define F6 320
+#define F7 321
+#define F8 322
+#define F9 323
+#define F10 324
+#define CTRLa 1
+#define CTRLb 2
+#define CTRLc 3
+#define CTRLd 4
+#define CTRLe 5
+#define CTRLf 6
+#define CTRLg 7
+#define CTRLh 8
+#define CTRLi 9
+#define CTRLj 10
+#define CTRLk 11
+#define CTRLl 12
+#define CTRLm 13
+#define CTRLn 14
+#define CTRLo 15
+#define CTRLp 16
+#define CTRLq 17
+#define CTRLr 18
+#define CTRLs 19
+#define CTRLt 20
+#define CTRLu 21
+#define CTRLv 22
+#define CTRLw 23
+#define CTRLx 24
+#define CTRLy 25
+#define CTRLz 26
+
+struct address
+{
+  char FirstName[15];
+  char LastName[15];
+  char Street[40];
+  char City[20];
+  char State[10];
+  char Zip[10];
+  char Phone[15];
+
+};
+
+int getkey(void)
+/* Uses the BIOS to read the next keyboard character */
+{
+ int key, lo, hi;
+
+ key = bioskey(0);
+ lo = key & 0X00FF;
+ hi = (key & 0XFF00) &gt;&gt; 8;
+ return((lo == 0) ? hi + 256 : lo);
+} /* getkey */
+
+void field(char *field, int max)
+{
+    int loop;
+
+    for (loop = 0; loop &lt;max; loop++)
+    {
+	cputs(" ");
+    }
+
+    for (loop = 0; loop &lt;max; loop++)
+  {
+	cprintf("\b");
+ }
+  cprintf("%s", field);
+
+
+
+
+
+
+ for (loop = 0; loop &lt;strlen(field); loop++)
+{
+ cprintf("\b");
+ }
+
+
+} /* field */
+
+void Beep(void)
+{
+  sound(750);
+  delay(25);
+  nosound();
+}
+
+
+
+void display(struct address *RecordBuffer, char *s1, char *s2,
+		 unsigned fore, unsigned back)
+{
+
+  int loop;
+  unsigned answer;
+  unsigned s1y = ((80 - strlen(s1))/2);
+  unsigned s2y = ((80 - strlen(s2))/2);
+
+  struct text_info textinfo;
+
+  gettextinfo(&textinfo);
+  gotoxy(18, 6);
+  cprintf("first name:  ");
+  gotoxy(18, 8);
+  cprintf(" last name:  ");
+  gotoxy(18, 10);
+  cprintf("    street:  ");
+  gotoxy(18, 12);
+  cprintf("      city:  ");
+  gotoxy(18, 14);
+  cprintf("     state:  ");
+  gotoxy(18, 16);
+  cprintf("       zip:  ");
+  gotoxy(18, 18);
+  cprintf("     phone:  ");
+
+  textbackground(back);
+  textcolor(fore);
+
+  gotoxy(31, 6);
+  field(RecordBuffer-&gt;FirstName, 15);
+  gotoxy(31, 8);
+  field(RecordBuffer-&gt;LastName, 15);
+  gotoxy(31, 10);
+  field(RecordBuffer-&gt;Street, 40);
+  gotoxy(31, 12);
+  field(RecordBuffer-&gt;City, 20);
+  gotoxy(31, 14);
+  field(RecordBuffer-&gt;State, 10);
+  gotoxy(31, 16);
+  field(RecordBuffer-&gt;Zip, 10);
+  gotoxy(31, 18);
+  field(RecordBuffer-&gt;Phone, 15);
+  gotoxy(32,20);
+
+  textattr(textinfo.attribute);
+
+  gotoxy(s1y, 3);
+
+  cputs(s1);
+
+  gotoxy(s2y, 21);
+
+  cputs(s2);
+
+
+
+
+}
+
+
+void enter()
+{
+
+  unsigned RecordIndex = 6;
+  unsigned max = 0;
+  unsigned begin = 31;
+  char *s;
+  struct address *Dummy;
+
+  struct address *enteree;
+    Dummy=(struct address *) calloc(1, sizeof(struct address));
+    enteree = (struct address *) calloc(1, sizeof(struct address));
+  if (!enteree)
+  {
+    clrscr();
+    puts("out of memory");
+    return;
+
+  }
+
+
+
+
+
+
+     display(Dummy, "Add Record Mode",
+	  "Enter a record, press any key to continue", RED, LIGHTGRAY);
+
+
+
+  while ( (RecordIndex &lt;= 18) && (RecordIndex &gt;= 4) )
+  {
+    if (RecordIndex == 4) RecordIndex += 2;
+
+    switch (RecordIndex)
+    {
+     case  4:
+	break;
+      case 6:
+	s = enteree-&gt;FirstName;
+	max = 14;
+	break;
+      case 8:
+	s = enteree-&gt;LastName;
+	max = 14;
+	break;
+      case 10:
+	s = enteree-&gt;Street;
+	max = 39;
+	break;
+      case 12:
+	s = enteree-&gt;City;
+	max = 19;
+	break;
+      case 14:
+	s = enteree-&gt;State;
+	max = 9;
+	break;
+      case 16:
+	s = enteree-&gt;Zip;
+	max = 9;
+	break;
+      case 18:
+	s = enteree-&gt;Phone;
+	max = 14;
+	break;
+    }
+     gotoxy(begin, RecordIndex);
+    RecordIndex = edit_field(begin, RecordIndex, s, max, LIGHTGRAY, RED);
+
+    if ((RecordIndex &gt;18) && (*s == 0)) return;
+
+  } /* while loop for input of fields */
+
+
+  clrscr();
+
+
+}
+
+
+
+
+
+
+
+int edit_field(unsigned const col,unsigned row,
+char *s,unsigned max,unsigned back,unsigned fore)
+
+{
+ unsigned character, end = (strlen(s) + col);
+ unsigned pos = col, Index, IsSpace;
+ const char Space = ' ';
+struct text_info textinfo;
+
+gettextinfo(&textinfo);
+ max += col;
+
+ textbackground(back);
+ textcolor(fore);
+ gotoxy(col, row);
+ field(s, (max+1) - col);
+ do
+
+ {
+  switch(character = getkey())
+  {
+   case HOME :
+    pos = col;
+    gotoxy(col, row);
+    break;
+   case END :
+    pos = end;
+    gotoxy(end, row);
+    break;
+   case LEFT :
+    if (pos &gt; col)
+    {
+     pos--;
+     gotoxy(pos, row);
+    }
+    else
+    {
+      Beep();
+    }
+    break;
+   case RIGHT :
+    if (pos &lt; end)
+    {
+     pos++;
+     gotoxy(pos, row);
+    }
+    else
+    {
+     Beep();
+    }
+    break;
+   case BS :
+    if (pos == col)
+    {
+      Beep();
+      break;
+    }
+    pos--;
+    for (Index = pos - col; Index &lt;= end - col; Index++)
+    {
+     s[Index] = s[Index + 1];
+    }
+    gotoxy(col, row);
+    cputs(s);
+    putchar(Space);
+    end--;
+    gotoxy(pos, row);
+    break;
+   case DEL :
+    if (pos &gt;= end)
+    {
+      Beep();
+      break;
+    }
+    end--;
+    for(Index = pos - col; Index &lt;= end - col; Index++)
+     s[Index] = s[Index+1];
+    gotoxy(col, row);
+    cputs(s);
+    putchar(Space);
+    gotoxy(pos, row);
+    break;
+   case PGUP :
+   case UP :
+    if (row &gt;= 1)
+    {
+      textattr(textinfo.attribute);
+      return(row - 2);
+    }
+    break;
+   case PGDN :
+   case CR :
+   case DOWN :
+    textattr(textinfo.attribute);
+    return (row + 2);
+   case ESC :
+    pos = col;
+    gotoxy(col, row);
+    break;
+   case CTRLLEFT :
+    if (pos == col)
+    {
+      Beep();
+      break;
+    }
+    IsSpace = FALSE;
+    Index = (pos - col - 2);
+    if (Index &lt;= 0)
+    {
+     gotoxy(col, row);
+     Index = 0;
+     pos = col;
+     break;
+    }
+    while ((!IsSpace) && (Index != 0))
+    {
+     while (!IsSpace)
+     {
+      if ((s[Index] == ' ') | (s[Index] == 0))
+	IsSpace = TRUE;
+      Index--;
+      if (Index &lt;= 0)
+      {
+	pos = col;
+	Index = 0;
+	gotoxy(col, row);
+	break;
+      }
+     }
+     if (Index == 0)
+      break;
+     Index += 3;
+     pos = Index + col -1;
+     gotoxy(pos, row);
+    }
+    break;
+   case CTRLRIGHT :
+    if (pos &gt;= end)
+    {
+      Beep();
+      break;
+    }
+    IsSpace = FALSE;
+    Index = (pos - col);
+    while ((!IsSpace) && (pos &lt; end))
+    {
+     if (s[Index] == ' ')
+     {
+       IsSpace = TRUE;
+       Index++;
+     }
+     while (!IsSpace)
+     {
+      if ((s[Index] == ' ') | (s[Index] == NULL))
+	IsSpace = TRUE;
+      if (s[Index] == NULL) Index--;
+      Index++;
+     }
+     Index++;
+     pos = Index + col -1;
+     gotoxy(pos, row);
+    }
+    break;
+   default  :
+    if ((character &gt;= ' ') && (character &lt;= '~'))
+    {
+     if (end &gt;= max)
+     {
+      Beep();
+      break;
+     }
+     for (Index = end - col + 1; Index &gt; pos - col; Index--)
+       s[Index] = s[Index - 1];
+     s[Index] = ((char)character);
+     if (strlen(s) &lt;= 1)
+	 s[Index + 1] = NULL;
+     gotoxy(col, row);
+     end++;
+     s[end-col] = NULL;
+     cputs(s);
+     pos++;
+     gotoxy(pos, row);
+     break;
+    }  /* if */
+  }  /* switch */
+  s[end-col] = NULL;
+
+ 
+
+
+
+ }  while (1);  /* do */
+
+
+}  /* editstring */
+
+
+
+
+
+void main()
+{
+
+
+
+ textmode(3);
+ textcolor(YELLOW);
+
+enter();
+
+
+
+  getch();
+}
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

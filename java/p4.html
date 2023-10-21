@@ -1,0 +1,64 @@
+
+
+
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+//program to test the integer whether positive or negative
+
+
+import java.io.*;
+class NumberTester{
+
+public static void main (String[] args) throws IOException {
+
+InputStreamReader inStream = new InputStreamReader(System.in) ;
+BufferedReader stdin = new BufferedReader(inStream);
+
+
+String inData;
+int num;
+
+System.out.println("Enter an integer:");
+inData = stdin.readLine();
+num = Integer.parseInt( inData ); // convert inData to int
+
+
+if (num<0)          // is num less than zero? 
+{
+
+System.out.println("The number " + num + " is negative"); // true-branch
+System.out.println("Negative numbers are less than 0");   // true-branch
+
+}
+
+
+else 
+
+{
+
+System.out.println("The number " + num + " is positive"); // false-branch
+System.out.println("Positive numbers are greater than 0"); // false-branch
+
+}
+
+
+System.out.println("Good-by for now"); // always executed
+}
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

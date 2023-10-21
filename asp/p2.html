@@ -1,0 +1,258 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+var x, y
+x = 5
+y = "This is a string"
+
+var z
+z = true
+z = 34.5
+z = "This is another string"
+
+&lt;script language="javascript"&gt
+alert("This is an alert message")
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+ret = confirm("This is a confirmation message")
+alert("The return value is " + ret)
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+str = prompt("This is a prompt", "Default value")
+alert("The input is " + str)
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+/*
+This program illustrates single- and multi-line comments.
+It evaluates an arithmetic expression 
+and presents the result in an alert box.
+*/ 
+a = 1 * 2 + 3 / 4 - 9 % 2
+alert(a)  // Display result
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+number = prompt("Enter number", "0")
+if(number &gt 0) {
+  alert(number + " is positive")
+}
+else if(number == 0) {
+  alert(number + " is zero")
+}
+else {
+  alert(number + " is negative")
+}
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+number = 2
+switch(number) {
+  case 0:
+    alert("Number is 0")
+    break
+  case 1:
+    alert("Number is 1")
+    break
+  case 2:
+    alert("Number is 2")
+    break
+  default:
+    alert("Number is not 0, 1, or 2")
+}
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+var sum = 0
+for(number = 0; number &lt; 10; number++) {
+  sum = sum + number
+}
+alert("sum is " + sum)
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+var number = 0, cube
+do {
+  number = number + 1
+  cube = number * number * number
+} while(cube &lt; 1000)
+alert("The cube of " + number + " is " + cube)
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+var number = 0, cube = 0
+while(cube &lt;= 1000) {
+  number = number + 1
+  cube = number * number * number
+}
+alert("The cube of " + number + " is " + cube)
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+alert("A random number is " + Math.random())
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+alert(new Date())
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+alert("This is a string".length + " " + "abcdefghijklmnop".substr(5, 5))
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+var i = new Array()
+for(index = 0; index &lt; 10; index++) {
+  i[index] = index
+}
+var sum = 0
+for(index = 0; index &lt; 10; index++) {
+  sum = sum + i[index]
+}
+alert("The sum is " + sum)
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+
+// Create multi-dimension array
+a = new Array()
+a[0] = [ 10, 20, 30 ]
+a[1] = [ 100, 200, 300, 400 ]
+a[2] = [ 1000, 2000, 3000, 4000, 5000 ]
+
+// Sum all elements
+sum = 0
+for(i = 0; i &lt; a.length; i++) {
+  for(j = 0; j &lt; a[i].length; j++) {
+    sum += a[i][j]
+  }
+}
+  
+// Display the sum
+alert(sum)
+
+&lt;/script&gt
+
+&lt;script language="javascript"&gt
+function f(a, b) {
+  return a + b
+}
+i = 4
+j = 5
+alert(f(i, j))
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+
+// Define constructor
+function Employee(name, location, extension) {
+  this.name = name
+  this.location = location
+  this.extension = extension
+}
+
+// Create an array of Employee objects
+employees = new Array()
+employees[0] = new Employee("Joe", "1J338", "5555")
+employees[1] = new Employee("Anne", "1K123", "5454")
+employees[2] = new Employee("Kim", "1F343", "6767")
+employees[3] = new Employee("Stacey", "2C343", "1212")
+
+// Display the name property of each Employee object
+str = ""
+for(i = 0; i &lt; employees.length; i++) {
+  str += employees[i].name + " "
+}
+alert(str)
+
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+
+// Define constructor
+function Circle(x, y, radius) {
+  this.x = x
+  this.y = y
+  this.radius = radius
+  this.display = display
+  this.move = move
+  this.scale = scale
+}
+
+// Define methods
+function display() {
+  alert("x = " + this.x + "; y = " + this.y + ""; radius = " + this.radius)
+}
+
+function move(x, y) {
+  this.x = x
+  this.y = y
+}
+
+function scale(a) {
+  this.radius *= a
+}
+
+// Create a Circle object
+circle = new Circle(0, 0, 1)
+
+// Invoke methods
+circle.scale(5)
+circle.move(-2, -2)
+circle.display()
+
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+with(Math) {
+  alert("E = " + E + "; LN2 = " + LN2 + "; PI = " + PI)
+}
+&lt;/script&gt
+
+
+&lt;script language="javascript"&gt
+
+// Define constructor
+function MyObject(a, b, c, d) {
+  this.a = a
+  this.b = b
+  this.c = c
+  this.d = d
+}
+
+// Create object
+obj = new MyObject(5, 11, -8, 70)
+
+// Display object properties and value
+str = ""
+for(i in obj) {
+  str += i + " = " + obj[i] + "; "
+}
+alert(str)
+
+&lt;/script&gt
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

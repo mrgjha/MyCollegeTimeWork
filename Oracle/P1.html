@@ -1,0 +1,68 @@
+
+
+
+
+
+CREATE TABLE tab1 (col1 VARCHAR2(6), col2 CHAR(6),
+        col3 VARCHAR2(6), col4 CHAR(6) );
+
+Table created.
+
+INSERT INTO tab1 (col1,  col2,     col3,     col4)
+        VALUES   ('abc', 'def   ', 'ghi   ', 'jkl');
+
+1 row created.
+
+SELECT col1||col2||col3||col4 "Concatenation"
+        FROM tab1;
+
+Concatenation
+------------------------
+abcdef   ghi   jkl
+
+
+
+
+
+SELECT * FROM emp  WHERE sal = 1500;
+SELECT * FROM emp  WHERE sal != 1500;
+SELECT * FROM emp  WHERE sal > 1500;
+SELECT * FROM emp  WHERE sal < 1500;
+SELECT * FROM emp  WHERE sal >= 1500;
+SELECT * FROM emp  WHERE sal <= 1500;
+
+  
+
+SELECT * FROM emp  WHERE job IN ('CLERK','ANALYST');
+SELECT * FROM emp  WHERE sal IN  (SELECT sal FROM emp WHERE deptno = 30);
+SELECT * FROM emp  WHERE sal NOT IN  (SELECT sal FROM emp  WHERE deptno = 30);
+SELECT * FROM emp  WHERE job NOT IN  ('CLERK', ANALYST');
+
+  
+
+SELECT * FROM emp  WHERE sal = ANY (SELECT sal FROM emp  WHERE deptno = 30);
+
+SELECT * FROM emp  WHERE sal >=  ALL ( 1400, 3000);
+
+
+SELECT * FROM emp  WHERE sal  BETWEEN 2000 AND 3000;
+
+
+SELECT ename deptno FROM dept WHERE EXISTS (SELECT * FROM emp WHERE dept.deptno = emp.deptno);
+SELECT * FROM tab1  WHERE col1 LIKE  'A_C/%E%' ESCAPE '/';
+SELECT ename, deptno  FROM emp  WHERE comm IS NULL;
+
+
+SELECT 'TRUE' 
+    FROM emp 
+    WHERE deptno NOT IN (5,15); 
+
+
+However, the following statement returns no rows: 
+
+SELECT 'TRUE' 
+    FROM emp 
+    WHERE deptno NOT IN (5,15,null); 
+
+
+

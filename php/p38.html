@@ -1,0 +1,372 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+
+&lt?php 
+// ----------------------------------------------------------------------------- 
+// Illustrating how session management for a chain of forms can be managed 
+// using hidden fields. This example is a simple four page survey. 
+// As each form is submitted its name value pairs are written as hidden 
+// fields in the next form. When the final form is submitted all fields 
+// will be available as hidden fields. The results can be written to 
+// a file or stored in a database. A separate script could 
+// process the data and produce statistics. 
+// ----------------------------------------------------------------------------- 
+
+// Store all form variable names in an array to simplify processing of 
+// hidden fields. 
+
+ $field_names =  
+    array( "origin", "user", "language", "job", "environment", 
+    "perl", "os", "year", "drink", "getup", "comments" ); 
+
+// Each form has a button whose name can be used to 
+// determine which form was submitted and which form should 
+// be displayed next. 
+
+if (isset($_REQUEST['pageTwo'])) 
+{ 
+   display_page_two($field_names); 
+} 
+elseif (isset($_REQUEST['pageThree'])) 
+{ 
+   display_page_three($field_names); 
+} 
+elseif (isset($_REQUEST['pageFour'])) 
+{ 
+   display_page_four($field_names); 
+} 
+elseif (isset($_REQUEST['thanks'])) 
+{ 
+   // process the form data here 
+   display_thanks($field_names); 
+} 
+else // no forms have been submitted so display the first one 
+{ 
+   display_page_one($field_names); 
+} 
+?&gt 
+
+&lt?php 
+// ------------------------------------------------------------------------ 
+// Start page 
+// $title is the page title 
+// ------------------------------------------------------------------------ 
+function start_page($title) 
+{ 
+?&gt 
+   &lthtml&gt 
+   &lthead&gt&lttitle&gt&lt?=$title?&gt&lt/title&gt&lt/head&gt 
+   &ltbody&gt 
+   &lth1&gt&lt?=$title?&gt&lt/h1&gt 
+   &lt?php 
+} 
+?&gt 
+
+&lt?php 
+// ------------------------------------------------------------------------ 
+// End page 
+// $name: name of submit field 
+// $value: value on submit button 
+//  ------------------------------------------------------------------------ 
+function end_page($name, $value) 
+{ 
+?&gt 
+   &ltp&gt 
+   &ltinput type="submit" name="&lt?=$name?&gt" value="&lt?=$value?&gt"&gt 
+   &ltinput type="reset" value="clear"&gt 
+   &lt/p&gt 
+   &lt/form&gt 
+   &lt/body&gt 
+   &lt/html&gt 
+&lt?php 
+} 
+?&gt 
+
+&lt?php 
+// ----------------------------------------------------------------------------- 
+// Detrmine if a certain choice has been made 
+// $field_to_check is the field name to check 
+// $value_to_check is the value of this field to check 
+// True is returned if the field contains $value_to_check 
+// ----------------------------------------------------------------------------- 
+
+function choice($field_to_check, $value_to_check) 
+{ 
+   $chosen = 0; // false 
+   if (isset($_REQUEST[$field_to_check])) 
+   { 
+      foreach ($_REQUEST[$field_to_check] as $value) 
+      { 
+         if ($value == $value_to_check) 
+         { 
+            $chosen = 1; // true 
+            break; // exit for loop 
+         } 
+      } 
+   } 
+   return $chosen; 
+} 
+?&gt 
+
+&lt?php 
+// ----------------------------------------------------------------------------- 
+// insert the hidden fields given by $field_names into a form 
+// ----------------------------------------------------------------------------- 
+
+function insert_hidden_fields($field_names) 
+{ 
+?&gt 
+   &lt!-- START HIDDEN FIELDS --&gt 
+   &lt?php 
+   foreach ($field_names as $name) 
+   { 
+      if (isset($_REQUEST[$name])) 
+      { 
+         foreach ($_REQUEST[$name] as $value) 
+         {  
+            ?&gt 
+            &ltinput type="hidden" name="&lt?=$name?&gt[]" value="&lt?=$value?&gt"&gt  
+            &lt?php  
+         } 
+      } 
+   } 
+   ?&gt 
+   &lt!-- END HIDDEN FIELDS --&gt 
+&lt?php 
+} 
+?&gt 
+
+&lt?php 
+function display_page_one($field_names) 
+{ 
+   start_page('Survey Page 1'); 
+?&gt 
+   &ltform method="POST"&gt 
+   &ltp&gtWhich computer languages have you used?&lt/p&gt 
+   &lttable&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="language[]" value="c"&gtC&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="language[]" value="cplusplus"&gtC++&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="language[]" value="java"&gtJava&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="language[]" value="javascript"&gtJavascript&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="language[]" value="perl"&gtPerl&lt/td&gt 
+   &lt/tr&gt 
+   &lt/table&gt 
+
+   &ltp&gtDo you prefer to be a Programmer Analyst or a System Analyst?&lt/p&gt 
+   &lttable width="50%"&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="job[]" value="programmer" 
+      checked="yes"&gtProgrammer Analyst&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="job[]" value="system"&gtSystem Analyst&lt/td&gt 
+   &lt/tr&gt 
+   &lt/table&gt 
+
+   &ltp&gtDo you work best in a group or alone?&lt/p&gt 
+   &lttable width="50%"&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="environment[]" value="group" checked="yes"&gtGroup&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="environment[]" value="alone"&gtAlone&lt/td&gt 
+   &lt/tr&gt 
+   &lt/table&gt 
+   &ltinput type="hidden" name="origin[]" value="&lt?=$_SERVER['PHP_SELF']?&gt"&gt 
+   &ltinput type="hidden" name="user[]" value="&lt?=$_SERVER['REMOTE_ADDR']?&gt"&gt 
+
+&lt?php 
+   end_page("pageTwo", "Next Page"); 
+} 
+?&gt 
+
+&lt?php 
+function display_page_two($field_names) 
+{ 
+   start_page('Survey Page 2'); 
+   ?&gt 
+   &ltform method="POST"&gt 
+   &lt?php 
+
+   // This is a conditional question which is displayed only if the 
+   // user has chosen Perl on page one as one of the languages. 
+
+   if (choice('language', 'perl')) 
+   { 
+   ?&gt 
+      &ltp&gtDo you use Perl for&lt/p&gt 
+      &lttable width="50%"&gt 
+      &lttr&gt 
+      &lttd&gt&ltinput type="radio" name="perl[]" value="system" 
+         checked="yes"&gtSystem Programming&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+      &lttd&gt&ltinput type="radio" name="perl[]" value="cgi"&gtCGI programming&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+      &lttd&gt&ltinput type="radio" name="perl[]" value="both"&gtBoth&lt/td&gt 
+      &lt/tr&gt 
+      &lt/table&gt 
+   &lt?php 
+   } 
+   ?&gt 
+
+   &ltp&gtWhich operating systems are you familiar with?&lt/p&gt 
+   &lttable width="50%"&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="os[]" value="mac"&gtMac&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="os[]" value="unix"&gtUnix/Linux&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="checkbox" name="os[]" value="win"&gtWin NT/2000/XP&lt/td&gt 
+   &lt/tr&gt 
+   &lt/table&gt 
+
+   &ltp&gtWhat year of the CS program are you in?&lt/p&gt 
+   &lttable width="50%"&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="year[]" value="one" checked="yes"&gt1&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="year[]" value="two"&gt2&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="year[]" value="three"&gt3&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="year[]" value="four"&gt4&lt/td&gt 
+   &lt/tr&gt 
+   &lt/table&gt 
+&lt?php 
+   insert_hidden_fields($field_names); 
+   end_page("pageThree", "Next Page"); 
+} 
+?&gt 
+
+&lt?php 
+function display_page_three($field_names) 
+{ 
+   start_page('Survey Page 3'); 
+   ?&gt 
+   &ltform method="POST"&gt 
+   &lt?php 
+
+   // This is a conditionl question which is displayed only if the 
+   // user has chosen Unix on page two as one of the operating systems. 
+
+   if (choice('os', 'unix')) 
+   { 
+   ?&gt 
+      &ltp&gtI see you are familiar with Unix/Linux. 
+      When you're up all night writing Unix scripts do you drink&lt/p&gt 
+      &lttable width="50%"&gt 
+      &lttr&gt 
+      &lttd&gt&ltinput type="radio" name="drink[]" value="pepsi" checked="yes"&gtPepsi Cola&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+      &lttd&gt&ltinput type="radio" name="drink[]" value="coke"&gtCoca Cola&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+      &lttd&gt&ltinput type="radio" name="drink[]" value="ojay"&gtOrange Juice&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+      &lttd&gt&ltinput type="radio" name="drink[]" value="coffee"&gtCoffee&lt/td&gt 
+      &lt/tr&gt 
+      &lt/table&gt 
+   &lt?php 
+   } 
+   ?&gt 
+
+   &ltp&gtAre you an early riser or a late riser?&lt/p&gt 
+
+   &lttable width="50%"&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="getup[]" value="early" checked="yes"&gtEarly&lt/td&gt 
+   &lt/tr&gt 
+   &lttr&gt 
+   &lttd&gt&ltinput type="radio" name="getup[]" value="late"&gtLate&lt/td&gt 
+   &lt/tr&gt 
+   &lt/table&gt 
+&lt?php 
+   insert_hidden_fields($field_names); 
+   end_page("pageFour", "Next Page"); 
+} 
+?&gt 
+
+&lt?php 
+function display_page_four($field_names) 
+{ 
+   start_page('Last Page of Survey'); 
+?&gt 
+   &ltform method="POST"&gt 
+   &ltp&gtDo you have any comments on this survey?&lt/p&gt 
+   &lttextarea name="comments[]" cols="40" rows="10"&gt&lt/textarea&gt 
+&lt?php 
+   insert_hidden_fields($field_names); 
+   end_page("thanks", "Submit Survey"); 
+} 
+?&gt 
+
+&lt?php 
+function display_thanks($field_names) 
+{ 
+   $back = $_REQUEST['origin'][0]; 
+?&gt 
+   &lthtml&gt 
+   &lthead&gt&lttitle&gtThank you page&lt/title&gt&lt/head&gt 
+   &ltbody&gt 
+   &lth1&gtThank you for filling out the survey.&lt/h1&gt 
+   &lth2&gtThe values submitted are&lt/h2&gt 
+   &lt?php 
+      process_form_data($field_names); 
+   ?&gt 
+   &ltcenter&gt&lta href="&lt?=$back?&gt"&gtBack&lt/a&gt&lt/center&gt 
+   &lt/body&gt 
+   &lt/html&gt 
+&lt?php 
+} 
+?&gt 
+
+&lt?php 
+///////////////// 
+// FOR TESTING // 
+///////////////// 
+function process_form_data($field_names) 
+{ 
+   foreach ($field_names as $name) 
+   { 
+      if (isset($_REQUEST[$name])) 
+      { 
+         print "&ltstrong&gt$name:&lt/strong&gt "; 
+         foreach ($_REQUEST[$name] as $value) 
+         {  
+           print "$value ";  
+         } 
+         print "&ltbr&gt\n"; 
+      } 
+   } 
+} 
+?&gt 
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+
+
+</pre>
+</body>
+</html>

@@ -1,0 +1,39 @@
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+//whether the number is palindrom or not
+
+#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+void main()
+{
+char str[20];
+char str1[20];
+clrscr();
+printf("Enter a string :");
+scanf("%s",str);
+strcpy(str1,str);
+strrev(str);
+
+if (strcmp(str1,str)==0)
+printf("String is %s = %s Palindrom",str1,str);
+else
+printf("String is %s = %s not Palindrom",str1,str);
+getch();
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

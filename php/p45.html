@@ -1,0 +1,60 @@
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+&lt;?php
+// this file is called classa.inc
+class A {
+var $one = 1;
+function show_one() { echo $this-&gt;one; }
+}
+?&gt;
+
+
+
+&lt;?php
+// this file is called page1.php:
+
+$a = new A;
+$s = serialize($a);
+// store $s somewhere where page2.php can find it.
+$fp = fopen("store", "w");
+fputs($fp, $s);
+fclose($fp);
+?&gt;
+
+
+
+&lt;?php
+// unserialize
+
+// page2.php:
+
+include("classa.inc");
+include("page1.php");
+
+$s = implode("", @file("store"));
+$a = unserialize($s);
+
+// now use the function
+//show_one() of the $a object.
+
+$a-&gt;show_one();
+
+
+
+
+//Need class definition for unserialize to work Imports constituent parts of 
+//objects and “glues” them together
+
+?&gt;
+
+
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</pre>
+</body>
+</html>

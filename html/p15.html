@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;?xml version="1.0"?&gt;
+   &lt;COMPANY&gt;
+      &lt;COMPANY_NAME&gt; Web Ravin Consulting &lt;/COMPANY_NAME&gt;
+      &lt;ADDRESS&gt; 555 Wilsonville Lane, Oakey, OR 99999&lt;/ADDRESS&gt;
+      &lt;PHONE&gt; (555) 555-1111 &lt;/PHONE&gt;
+      &lt;FAX&gt; (555) 555-2222&lt;/FAX&gt;
+      &lt;WEB&gt; http://www.webravin.com&lt;/WEB&gt;
+   &lt;/COMPANY&gt;
+
+&lt;?xml version="1.0"?&gt;
+   &lt;PRODUCTS&gt;
+      &lt;ITEMS&gt; 
+         &lt;QUANTITY&gt; 1 &lt;/QUANTITY&gt;
+         &lt;DESCRIPTION&gt; 100 Gallons Dill Pickles - Hamburger Slices &lt;/DESCRIPTION&gt;
+         &lt;AMOUNT&gt; $50.00 &lt;/AMOUNT&gt;
+         &lt;ITEM_TOTAL&gt; $50.00 &lt;/ITEM_TOTAL&gt;
+      &lt;/ITEMS&gt;
+      &lt;ITEMS&gt; 
+         &lt;QUANTITY&gt; 2 &lt;/QUANTITY&gt;
+         &lt;DESCRIPTION&gt; Hamburger Buns - 12 bags per flat &lt;/DESCRIPTION&gt;
+         &lt;AMOUNT&gt; $12.95 &lt;/AMOUNT&gt;
+         &lt;ITEM_TOTAL&gt; $25.90 &lt;/ITEM_TOTAL&gt;
+      &lt;/ITEMS&gt;
+      &lt;ITEMS&gt; 
+         &lt;QUANTITY&gt; 10 &lt;/QUANTITY&gt;
+         &lt;DESCRIPTION&gt; Ketchup - by the gallon &lt;/DESCRIPTION&gt;
+         &lt;AMOUNT&gt; $5.95 &lt;/AMOUNT&gt;
+         &lt;ITEM_TOTAL&gt; $59.50 &lt;/ITEM_TOTAL&gt;
+      &lt;/ITEMS&gt;
+      &lt;TAX&gt; $1.12 &lt;/TAX&gt;
+      &lt;SHIPPING&gt; $9.89 &lt;/SHIPPING&gt;
+      &lt;TOTAL&gt; $145.41 &lt;/TOTAL&gt;
+   &lt;/PRODUCTS&gt;
+
+
+
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE SALES [
+  &lt;!ELEMENT SALES (COMPANY, PRODUCTS, CLOSING)&gt;
+  &lt;!ELEMENT COMPANY (COMPANY_NAME, ADDRESS, PHONE, FAX, WEB)&gt;
+    &lt;!ELEMENT COMPANY_NAME (#PCDATA)&gt;
+    &lt;!ELEMENT ADDRESS (#PCDATA)&gt;
+    &lt;!ELEMENT PHONE (#PCDATA)&gt;
+    &lt;!ELEMENT FAX (#PCDATA)&gt;
+    &lt;!ELEMENT WEB (#PCDATA)&gt;
+  &lt;!ELEMENT PRODUCTS (ITEMS*, TAX, SHIPPING, TOTAL)&gt;
+    &lt;!ELEMENT ITEMS (QUANTIY, DESCRIPTION, AMOUNT, ITEM_TOTAL)&gt;
+       &lt;!ELEMENT QUANTITY (#PCDATA)&gt; 
+       &lt;!ELEMENT DESCRIPTION (#PCDATA)&gt; 
+       &lt;!ELEMENT AMOUNT (#PCDATA)&gt; 
+       &lt;!ELEMENT ITEM_TOTAL (#PCDATA)&gt; 
+    &lt;!ELEMENT TAX (#PCDATA)&gt;
+    &lt;!ELEMENT SHIPPING (#PCDATA)&gt;
+    &lt;!ELEMENT TOTAL (#PCDATA)&gt;
+   &lt;!ELEMENT CLOSING (#PCDATA)&gt;
+&lt;!ENTITY COMPANY SYSTEM "company.xml"&gt;
+&lt;!ENTITY ORDER SYSTEM "order.xml"&gt;
+]&gt;
+
+
+&lt;SALES&gt;
+  &COMPANY;
+  &ORDER;
+  &lt;CLOSING&gt; 
+    Thank you for your order.  If you have any questions please let us 
+    know at 1-888-555-1111.
+  &lt;/CLOSING&gt;
+&lt;/SALES&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

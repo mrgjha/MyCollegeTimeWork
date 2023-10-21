@@ -1,0 +1,1 @@
+http://prdownloads.sourceforge.net/phpmyadmin/phpMyAdmin-2.8.0.2.zip?use_mirror=kent

@@ -1,0 +1,108 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+using namespace std;
+#include &lt;iostream&gt;
+
+
+//Tired of defining five times the same function? One definition for int type parameters, 
+//one definition for double type parameters, one definition for float type parameters... 
+//Didn't you forget one type? What if a new data type is used? No problem: 
+//the C++ compiler can generate automatically every version of the function that is necessary!
+// Just tell him how the function looks like by declaring a template function:
+
+
+
+template <class ttype>
+
+ttype minimum (ttype a, ttype b)
+
+{   
+
+ttype r;   r = a;   if (b < a) r = b;   
+
+return r;
+
+}
+
+int main ()
+
+{   int i1, i2, i3;   i1 = 34;   i2 = 6;   i3 = minimum (i1, i2);  
+
+cout << "Most little: " << i3 << endl;   
+
+double d1, d2, d3;   d1 = 7.9;   d2 = 32.1;   
+
+d3 = minimum (d1, d2);   cout << "Most little: " << d3 << endl;   
+cout << "Most little: " << minimum (d3, 3.5) << endl;  
+return 0;
+
+}
+
+
+//The function minimum is used three times in above program yet the C++ compiler generates 
+//only two versions of it: int minimum (int a, int b) and double minimum (double a, double b). 
+//That does the job for the whole program. 
+
+//Would you have tried something like calculating minimum (i1, d1) 
+//the compiler would have reported that as an error. Indeed the template tells 
+//both parameters are of the same type. 
+
+//You can use a random number of different template data types in a template definition.
+//And not all parameter types must be templates, some of them can be of standard types or 
+//user defined (char, int, double...). 
+//Here is an example where the minimum function takes parameters of any, possibly different, types and outputs a value that has the type of the first parameter: 
+
+
+
+using namespace std;
+#include &lt;iostream&gt;
+
+
+template <class type1, class type2>type1 minimum (type1 a, type2 b)
+
+{
+
+ type1 r, b_converted;  
+
+ r = a;   b_converted = (type1) b;   
+
+if (b_converted < a)
+
+r = b_converted;   
+return r;
+
+}
+
+int main ()
+{
+
+  int i;   double d;   i = 45;   d = 7.41; 
+
+  cout << "Most little: " << minimum (i, d) << endl;
+  cout << "Most little: " << minimum (d, i) << endl;  
+  cout << "Most little: " << minimum ('A', i) << endl;
+  return 0;
+
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

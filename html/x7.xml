@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Metadata [
+<!ELEMENT Metadata (thesesinfo+)>
+<!ELEMENT thesesinfo
+(title,author,contributor,subject,language,university,date)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT contributor (#PCDATA)>
+<!ELEMENT subject (#PCDATA)>
+<!ELEMENT language (#PCDATA)>
+<!ELEMENT university (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+]>
+<?xml version="1.0" encoding="UTF-8"
+standalone="no" ?>
+
+<Metadata>
+<thesesinfo>
+<title>Discrete coded wave forms for signal processing
+Radar</title>
+<creator>Abbasi, Zia Ahmad</creator>
+<contributor>Prof.Farid Ghani</contributor>
+<subject>Electronic Engineering</subject>
+<language>English</language>
+<university>Aligarh Muslim University,Aligarh, Uttar
+Pradesh</university>
+<date>1998</date>
+</thesesinfo>
+</Metadata>

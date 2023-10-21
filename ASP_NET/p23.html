@@ -1,0 +1,55 @@
+
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<pre>
+
+
+&lt;%@ Page Language=VB Debug=true %&gt;
+&lt;script runat=server&gt;
+Sub SubmitBtn_Click(Source As Object, _
+    E as ImageClickEventArgs)
+    MyMessage.InnerHTML = "Hello " & YourName.Value
+End Sub
+&lt;/SCRIPT&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Using the HTMLInputImage Control&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY LEFTMARGIN="40" TOPMARGIN="20"&gt;
+&lt;form runat="server"&gt;
+&lt;span
+    id="MyMessage"
+    runat=server
+&gt;
+&lt;/span&gt;    
+&lt;BR&gt;    
+Name: &lt;BR&gt;
+&lt;input
+    id="YourName"
+    runat="server"
+    type="text"
+&gt;
+&lt;BR&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;input 
+    id="ImageButton1"
+    runat="server"
+    type="image"
+    src="button.gif"
+    onserverclick="SubmitBtn_Click" 
+&gt;
+&lt;/Form&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

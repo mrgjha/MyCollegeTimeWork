@@ -1,0 +1,51 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// Return a reference from [].
+#include &lt;iostream.h&gt;
+
+
+const int SIZE = 3;
+
+class atype {
+  int a[SIZE];
+public:
+atype();
+int &operator[](int i) {return a[i];}
+};
+atype:: atype() {
+    register int i;
+
+
+  for(i=0; i&lt;SIZE; i++) a[i] = i;
+  }
+
+int main()
+{
+  atype ob;
+
+  cout &lt;&lt; ob[2];  // displays 2
+  cout &lt;&lt; " ";
+
+  ob[2] = 25;  // [] on left of =
+
+  cout &lt;&lt; ob[2];  // now displays 25
+
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

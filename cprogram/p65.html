@@ -1,0 +1,62 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &lt;graphics.h&gt;
+#include &lt;conio.h&gt;
+
+void box(int, int, int, int, int);
+
+int main(void)
+{
+  int driver, mode;
+
+  driver = DETECT; /* autodetect */
+  mode = 0;
+  initgraph(&driver, &mode, "c:\\tc\\bgi");
+
+  /* frame the screen for perspective */
+  box(0, 0, 639, 349, WHITE);
+
+  setviewport(20, 20, 200, 200, 1);
+  box(0, 0, 179, 179, RED);
+
+  outtext("this is a test of the viewport");
+
+  outtextxy(20, 10, "press a key");
+  getch();
+  /* clear the current viewport but not the entire screen */
+  clearviewport();
+
+  getch();
+  restorecrtmode();
+  return 0;
+}
+
+/* Draw a box given the coordinates of its two corners. */
+void box(int startx, int starty, int endx, int endy,
+         int color)
+{
+  setcolor(color);
+  line(startx, starty, startx, endy);
+  line(startx, starty, endx, starty);
+  line(endx, starty, endx, endy);
+  line(endx, endy, startx, endy);
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

@@ -1,0 +1,132 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+using System;
+
+ 
+namespace ReverseAndSort
+ {
+ 
+class Tester
+    {
+
+ 
+public static void DisplayArray(object[] theArray)
+        {
+
+ 
+foreach (object obj in theArray)
+            {
+                
+Console.WriteLine("Value: {0}", obj);
+            }
+            
+Console.WriteLine("\n");
+        }
+
+       
+public void Run()
+       {
+           
+String[] myArray =
+             {
+                 "Who", "is", "John", "Galt"
+             };
+
+           
+Console.WriteLine("Display myArray...");
+           
+DisplayArray(myArray);
+
+           
+Console.WriteLine("Reverse and display myArray...");
+           
+Array.Reverse(myArray);
+           
+DisplayArray(myArray);
+
+           
+String[] myOtherArray =
+             
+{
+                 
+"We", "Hold", "These", "Truths",                 
+"To", "Be", "Self", "Evident",
+           
+};
+
+           
+Console.WriteLine("Display myOtherArray...");
+           
+DisplayArray(myOtherArray);
+
+           
+Console.WriteLine("Sort and display myOtherArray...");
+           
+Array.Sort(myOtherArray);
+           
+DisplayArray(myOtherArray);
+       }
+
+       [STAThread]
+       
+static void Main()
+       {
+          
+Tester t = new Tester();
+          
+t.Run();
+       }
+    }
+ }
+
+
+Display myArray...
+Value: Who
+Value: is
+Value: John
+Value: Galt
+
+
+Reverse and display myArray...
+Value: Galt
+Value: John
+Value: is
+Value: Who
+
+
+Display myOtherArray...
+Value: We
+Value: Hold
+Value: These
+Value: Truths
+Value: To
+Value: Be
+Value: Self
+Value: Evident
+
+
+Sort and display myOtherArray...
+Value: Be
+Value: Evident
+Value: Hold
+Value: Self
+Value: These
+Value: To
+Value: Truths
+Value: We
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

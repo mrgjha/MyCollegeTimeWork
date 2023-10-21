@@ -1,0 +1,320 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include &lt;graphics.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;dos.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+
+
+void start(void)
+{                                          
+//	FUNTION USED FOR MAKING THE
+	setcolor(RED);
+	setlinestyle(SOLID_LINE,1,3);
+	rectangle(0,0,639,479);            
+// 	RECTANGLE WHICH IS THE BORDER
+
+	setcolor(BLUE);
+	setlinestyle(SOLID_LINE,1,2);     
+//	... COLORS ARE USED IN THEM..
+	rectangle(10,10,629,469);
+}
+
+void end2(void)
+{
+
+	int driver=DETECT,mode;   	
+//detect best driver and mode
+	int i,j=520;
+
+	initgraph(&driver,&mode,"c:\\tc\\bgi"); 	
+//initialize graphics mode
+
+	for(i=700;i&gt;=0;i--)
+	{
+
+		
+setcolor(WHITE);
+outtextxy(230,j,"Designed By");
+outtextxy(230,j+15,"Gyanendra Jha");
+outtextxy(230,j+30,"Have a nice day");
+outtextxy(230,j+45,"See you again");
+outtextxy(230,j+60,"Bye Bye");
+outtextxy(230,j+75,"An apple a day keeps a doctor away");
+outtextxy(230,j+90,"Handsome is he who handsome does");
+outtextxy(230,j+105,"Beauty attracts beauty");
+outtextxy(230,j+120,"Mera Bharat Mahan");
+outtextxy(230,j+135,"So main se ninanbe baiman");
+
+delay(20);
+j--;
+cleardevice();
+}
+closegraph();
+}
+void inv(void)
+{
+sound(700);
+outtextxy(300,430,"INVALID INPUT");
+delay(500);
+nosound();
+setcolor(0);
+outtextxy(300,430,"INVALID INPUT");
+}
+
+void printTitle(void)
+{
+int temp, temp2;
+temp=(rand()% 15)+1;
+settextstyle(SANS_SERIF_FONT,HORIZ_DIR,4);
+//set tect style for the heading
+setcolor(temp);
+//set colour for the fonts
+outtextxy(16,40,"WELCOME TO THE AIRPORT RESERVATION");
+//setting the position and the font
+
+temp2=(rand()%15)+1;
+setcolor(temp2);
+//set colour for the underline
+line(20,80,621,80);
+//set position for the line
+delay(400);
+//blinking the heading
+
+}
+
+void end (void)
+{
+cleardevice();
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,3);
+setcolor(WHITE);
+outtextxy(60,150,"ARE YOU SURE YOU WANT TO EXIT (Y/N)");
+
+switch(getch())
+{
+case 'Y':
+case 'y':
+         end2();
+         exit(0);
+         break;
+case 'N':
+case 'n':
+	 break;
+default :
+	 inv();
+	 getch();
+	 end();
+	}
+}
+
+void menu(void)
+{
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,4);
+//set text style for the options
+setcolor(WHITE);
+//set colour for the fonts
+outtextxy(60,150,"1) AIRLINE INFORMATION");
+//setting the position and the font
+outtextxy(60,210,"2) CUSTOMER PROFILE");
+//setting the position and the font
+outtextxy(60,270,"3) EXIT");
+//setting the position and the font
+
+while (1)  
+//loop will folow untill key board hits
+   {
+while(!(kbhit()))
+	{
+printTitle();
+	}
+
+switch(getch())
+// getting options from the user
+	{
+case '1':
+
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,4);
+//set text style for the options
+setcolor(0);
+//set colour for the fonts
+outtextxy(60,150,"1) AIRLINE INFORMATION");
+//setting the position and the font
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,5);
+//set text style for the options
+setcolor(10);
+//set colour for the fonts
+outtextxy(60,150,"1) AIRLINE INFORMATION");
+//setting the position and the font
+delay(500);
+break;
+
+case '2':
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,4);
+//set text style for the options
+setcolor(0);
+//set colour for the fonts
+outtextxy(60,210,"2) CUSTOMER PROFILE");
+//setting the position and the font
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,5);
+//set text style for the options
+setcolor(10);
+//set colour for the fonts
+outtextxy(60,210,"2) CUSTOMER PROFILE");
+//setting the position and the font
+delay(500);
+
+break;
+case '3':
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,4);
+//set text style for the options
+setcolor(0);
+//set colour for the fonts
+outtextxy(60,270,"3) EXIT");
+//setting the position and the font
+settextstyle(TRIPLEX_FONT,HORIZ_DIR,5);	
+//set text style for the options
+setcolor(10);
+//set colour for the fonts
+outtextxy(60,270,"3) EXIT");
+//setting the position and the font
+delay(500);
+
+end();
+cleardevice();
+start();
+menu();
+//END FUNCTION IS CALLED AFTER
+break;
+
+default:
+inv();
+}
+}
+}
+
+
+int Password (void)
+{
+	 char Password[12]="gjha"; 
+// Already assigned password
+	 char pass[20];
+	 char UserName[15];
+	 char user[15]="gyan";
+	 int sucess=0;                    
+// Password Verification
+	 int x=26,i;
+
+	 cleardevice();
+
+	 line ( 130, 180, 500, 180 );             
+// creates..
+	 rectangle ( 130, 150, 500, 300 );
+	 setfillstyle ( SOLID_FILL, 7 );       
+// ..the dialouge box..
+	 bar ( 130, 150, 500, 180 );
+	 setfillstyle ( SOLID_FILL, 8 );     
+// ..where password and user name..
+	 bar ( 130, 180, 500, 300 );
+	 setcolor ( 4 );                   
+// ..can be entered
+outtextxy ( 140, 165, " P A S S W O R D   V E R I F I C A T I O N  " );
+	 setfillstyle ( SOLID_FILL, 0 );
+	 bar ( 200, 200, 450, 230 );
+	 bar ( 200, 247, 450, 277 );
+
+	 outtextxy ( 130, 210, "   NAME " );
+	 outtextxy ( 126, 258, " PASSWORD " );
+
+	 gotoxy(26,14);
+	 gets(UserName);
+
+	for(i=0;i&lt;4;i++ )       
+// Gets the password..
+  {
+	  pass[i]=getch();
+		     
+// ..until enter key is not pressed..
+	  if(pass[i]=='\r')
+		{
+	pass[i]='\0';                
+// Enter a NULL character
+	break;
+		 }
+
+	  else
+		{
+	 gotoxy(x,17);printf("*");    
+// ..and prints asterix on the screen
+	 x++;
+
+		 }
+	}
+
+if ((strcmp(Password,pass)==0)&&(strcmp(UserName,user)==0))    
+// checks password character..
+		sucess=1;
+
+	else                    
+// If incorrect password
+	 {
+		 sucess=0;
+		 gotoxy (22, 21);
+		 printf ( " INVALID PASSWORD! TRY AGAIN " );
+		 getche ();
+	  }
+
+	return ( sucess );
+}
+
+void main(void)
+{
+	int Proceed;
+
+	int driver=VGA,mode=VGAHI;   	
+//detect best driver and mode
+
+
+	initgraph(&driver,&mode,"c:\\tc\\bgi"); 	
+//initialize graphics mode
+
+	randomize();
+
+
+	do
+	{
+	   Proceed = Password();         
+//	CHECK THE PASSWORD
+	} while ( Proceed!=1);
+	cleardevice();
+	start();                         
+//	AND THEM CHECK
+	menu();
+	getch();
+
+
+			   
+//	THE VALUE RETURNED...
+	closegraph();
+
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

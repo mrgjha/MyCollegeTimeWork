@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import java.io.*;
+public class StdInRead {
+   public static void main(String[] args)
+      throws IOException 
+   {
+      System.err.print(
+       "Enter Your input. Empty line to exit.\n");
+      BufferedReader in =
+         new BufferedReader(
+            new InputStreamReader(System.in));
+      String s;
+      while((s = in.readLine()).length() != 0)
+         System.out.println("YOU ENTERED: " + s);
+   }
+} 
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+public class IncrementDecrementOperatorTest {
+    public static void main(String [] args) {
+	int count = 6, result;
+
+	// increment operator
+
+	count = 6;
+	System.out.println("\ncount = " + count);
+	count++; 
+	System.out.println("count++; => count = " + count + "\n");
+    
+	count = 6;
+	System.out.println("count = " + count);
+	// result = count*++count*++count;
+	// result = 6 * 7 * 8;
+	result = count * (++count) * (++count);
+	System.out.println("result = count*++count*++count; => " + 
+			   "result = " + result +
+			   ", count = " + count + "\n");
+
+	count = 6;
+	// result = count*count++*count++; 
+	// result = 6 * 6 * 7;
+	result = count * (count++) * (count++);
+	System.out.println("count = " + count);
+	System.out.println("result = count*count++*count++; => " + 
+			   "result = " + result +
+			   ", count = " + count + "\n");
+
+	count = 6;
+	// result = count++*count*count++; 
+	// result = 7 * 6 * 7;
+	result = (count++) * count * (count++);
+	System.out.println("count = " + count);
+	System.out.println("**result = count++*count*count++; => " + 
+			   "result = " + result +
+			   ", count = " + count + "\n");
+
+	// decrement operator
+
+	System.out.println("count = " + count);
+	count--; 
+	System.out.println("count--; => count = " + count + "\n");
+    
+	count = 6;
+	// result = count*--count*--count;
+	// result = 6 * 5 * 4;
+	result = count * (--count) * (--count);
+	System.out.println("count = " + count);
+	System.out.println("result = count*--count*--count; => " + 
+			   "result = " + result +
+			   ", count = " + count + "\n");
+
+	count = 6;
+	// result = count*count--*count--;
+	// result = 6 * 6 * 5;
+	result = count * (count--) * (count--); 
+	System.out.println("count = " + count);
+	System.out.println("result = count*count--*count--; => " +
+			   "result = " + result +
+			   ", count = " + count);
+    }
+}
+
+
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

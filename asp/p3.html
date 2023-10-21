@@ -1,0 +1,319 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;script language="vbscript"&gt;
+sub b1_onclick()
+  MsgBox("Test")
+end sub
+&lt;/script&gt;
+&lt;input type="button" id="b1" value="Test"&gt;
+
+&lt;script language="vbscript"&gt;
+Option Explicit
+Dim w
+Sub b1_onclick()
+  Set w = open("http://www.xxx.com")
+End Sub
+Sub b2_onclick()
+  w.close()
+End Sub
+&lt;/script&gt;
+&lt;input type="button" id="b1" value="Open"&gt;
+&lt;input type="button" id="b2" value="Close"&gt;
+
+&lt;script language="vbscript"&gt;
+Option Explicit
+Dim counter, t
+
+Sub timeout
+  counter = counter + 1
+  text1.value = counter
+  t = SetTimeout("timeout()", 1000)
+End Sub
+
+Sub b1_onclick
+  t = SetTimeout("timeout()", 1000)
+End Sub
+
+Sub b2_onclick
+  ClearTimeout t
+End Sub
+&lt;/script&gt;
+
+&lt;input type="text" id="text1" size=10&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;input type="button" id="b1" value="Start"&gt;
+&lt;input type="button" id="b2" value="Stop"&gt;
+.
+&lt;script language="vbscript"&gt;
+Sub b1_onclick
+  alert("Alert string")
+End Sub
+Sub b2_onclick
+  confirm("Confirm string")
+End Sub
+Sub b3_onclick
+  prompt("Prompt string")
+End Sub
+&lt;/script&gt;
+
+&lt;input type="button" id="b1" value="Alert"&gt;
+&lt;input type="button" id="b2" value="Confirm"&gt;
+&lt;input type="button" id="b3" value="Prompt"&gt;
+
+&lt;script language="vbscript"&gt;
+Sub back_onclick
+  history.back()
+End Sub
+Sub forward_onclick
+  history.forward()
+End Sub
+&lt;/script&gt;
+&lt;input type="button" id="back" value="Back"&gt;
+&lt;input type="button" id="forward" value="Forward"&gt;
+
+&lt;script language="vbscript"&gt;
+Option Explicit
+Sub go_onclick
+  location = text1.value
+End Sub
+&lt;/script&gt;
+&lt;input type="text" id="text1" size=25 value=""&gt;
+&lt;br&gt;
+&lt;input type="button" id="go" value="Go"&gt;
+
+&lt;script language="vbscript"&gt;
+Sub b1_onclick
+  MsgBox("navigator.cookieEnabled=" & _
+    navigator.cookieEnabled)
+End Sub
+Sub b2_onclick
+  MsgBox("navigator.javaEnabled()=" & _
+    navigator.javaEnabled())
+End Sub
+&lt;/script&gt;
+
+&lt;input type="button" id="b1" value="cookieEnabled"&gt;&lt;br&gt;
+&lt;input type="button" id="b2" value="javaEnabled( )"&gt;
+
+&lt;script language="vbscript"&gt;
+Sub b1_onclick
+  MsgBox("screen.availHeight=" & screen.availHeight)
+End Sub
+Sub b2_onclick
+  MsgBox("screen.availWidth=" & screen.availWidth)
+End Sub
+Sub b3_onclick
+  MsgBox("screen.colorDepth=" & screen.colorDepth)
+End Sub
+Sub b4_onclick
+  MsgBox("screen.height=" & screen.height)
+End Sub
+Sub b5_onclick
+  MsgBox("screen.width=" & screen.width)
+End Sub
+&lt;/script&gt;
+
+&lt;input type="button" id="b1" value="availHeight"&gt;
+&lt;input type="button" id="b2" value="availWidth"&gt;
+&lt;input type="button" id="b3" value="colorDepth"&gt;
+&lt;input type="button" id="b4" value="height"&gt;
+&lt;input type="button" id="b5" value="width"&gt;
+
+&lt;html&gt;
+&lt;frameset rows="30%, 30%, 40%"&gt;
+  &lt;frame name="top" src="frames0.htm"&gt;
+  &lt;frame name="middle" src="frames1.htm"&gt;
+  &lt;frame name="bottom" src="frames2.htm"&gt;
+&lt;/frameset&gt;
+&lt;/html&gt;
+
+&lt;script language="vbscript"&gt;
+sub b1_onclick()
+  parent.frames(1).location = "frames3.htm"
+  parent.frames(2).location = "frames4.htm"
+end sub
+&lt;/script&gt;
+&lt;input type="button" id="b1" value="Change Frames"&gt;
+
+&lt;body&gt;
+&lt;B&gt;This is frames1.htm&lt;/B&gt;
+&lt;/body&gt;
+
+&lt;body&gt;
+&lt;B&gt;This is frames2.htm&lt;/B&gt;
+&lt;/body&gt;
+
+&lt;body&gt;
+&lt;B&gt;This is frames3.htm&lt;/B&gt;
+&lt;/body&gt;
+
+&lt;body&gt;
+&lt;B&gt;This is frames4.htm&lt;/B&gt;
+&lt;/body&gt;
+
+&lt;script language="vbscript"&gt;
+Option Explicit
+Dim n
+document.writeln("&lt;table border=1&gt;")
+document.writeln("&lt;tr&gt;&lt;th&gt;Number&lt;/th&gt;&lt;th&gt;Square Root&lt;/th&gt;&lt;/tr&gt;")
+For n = 0 To 20
+  document.writeln("&lt;tr&gt;&lt;td&gt;" & n & "&lt;/td&gt;&lt;td&gt;" & _
+    FormatNumber(sqr(n), 4) & "&lt;/td&gt;&lt;/tr&gt;")
+Next
+document.writeln("&lt;/table&gt;")
+&lt;/script&gt;
+
+&lt;html&gt;
+
+&lt;head&gt;
+&lt;title&gt;This is the document title&lt;/title&gt;
+&lt;script language="vbscript"&gt;
+Option Explicit
+Sub b0_onclick
+  Dim s, element
+  s = ""
+  For Each element In document.all
+    s = s & element.tagName & ", "
+  Next
+  MsgBox(s)
+End Sub
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;input type="button" id="b0" value="  All  "&gt;
+&lt;br&gt;&lt;br&gt;
+Click &lt;a href="http"//www.osborne.com"&gt;here&lt;/a&gt; for Osborne.
+&lt;br&gt;
+Click &lt;a href="http"//www.microsoft.com"&gt;here&lt;/a&gt; for Microsoft.
+&lt;form&gt;
+&lt;input type="button" value="Button"&gt;
+&lt;input type="button" value="Button"&gt;
+&lt;input type="button" value="Button"&gt;
+&lt;input type="button" value="Button"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+
+&lt;script language="vbscript"&gt;
+Option Explicit
+Sub form1_onclick
+  On Error Resume Next
+  Dim cb
+  Set cb = window.event.srcElement
+  If cb.checked Then
+    MsgBox(window.event.srcElement.id & " selected")
+  Else
+    MsgBox(window.event.srcElement.id & " not selected")
+  End If
+End Sub
+&lt;/script&gt;
+
+&lt;form id="form1"&gt;
+&lt;input type="checkbox" id="html" value="html"&gt;
+html&lt;br&gt;
+&lt;input type="checkbox" id="javascript" value="javascript"&gt;
+javascript&lt;br&gt;
+&lt;input type="checkbox" id="vbscript" value="vbscript" checked&gt;
+vbscript&lt;br&gt;
+&lt;/form&gt;
+
+&lt;script language="vbscript"&gt;
+Sub doc1_onclick
+  MsgBox("doc1 was clicked")
+End Sub
+Sub form1_onclick
+  MsgBox("form1 was clicked")
+End Sub
+Sub table1_onclick
+  MsgBox("table1 was clicked")
+End Sub
+Sub img1_onclick
+  MsgBox("img1 was clicked")
+End Sub
+&lt;/script&gt;
+
+&lt;body id="doc1"&gt;
+&lt;form id="form1"&gt;
+&lt;table id="table1" border=1&gt;
+&lt;tr&gt;
+  &lt;td&gt;Germany&lt;/td&gt;
+  &lt;td&gt;&lt;img id="img1" src="germany.gif"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Italy&lt;/td&gt;
+  &lt;td&gt;&lt;img id="img2" src="italy.gif"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+
+&lt;script language="vbscript"&gt;
+Sub doc1_onclick
+  MsgBox("doc1 was clicked")
+End Sub
+Sub form1_onclick
+  MsgBox("form1 was clicked")
+End Sub
+Sub table1_onclick
+  MsgBox("table1 was clicked")
+  window.event.cancelBubble = true
+End Sub
+Sub img1_onclick
+  MsgBox("img1 was clicked")
+End Sub
+&lt;/script&gt;
+
+&lt;body id="doc1"&gt;
+&lt;form id="form1"&gt;
+&lt;table id="table1" border=1&gt;
+&lt;tr&gt;
+  &lt;td&gt;Germany&lt;/td&gt;
+  &lt;td&gt;&lt;img id="img1" src="germany.gif"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Italy&lt;/td&gt;
+  &lt;td&gt;&lt;img id="img2" src="italy.gif"&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+
+&lt;script language="vbscript"&gt;
+Sub handler
+  MsgBox("Event from " & window.event.srcElement.id)
+End Sub
+&lt;/script&gt;
+&lt;input type="button" id="b1" value="Button 1" onclick="handler()"&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;img src="germany.gif" id="img1" ondblclick="handler()"&gt;
+
+&lt;script for="b1" event="onclick()" language="vbscript"&gt;
+  MsgBox("onclick from b1")
+&lt;/script&gt;
+
+&lt;script for="img1" event="ondblclick()" language="vbscript"&gt;
+  MsgBox("ondblclick from img1")
+&lt;/script&gt;
+
+&lt;input type="button" id="b1" value="Button 1"&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;img src="germany.gif" id="img1"&gt;
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

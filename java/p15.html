@@ -1,0 +1,91 @@
+<html>
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+//abstract class and method
+import java.io.*;
+
+
+abstract class Card {
+
+String recipient;
+public abstract void greeting();
+}
+
+
+
+
+
+class Holiday extends Card {
+
+public Holiday( String r ) {
+recipient = r;
+}
+
+public void greeting() {
+System.out.println("Dear " + recipient + ",\n");
+System.out.println("Season's Greetings!\n\n");
+}
+}
+
+
+class Birthday extends Card {
+int age;
+public Birthday ( String r, int years ) {
+recipient = r;
+age = years;
+}
+
+public void greeting() {
+System.out.println("Dear " + recipient + ",\n");
+System.out.println("Happy " + age + "th Birthday\n\n");
+}
+}
+
+
+class Valentine extends Card {
+int kisses;
+public Valentine ( String r, int k ) {
+recipient = r;
+kisses = k;
+}
+
+public void greeting() {
+System.out.println("Dear " + recipient + ",\n");
+System.out.println("Love and Kisses,\n");
+for ( int j=0; j < kisses; j++ )
+System.out.print("X");
+System.out.println("\n\n");
+}
+}
+
+public class CardTester {
+public static void main ( String[] args ) throws IOException {
+String me;
+BufferedReader input = new BufferedReader(new InputStreamReader(System.in) );
+
+System.out.println("Your name:");
+
+me = input.readLine();
+Holiday hol = new Holiday( me );
+hol.greeting();
+Birthday bd = new Birthday( me, 21 );
+bd.greeting();
+Valentine val = new Valentine( me, 7 );
+val.greeting();
+}
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

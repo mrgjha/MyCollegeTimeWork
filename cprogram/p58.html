@@ -1,0 +1,58 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+#include &lt;iostream.h&gt;
+
+class X {
+protected:
+  int a;
+public:
+  X() {
+    a = 10;
+    cout &lt;&lt; "Initializing X\n";
+  }
+};
+
+class Y {
+protected:
+  int b;
+public:
+  Y() {
+    cout &lt;&lt; "Initializing Y\n";
+    b = 20;
+  }
+} ;
+
+// Z inherits both X and Y
+class Z : public X, public Y {
+public:
+  Z() { cout &lt;&lt; "Initializing Z\n"; }
+  int make_ab() { return a*b; }
+} ;
+
+int main()
+{
+  Z i;
+
+  cout &lt;&lt; i.make_ab();
+
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

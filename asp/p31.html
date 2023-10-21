@@ -1,0 +1,60 @@
+Requesting the Data
+
+With ASP, all you have to do to get your data is to "Request" it. When you set up the asp script page to receive the data, you usually want to use a "If Then" or a "Select Case" statement at the top of your page. But before I get into the semantics of these statements let's just get the data!
+
+If a form is sending the data you use this asp code to grab each input field's data: 
+
+<% Request.Form("NameOfField1")%> 
+Or you can print the field's data to a page using this code anywhere in your asp script page: 
+
+<%=Request.Form("NameOfField1")%> (Notice that little "=" sign? Yep, that's all you need to know to print asp data into your HTML code.) 
+If the data is being sent by a hyperlink use this code to grab the variable: 
+
+<% Request.Querystring("NameOfVariable") %> 
+Likewise, you can print the data anywhere in the page using: 
+
+<%=Request.QueryString("NameOfVariable")%> 
+Ok, so you know how to get the data, now what do you do with it?
+
+Well, the sky is the limit! Manipulating this data is how you make smart webpages. You can use the data to write cookies, connect to databases and extract certain recordsets, or you can control the HTML code that prints to the user's screen, etc. In this tutorial though I will focus on extracting the user's information early in the visit to the site, and how you can extract that data anytime during the session-not unlike a shopping cart tracks the contents of your order.
+
+ASP lets you create some global variables at the beginning of the user session in the Global.asa file. When you hit an ASP site the first thing ASP does is look to the Global.asa file to get any important information it needs to know for that user session. A session begins when a user first visits the site after the OnStart event fires in the Global.asa file. The Global.asa file is like the config.sys file in DOS when you first turn on your computer. It configures the user session, and lets you free up memory space for any variables you might want. Each user session lasts as long as the person is visiting the site. The session ends when the user closes the browser, after an amount of time set by the system administrator, or by code telling ASP to end the session. What you want to do with the Global.asa is free up some memory space by declaring a few (or many) variables. As long as the session exists, the memory space for these variables will also exist. Logically, anytime you want to know what information is contained within these session variables you can extract it. Just as easily you can write information to these variables anytime. (See where I'm going with this?)
+
+In your Global.asa file you&rsquo;ll find the Session_OnStart event and this is where you want to create your variables.
+
+<SCRIPT LANGUAGE=VBScript RUNAT=Server>
+Sub Application_OnStart
+End Sub
+Sub Application_OnEnd
+End Sub Simplified: This code executes the very first time a user hits the weblication and ends some time after the last person leaves. 
+Sub Session_OnStart
+Session("Variable1") = 0
+Session("Variable2") = 0
+Session("Variable3") = 0
+End Sub This code is what you're concerned with. When a user hits your site, ASP goes right to the Global.asa and fires this event to start a session. We've also declared a few variables that we will use while the user is at the site. These variables end when a user ends the session. 
+Sub Session_OnEnd
+End Sub
+</SCRIPT> This code fires at the end of a user session. 
+
+This is really all there is to it. Now you can use the information you extract from the user and write it to one of these variables. I would use this code at the beginning of the asp script that receives the information sent by a form. All I&rsquo;m doing is writing the submitted data to the session variables, which I can extract anytime during the session.
+
+<%
+dim variable1
+dim variable2
+dim variable3
+
+variable1 = Request.Form("Field1")
+variable2 = Request.Form("Field2")
+variable3 = Request.Form("Field3")
+
+Session("Variable1") = variable1
+Session("Variable2") = variable2
+Session("Variable3") = variable3
+%>
+
+Now you can print that variable to a page anytime by using the code, <%=Session("Variable1")%>. You can also extract that information to use in an SQL statement:
+<%
+dim MartinPrince
+MartinPrince = Session("Variable1")
+%>
+<% "SELECT * FROM Employees Where FirstName = '" & MartinPrince & "'" %>

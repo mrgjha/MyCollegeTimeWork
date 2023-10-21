@@ -1,0 +1,149 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+<h3>Obsolete Programming Elements</h3>
+
+
+The following list shows some of the programming elements that have been removed from Visual Basic .NET:
+
+<pre>
+As Any
+ 
+Required all parameters to have a declared data type. 
+
+Atn function 
+Replaced by System.Math.Atan. 
+
+Calendar property 
+Handled by classes in the System.Globalization namespace. 
+
+Circle statement 
+Use methods in the System.Drawing namespace. 
+
+Currency data type 
+Replaced by the Decimal data type. 
+
+Date function 
+Replaced by the Today property of the DateTime structure in the System namespace. 
+
+Date statement 
+Replaced by the Today statement. 
+
+Debug.Assert method 
+Replaced by the Assert method of the Debug class of the System.Diagonistics namespace. 
+
+Debug.Print method 
+Replaced by the Write and WriteLine methods of the Debug class of the System.Diagonistics namespace. 
+
+Deftype statements 
+Not supported. 
+
+DoEvents function 
+Replaced by the DoEvents method of the Application class in System.Windows.Forms namespace. 
+
+Empty keyword 
+Replaced by the Nothing keyword. 
+
+Eqv operator 
+Use the equal sign. 
+
+GoSub statement 
+Not supported. 
+
+Imp operator 
+A Imp B is logically equivalent to (Not A) Or B. 
+
+Initialize event 
+Replaced by the constructor method. 
+
+Instancing property 
+Use the constructor to specify instancing. 
+
+IsEmpty function 
+Not supported because the Empty keyword is not supported. 
+
+IsMissing function 
+Not supported because every optional parameter must declare a default value. 
+
+IsNull function 
+Not supported. The Null keyword is replaced by Nothing. 
+
+IsObject function 
+Replaced by the IsReference function. 
+
+Let statement 
+Not supported. 
+
+Line statement 
+Use the DrawLine method of the Graphics class in the System.Drawing namespace. 
+
+LSet statement 
+Use the PadLeft method of the String class in the System namespace. 
+
+Null keyword 
+Use Nothing. 
+
+On...GoSub construction 
+Not supported. No direct replacement. 
+
+On...GoTo construction 
+Not supported. No direct replacement. On Error... is still supported, however. 
+
+Option Base statement 
+Not supported. All arrays have lower bound equal to 0. 
+
+Option Private Module statement 
+Use access modifiers in each individual Module statement. 
+
+Property Get, Property Let, and Property Set statements 
+Replaced by a new unified syntax for defining properties. 
+
+PSet method 
+Not supported. No direct replacement. See the System.Drawing namespace. 
+
+Round function 
+Use the Round method of the Math class of the System namespace. 
+
+RSet statement 
+Use the PadRight method of the String class in the System namespace. 
+
+Scale method 
+Not supported. No direct replacement. See the System.Drawing namespace. 
+
+Set statement 
+Not supported. 
+
+Sgn function 
+Use Math.Sign. 
+
+Sqr function 
+Use Math.Sqrt. 
+
+String function 
+Use the String class constructor with parameters. 
+
+Terminate event 
+Use the Destroy method. 
+
+Time function and statement 
+Instead of the Time function, use the TimeOfDay method of the DateTime structure of the System namespace. Instead of the Time statement, use the TimeOfDay statement. 
+
+Type statement 
+Use the Structure statement. 
+
+Variant data type 
+Use the Object data type. 
+
+VarType function 
+Use the TypeName function or the GetType method of the Object class. 
+
+Wend keyword 
+Replaced by End While. 
+</pre>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

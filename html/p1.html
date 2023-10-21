@@ -1,0 +1,395 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+XSLT stands for Extensible Stylesheet Language Transformations
+XSLT is used to transform XML documents into other kinds of documents--usually, but not necessarily, XHTML
+XSLT uses two input files:
+The XML document containing the actual data
+The XSL document containing both the “framework” in which to insert the data, and XSLT commands to do so
+
+File data.xml:
+
+
+&lt;?xml version="1.0"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="render.xsl"?&gt;
+&lt;message&gt;Howdy!&lt;/message&gt;
+
+
+
+
+File render.xsl:
+
+
+&lt;?xml version="1.0"?&gt;
+
+&lt;xsl:stylesheet version="1.0”   
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+&lt;!-- one rule, to transform the input root (/) --&gt;
+&lt;xsl:template match="/"&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;h1&gt;&lt;xsl:value-of select="message"/&gt;&lt;/h1&gt;
+&lt;/body&gt;&lt;/html&gt;
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+
+
+
+An XSLT document has the .xsl extension 
+The XSLT document begins with:
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+Contains one or more templates, such as:
+&lt;xsl:template match="/"&gt; ... &lt;/xsl:template&gt;
+And ends with:
+&lt;/xsl:stylesheet&gt;
+
+
+
+
+The template &lt;xsl:template match="/"&gt; says to select the entire file
+You can think of this as selecting the root node of the XML tree
+Inside this template,
+ &lt;xsl:value-of select="message"/&gt; selects the message child
+Alternative Xpath expressions that would also work:
+ ./message
+/message/text()    (text() is an XPath function)
+./message/text()
+
+
+
+The XSL was:
+
+
+&lt;xsl:template match="/"&gt;
+&lt;html&gt;&lt;body&gt;
+&lt;h1&gt;&lt;xsl:value-of select="message"/&gt;&lt;/h1&gt;
+&lt;/body&gt;&lt;/html&gt;
+&lt;/xsl:template&gt;
+
+
+The &lt;xsl:template match="/"&gt; chooses the root
+The &lt;html&gt;&lt;body&gt;   &lt;h1&gt; is written to the output file
+The contents of message is written to the output file
+The &lt;/h1&gt;   &lt;/body&gt;&lt;/html&gt; is written to the output file
+
+The resultant file looks like:
+
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;Howdy!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+How XSLT works
+
+The XML text document is read in and stored as a tree of nodes
+The &lt;xsl:template match="/"&gt; template is used to select the entire tree
+The rules within the template are applied to the matching nodes, thus changing the structure of the XML tree
+If there are other templates, they must be called explicitly from the main template
+Unmatched parts of the XML tree are not changed
+After the template is applied, the tree is written out again as a text document
+
+
+Where XSLT can be used
+
+With an appropriate program, such as Xerces, XSLT can be used to read and write files
+A server can use XSLT to change XML files into HTML files before sending them to the client
+A modern browser can use XSLT to change XML into HTML on the client side
+This is what we will mostly be doing in this class
+Most users seldom update their browsers
+If you want “everyone” to see your pages, do any XSL processing on the server side
+Otherwise, think about what best fits your situation
+
+Modern browsers
+
+
+Internet Explorer 6 best supports XML
+Netscape 6 supports some of XML
+Internet Explorer 5.x supports an obsolete version of XML
+IE5 is not good enough for this course
+If you must use IE5, the initial PI is different (you can look it up if you ever need it)
+
+
+
+xsl:value-of
+
+
+&lt;xsl:value-of   select="XPath expression"/&gt; selects the contents of an element and adds it to the output stream
+The select attribute is required
+Notice that xsl:value-of is not a container, hence it needs to end with a slash
+Example (from an earlier slide):
+&lt;h1&gt; &lt;xsl:value-of  select="message"/&gt; &lt;/h1&gt;
+
+xsl:for-each
+
+
+xsl:for-each is a kind of loop statement
+The syntax is
+&lt;xsl:for-each   select="XPath expression"&gt;
+Text to insert and rules to apply
+&lt;/xsl:for-each&gt;
+ Example: to select every book (//book) and make an unordered list (&lt;ul&gt;) of their titles (title), use:
+   
+
+   &lt;ul&gt;
+     &lt;xsl:for-each select="//book"&gt;
+       &lt;li&gt;&lt;xsl:value-of select="title"/&gt;&lt;/li&gt;
+     &lt;/xsl:for-each&gt;
+   &lt;/ul&gt;
+
+
+
+You can filter (restrict) output by adding a criterion to the select attribute’s value:
+
+&lt;ul&gt;
+&lt;xsl:for-each select="//book"&gt;
+     &lt;li&gt;
+    &lt;xsl:value-of
+        select="title[../author='Terry Pratchett']"/&gt;
+     &lt;/li&gt;
+    &lt;/xsl:for-each&gt;
+&lt;/ul&gt;
+
+This will select book titles by Terry Pratchett
+
+
+
+
+Here is the filter we just used:
+
+
+&lt;xsl:value-of
+    select="title[../author='Terry Pratchett'"]/&gt;
+
+author is a sibling of title, so from title we have to go up to its parent, book, then back down to author
+This filter requires a quote within a quote, so we need both single quotes and double quotes
+Legal filter operators are:
+    =          !=          &lt;          &gt;
+Numbers should be quoted, but apparently don’t have to be
+
+Here’s what we did:
+
+&lt;xsl:for-each select="//book"&gt;
+&lt;li&gt;
+&lt;xsl:value-of
+          select="title[../author='Terry Pratchett']"/&gt;
+      &lt;/li&gt; &lt;/xsl:for-each&gt;
+
+This will output &lt;li&gt; and &lt;/li&gt; for every book, so we will get empty bullets for authors other than Terry Pratchett
+There is no obvious way to solve this with just xsl:value-of
+
+xsl:if
+
+
+xsl:if allows us to include content if a given condition (in the test attribute) is true
+Example:
+&lt;xsl:for-each  select="//book"&gt;
+&lt;xsl:if  test="author='Terry Pratchett'"&gt;
+
+&lt;li&gt;&lt;xsl:value-of  select="title"/&gt;
+        &lt;/li&gt;&lt;/xsl:if&gt;&lt;/xsl:for-each&gt;
+
+This does work correctly!
+
+
+The xsl:choose ... xsl:when ... xsl:otherwise construct is XML’s equivalent of Java’s switch ... case ... default statement
+
+The syntax is:
+&lt;xsl:choose&gt;
+    &lt;xsl:when test="some condition"&gt;
+ ... some code ...
+&lt;/xsl:when&gt;
+
+&lt;xsl:otherwise&gt;
+... some code ... 
+&lt;/xsl:otherwise&gt;
+
+&lt;/xsl:choose&gt;
+
+
+xsl:choose is often used within an xsl:for-each loop
+
+
+You can place an xsl:sort inside an xsl:for-each
+The attribute of the sort tells what field to sort on
+Example:
+&lt;ul&gt;
+&lt;xsl:for-each select="//book"&gt;
+&lt;xsl:sort select="author"/&gt;
+&lt;li&gt;   &lt;xsl:value-of select="title"/&gt; by
+       &lt;xsl:value-of select="author"&gt;&lt;/li&gt;
+&lt;/xsl:for-each&gt;&lt;/ul&gt;
+
+This example creates a list of titles and authors, sorted by author
+
+
+&lt;xsl:text&gt;...&lt;/xsl:text&gt; helps deal with two common problems:
+XSL isn’t very careful with whitespace in the document
+This doesn’t matter much for HTML, which collapses all whitespace anyway (though the HTML source may look ugly)
+&lt;xsl:text&gt; gives you much better control over whitespace; it acts like the &lt;pre&gt; element in HTML
+Since XML defines only five entities, you cannot readily put other entities (such as &nbsp;) in your XSL
+&amp;nbsp; almost works, but &nbsp; is visible on the page 
+
+Here’s the secret formula for entities:
+
+&lt;xsl:text  disable-output-escaping="yes"&gt;&amp;nbsp;&lt;/xsl:text&gt;
+
+
+
+
+Suppose the XML contains&lt;name&gt;Dr. Dave's Home Page&lt;/name&gt;&lt;url&gt;http://www.cis.upenn.edu/~matuszek&lt;/url&gt;
+And you want to turn this into&lt;a href="http://www.cis.upenn.edu/~matuszek"&gt;
+Dr. Dave's Home Page&lt;/a&gt;
+We need additional tools to do this
+It doesn’t even help if the XML directly contains&lt;a href="http://www.cis.upenn.edu/~matuszek"&gt;
+Dr. Dave's Home Page&lt;/a&gt; -- we still can’t move it to the output
+The same problem occurs with images in the XML
+
+
+
+Suppose the XML contains
+&lt;name&gt;Dr. Dave's Home Page&lt;/name&gt;
+&lt;url&gt;http://www.cis.upenn.edu/~matuszek&lt;/url&gt;
+&lt;xsl:attribute name="..."&gt; adds the named attribute to the enclosing tag
+The value of the attribute is the content of this tag
+Example:
+    &lt;a&gt;&lt;xsl:attribute name="href"&gt;
+    &lt;xsl:value-of select="url"/&gt;
+&lt;/xsl:attribute&gt;
+&lt;xsl:value-of select="name"/&gt;
+&lt;/a&gt;
+
+Result:    &lt;a href="http://www.cis.upenn.edu/~matuszek"&gt;
+Dr. Dave's Home Page&lt;/a&gt;
+
+
+Suppose the XML contains
+
+&lt;name&gt;Dr. Dave's Home Page&lt;/name&gt;
+&lt;url&gt;http://www.cis.upenn.edu/~matuszek&lt;/url&gt;
+
+An attribute value template (AVT) consists of braces { } inside the attribute value
+The content of the braces is replaced by its value
+
+Example:
+    &lt;a href="{url}"&gt;
+&lt;xsl:value-of select="name"/&gt;
+&lt;/a&gt;
+
+Result:    &lt;a href="http://www.cis.upenn.edu/~matuszek"&gt;
+Dr. Dave's Home Page&lt;/a&gt;
+
+
+Modularization--breaking up a complex program into simpler parts--is an important programming tool
+In programming languages modularization is often done with functions or methods
+In XSL we can do something similar withxsl:apply-templates
+For example, suppose we have a DTD for book with parts titlePage, tableOfContents, chapter, and index
+We can create separate templates for each of these parts
+
+Book example
+
+&lt;xsl:template match="/"&gt;
+&lt;html&gt; &lt;body&gt;
+&lt;xsl:apply-templates/&gt;
+&lt;/body&gt; &lt;/html&gt;
+&lt;/xsl:template&gt;
+&lt;xsl:template match="tableOfContents"&gt;
+&lt;h1&gt;Table of Contents&lt;/h1&gt;
+&lt;xsl:apply-templates select="chapterNumber"/&gt;
+&lt;xsl:apply-templates select="chapterName"/&gt;
+&lt;xsl:apply-templates select="pageNumber"/&gt;
+&lt;/xsl:template&gt;
+
+Etc.
+
+
+xsl:apply-templates
+
+
+The &lt;xsl:apply-templates&gt; element applies a template rule to the current element or to the current element’s child nodes
+If we add a select attribute, it applies the template rule only to the child that matches
+If we have multiple &lt;xsl:apply-templates&gt; elements with select attributes, the child nodes are processed in the same order as the &lt;xsl:apply-templates&gt; elements
+
+When templates are ignored
+
+Templates aren’t used unless they are applied
+Exception: Processing always starts with select="/"
+If it didn’t, nothing would ever happen
+If your templates are ignored, you probably forgot to apply them
+If you apply a template to an element that has child elements, templates are not automatically applied to those child elements
+
+
+
+
+&lt;book&gt;
+&lt;title&gt;XML&lt;/title&gt;
+&lt;author&gt;Gregory Brill&lt;/author&gt;
+&lt;/book&gt;
+&lt;xsl:template match="/"&gt;
+&lt;html&gt; &lt;head&gt;&lt;/head&gt; &lt;body&gt;
+&lt;b&gt;&lt;xsl:value-of select="/book/title"/&gt;&lt;/b&gt;
+&lt;xsl:apply-templates select="/book/author"/&gt;
+&lt;/body&gt; &lt;/html&gt;&lt;/xsl:template&gt;
+&lt;xsl:template match="/book/author"&gt;
+by &lt;i&gt;&lt;xsl:value-of select="."/&gt;&lt;/i&gt;&lt;/xsl:template&gt;
+
+
+
+
+
+
+
+You can name a template, then call it, similar to the way you would call a method in Java
+The named template:
+&lt;xsl:template name="myTemplateName"&gt;
+...body of template...
+&lt;/xsl:template&gt;
+A call to the template:
+&lt;xsl:call-template name="myTemplateName"/&gt;
+Or:&lt;xsl:call-template name="myTemplateName"&gt;
+...parameters...
+&lt;/xsl:call-template&gt;
+
+
+Parameters, if present, are included in the content of xsl:template, but are the only content of xsl:call-template 
+Example call:
+
+&lt;xsl:call-template name="doOneType"&gt;
+&lt;xsl:with-param name="header" select="'Lectures'"/&gt;
+&lt;xsl:with-param name="nodes" select="//lecture"/&gt;
+&lt;/xsl:call-template&gt;
+Example template:&lt;xsl:template name="doOneType"&gt;
+&lt;xsl:param name="header"/&gt;
+&lt;xsl:param name="nodes"/&gt;
+...body of template...
+&lt;/xsl:template&gt;
+
+Parameters are matched up by name, not by position
+
+
+
+XSL is a programming language--and not a particularly simple one
+Expect to spend considerable time debugging your XSL 
+These slides have been an introduction to XSL and
+XSLT--there’s a lot more of it we haven’t covered
+As with any programming, it’s a good idea to start simple and build it up incrementally: “Write a little, test a little”
+This is especially a good idea for XSLT, because you don’t get a lot of feedback about what went wrong
+I use jEdit with the XML plugin
+I find it to be a big help, expecially with XML syntax
+My approach is: write (or change) a line or two, check for syntax errors, then jump to IE and reload the XML file
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

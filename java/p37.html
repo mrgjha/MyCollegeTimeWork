@@ -1,0 +1,55 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+class MyThread extends Thread { 	
+
+// the thread
+        
+
+public void run() {
+                
+System.out.println(" this thread is running ... ");
+        
+}
+} // end class MyThread
+
+class ThreadEx2 { 		
+
+// a program that utilizes the thread
+
+public static void main(String [] args  ) {
+	
+// note, the created object myThread
+Object IS A Thread as well.
+
+
+MyThread t = new MyThread();
+                                
+// due to extending the Thread class (above)                                
+// I can call start(), and this will call                                
+// run(). start() is a method in class Thread.
+
+
+t.start();
+
+
+       } 
+
+// end main()
+
+
+}       
+
+// end class ThreadEx2
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

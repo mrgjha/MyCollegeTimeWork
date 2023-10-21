@@ -1,0 +1,101 @@
+<html>
+<head>
+
+<title>C++ adds one more structure named EXCEPTION. 
+</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+
+
+//You know the classical structures of C: for, if, do, while, switch... C++ 
+//adds one more structure named EXCEPTION: 
+
+
+
+int main ()
+{   
+
+int a, b;   
+cout << "Type a number: ";   
+cin >> a;   cout << endl;   
+
+try   {      
+
+if (a > 100) throw 100;      
+if (a < 10)  throw 10;      
+throw a / 3;   
+
+}
+   
+
+catch (int result)   
+
+{      
+
+cout << "Result is: " << result << endl;      
+b = result + 1;   }   
+
+cout << "b contains: " << b << endl;   
+cout << endl;   // another example of exception use:   
+
+char zero []     = "zero";   
+char pair []     = "pair";   
+char notprime [] = "not prime";   
+char prime []    = "prime";   
+
+try   {      
+
+if (a == 0) 
+throw zero;      
+
+if ((a / 2) * 2 == a) 
+throw pair;      
+
+for (int i = 3; i <= sqrt (a); i++)      
+{         
+
+if ((a / i) * i == a) 
+
+throw notprime;      
+}      
+
+throw prime;   
+}   
+
+catch (char *conclusion)   
+
+{      
+
+cout << "The number you typed is "<< conclusion << endl;   
+
+}   
+
+cout << endl;  
+return 0;
+
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

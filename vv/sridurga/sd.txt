@@ -1,0 +1,17 @@
+<%
+Set Conn = Server.CreateObject("ADODB.Connection")
+'assumption 1
+FilePath = "E:\database\myDB.mdb"
+'assumption 2
+Conn.Open "Driver={Microsoft Access Driver (*.mdb)}; DBQ=" & FilePath & ";"
+
+'assumption 3
+
+%> 
+
+strsql = "update userlist set registerID='" & Rcid & "' where password='" & Old & "';"
+if rs("password") = Old and rs("registerID")=rid then
+
+rs.edit
+rs("password")=New
+rs.update

@@ -1,0 +1,140 @@
+<html>
+<head>
+
+
+
+<base target="tutorial">
+</head>
+
+<body background="xx.JPG" text="RED" alink="red" vlink="blue">
+
+<OBJECT ID="TruVoice" width=0 height=0 CLASSID="CLSID:B8F2846E-CE36-11D0-AC83-00C04FD97575" CODEBASE="#VERSION=6,0,0,0"></OBJECT>
+<OBJECT id=AgentControl classid=CLSID:D45FD31B-5C6E-11D1-9EC1-00C04FD7081F></OBJECT>
+
+<SCRIPT language=JavaScript type=text/javascript>
+
+
+function LoadLocalAgent(CharID, CharACS) {
+   LoadReq = AgentControl.Characters.Load(CharID, CharACS);
+    return(true);
+      }
+    var MerlinID;
+    var MerlinACS;
+
+    AgentControl.Connected = true;
+
+	MerlinLoaded = LoadLocalAgent(MerlinID, MerlinACS);
+	Merlin = AgentControl.Characters.Character(MerlinID);
+	Merlin.Show();
+	
+	Merlin.Play("Wave");
+	Merlin.MoveTo (300,400);
+	Merlin.Play ("Announce");
+	Merlin.speak("Hi! I'm the website assistant!");
+	Merlin.MoveTo (450,450);
+	Merlin.Play('Gesturedown');
+	Merlin.Play('Gestureleft');
+	Merlin.speak("Look to left... ");
+	Merlin.Play("Lookleft");
+	Merlin.Play("LookleftReturn");
+	Merlin.Play("Lookleft");
+	Merlin.Play("LookleftReturn");
+	Merlin.Play("Lookleft");
+	Merlin.Play("LookleftReturn");
+	Merlin.think("Great!!! ")
+	Merlin.MoveTo (250,430);
+	Merlin.Play('Gesturedown');
+	Merlin.Play("Write");
+	Merlin.speak("Incredible! This is a simple script...");
+	Merlin.Play("WriteContinued");
+	Merlin.Play("WriteReturn");
+	Merlin.Play("Congratulate");
+	Merlin.MoveTo (350,200);
+	Merlin.Play("GetAttention");
+	Merlin.Play("GetAttentionContinued");
+	Merlin.Play("GetAttentionReturn");
+	Merlin.Play("Idle3_1");
+	Merlin.speak("Now I'm going to sleep... Bye!!!");
+	Merlin.Play ("Wave");
+	Merlin.play ("Greet");
+	Merlin.Hide();
+</SCRIPT>
+
+
+
+<table>
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="English.html"><b>LEARN ENGLISH/IQ</b></a></td>
+</tr>
+
+
+
+
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="Accounts.html"><b>ACCOUNTS/TALLY</b></a></td>
+</tr>
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="Oracle.html"><b>ORACLE</b></a></td>
+</tr>
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="VB.html"><b>VB/MS ACCESS</b></a></td>
+</tr>
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="cTutorial.html"><b>C/C++</b></a></td>
+</tr>
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="Java.html"><b>JAVA</b></a></td>
+</tr>
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="CSHARP.html"><b>C#</b></a></td>
+</tr>
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="HTML.html"><b>HTML/XML/XSLT/CSS</b></a></td>
+
+</tr>
+
+
+
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="JSP.html"><b>JSP</b></a></td>
+</tr>
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="PHP.html"><b>PHP/MySql</b></a></td>
+</tr>
+
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="Perl.html"><b>PERL</b></a></td>
+</tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="VB_net.html"><b>VB.NET</b></a></td>
+</tr>
+
+
+<tr>
+<td><img src="balls11.gif" width="32" heigh ="24"><a href="ASP_NET.html"><b>ASP.NET</b></a></td>
+</tr>
+<tr>
+<td><img src="balls11.gif" width="32" height="24"><a href="ASP.html"><b>ASP/VBSCRIPT/JAVASCRIPT</b></a></td>
+</tr>
+
+
+
+
+</table>
+
+
+
+
+</body>
+</html>
+
+
+
+
+

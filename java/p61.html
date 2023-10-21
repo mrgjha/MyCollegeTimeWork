@@ -1,0 +1,77 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class JMenuItemTest extends JCloseableFrame {
+    public JMenuItemTest() {
+	super("JMenuItemTest (Swing)", 250, 100);
+
+	JMenuBar menuBar = new JMenuBar();
+	menuBar.add(createFileMenu());
+
+	setJMenuBar(menuBar);
+    }
+
+    // this is static because I want to call this method
+    // in the JPopupMenuTest.java as a class method
+    public static JMenu createFileMenu() {
+	JMenu fileMenu = new JMenu("File");
+	fileMenu.setMnemonic('f');
+
+	JMenu openMenu = new JMenu("Open");
+	openMenu.setMnemonic('o');
+
+	// set mnemonic for JMenuItem
+	JMenuItem openMenuItem = new JMenuItem("Text Document",
+					       KeyEvent.VK_T);
+
+	// set accelerator key 
+	openMenuItem.setAccelerator
+	    (KeyStroke.getKeyStroke(KeyEvent.VK_T,
+				    java.awt.Event.CTRL_MASK));
+	openMenu.add(openMenuItem);
+    
+	openMenuItem = new JMenuItem("HTML Document", 
+				       KeyEvent.VK_H);
+	openMenu.add(openMenuItem);
+	fileMenu.add(openMenu);
+
+	JMenu propertiesMenu = new JMenu("Properties");
+	JMenu faceMenu = new JMenu("Face");
+	faceMenu.add("Bold");
+	faceMenu.add("Italic");
+	propertiesMenu.add(faceMenu);
+	fileMenu.add(propertiesMenu);
+
+	fileMenu.add(new JCheckBoxMenuItem("Save", true));
+
+	fileMenu.addSeparator();
+
+	JMenuItem exitMenuItem = new JMenuItem("Exit");
+	exitMenuItem.setEnabled(false);
+	fileMenu.add(exitMenuItem);
+
+	return fileMenu;
+    }
+
+    public static void main(String [] args) {
+	JMenuItemTest frame = new JMenuItemTest();
+	frame.setVisible(true);
+    }
+}
+	
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

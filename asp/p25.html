@@ -1,0 +1,88 @@
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+&lt!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt
+&ltHTML&gt
+
+
+&ltHEAD&gt
+&ltTITLE&gtUsing VBScript Procedures&lt/TITLE&gt
+
+&ltSCRIPT LANGUAGE = "VBScript"&gt
+&lt!--
+   Option Explicit
+
+   ' Find the minimum value. Assume that first value is
+   ' the smallest.
+   Function Minimum( min, a, b )
+
+      If a &lt min Then
+         min = a
+      End If
+
+      If b &lt min Then
+         min = b
+      End If
+
+      Minimum = min     ' Return value
+   End Function
+
+   Sub OddEven( n )
+      If n Mod 2 = 0 Then
+         Call MsgBox( n & " is the smallest and is even" )
+      Else
+         Call MsgBox( n & " is the smallest and is odd" )
+      End If
+   End Sub
+
+   Sub cmdButton_OnClick()
+      Dim number1, number2, number3, smallest
+
+      ' Convert each input to Long subtype
+      number1 = CLng( Document.Forms( 0 ).txtBox1.Value )
+      number2 = CLng( Document.Forms( 0 ).txtBox2.Value )
+      number3 = CLng( Document.Forms( 0 ).txtBox3.Value )
+
+      smallest = Minimum( number1, number2, number3 )
+      Call OddEven( smallest )
+   End Sub
+--&gt
+&lt/SCRIPT&gt
+&lt/HEAD&gt
+
+&ltBODY&gt
+&ltFORM&gt Enter a number
+&ltINPUT TYPE = "text" NAME = "txtBox1" SIZE = "5" VALUE = "0"&gt 
+&ltP&gtEnter a number
+&ltINPUT TYPE = "text" NAME = "txtBox2" SIZE = "5" VALUE = "0"&gt 
+&ltP&gtEnter a number
+&ltINPUT TYPE = "text" NAME = "txtBox3" SIZE = "5" VALUE = "0"&gt
+&ltP&gt&ltINPUT TYPE = "BUTTON" NAME = "cmdButton" VALUE = "Enter"&gt 
+        
+&lt/FORM&gt
+&lt/BODY&gt
+&lt/HTML&gt
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

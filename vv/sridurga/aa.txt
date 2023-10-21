@@ -1,0 +1,59 @@
+ <%
+    Dim x, y, temp, serv, D, hits
+    x = Trim(day(date()))
+    D = Application( "serv" )
+    
+    if D = x Then
+    Application( "hits" ) = Application( "hits" ) + 1
+    Else
+    
+    Application( "hits" ) = 1
+    
+    End if
+    y = x
+    temp = y
+    Application( "serv" ) = temp
+    %>
+    There have been <%=Application( "hits" )%> hits To this page today!
+ 
+
+ 
+ 
+
+Other 4 submission(s) by this author
+ 
+ 
+ 
+  
+ Report Bad Submission 
+Use this form to notify us if this entry should be deleted (i.e contains no code, is a virus, etc.).
+This submission should be removed because:  
+  
+Your Vote! 
+
+What do you think of this code(in the Advanced category)?
+(The code with your highest vote will win this month's coding contest!)
+Excellent  Good  Average  Below Average  Poor      
+See Voting Log  
+  
+Other User Comments 
+
+ There are no comments on this submission.
+  
+ 
+Add Your Feedback! 
+Note:Not only will your feedback be posted, but an email will be sent to the code's author from the email account you registered on the site, so you can correspond directly.
+
+NOTICE: The author of this code has been kind enough to share it with you.  If you have a criticism, please state it politely or it will be deleted.
+
+For feedback not related to this particular code, please click here.
+   
+   Name:   
+Email: gyanendra_jha@rediffmail.com 
+Comment:  
+  
+
+  
+
+ 
+ 

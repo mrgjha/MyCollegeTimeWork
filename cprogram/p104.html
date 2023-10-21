@@ -1,0 +1,180 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+#include&lt;dos.h&gt;
+#include&lt;process.h&gt;
+#include&lt;graphics.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+
+
+int mouseini();
+int showmp();
+int hidemp();
+int getmp(int *x,int *y);
+int setmp();
+void graphics();
+void screen();
+
+void main()
+{
+
+
+graphics();
+mouseini();
+showmp();
+setmp();
+screen();
+
+
+
+}
+
+
+
+void graphics()
+{
+int gdriver=DETECT,gmode=0;
+initgraph(&gdriver,&gmode,"c:\\tc\\bgi");
+}
+
+
+
+void screen()
+{
+
+
+
+cleardevice();
+setcolor(YELLOW);
+settextstyle(SMALL_FONT,HORIZ_DIR,5);
+setfillstyle(SOLID_FILL,RED);
+fillellipse(300,80,30,20);
+fillellipse(300,130,30,20);
+fillellipse(300,180,30,20);
+fillellipse(300,230,30,20);
+outtextxy(283,77,"ADD");
+outtextxy(286,125,"Bill");
+outtextxy(289,175,"Find");
+outtextxy(292,220,"Exit");
+
+
+
+while (1)
+{
+REGS regs;
+
+int mx=0,my=0;
+regs.x.ax=0x03;
+int86(0x33,& regs,& regs);
+showmp();
+
+
+
+gotoxy(1,2);cout&lt;&lt;"X coordinate ="&lt;&lt;regs.x.cx&lt;&lt;"\t";
+gotoxy(1,3);cout&lt;&lt;"Y coordinate ="&lt;&lt;regs.x.dx&lt;&lt;"\t";
+
+
+if (regs.x.bx==1)
+{
+
+getmp(&mx,&my);
+if (my&gt;60 && my&lt;100)
+{
+if (mx&gt;270 && mx&lt;330)    //Yes
+{
+cout&lt;&lt;mx&lt;&lt;my;
+}
+}
+
+
+
+if (my&gt;110 && my&lt;150)
+{
+if (mx&gt;270 && mx&lt;330)    //Yes
+{
+cout&lt;&lt;mx&lt;&lt;my;
+}
+}
+
+
+if (my&gt;160 && my&lt;200)
+{
+if (mx&gt;270 && mx&lt;330)    //Yes
+{
+cout&lt;&lt;mx&lt;&lt;my;
+}
+}
+if (my&gt;210 && my&lt;250)
+{
+if (mx&gt;270 && mx&lt;330)    //Yes
+{
+exit(0);
+}
+}
+}
+}
+}
+
+int mouseini()
+{
+union REGS i,o;
+i.x.ax=0;
+int86(0x33,&i,&o);
+return(o.x.ax);
+}
+int showmp()
+{
+union REGS i,o;
+i.x.ax=1;
+int86(0x33,&i,&o);
+return 0;
+}
+
+int hidemp()
+{
+union REGS i,o;
+i.x.ax=2;
+int86(0x33,&i,&o);
+return 0;
+}
+
+int getmp(int *x,int *y)
+{
+union REGS i,o;
+i.x.ax=3;
+int86(0x33,&i,&o);
+*x=o.x.cx;
+*y=o.x.dx;
+return 0;
+}
+
+int setmp()
+{
+union REGS i,o;
+i.x.ax=4;
+int mx=getmaxx(),my=getmaxy();
+i.x.cx=(3*mx/4)+20;
+i.x.dx=(3*my/4)+20;
+int86(0x33,&i,&o);
+return 0;
+}
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

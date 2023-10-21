@@ -1,0 +1,128 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+class X {
+protected:
+  int i;
+  int j;
+public:
+  void get_ij() {
+    cout &lt;&lt; "Enter two numbers: ";
+    cin &gt;&gt; i &gt;&gt; j;
+  }
+  void put_ij() { cout &lt;&lt; i &lt;&lt; " " &lt;&lt; j &lt;&lt; "\n"; }
+} ;
+
+// In Y, i and j of X become protected members.
+class Y : public X {
+  int k;
+public:
+  int get_k() { return k; }
+  void make_k() { k = i*j; }
+} ;
+
+/* Z has access to i and j of X, but not to
+   k of Y, since it is private. */
+class Z : public Y {
+public:
+  void f();
+} ;
+
+// i and j are accessible here
+void Z::f()
+{
+  i = 2; // ok
+  j = 3; // ok
+}
+
+int main()
+{
+ 
+  clrscr();
+  Y var;
+  Z var2;
+
+  var.get_ij();
+  var.put_ij();
+
+  var.make_k();
+  cout &lt;&lt; var.get_k();
+  cout &lt;&lt; "\n";
+
+  var2.f();
+  var2.put_ij();
+
+
+  return 0;
+  getch();
+}
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+class base {
+protected:
+  int i, j;
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout &lt;&lt; i &lt;&lt; " " &lt;&lt; j &lt;&lt; "\n"; }
+};
+
+// i and j inherited as protected.
+class derived1 : public base {
+  int k;
+public:
+  void setk() { k = i*j; } // legal
+  void showk() { cout &lt;&lt; k &lt;&lt; "\n"; }
+};
+
+// i and j inherited indirectly through derived1.
+class derived2 : public derived1 {
+  int m;
+public:
+  void setm() { m = i-j; } // legal
+  void showm() { cout &lt;&lt; m &lt;&lt; "\n"; }
+};
+
+int main()
+{
+  derived1 ob1;
+  derived2 ob2;
+  clrscr();
+  ob1.set(2, 3);
+  ob1.show();
+  ob1.setk();
+  ob1.showk();
+
+  ob2.set(3, 4);
+  ob2.show();
+  ob2.setk();
+  ob2.setm();
+  ob2.showk();
+  ob2.showm();
+   getch();
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

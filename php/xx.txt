@@ -1,0 +1,146 @@
+<html>
+
+<head>
+<title>Php information</title>
+</head>
+
+<body background="MEDAQUA.gif" text="white">
+<pre>
+<b>
+
+
+
+
+
+
+
+<html>
+<body>
+<?php
+switch ($x)
+{
+case 1:
+  echo "Number 1";
+  break;
+case 2:
+  echo "Number 2";
+  break;
+case 3:
+  echo "Number 3";
+  break;
+default:
+  echo "No number between 1 and 3";
+}
+?>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4>PHP information</h4>
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+<h4>This section describes file handling in PHP.
+Opening a File<h4>
+
+<html>
+<body>
+<?php
+$f=fopen("welcome.txt","r");
+?>
+</body>
+</html>
+
+
+<h4>
+
+<html>
+<body>
+<?php
+if (!($f=fopen("welcome.txt","r")))
+exit("Unable to open file!"); 
+?>
+</body>
+</html>
+
+ 
+
+
+
+
+
+A cookie is often used to identify a user.
+ 
+What is a Cookie? 
+A cookie is often used to identify a user. A cookie is a small file that the server embeds on the user's computer. Each time the same computer requests for a page with a browser, it will send the cookie too. With PHP, you can both create and retrieve cookie values.
+ 
+How to Create a Cookie
+The setcookie() function is used to create cookies.
+Note: The setcookie() function must appear BEFORE the <html> tag. 
+Syntax
+setcookie(name, value, expire, path, domain);
+
+Example
+
+
+
+<h4><pre> 
+How to Retrieve a Cookie Value
+When a cookie is set, PHP uses the cookie name as a variable.
+To access a cookie you just refer to the cookie name as a variable.
+Tip: Use the isset() function to find out if a cookie has been set.
+
+
+
+
+<h4><pre>
+Server Side Includes (SSI) are used to create functions, headers, footers, or elements that will be reused on multiple pages.
+ 
+Server Side Includes
+You can insert the content of one file into another file before the server executes it, with the require() function. The require() function is used to create functions, headers, footers, or elements that will be reused on multiple pages.
+This can save the developer a considerable amount of time. If all of the pages on your site have a similar header, you can include a single file containing the header into your pages. When the header needs updating, you only update the one page, which is included in all of the pages that use the header.
+
+
+</h4></pre>
+
+
+
+ 
+
+
+
+
+</b>
+
+</pre>
+</body>
+</html>
+

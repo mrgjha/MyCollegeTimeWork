@@ -1,0 +1,32 @@
+
+<html>
+<head><title>What is a database?</title></head>
+
+<body background="MEDAQUA.gif" text="white">
+
+<b>
+<p>
+Prime attribute - attribute that is member of the primary key K<br><br>
+
+{SSN, PNUMBER}->HOURS is a full FD<br>since neither SSN->HOURS nor PNUMBER->HOURS hold 
+<br><br>{SSN, PNUMBER}->ENAME is not  a full FD (it is called a partial dependency )
+since SSN->ENAME also holds
+
+<p>
+<h3>Boyce-Codd Normal Form (BCNF)</h3>
+<ul><li>Every determinant in the table is a candidate key
+<ul>
+<li>Determinant is attribute whose value determines other values in row
+</ul>
+<li>This is equivalent to 3rd normal form plus it prohibits prime attributes depending on non-prime attributes. 
+<li>3NF table with one candidate key is already in BCNF
+</ul>
+</p>
+</b>
+<br><br>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

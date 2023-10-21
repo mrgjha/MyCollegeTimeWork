@@ -1,0 +1,151 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+Collision Detection
+
+In the previous programs you have learned how to do various 
+things with graphics and user input.  
+You have learned how to animate images on the screen, 
+but there remains one major concept that you 
+need to know in animation.  
+Since the computer just draws pixels on the 
+screen to make the images, 
+it doesn't know or care where they are in 
+relation to each other, 
+but as a programmer, you need to be able to tell 
+if two or more objects collide.  
+This may seem like a simple concept but you 
+will see that it is more complicated than you think.  
+In order to detect a collision you need to check 
+if any part of one object is in the same position 
+as any part of another object.  
+In order to find this, an if-statement will work, 
+but it will be very complicated and long.  
+In the following code we will check to see if 
+two pixels are colliding, the simplest of cases.
+
+If( pixel1x == pixel2x && pixel1y == pixel2y )
+	// do something
+
+here we have used two pixels (pixel1 and pixel2) 
+and we have simply checked to see if they are both 
+in the same position.  
+Notice that we first test the 
+x position and only if they are the same we test 
+the y coordinates.  Only if the y 
+coordinates are the 
+same AND (indicated by the && operator) 
+the x coordinates are the same is the 
+if-statement true. 
+This is fine for pixels, but how many 
+images are pixels? Not many.  
+The next simplest image to check for collisions 
+is the rectangular images.
+
+If( pixel1x &gt;= rectangle1x && 
+pixel1x &lt;= rectangle1x + rectangle1width && 
+pixel1y &gt;= rectangle1y 
+&& pixel1y &lt;= rectangle1y + rectangle1height )
+	// do something
+
+This block of code tests to see if a 
+pixel collides in a rectangle.  
+Now that we have a range to work 
+in we must not only switch to &gt; and &lt; instead of ==, 
+but we must also have more parts to the if-statement.  
+This is getting complicated now, but there is another 
+situation we need to know about.  
+If two rectangles collide the statement 
+gets even longer:
+
+If( rectangle1x &gt;= rectangle2x – rectangle1width 
+&& rectangle1x &lt;= rectangle2x + rectangle2width && 
+rectangle1y &gt;= rectangle2y - rectangle1height && 
+rectangle1y &lt;= rectangle2y + rectangle2height)
+
+Confused yet?  Just be glad we are only working 
+within two dimensions.  This gets even longer in 3D, 
+but we won't go into that here.  In fact, this is as 
+complicated as we are going to get for the 
+purposes of this lesson, 
+but it is possible to test collisions on lines, 
+circles, ellipses, 
+and any other regular shape using equations.  
+Notice, however, 
+that we subtracted the width of rectangle1 from 
+rectangle2x.  
+This works because as the right-edge of the 
+rectangle collides 
+with the left edge of the other rectangle, 
+the x-coordinate of 
+rectangle1 is at the x-position of rectangle2 
+minus the width of rectangle1.  
+Again, this may seem complicated, 
+so here is an example of collision detection in action:
+
+#include &lt;graphics.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;dos.h&gt;
+
+int main(void)
+{
+	int gdriver = DETECT, gmode, errorcode;
+	int r1x=0, r1y=0, r1height=10, r1width=20, r2x=300, r2y=300, r2height=20, r2width=10;
+
+	initgraph(&gdriver, &gmode, "C:/tc/bgi");
+
+	while(1)
+	{
+		setfillstyle(SOLID_FILL,BLACK);
+		bar(r1x,r1y,r1x+r1width,r1y+r1height);
+		setfillstyle(SOLID_FILL,BLACK);
+		bar(r2x,r2y,r2x+r2width,r2y+r2height);
+		r1x++;
+		r1y++;
+		r2x--;
+		r2y--;
+		setfillstyle(SOLID_FILL,RED);
+		bar(r1x,r1y,r1x+r1width,r1y+r1height);
+		setfillstyle(SOLID_FILL,WHITE);
+		bar(r2x,r2y,r2x+r2width,r2y+r2height);
+		delay(50);
+
+		if(r1x &gt;= r2x-r1width && r1x &lt;= r2x+r2width && r1y &gt;= r2y-r1height && r1y &lt; r2y+r2height)
+		{
+			setfillstyle(SOLID_FILL,RED);
+			bar(0,0,getmaxx(),getmaxy());
+			break;
+		}
+	}
+
+	getch();
+	closegraph();
+}
+
+
+Now that you are all experts, 
+create 2 rectangles and a pixel 
+and animate them in such a way that 
+they will collide at different times.  
+Have the computer screen flash red for 1 
+seconds after every collision.  
+Fix it so that as the images move over each other, 
+there is only one collision detected.
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

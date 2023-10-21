@@ -1,0 +1,317 @@
+<html>
+<head>
+<title>Visual Basic File Handling</title>
+</head>
+
+
+<body background="MEDAQUA.gif" text="black" vlink="white">
+<h1><center><a name=item9>Visual Basic File Handling</a></center></h1>
+
+In VB, Microsoft has separated the file handling capabilities from the database handling features.With databases,the file manipulation is pretty much transparent to the user.However,
+in non-database applications the programmer has to handle virtually all aspects of reading or editing the data contained in a file.
+ 
+Because of their universally standard format,simple text files(also called sequential files) are often used as the storage method for information. The old Dos Edit program and the newer windows Notepad programs both create simple text files.
+
+To simplify the handling of text files,Microsoft is working on a new set of features that will be implemented in an ActiveX object(the FileSystemObject).Until then,file handling will continue as the manual procedure that it is today. 
+
+
+
+
+
+
+<b>
+<ul>
+<li><a href="#item1">What is a file ?</a>
+<li><a href="#item2">Types of file in Visual Basic</a>
+<li><a href="#item3">Opening/Closing a file</a>
+<li><a href="#item4">Reading from a file</a>
+<li><a href="#item5">Writing to a file</a>
+<li><a href="#item6">Getting the file name</a>
+<ul>
+<li><a href="#item7">Hardcode the full path and file name</a>
+<li><a href="#item8">Use App.path</a>
+<li><a href="#item9">Use the CommonDialog control</a>
+</ul>
+
+</ul>
+
+</b>
+<h2><A name=item1>What is a file ?</a></h2><p>
+In all the programs any stored data is lost when the program closes, and woud have to be entered again when the program next runs.Data might be stored in an array of records,this is clearly a waste of time.The solution is to store the data permanently - in a file. <p>
+
+
+
+<a href="#item9">[Top]</a>
+
+<h2><A name=item2>Types of file in Visual Basic</a></h2><p>
+
+Visual Basic Supports three types of file.We are likely to use only two of these:
+
+<ul>
+<li>Text files</li>
+<li>Random access files</li>
+</ul>
+
+There are several key differences between these files:
+
+<ul>
+<li> A text file Stores all its data characrers,represented by their ASCII codes.For example it would
+store the number 25 as character 2(ASCII code 50) and character 5(ASCII code 53).In binary these two ASCII codes are 0110010(50) and(0110101(53).
+A random access file would store this number differently.Assuming it is stored as a 2-byte integer it would be stores as 0000000000011001.
+
+</li>
+
+
+
+<li> A random access file stores only records.In a text file there is no naturally built-in structure to the data since it is simply stored as a sequence of characters.</li>
+<li> We cannot open a text file to be both read from and written to,but we can with a random access file.</li>
+<li> With a random access file We can read and write to any position within the file.For example you can read the 5th record or overwrite the 8th record.This is also called direct access.
+We can not directly change the data in a text file.To change some data you would have to read all the data before the data we wish to chnage and write this to the new file too.Because the data must be read from the beginning of the file a text file is often called a sequential file.
+</li>
+</ul>
+<a href="#item9">[Top]</a>
+
+<h2><A name=item3>Opening/Closing a file</a></h2><p>
+
+We must always open a file before we can use it.To open a text file use one of the following;<br>Open Filename For Input As #1<br>'to read from the file
+</pre>
+Open Filename For Output As #1
+
+'to write to the file
+
+Open Filename For Append As #1
+
+'to write to the end of the file<br>
+</pre>
+<li> The open statement opens a file if it exits.If it doesn't exists,Open first creates it then opens it.
+</li>
+
+<li>Filename is a string variable that holds the name of the file.We need to tell Visual Basic the full path to the file too,e.g<br> "c:\Programs\Students.txt"
+
+<li>The Input,Append and Output statements indicate how you wish to read/write.
+
+If you open a file for output,Visual Basic deletes the contents of the file (even if you don't write to anything to it).
+
+To add data to an existing file you must use Append,which adds the data after the existing data.
+
+</li>
+ 
+
+<li>As #1 assigns the file the number 1.All files are identified by a number, not by their name.If you have two or more files open at the same time they must have different numbers.
+</li>
+
+<p>
+To open a random access file you must tell Visual Basic the length
+(in bytes) of the record it stores.This means that you must state the length of any String fields in your defined data type.
+
+Assuming a variable,OnePlayer,has been declared to hold one record,you
+could write either of the following to open the file:<p>
+<pre>
+Open Filename For Random As #1 Len=40<br>
+Open Filename For Random As #1 Len=Len(OnePlayer)<p>
+</pre>
+The second method is more convenient as it uses the Len function to find the length of the record for you.Note that the first use of the word 'Len' is just part of the syntax and not a function call.<p>
+
+When you have finished using a file always close it.
+To close either a text or random access file is very easy:<br><br>
+
+close #1
+
+<br><br>
+
+
+
+
+
+
+
+
+<a href="#item9">[Top]</a>
+
+<h2><A name=item4>Reading from a file</a></h2><p>
+
+Visual Basic keeps an imaginary file pointer as it reads through a file.When the file is opened it points to the first line of a text file or the first record of a random access file.Suppose a text file holds a series of whole numbers,one on each line in the file.Assuming Number has been declared as an integer,the following code would display these on a form:<br>
+
+<pre>
+
+Do While Not EOF(1)
+Input #1, Number
+Form1.print Number
+Loop
+
+</pre>
+
+The EOF function returns True when the end of a file has been reached.The While condition uses the Not logical operator and is saying<i>continue until the end of the file is reached.</i><p>
+<br>The Input statements reads the item of data on the current line in the file and stores it in Number.After reading the single item of data on the line,the file pointer points to the next line. 
+With a random access file you can only read (and write one record at a time.You cannot read or write individual fields within a record.<br>
+To read and display the whole of a random access file you would write:
+
+<pre>
+
+Do While Not EOF(1)
+Get #1, ,OneTeam
+Loop
+
+</pre>
+
+
+
+The middle argument for the Get statement above is missing,indicated by the pairs of Commas.Visual Basic numbers the records in a random access file from 1 onwards,and the missing argument here is this record number.<p>
+
+
+In the code above the file pointer is moved to the next record each time round the loop,so there is no need to state the record number.Visual Basic will process the current record.<p>
+
+when you wish to go directly to a particular record you do need to state the record number.The next example reads a record from the file at record position RecordNumber.It uses the seek statement,whose second argument is the record number where the file pointer should be positioned.<p>
+<pre>
+Seek  #1, RecordNumber
+Get  #1, ,OneTeam
+</pre>
+<br>
+Seek is not always needed before Get.In the example above you could write the record directly with Get if you provide the record number:<br><br>
+<pre>
+Get  #1, RecordNumber, OneTeam
+</pre>
+
+<br><br>
+
+<a href="#item9">[Top]</a>
+
+<h2><A name=item5>Writing to a file</a></h2><p>
+
+For text files use the Write or Print statements.So
+
+Write #1,Number
+
+<br><br>
+
+writes the contents of Number to the current file pointer position.
+
+With a random access file use the Put statement.This works in the same way as the Get statement to read from a file.
+<br>
+It may need to know the record number and must be passed one whole record to write to the file:
+<br><br>
+
+<pre>
+Put  #1, , OneTeam<br>
+Put  #1, RecordNumber, OneTeam
+
+</pre>
+
+
+
+<br><br>
+
+
+
+<a href="#item9">[Top]</a>
+
+<h2><A name=item6>Getting the file name</a></h2><p>A preposition is a word used with a noun or pronoun to show its relation to some other word.Example-
+<ol>
+<li>I wrote <u>to</u> him
+<li>He lived here <u>witd</u> me
+<li>She asked <u>for</u> money
+</ol>
+
+<a href="#item9">[Top]</a>
+
+
+<h2><A name=item7>Hardcode the full path and file name</a></h2><p>A conjunction is a word which joins together words phrases or clauses.Example-
+<ol>
+<li>I want pen <u>and</u> paper
+<li>He worked <u>but</u> he failed
+<li>I like him <u>because</u> he likes me
+</ol>
+
+<a href="#item9">[Top]</a>
+
+<h2><A name=item8>Use App.path</a></h2><p>An interjection is a word which expresses some sudden feeling<br>and has no grammatical connection with the rest of the sentence.Example-
+<ol>
+<li><u>Oh!</u>He is dead
+<li><u>hello!</u> how are you
+<li><u>hurrah!</u> we have won
+</ol>
+<a href="#item9">[Top]</a>
+
+
+
+
+
+
+<h2><A name=item8>Use the CommonDialog control</a></h2><p>An interjection is a word which expresses some sudden feeling<br>and has no grammatical connection with the rest of the sentence.Example-
+<ol>
+<li><u>Oh!</u>He is dead
+<li><u>hello!</u> how are you
+<li><u>hurrah!</u> we have won
+</ol>
+<a href="#item9">[Top]</a>
+
+
+
+
+
+
+
+
+
+
+<h3>PARTS OF SPEECH</h3>
+
+
+
+<table border=1 cellspacing=10>
+<tr bgcolor="cyan">
+
+<th>Noun</th>
+<th>Pronoun</th>
+<th>Verb</th>
+<th>Adjective</th>
+<th>Adverb</th>
+<th>Preposition</th>
+<th>Conjunction</th>
+<th>Interjection</th>
+
+</tr>
+<tr>
+<td>Hari,Patna,Dog,table,happiness</td>  
+<td>I,We,You,He,it</td>
+<td>is,are,go,run,will</td>
+<td>Good,bad,tall,fat,red</td>
+<td>Now,here,tdere,loudly,slowly</td>
+<td>In,at,on,for,to</td>
+<td>And,but,so,or,because</td>
+<td>oh,aias,ah,hurrah</td>
+</tr>
+</table>
+</body>
+</html>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

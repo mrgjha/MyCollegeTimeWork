@@ -1,0 +1,413 @@
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+
+
+
+<h3>Object-Oriented Programming (OOP)</h3>
+
+<h4>Object-Oriented Programming (OOP) is a several-decades-old concepts</h4>
+<ul<li>
+<li<li>It has spread to almost every aspects of modern programming languages and practices
+<li<li>The basic idea of OOP is to bind data and functions in convenient containes called objects
+<li<li>Objects with the same properties are defined by means of “object patterns”called classesObject creation
+</ul<li>
+<pre>
+
+$template = new Template(“dtml/template.html”); //Object Creation
+$template-<li>close();                             //Invoking Methods
+
+</pre>
+
+
+
+<h4>Basic ingredients</h4>
+<ul>
+<li>Encapsulations
+<ul>
+<li>objects represents the encapsulation of data with functions
+</ul>
+<li>Information hiding
+<ul>
+<li>Interfaces to protect implementation details: what and not how is important!
+</ul>
+<li>Inheritance
+<ul>
+<li>Defining a class starting from the variables and the
+methods of an already existing class
+</ul>
+<li>Messages vs Methods : why such a distinction ?
+<ul>
+<li>“Sending a message to an object”
+</ul>
+
+<li>Let us define a class which has two trivial features
+<ul>
+<li>It keeps a count of things
+<li>It calculates the total weight of the things
+</ul>
+
+<li>Likely the most useless class!
+
+
+<pre>
+
+ExampleClass UnitCounter 
+{
+
+// Member variables
+var $units = 0;             //these are instantiated 
+var $weightPerUnit = 1.0;  //for each newly created object
+
+function add($n = 1)       //Method Definition 
+            //Parameter with default value
+{
+
+$this->units = $this->units + $n;
+
+}//Access function,it performs onlya change on the object's state
+
+function totalWeight()   //Method Definition 
+
+{
+
+return $this->units * $this->weightPerUnit;
+
+}
+
+}
+
+
+$bottles = new UnitCounter; //Create a new object
+$bottles->add(3);          //3 Units are added
+print “total weight = {$bottles->totalWeight()} kg”;
+
+<pre>
+
+
+
+
+<li>PHP 5 provides two different ways of defining contructors (PHP 4 only one)
+<li>When a constructor is defined, then it is invoked implicitly each time an object is created
+
+
+
+
+<pre>
+
+
+
+Class UnitCounter 
+{
+
+// Member variables
+var $units = 0;
+var $weightPerUnit = 1.0;
+
+function add($n = 1)
+
+{
+
+$this->units = $this->units + $n;
+
+}
+
+function totalWeight() 
+{
+
+return $this->units * $this->weightPerUnit;
+
+}
+
+function __constructor($unitWeight = 1.0) //The Constructor
+{
+
+$this->weightPerUnit = $unitWeight;
+$this->units = 0;}
+
+}
+
+
+$bottles = new UnitCounter(1.2);
+</pre>
+
+<li>Destructors are available only in PHP 5
+<li>If it exists, a constructor function is called when an object is destroyed
+<li>Objects are destroyed when they go out of the scope or when explicitly destroyed
+
+
+<pre>
+function __destruct()
+{
+print “UnitCounter out of scope. Units {$this->units}”;
+}
+</pre>
+
+
+<li>Private Members Variables
+<pre>
+
+$b = new UnitCounter;
+
+$b->units = 7.3;//Is This Violating
+$b->weightPerUnits = -5.5;//design principle
+
+
+$b->add(10);
+
+print “There are {$b->units}, ”;
+print “total weight = {$b->totalWeight()} kg”;
+
+There are 7.3 units, total weight = -40.15 kg
+
+</pre>
+
+<pre>
+Class UnitCounter {
+
+private $units = 0;
+private $weightPerUnit = 1.0;
+
+function add($n = 1) 
+{
+
+$this->units = $this->units + $n;
+
+}
+
+function totalWeight() 
+
+{
+
+return $this->units * $this->weightPerUnit;
+
+}
+
+function __construct($unitWeight = 1.0) 
+
+{
+
+$this->weightPerUnit = $unitWeight;$this->units = 0;}
+
+}
+
+
+</pre>
+
+
+
+<li>Static Member Variables and Functions Only available in PHP 5
+<li>Member variables and functions which are declared static are shared among all the instances of the class
+<pre>
+
+Class UnitCounter {
+...
+
+static $objectCount = 0;
+
+function __constructor() 
+{
+
+UnitCounter::$objectCount++;
+}
+static function numberOfObjects() 
+{
+return UnitCount::$objectCount;}
+}
+Print UnitCount::numberOfObjects();
+</pre>
+
+
+
+<li>Inheritance is available in PHP 4 and PHP 5
+<li>One of the most powerful concepts in computer languages
+<li>It allows a new class to be defined by extending the capabilities of an existing base class, superclass or parent class
+<li>PHP 5 has only single inheritance, ie it is possible to extend only one class per time
+
+<pre>
+Calling parent constructor
+
+Class CaseCounter extends UnitCounter 
+{
+
+public $unitsPerCase;
+...
+function __construct($unitWeight)
+{
+parent::__construct($unitWeight);
+}
+}
+
+
+
+<li>Redefined functions
+<pre>
+Class Shape {
+
+function info()
+{
+
+return “Shape.”;
+
+}
+
+}
+
+Class Polygon extends Shape 
+{
+function info() 
+{
+return “Polygon.”;
+}
+}
+
+Class Triangle extends Polygon 
+{
+function info() 
+{
+return parent::info(). ”Triangle”;
+}
+</pre>
+
+
+
+
+Class Shape {
+function info()
+{
+return “Shape.”;
+}
+function tenTimes()
+{
+for($i=0;$i<11;$i++) 
+{
+print $this->info();
+}
+}
+}
+
+Class Polygon extends Shape {
+
+function info() 
+{
+return “Polygon.”;}
+}
+
+Class Triangle extends Polygon {
+function info() {
+return parent::info(). ”Triangle”;}
+}
+$p = new Polygon;
+$p->tenTimes();
+
+</pre>
+
+
+<h3>Protected Members Variables and Functions</h3>
+
+<li>Each class can have two different kind of clients
+<ul>
+<li>Users of the instances<li>Designer of extended classes</ul>
+
+<li>It may have sense to provide them with different visibility
+<li>The keyword protected is used to give visibility only to designer of subclasses
+
+
+<li>PHP 5 has introduced an exception model that allows objects to be thrown and caught
+<li>It provides a way of jumping to error handling code in exceptional circumstances
+<li>Rather than terminating a script with a fatal error, exceptions are thrown and can be caught and processed
+<li>The thrownstatemant is always used in conjunction with the try ... catchstatement
+
+
+
+<pre>
+
+$total = 100;
+$n = 5;$result;
+
+try {// Check the value of $n before we use it
+
+if ($n == 0) {
+
+throw new Exception(“Can't set n to zero”);}
+$result = $total / $n;
+
+}
+
+catch(Exception $x) 
+
+{
+print “There was an error: {$x->getMessage()}”;
+}
+
+
+
+
+
+
+</pre>
+<li>The catch statement specifies the type of object that is caught by placing the class name before the variable
+<li>The following catches Exception objects and assigns them
+to the variable $x
+<pre>
+catch(Exception $x)
+{
+print “There was an error: 
+{
+$x->getMessage()}”;
+}
+
+
+
+
+
+
+
+
+
+function formatException
+
+(Exception $e) 
+
+{
+return “Error {$e->getCode()}: 
+
+{
+$e->getMessage()
+}
+
+
+(
+
+line: {$e->getLine()} of {$e->getFile()});}
+
+function average($total, $n) 
+{
+
+if ($n == 0) 
+
+throw new Exception(“Number of items = 0”, 1001);
+
+return $total/$n;} try {$a = average(100, 0);
+
+print “Average = {$a}”;}Catch (Exception $error) 
+
+{
+print formatException($error);
+}
+
+
+</pre>
+
+
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+
+</body>
+</html>
+
+</ul>

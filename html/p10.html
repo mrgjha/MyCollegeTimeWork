@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+&lt;?xml version="1.0"?&gt;
+&lt;!-- The next line calls an XSLT "stypesheet" --&gt;
+&lt;?xml-stylesheet type="text/xsl" href="salesOrderConfirmation.xsl"?&gt;
+&lt;salesOrder&gt;
+&lt;orderInformation&gt;
+&lt;date&gt;2/10/2003&lt;/date&gt;
+&lt;orderNumber&gt;123456&lt;/orderNumber &gt;
+&lt;item&gt;
+&lt;id&gt;rs100&lt;/id&gt;
+&lt;brandName&gt;Saucony&lt;/brandName&gt;
+&lt;model&gt;Grid 2003&lt;/model&gt;
+&lt;gender&gt;male&lt;/gender&gt;
+&lt;size units="us"&gt;7.5&lt;/size&gt;
+&lt;retailPrice units="usd"&gt;70.00&lt;/retailPrice&gt;
+&lt;/item&gt;
+&lt;item&gt;
+&lt;id&gt;ns1234&lt;/id&gt;
+&lt;brandName&gt;Nike&lt;/brandName&gt;
+&lt;model&gt;Slim shorts&lt;/model&gt;
+&lt;gender&gt;male&lt;/gender&gt;
+&lt;size units="us"&gt;m&lt;/size&gt;
+&lt;retailPrice units="usd"&gt;25.00&lt;/retailPrice&gt;
+&lt;/item&gt;
+&lt;methodOfPayment&gt;VISA&lt;/methodOfPayment&gt;
+&lt;/orderInformation&gt;
+
+&lt;customerInformation&gt;
+&lt;name&gt;Jane Smith&lt;/name&gt;
+&lt;customerId&gt;2003120&lt;/customerId&gt;
+&lt;address type="billing"&gt;
+&lt;streetOrBox&gt;897 Main Street&lt;/streetOrBox&gt;
+&lt;city&gt;Newark&lt;/city&gt;
+&lt;state&gt;DE&lt;/state&gt;
+&lt;zip&gt;19716&lt;/zip&gt;
+&lt;/address&gt;
+&lt;address type="shipping"&gt;
+&lt;streetOrBox&gt;897 Main Street&lt;/streetOrBox&gt;
+&lt;city&gt;Newark&lt;/city&gt;
+&lt;state&gt;DE&lt;/state&gt;
+&lt;zip&gt;19716&lt;/zip&gt;
+&lt;/address&gt;
+&lt;preferredShipping&gt;UPS ground&lt;/preferredShipping&gt;
+&lt;shippingCharge&gt;9.5&lt;/shippingCharge&gt;
+&lt;/customerInformation&gt;
+
+&lt;/salesOrder&gt;
+
+
+
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet xmlns:xsl= "http://www.w3.org/1999/XSL/Transform" version="1.0"&gt;
+&lt;xsl:template match = "/"&gt;
+&lt;HTML&gt;
+&lt;CENTER&gt;
+&lt;TABLE CELLSPACING="2" CELLPADDING="2"&gt;
+&lt;TR ALIGN="CENTER"&gt;&lt;TD&gt;&lt;B&gt;Thanks for Shopping SkipsSports.com &lt;BR/&gt;	
+        The Best Deals on the Web&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TABLE BORDER="1"&gt;
+&lt;TR&gt;
+lt;TD&gt;This is your order confirmation (please retain):&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;Customer name:
+&lt;xsl:value-of select="salesOrder/customerInformation/name"/&gt;&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;Address:
+&lt;xsl:value-of select="//address[@type='shipping']/streetOrBox"/&gt;,  
+&lt;xsl:value-of select="//address[@type='shipping']/city"/&gt;, 
+&lt;xsl:value-of select="//address[@type='shipping']/state"/&gt;, 
+&lt;xsl:value-of select="//address[@type='shipping']/zip"/&gt;
+&lt;/TD&gt;&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;TABLE BORDER="1"&gt;
+&lt;TR&gt;
+&lt;TD COLSPAN="5"&gt;Order number: 
+&lt;xsl:value-of select="salesOrder/orderInformation/orderNumber"/&gt;
+&lt;/TD&gt;&lt;/TR&gt;
+&lt;TR&gt;
+		&lt;TD&gt;Item&lt;/TD&gt;&lt;TD&gt;Brand&lt;/TD&gt;&lt;TD&gt;Model&lt;/TD&gt;&lt;TD&gt;Size&lt;/TD&gt;&lt;TD&gt;Price&lt;/TD&gt;&lt;/TR&gt;
+
+&lt;xsl:for-each select="//item"&gt;
+&lt;TR&gt;
+&lt;TD&gt; &lt;xsl:value-of select="id"/&gt; &lt;/TD&gt;
+&lt;TD&gt; &lt;xsl:value-of select="brandName"/&gt; &lt;/TD&gt;
+&lt;TD&gt; &lt;xsl:value-of select="model"/&gt; &lt;/TD&gt;
+&lt;TD&gt; &lt;xsl:value-of select="size"/&gt; &lt;/TD&gt;
+&lt;TD&gt; &lt;xsl:value-of select="format-number(retailPrice,'$#.00')"/&gt; &lt;/TD&gt;	
+&lt;/TR&gt;
+&lt;/xsl:for-each&gt;
+&lt;TR&gt;&lt;TD ALIGN="RIGHT" COLSPAN="4"&gt;Order Total:&lt;/TD&gt;
+&lt;TD&gt;&lt;xsl:value-of select="format-number(sum(//retailPrice),'$#.00')"/&gt; &lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD ALIGN="RIGHT" COLSPAN="4"&gt;Shipping charge:&lt;/TD&gt;
+&lt;TD&gt;&lt;xsl:value-of select="format-number(//shippingCharge,'$#.00')"/&gt; &lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;&lt;TD ALIGN="RIGHT" COLSPAN="4"&gt;Total charges:&lt;/TD&gt;
+&lt;TD&gt;&lt;xsl:value-of select="format-number(sum(//retailPrice) + //shippingCharge,'$#.00')"/&gt; &lt;/TD&gt;
+&lt;/TR&gt;
+		
+&lt;/TABLE&gt;
+&lt;/TABLE&gt;
+&lt;/CENTER&gt;
+&lt;/HTML&gt;
+
+&lt;/xsl:template&gt;
+
+&lt;/xsl:stylesheet &gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

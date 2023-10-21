@@ -1,0 +1,68 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// This program uses explicit scope resolution to select i.
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+class base {
+public:
+  int i;
+};
+
+// derived1 inherits base.
+class derived1 :  public base {
+public:
+  int j;
+};
+
+// derived2 inherits base.
+class derived2 : public base {
+public:
+  int k;
+};
+
+/* derived3 inherits both derived1 and derived2.
+   This means that there are two copies of base
+   in derived3! */
+class derived3 : public derived1, public derived2 {
+public:
+  int sum;
+};
+
+int main()
+{
+  derived3 ob;
+  clrscr();
+  ob.derived1::i = 10;  // scope resolved, use derived1's i
+  ob.j = 20;
+  ob.k = 30;
+
+  // scope resolved
+  ob.sum = ob.derived1::i + ob.j + ob.k;
+
+  // also resolved here
+  cout &lt;&lt; ob.derived1::i &lt;&lt; " ";
+
+  cout &lt;&lt; ob.j &lt;&lt; " " &lt;&lt; ob.k &lt;&lt; " ";
+  cout &lt;&lt; ob.sum;
+  getch();
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

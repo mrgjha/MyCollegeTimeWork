@@ -1,0 +1,125 @@
+
+<html>
+<head><title>Web Page</title></head>
+<body background="MEDAQUA.gif" text="white" link="red" vlink="#FFFF00">
+<h3><font color="blue"><u>Sockets in Java</u></font></h3>
+<b>
+
+<ul>
+<li>The socket is the software abstraction used
+to represent the “terminals” of a connection
+between two machines.
+<li>For a given connection there’s a socket on
+each machine.
+<ul>
+<li>In Java, you create a socket to make the
+connection to the other machine.
+<li>Then you get an InputStream and OutputStream
+from the socket in order to be able to treat the
+connection as an IO stream object.
+</ul>
+<li>There are two stream-based socket classes:
+
+
+<ul>
+<li>a ServerSocket that a server uses to “listen” for incoming
+connections
+<li>and a Socket that a client uses in order to initiate a
+connection.
+</ul>
+
+<li>Once a client makes a socket connection, the
+ServerSocket returns a corresponding server side
+Socket through which direct communications will take
+place.
+<ul>
+<li>You have a true Socket to Socket connection.
+<li>Use getInputStream( ) and getOutputStream( ) to produce
+the corresponding InputStream and OutputStream objects
+from each Socket.
+<li>These must be wrapped inside buffers and formatting
+classes just like any other stream object.
+</ul>
+<li>When you create a ServerSocket, you
+give it only a port number.
+<li>When you create a Socket you must
+give both the IP address and the port
+number where you’re trying to connect.
+</ul>
+
+<h3>A simple server and client</h3>
+<ul>
+<li>All the server does is wait for a connection
+<ul>
+<li>then uses the Socket produced by that connection to create
+an InputStream and OutputStream.
+</ul>
+<li>Then it reads from the InputStream and it echoes to
+the OutputStream until it receives the line END.
+<li>The client makes the connection to the server
+?? then creates an OutputStream. Lines of text are sent
+through the OutputStream.
+<li>The client creates an InputStream to hear what the
+server is saying.
+<li>Both the server and client use the same port number
+and the client uses the local loopback address to
+connect to the server.
+</ul>
+
+
+
+<h3>Creating URL objects</h3>
+<ul><li>A Uniform Resource Locator is a pointer to a
+“resource” on the web (a file, a directory, a
+query to a database). It can be broken into
+
+<ul><li>a protocol identifier and
+<Li>a resource name (host name, file name, port
+number, reference)</ul>
+<li>A URL object can be created given
+information of a URL address.
+<li>URL constructors throw a
+MalformedURLException if the arguments
+refer to a null or unknown protocol.
+</ul>
+
+<h3>URL Constractors</h3>
+<ul><li>URL(String spec)Creates a URL object from a String representation.
+
+<ul><li>e.g. URL cs = new URL(“http://www.cs.ucy.ac.cy”)
+<li>URL(URL baseURL, String relativeURL)
+Creates a URL by parsing a relative URL within the
+base URL context. The relative URL could be an
+anchor within a file.
+<li>e.g. URL epl602 = new URL(ucy,”courses/EPL602/”)
+<li>URL(String protocol,String host,String file)
+URL(String protocol,String host, int port,String
+file)
+
+
+
+<li>Creates an absolute URL from the specified protocol,
+host name (port number) and file name
+e.g. URL ucy = new URL(“http”, “www.ucy.ac.cy”, 80,
+“index.html”).
+</ul>
+
+<li>The URL class provides several methods that let you
+query URL objects.You can get the protocol, host
+name, port number, and filename from a URL using
+methods:</ul>
+<li>getProtocol: Returns the protocol identifier component of
+the URL.
+<li>getHost: Returns the host name component of the URL.
+<li>getPort: Returns the port number component of the URL (an
+integer). If the port is not set returns -1.
+<li>getFile: Returns the filename component of the URL.
+<li>getRef: Returns the reference component of the URL.
+</ul>
+
+
+
+
+
+</body>
+</html>

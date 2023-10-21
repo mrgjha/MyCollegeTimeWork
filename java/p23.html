@@ -1,0 +1,46 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&ltHTML&gt&ltHEAD&gt&lt/HEAD&gt
+	&ltBODY&gt
+		&ltAPPLET code="ToolTipTest.class"
+			   WIDTH="100" 
+			   HEIGHT="100"&gt
+                Any text placed here shows in 
+		non-Java enabled browsers	
+		&lt/APPLET&gt
+	&lt/BODY&gt
+	&lt/HTML&gt
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class ToolTipTest extends JApplet {
+	public void init() {
+		Container contentPane = getContentPane();
+		JButton button = 
+              new JButton("I've got a tooltip");
+		button.setMnemonic(KeyEvent.VK_G);
+		button.setToolTipText("blah blah blah tooltip");
+		contentPane.setLayout(new FlowLayout());
+		contentPane.add(button);
+	}
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

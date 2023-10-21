@@ -1,0 +1,18 @@
+
+
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="PLANET.xsl"?>
+
+<PLANET>
+<NAME> Mercury </NAME>
+<NAME> Closest planet to the sun </NAME>
+<MASS UNITS="Earth=1"> 0.0553 </MASS>
+<DAY UNITS="days"> 58.65 </DAY>
+<RADIUS UNITS="miles"> 1516 </RADIUS>
+<DENSITY UNITS="(Earth=1)"> 0.983 </DENSITY>
+<DISTANCE UNITS="million miles">43.4</DISTANCE>
+<!-- at perihelion -->
+</PLANET>
+
+
+

@@ -1,0 +1,62 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+using System;
+
+///<summary>Class summary Text</summary>
+public class Something
+{
+	///<summary>This is the summary Text</summary>
+	///<param name="num">Lets us talk about the parameters.</param>
+	///<return>Here we describe the return value</return>
+	public int DoSomeThing(int num){
+
+              Console.WriteLine("{0}",num);
+
+
+		return 0;
+	}
+	///<summary>Summar for Main</summary>
+	public static void Main(string[] args){
+		Something s = new Something();
+	        int v = s.DoSomeThing(20);
+    	}
+}
+
+csc /doc:x.xml something.cs
+
+
+
+
+&lt;?xml version="1.0"?&gt
+&lt;doc&gt
+    &lt;assembly&gt
+        &lt;name&gtSomething&lt;/name&gt
+    &lt;/assembly&gt
+    &lt;members&gt
+        &lt;member name="T:Something"&gt
+            &lt;summary&gtClass summary Text&lt;/summary&gt
+        &lt;/member&gt
+        &lt;member name="M:Something.DoSomeThing(System.Int32)"&gt
+            &lt;summary&gtThis is the summary Text&lt;/summary&gt
+            &lt;param name="num"&gtLets us talk about the parameters.&lt;/param&gt
+            &lt;return&gtHere we describe the return value&lt;/return&gt
+        &lt;/member&gt
+        &lt;member name="M:Something.Main(System.String[])"&gt
+            &lt;summary&gtSummar for Main&lt;/summary&gt
+        &lt;/member&gt
+    &lt;/members&gt
+
+&lt;/doc&gt
+
+</pre>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

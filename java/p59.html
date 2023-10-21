@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+import java.awt.event.*;
+import javax.swing.*;
+
+class WindowCB extends WindowAdapter {
+    public void windowActivated(WindowEvent event) {
+	System.out.println("windowActivated");
+    }
+}
+
+public class JWindowAdapterTest extends JCloseableFrame {
+    public JWindowAdapterTest(){
+	super("JWindowAdapterTest (Swing)", 300, 100);
+	addWindowListener(new WindowCB());
+    }
+
+    public static void main(String [] args) {
+	JWindowAdapterTest frame = new JWindowAdapterTest();
+	frame.setVisible(true);
+    }
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

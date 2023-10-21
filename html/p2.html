@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+&lt;?xml version="1.0"?&gt;
+
+&lt;!DOCTYPE books [
+
+&lt;!ELEMENT books (book)*&gt;
+&lt;!ELEMENT book (author,title,price)&gt;
+&lt;!ATTLIST book category ID #REQUIRED&gt;
+&lt;!ELEMENT author (#PCDATA)&gt;
+&lt;!ELEMENT title (#PCDATA)&gt;
+&lt;!ELEMENT price (#PCDATA)&gt;
+]&gt;
+
+
+&lt;?xml-stylesheet type="text/xsl" href="book.xsl"?&gt;
+
+&lt;books&gt;
+
+&lt;book category="reference"&gt;
+&lt;author&gt;Nigel Rees&lt;/author&gt;
+&lt;title&gt;Saying of the Century&lt;/title&gt;
+&lt;price&gt;22.94&lt;/price&gt;
+&lt;/book&gt;
+
+&lt;book category="fiction"&gt;
+&lt;author&gt;Evelyn waugh&lt;/author&gt;
+&lt;title&gt;Swor of Honor&lt;/title&gt;
+&lt;price&gt;22.94&lt;/price&gt;
+&lt;/book&gt;
+
+
+&lt;book category="fiction"&gt;
+&lt;author&gt;Herman Melville&lt;/author&gt;
+&lt;title&gt;moby dick&lt;/title&gt;
+&lt;price&gt;22.94&lt;/price&gt;
+&lt;/book&gt;
+
+
+&lt;book category="fiction"&gt;
+&lt;author&gt;J.R.R&lt;/author&gt;
+&lt;title&gt;The lord of the rings&lt;/title&gt;
+&lt;price&gt;22.94&lt;/price&gt;
+&lt;/book&gt;
+
+&lt;/books&gt;
+
+
+
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"&gt;
+&lt;xsl:template match="/books"&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;A List Of Books&lt;/h1&gt;
+&lt;table width="640"&gt;
+&lt;xsl:apply-templates select="book"/&gt;
+
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;/xsl:template&gt;
+&lt;xsl:template match="book"&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;xsl:number/&gt;
+&lt;/td&gt;
+&lt;xsl:apply-templates select="author|title|price"/&gt;
+&lt;/tr&gt;
+&lt;/xsl:template&gt;
+&lt;xsl:template match="author|title|price"&gt;
+&lt;td&gt;
+&lt;xsl:value-of select="."/&gt;
+&lt;/td&gt;
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+
+

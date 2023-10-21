@@ -1,0 +1,77 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class TestMenuBars extends Frame 
+{
+   MenuBar mBar;
+   Menu breadMenu, toastMenu;
+   Menu helpMenu;
+      
+   TextField tField;
+   
+   /** Creates new TestMenuBars*/
+   public TestMenuBars()
+   {
+      breadMenu = new Menu("Bread");
+      breadMenu.add("White");
+      breadMenu.add("Wheat");
+      breadMenu.add("Rye");
+      
+      toastMenu = new Menu("Toast");
+      toastMenu.add("Light");
+      toastMenu.add("Medium");
+      toastMenu.add("Dark");
+      
+      mBar = new MenuBar();
+      mBar.add(breadMenu);
+      mBar.add(toastMenu);
+      
+      helpMenu = new Menu("Help");
+      helpMenu.add("help");
+      
+      mBar.setHelpMenu(helpMenu);
+      
+      tField = new TextField(" ",30);
+      
+      setLayout(new FlowLayout());
+      add(tField);
+      
+      setMenuBar(mBar);
+      
+      addWindowListener(new WinCloser());
+      setTitle("Using Menu Bars");
+      setBounds( 100, 100, 300, 300);
+      setVisible(true);
+   }
+      
+   public static void main(String[] args)
+   {
+      TestMenuBars tmb = new TestMenuBars();
+   }
+   
+}
+
+class WinCloser extends WindowAdapter
+{
+   public void windowClosing(WindowEvent e)
+   {
+      System.exit(0);
+   }
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

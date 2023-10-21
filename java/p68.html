@@ -1,0 +1,40 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import javax.swing.event.*;
+import javax.swing.*;
+
+public class JTextAreaEventTest extends JCloseableFrame
+    implements CaretListener {
+    public JTextAreaEventTest() {
+	super("JTextAreaEventTest (Swing)", 250, 100);
+
+	JTextArea textArea = new JTextArea("My JTextArea");
+	textArea.addCaretListener(this);
+	
+	getContentPane().add(textArea);
+    }
+
+    public void caretUpdate(CaretEvent event) {
+	JTextArea textArea = (JTextArea)event.getSource();
+	System.out.println("caretUpdate => " + textArea.getText());
+    }
+
+    public static void main(String [] args) {
+	JTextAreaEventTest frame = new JTextAreaEventTest();
+	frame.setVisible(true);
+    }
+}
+	
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

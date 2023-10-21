@@ -1,0 +1,29 @@
+
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="render.xsl"?>
+
+
+<specials-menu>
+
+
+<menu-date>Friday, July 28, 2000</menu-date>
+
+<spec-meat price="24.50">Pork chops with Chard
+&amp; Apples</spec-meat>
+
+<spec-appetiz price="3.95">Seckel pears with
+Gorgonzola and Walnuts</spec-appetiz>
+
+<spec-soup price="6.95">Red and Yellow
+Pepper</spec-soup>
+
+<spec-fish price="18.50">Seared Achoo with Risotto
+and Spinach</spec-fish>
+
+<spec-pasta price="12.25">Wagon-wheels Alfredo
+(with side salad)</spec-pasta>
+
+<spec-sweet price="12.95">Strawberry and
+Chocolate Tart</spec-sweet>
+
+</specials-menu>

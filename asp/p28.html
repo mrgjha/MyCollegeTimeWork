@@ -1,0 +1,66 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;
+&lt;HTML&gt;
+
+
+&lt;HEAD&gt;
+&lt;TITLE&gt;Using VBScript Arrays&lt;/TITLE&gt;
+
+&lt;SCRIPT LANGUAGE = "VBScript"&gt;
+&lt;!--
+   Option Explicit
+	
+   Public Sub DisplayArray( x, s )
+      Dim j
+	   
+      Document.Write( s & ": " )
+      For j = 0 to UBound( x )
+         Document.Write( x( j ) & " " )
+      Next
+   
+      Document.Write( "&lt;BR&gt;" )
+   End Sub
+
+   Dim fixedSize( 3 ), fixedArray, dynamic(), k
+
+   ReDim dynamic( 3 )  ' Dynamically size array 
+   fixedArray = Array( "A", "B", "C" )
+
+   ' Populate arrays with values
+   For k = 0 to UBound( fixedSize )
+      fixedSize( k ) = 50 - k	 
+      dynamic( k ) = Chr( 75 + k )  
+   Next
+ 
+   ' Display contents of arrays
+   Call DisplayArray( fixedSize, "fixedSize" )
+   Call DisplayArray( fixedArray, "fixedArray" )
+   Call DisplayArray( dynamic, "dynamic" )
+
+   ' Resize dynamic, preserve current values
+   ReDim Preserve dynamic( 5 )
+   dynamic( 3 ) = 3.343
+   dynamic( 4 ) = 77.37443
+
+   Call DisplayArray( dynamic, _
+                      "dynamic after ReDim Preserve" )	
+--&gt;  
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+&lt;/HTML&gt;
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,326 @@
+
+<html>
+<head>
+<title>C#</title>
+<style type="text/css">
+<!--
+h3{font style:italic;color:red}
+-->
+</style>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+
+<ul>
+<h3>Importing Namespaces</h3>
+
+<li>Visual Studio .NET adds references to your projects’ commonly used namespaces by default
+<li>You can import the namespaces into your page using the @Import directive
+<li>The following is the syntax for importing a .NET namespace
+&lt;%@ Import NamespaceName  %&gt;
+<li>Below is a sample of how you would import the ASP.NET Page class
+&lt;%@ Imports System.Web.UI.Page %&gt;
+
+<h3>Some ASP.NET namespaces</h3>
+<table border=1><tr>
+<td>System</td><td>Defines fundamental data types eg system.string</td></tr><tr>
+<td>System.Collections</td><td>Definitions and classes for creating various collections</td></tr><tr>
+<td>System.IO</td><td>File reading & writing operations</td></tr><tr>
+<td>System.Web</td><td>Support browser/server communication</td></tr><tr>
+<td>System.Web.UI</td><td>Creates the Page object whenever an .aspx page is requested</td></tr><tr>
+<td>System.Web.UI.webcontrols</td><td>Classes and definitions to create server controls</td></tr><tr>
+
+</table>
+<h3>ASP.NET – class browser</h3>
+
+
+<li>ASP.NET provides a means of exposing the .NET Framework and its functionality to the WWW
+<li>Contains a number of pre-built types that take input from .NET types 
+<br>and represents them in a form for the web (such as HTML)<br>Class browser (over 9000 classes; lists the namespaces): 
+
+<h3>ASP.NET</h3>
+
+<li>The latest version of ASP is known as ASP.NET
+<li>Visual Studio .NET is a developer application used to create ASP.NET Web applications
+<li>There are two main types of Web resources created with ASP.NET applications
+<li>WebForms are ASP.NET pages within an ASP.NET application
+<li>Web Services are ASP.NET Web pages that contain publicly exposed code so that other applications can interact with them
+<li>Web Services are identified with the file extension .asmx
+
+<h3>WebForms</h3>
+
+<li>The ASP.NET WebForm is separated into two logical areas:
+<ul>
+<li>The HTML template
+<li>A collection of code behind the WebForm 
+
+</ul> 
+
+<li>The HTML template 
+<ul><li>Contains the design layout, content, and the controls 
+<li>Creates the user interface, or presentation layer
+<li>Instructs the browser how to format the Web page
+<li>Is created using a combination of HTML controls, HTML Server controls, Mobile Controls, and ASP.NET controls
+</ul>
+
+<h3>Server Controls</h3>
+<li>HTML Server controls are similar to the HTML controls, except they are processed by the server
+<li>Add runat = "server" to the HTML control to transform it into an HTML Server control
+<li>HTML control:	&lt;input type="text"&gt;
+<li>HTML Server control:
+&lt;input type="text" runat="server"/&gt; 
+&lt;input type=”radio” runat=”server” value=”Yes”/&gt; Yes
+<li>Server-side programs can interact with the control before it is rendered as a plain HTML control and sent to the browser
+
+
+<h3>ASP.NET Controls</h3>
+<li>ASP.NET form controls will create the HTML code
+<li>ASP.NET Server controls are organized as:
+<ul>
+<li>ASP.NET Form Controls
+<li>Data Validation Controls
+<li>User Controls
+<li>Mobile Controls </ul>
+<li>ASP.NET controls are usually identified with the prefix asp: followed by the name of the control
+<li>ASP.NET button: 
+&lt;asp:Button id="ShowBtn" runat="server" Text="Show the message." /&gt; 
+
+
+
+<h3>HTML Server Vs ASP.NET  Server, Controls</h3>
+<li>ASP.NET form controls can interact with client-side events such as when the user clicks on a button<ul><li>When the event occurs, ASP.NET can trigger a script to run on the server</ul>
+<li>ASP.NET form controls also have different properties than their HTML server control counterparts<ul>
+<li>HTML Server label control 
+Message1.InnerHTML = "Product 1"
+<li>ASP server label control  
+Message2.Text = "Product 2"
+</ul>
+<h3>User Controls</h3>
+
+<li>User controls are external files that can be included within another WebForm
+<li>User controls allow you to reuse code across multiple files
+<li>For example, you can create a user control that displays the a navigation bar
+<li>You can use this control on the home page; they are often used for creating self-contained code,headers, menus, and footers
+<li>User controls replace the functionality of ASP server-side include pages
+<li>They are identified with the file extension .asmx
+
+
+
+
+<h3>Other ASP.NET Server Controls</h3>
+
+
+<li>Data validation controls<ul><li>
+
+
+A series of controls that validate form data without extensive JavaScript programming</ul>
+<li>Mobile controls<ul><li>
+A series of controls that provide form functionality within wireless and mobile devices</ul>
+<li>Literal controls<ul><li> 
+Page content that is not assigned to a specific HTML control such as a combination of HTML tags and text to the browser
+</ul>
+
+
+<h3>The Code Behind</h3>
+
+<li>Server programs are written in a separate file known as the code behind the page
+<li>By separating the programming logic and presentation layer, the application becomes easier to maintain Only Server controls can interact with the code behind the page
+<ul>
+<li>Written in any ASP.NET compatible language such as Visual Basic .NET, C#, Perl, or Java
+<li>Filename is the same as the WebForm filename
+<li>Add a file extension that identifies the language<ul>
+<li>Visual Basic .NET use .vb (mypage.aspx.vb)<li>C# use .cs (mypage.aspx.cs)</ul>
+</ul>
+
+<li>The location of the code behind the page is determined via a property that is set on the first line in the page using the @Page directive
+&lt;%@ Page Language="vb" Codebehind="WebForm1.vb" Inherits=“MyFirstApp.WebForm1"%&gt;
+<li>The @Page directive allows you to set the default properties for the entire page such as the default language
+<li>The CodeBehind property identifies the path and filename of the code behind file
+<li>The Inherits property indicates that the code behind the page inherits the page class
+<li>This page class contains the compiled code for this page
+
+
+
+<li>The compiled code behind the page is the class definition for the page<ul>
+<li>A class is a named logical grouping of code
+<li>The class definition contains the functions, methods, and properties that belong to that class</ul>
+<li>In Visual Studio .NET the process of compiling a class is called building<ul>
+<li>When you build the application, you compile the code into an executable file
+<li>Visual Studio .NET compiles the code behind the page into an executable file and places the file in the bin directory</ul>
+
+<h3>Page Class Events</h3>
+
+<li>The Page Class consists of a variety of methods, functions, and properties that can be accessed within the code behind the page
+<li>The first time a page is requested by a client, a series of page events occurs
+<li>The first page event is the Page_Init event which initializes the page control hierarchy
+<li>The Page_Load event loads any server controls into memory and occurs every time the page is executed 
+
+<pre>
+Page_init
+   Page_load
+       Server_Controls
+           Page_prerender
+                Page_Unload
+
+</pre>
+
+<h3>Web Services</h3>
+
+
+<li>Web Services also provide a means to expose .NET functionality on the web but Web Services expose functionality via XML and SOAP (cf: function calls over the web)
+
+
+<li>If your business partner is Course Technology and you want to query that company’s product catalog from your Web site, you could:<ul>
+<li>Post a link
+<li>Scrape a Web site (use a program to view a Web site and capture the source code)
+<li>Provide a Web Service to their catalog application</ul>
+<li>Web Services are used to create business-to-business applications<ul>
+<li>Web Services allow you to expose part or all of your programs over the Internet. The Web Service source file has the extension .asmx
+<li>A public registry known as UDDI contains registered public Web Services. Third party Web Services are available at http://www.xmethods.com</ul>
+
+<h3>How ASP.NET works</h3>
+
+<li>When .NET is installed, IIS is configured to look for files with the .aspx extension and to use the ASP.NET module (aspnet_isapi.dll) to handle them.
+<li>ASP.NET parses the .aspx file and arranges it in a predefined class definition and generates an asp.net page object.
+<li>The page object generates html that is sent back to IIS and then the browser.
+<li>NOTE: only .aspx files are parsed (if it is pure html don’t save it as an aspx file as it will slow down the server.
+<pre>
+
+<h3>ASP.NET samples</h3>
+
+<li>Page directives: &lt;%@ page language = “VB” debug="true" trace="true“ %&gt;
+<li>&lt;script language = “VB” runat=“server”&gt; VB.NET code declarations ……….. &lt;/script&gt;
+<li>Message.aspx
+&lt;html&gt; 
+ &lt;head&gt; &lt;title&gt;Inserting ASP.NET code Example&lt;/title&gt;  &lt;/head&gt;
+  &lt;body&gt;
+    Line1: First HTML Line&lt;br /&gt;
+    Line2: Second HTML Line&lt;br /&gt;
+    Line3: Third HTML Line&lt;br /&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+<ul><li>
+Note this has no asp code so better to use .html extension
+</li></ul>
+
+<li>Message2.aspx 
+&lt;script language="VB" runat="server"&gt;
+Sub Page_Load()
+ Response.Write ("First ASP.NET Line&lt;br /&gt;")
+ Response.Write ("Second ASP.NET Line&lt;br /&gt;")
+ Response.Write ("Third ASP.NET Line&lt;br /&gt;")
+End Sub
+&lt;/script&gt;
+&lt;html&gt; &lt;head&gt; &lt;title&gt;Inserting ASP.NET code Example&lt;/TITLE&gt; &lt;/head&gt;
+  &lt;body&gt;
+    Line1: First HTML Line&lt;br /&gt;
+    Line2: Second HTML Line&lt;br /&gt;
+    Line3: Third HTML Line&lt;br /&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+
+<li>Message3.aspx
+html&gt;
+&lt;head&gt;&lt;title&gt;Inserting ASP.NET code Example&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+Line1: First HTML Line&lt;br /&gt;
+Line2: Second HTML Line&lt;br /&gt;
+Line3: Third HTML Line&lt;br /&gt;
+&lt;script language="VB" runat="server"&gt;
+Sub Page_Load()
+Response.Write ("First ASP.NET Line&lt;br /&gt;")
+Response.Write ("Second ASP.NET Line&lt;br /&gt;")
+Response.Write ("Third ASP.NET Line&lt;br /&gt;")  
+End Sub
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Interweaving ASP.NET code and HTML Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Line1: First HTML Line&lt;br /&gt;
+&lt;% Response.Write ("First ASP.NET Line&lt;br /&gt;") %&gt;
+Line2: Second HTML Line&lt;br /&gt;
+&lt;% Response.Write ("Second ASP.NET Line&lt;br /&gt;") %&gt;
+Line3: Third HTML Line&lt;br /&gt;
+&lt;% Response.Write ("Third ASP.NET Line&lt;br /&gt;") %&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+NOT RECOMMENDED.
+
+<h3>Interweave2.aspx  A Server control</h3>
+script language="VB" runat="server"&gt;
+Sub Page_Load()
+  Message.Text="The ASP.NET line"
+End Sub
+&lt;/script&gt;
+&lt;html&gt;
+&lt;head&gt; &lt;title&gt;Inserting ASP.NET code Example&lt;/TITLE&gt; &lt;/head&gt;
+&lt;body&gt;
+First HTML Line&lt;br/&gt;
+&lt;asp:label id=Message runat="server"/&gt; &lt;br /&gt;
+Second HTML Line&lt;br/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+<h3>Web application project files</h3>
+<table border=1>
+<tr><td>AssemblyInfo.vb</td>
+<td>Info about the compiled project file stored in /bin and named project.dll<td>
+</tr><Tr>
+<td>Global.asax</td><td>Event handler commands visible to all web forms in a project</td></tr><tr>
+<td>Global.asax.resx</td><td>Define application resources such as text strings, images. Can change without recompiling project.</td></tr><tr>
+<td>Global.asax.vb</td><td>Asp.net code for application events eg session.start</td></tr><tr>
+<td>Project.sln</td><td>Stores links to all project files</td></tr><tr>
+<td>Project.suo</td><td>VS.NET IDE configuration info for the proj.</td></tr><tr>
+<td>Project.vbproj</td><td>Configuration and build settings for project files.</td></tr><tr>
+
+<td>Project.vbproj.webinfo</td><td>URL to project web server</td></tr><tr>
+<td>Project.vsdisco</td><td>Enables search for web services</td></tr><tr>
+<td>Styles.css</td><td>Project style sheet</td></tr><tr>
+<td>Web.config</td><td>Project and folder configuration information</td></tr><tr>
+<td>Webform.aspx</td><td>Web form .aspx file;Html</td></tr><tr>
+<td>Webform.aspx.resx</td><td>Resources in corresponding web form</td></tr><tr>
+<td>Webform.aspx.vb</td><td>Code written for the form (code behind)</td></tr><tr>
+<td>Bin\project.dll</td><td>Compiled project output file (assembly)</td></tr><tr>
+<td>Bin\project.pdb</td><td>Debugging information used by developer</td></tr><tr>
+<table>
+<h3>Viewing the Assembly</h3>
+
+<li>Create a simple class, compile the class into an assembly, then view the class using the IL Disassembler
+<li>Open Notepad and type the code shown:
+
+<pre>
+
+
+' hello.vb - displays hello world 
+' Created 06/01/2002
+
+
+Imports System
+Public Module Hello
+		Sub Main()
+			Dim s1 As String = "1 - Hello World" 
+			Console.WriteLine(s1)
+		End Sub
+End Module
+' Run this at the command line
+' vbc hello.vb
+
+</pre>
+
+</ul>
+<p>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

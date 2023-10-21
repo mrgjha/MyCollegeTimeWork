@@ -1,0 +1,107 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+math.html
+**********************************************************
+&lthtml&gt
+
+&lthead&gt
+&lttitle&gtMath&lt/title&gt
+&lt/head&gt
+
+&ltbody&gt
+&ltb&gt
+&ltcenter&gt
+&lth4&gtEnter Two Number For Adding&lt/h4&gt
+&lt/center&gt
+&ltform action="add.jsp" method=get&gt
+Enter First  Number :&ltinput type="text" name="firstnumber"&gt
+Enter Second Number :&ltinput type="text" name="secondnumber"&gt&ltbr&gt
+&ltinput type=submit value="ADD"&gt
+
+
+&lt/b&gt
+&lt/body&gt
+&lt/html&gt
+
+
+
+
+
+addtwonumber.java
+*********************************************************
+package math;
+
+
+
+
+public class addtwonumber {
+
+private String firstnumber;
+private String secondnumber;
+public static int sum;
+
+public addtwonumber(){}
+
+public addtwonumber(String first,String second)
+{
+
+firstnumber=first;
+secondnumber=second;
+}
+
+
+public void add()
+{
+
+sum=Integer.parseInt(firstnumber)+Integer.parseInt(secondnumber);
+}
+
+}
+
+
+add.jsp
+******************************************************************
+&lt!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN"&gt
+&lthtml&gt
+
+&lthead&gt
+  &lttitle&gtMath&lt/title&gt
+&lt/head&gt
+
+&ltbody&gt
+&lt%@ page import="math.*" %&gt
+&lt%
+    String x = request.getParameter("firstnumber");
+    String y = request.getParameter("secondnumber");
+
+  addtwonumber m=new addtwonumber(x,y);
+  m.add();
+  
+
+  out.println("&ltcenter&gt&lttable border=1&gt&lttr&gt&lttd&gtResult=&lt/td&gt&lttd&gt");
+  out.println(math.addtwonumber.sum);
+  out.println("&lt/td&lt/tr&gt&lt/table&gt&lt/center&gt");
+  out.close();
+%&gt
+
+
+&lt/body&gt
+&lt/html&gt
+
+    
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

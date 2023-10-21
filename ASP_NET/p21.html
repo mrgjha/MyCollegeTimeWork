@@ -1,0 +1,63 @@
+
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<pre>
+
+
+<%@ Page Language=VB Debug=true %>
+<script runat=server>
+Sub Page_Load(ByVal Sender as Object, ByVal E as EventArgs)
+    Dim MyRow as new HTMLTableRow
+    Dim MyCell as new HTMLTableCell
+    Dim i as Integer
+    Dim j as Integer
+    Table1.BGColor="Ivory"
+    Table1.Border=2
+    Table1.BorderColor="LawnGreen"
+    Table1.CellPadding=4
+    Table1.CellSpacing=3
+    Table1.Align="Center"
+    MyCell.InnerText = "Column 1"
+    MyRow.Cells.Add(MyCell)
+    MyCell = New HTMLTableCell
+    MyCell.InnerText = "Column 2"
+    MyRow.Cells.Add(MyCell)
+    Table1.Rows.Add(MyRow)
+    For i = 2 to 6
+        MyRow = New HTMLTableRow
+        For j = 1 to 2
+            MyCell = New HTMLTableCell
+            MyCell.InnerText = "Cell " & i & ", " & j
+            MyRow.Cells.Add(MyCell)
+        Next
+        Table1.Rows.Add(MyRow)
+    Next    
+End Sub
+</SCRIPT>
+<HTML>
+<HEAD>
+<TITLE>Adding Rows and Cells to an HTMLTable Control through Code</TITLE>
+</HEAD>
+<BODY LEFTMARGIN="40" TOPMARGIN="40">
+<form runat="server">
+<Table
+    id="Table1"
+    runat=server
+>
+</Table>
+</Form>
+</BODY>
+</HTML>
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

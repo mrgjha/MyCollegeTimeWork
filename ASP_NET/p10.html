@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+lt;%@ Page Language=VB Debug=true %&gt;
+&lt;%@ Import Namespace="System.Data" %&gt;
+&lt;%@ Import Namespace="System.Data.OLEDB" %&gt;
+&lt;script runat=server&gt;
+Sub Page_Load(ByVal Sender as Object, ByVal E as EventArgs)
+    If Not IsPostBack Then
+        Dim DBConn as OleDbConnection
+        Dim DBCommand As OleDbDataAdapter
+        Dim DSPageData as New DataSet
+        DBConn = New OleDbConnection( _
+            "PROVIDER=Microsoft.Jet.OLEDB.4.0;" _
+            & "DATA SOURCE=" _
+            & Server.MapPath _
+            ("StoresDB.mdb;"))
+        DBCommand = New OleDbDataAdapter _
+            ("Select Distinct State From Stores " _
+            & "Order By State", DBConn)
+        DBCommand.Fill(DSPageData, _
+            "States")
+        ddlStates.DataSource = _
+            DSPageData.Tables("States").DefaultView
+        ddlStates.DataBind()
+    End If
+End Sub
+Sub ddlState_Changed(Sender As Object, E As EventArgs)
+    Dim DBConn as OleDbConnection
+    Dim DBCommand As OleDbDataAdapter
+    Dim DSPageData as New DataSet
+    DBConn = New OleDbConnection( _
+        "PROVIDER=Microsoft.Jet.OLEDB.4.0;" _
+        & "DATA SOURCE=" _
+        & Server.MapPath _
+        ("StoresDB.mdb;"))
+    DBCommand = New OleDbDataAdapter _
+        ("Select Distinct City From Stores " _
+        & "Where State = '" & ddlStates.SelectedItem.Text _
+        & "' Order By City", DBConn)
+    DBCommand.Fill(DSPageData, _
+        "Cities")
+    ddlCities.DataSource = _
+        DSPageData.Tables("Cities").DefaultView
+    ddlCities.DataBind()
+    ddlCities.Visible = True
+    lblMessage3.Visible = True
+End Sub
+Sub ddlCity_Changed(Sender As Object, E As EventArgs)
+    Dim DBConn as OleDbConnection
+    Dim DBCommand As OleDbDataAdapter
+    Dim DSPageData as New DataSet
+    DBConn = New OleDbConnection( _
+        "PROVIDER=Microsoft.Jet.OLEDB.4.0;" _
+        & "DATA SOURCE=" _
+        & Server.MapPath _
+        ("StoresDB.mdb;"))
+    DBCommand = New OleDbDataAdapter _
+        ("Select StoreName as [Store Name], " _
+        & "Address From Stores " _
+        & "Where City = '" _
+        & ddlCities.SelectedItem.Text & "' " _
+        & "And State = '" _
+        & ddlStates.SelectedItem.Text & "' " _
+        & "Order By StoreName", DBConn)
+    DBCommand.Fill(DSPageData, _
+        "Stores")
+    dgStores.DataSource = _
+        DSPageData.Tables("Stores").DefaultView
+    dgStores.DataBind()
+End Sub
+&lt;/SCRIPT&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Store Location&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;Body LEFTMARGIN="40"&gt;
+&lt;form runat="server"&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:label 
+    id="lblMessage2" 
+    font-size="10pt"
+    font-name="Lucida Console"
+    text="Select a State"
+    runat="server"
+/&gt;
+&lt;BR&gt;
+&lt;asp:dropdownlist
+    id="ddlStates"
+    datatextfield="State" 
+    autopostback="True"
+    onselectedindexchanged="ddlState_Changed"
+    runat="server"
+/&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:label 
+    id="lblMessage3" 
+    font-size="10pt"
+    font-name="Lucida Console"
+    text="Select a City"
+    visible="False"
+    runat="server"
+/&gt;
+&lt;BR&gt;
+&lt;asp:dropdownlist
+    id="ddlCities"
+    datatextfield="City" 
+    autopostback="True"
+    onselectedindexchanged="ddlCity_Changed"
+    visible="False"
+    runat="server"
+/&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:label 
+    id="lblMessage1" 
+    font-size="12pt"
+    font-bold="True"
+    font-name="Lucida Console"
+    text="Stores in Your Area"
+    runat="server"
+/&gt;
+&lt;BR&gt;&lt;BR&gt;
+&lt;asp:datagrid
+    id="dgStores" 
+    runat="server" 
+    autogeneratecolumns="True"
+/&gt;
+&lt;/form&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

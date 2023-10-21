@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;%@ Page Language=VB Debug=true %&gt;
+&lt;%@ Import Namespace="System.Data" %&gt;
+&lt;%@ Import Namespace="System.Data.OLEDB" %&gt;
+&lt;script runat=server&gt;
+Sub SubmitBtn_Click(Sender As Object, E As EventArgs)
+    Dim DBConn as OleDbConnection
+    Dim DBCommand As OleDbDataAdapter
+    Dim DSLogin as New DataSet
+    DBConn = New OleDbConnection("PROVIDER=" _
+        & "Microsoft.Jet.OLEDB.4.0;" _
+        & "DATA SOURCE=" _
+        & Server.MapPath("LogIn.mdb;"))
+    DBCommand = New OleDbDataAdapter _
+        ("Select UserID from " _
+        & "Users Where " _
+        & "UserName = '" & txtUserName.Text _
+        & "' and Password = '" & txtPassword.Text _
+        & "'", DBConn) 
+    DBCommand.Fill(DSLogin, _
+        "UserInfo")
+    If DSLogin.Tables("UserInfo"). _
+        Rows.Count = 0 Then
+        lblMessage.Text = "The user name and password " _
+            & "were not found. Please try again."
+    Else
+        Session("UserID") = DSLogin.Tables("UserInfo"). _
+            Rows(0).Item("UserID")
+        Session("UserName") = txtUserName.Text
+        Response.Redirect("./welcome.aspx")
+    End If
+End Sub
+&lt;/SCRIPT&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Log In Page&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;form runat="server"&gt;
+&lt;asp:Label 
+    id="lblMessage" 
+    Font-Size="12pt"
+    Font-Name="Tahoma"
+    runat="server"
+    Text="Complete each field to enter the site."
+/&gt;
+&lt;P&gt;&lt;/P&gt;&lt;Font Face="Tahoma"&gt;User Name:&lt;/Font&gt;&lt;BR&gt;
+&lt;asp:TextBox 
+    id="txtUserName" 
+    Columns="25"
+    MaxLength="50"
+    runat=server 
+/&gt;
+&lt;asp:RequiredFieldValidator 
+    id="rfvUserName"
+    ControlToValidate="txtUserName"
+    Display="Dynamic"
+    Font-Name="Tahoma"
+    Font-Size="10pt"
+    runat=server&gt;
+    User Name is Required!
+&lt;/asp:RequiredFieldValidator&gt;
+&lt;P&gt;&lt;/P&gt;&lt;Font Face="Tahoma"&gt;Password:&lt;/Font&gt;&lt;BR&gt;
+&lt;asp:TextBox 
+    id="txtPassword" 
+    Columns="25"
+    MaxLength="50"
+    runat=server 
+    TextMode="Password"
+/&gt;
+&lt;asp:RequiredFieldValidator 
+    id="rfvPassword"
+    ControlToValidate="txtPassword"
+    Display="Dynamic"
+    Font-Name="Verdana"
+    Font-Size="10pt"
+    runat=server&gt;
+    Password is Required!
+&lt;/asp:RequiredFieldValidator&gt;&lt;BR&gt;&lt;BR&gt;
+&lt;asp:button 
+    id="butOK"
+    text="  OK  "
+    OnClick="SubmitBtn_Click" 
+    runat="server"
+/&gt;
+&lt;/form&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+&lt;%@ Page Language=VB Debug=true %&gt;
+&lt;script runat=server&gt;
+Sub Page_Load(ByVal Sender as Object, ByVal E as EventArgs)
+    If Len(Session("UserID")) = 0 Then
+        Response.Redirect("./login.aspx")
+    End If
+    lblMessage.Text = "Welcome: " & Session("UserName")
+End Sub
+&lt;/SCRIPT&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Welcome Page&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;form runat="server"&gt;
+&lt;asp:Label 
+    id="lblMessage" 
+    Font-Size="12pt"
+    Font-Name="Tahoma"
+    runat="server"
+/&gt;
+&lt;/form&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,744 @@
+
+
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+response.write("Hello World!")
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+...........................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;%
+response.write("&lt;h2&gt;You can use HTML tags to format the text!&lt;/h2&gt;")
+%&gt;
+
+&lt;%
+response.write("&lt;p style='color:#0000ff'&gt;This text is styled with the style attribute!&lt;/p&gt;")
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+..............................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+dim name
+name="Donald Duck"
+response.write("My name is: " & name)
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+.................................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+Dim famname(6),i
+famname(1) = "Jan Egil"
+famname(2) = "Tove"
+famname(3) = "Hege"
+famname(4) = "Stale"
+famname(5) = "Kai Jim"
+famname(6) = "Borge"
+
+For i = 1 to 6
+      response.write(famname(i) & "&lt;br /&gt;")
+Next
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+...................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+dim i 
+for i=1 to 6
+   response.write("&lt;h" & i & "&gt;Header " & i & "&lt;/h" & i & "&gt;")
+next
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+..................................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;%
+dim h
+h=hour(now())
+
+response.write("&lt;p&gt;" & now())
+response.write(" (Norwegian Time) &lt;/p&gt;")
+If h&lt;12 then
+   response.write("Good Morning!")
+else
+   response.write("Good day!")
+end if
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+....................................................
+
+
+&lt;%@ language="javascript" %&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;%
+var d=new Date()
+var h=d.getHours()
+
+Response.Write("&lt;p&gt;")
+Response.Write(d + " (Norwegian Time)")
+Response.Write("&lt;/p&gt;")
+if (h&lt;12)
+   {
+   Response.Write("Good Morning!")
+   }
+else
+   {
+   Response.Write("Good day!")
+   }
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+..............................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+Today's date is: &lt;%response.write(date())%&gt;.
+&lt;br&gt;
+The server's local time is: &lt;%response.write(time())%&gt;.
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+....................................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;
+VBScripts' function &lt;b&gt;WeekdayName&lt;/b&gt; is used to get a weekday:
+&lt;/p&gt;
+&lt;%
+response.Write(WeekDayName(1))
+response.Write("&lt;br&gt;")
+response.Write(WeekDayName(2))
+%&gt;
+
+&lt;p&gt;Abbreviated name of a weekday:&lt;/p&gt;
+&lt;%
+response.Write(WeekDayName(1,true))
+response.Write("&lt;br&gt;")
+response.Write(WeekDayName(2,true))
+%&gt;
+
+&lt;p&gt;Current weekday:&lt;/p&gt;
+&lt;%
+response.Write(WeekdayName(weekday(date)))
+response.Write("&lt;br&gt;")
+response.Write(WeekdayName(weekday(date), true))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+......................................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;VBScripts' function &lt;b&gt;MonthName&lt;/b&gt; is used to get a month:&lt;/p&gt;
+&lt;%
+response.Write(MonthName(1))
+response.Write("&lt;br&gt;")
+response.Write(MonthName(2))
+%&gt;
+
+&lt;p&gt;Abbreviated name of a month:&lt;/p&gt;
+&lt;%
+response.Write(MonthName(1,true))
+response.Write("&lt;br&gt;")
+response.Write(MonthName(2,true))
+%&gt;
+
+&lt;p&gt;Current month:&lt;/p&gt;
+&lt;%
+response.Write(MonthName(month(date)))
+response.Write("&lt;br&gt;")
+response.Write(MonthName(month(date), true))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+.............................................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+Today it is
+&lt;%response.write(WeekdayName(weekday(date)))%&gt;,
+&lt;br /&gt;
+and the month is
+&lt;%response.write(MonthName(month(date)))%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+...................................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;Countdown to year 3000:&lt;/p&gt;
+
+&lt;p&gt;
+&lt;%millennium=cdate("1/1/3000 00:00:00")%&gt;
+
+It is
+&lt;%response.write(DateDiff("yyyy", Now(), millennium))%&gt;
+years to year 3000!
+&lt;br&gt;
+It is
+&lt;%response.write(DateDiff("m", Now(), millennium))%&gt;
+months to year 3000!
+&lt;br&gt;
+It is
+&lt;%response.write(DateDiff("ww", Now(), millennium))%&gt;
+weeks to year 3000!
+&lt;br&gt;
+It is
+&lt;%response.write(DateDiff("d", Now(), millennium))%&gt;
+days to year 3000!
+&lt;br&gt;
+It is
+&lt;%response.write(DateDiff("h", Now(), millennium))%&gt;
+hours to year 3000!
+&lt;br&gt;
+It is
+&lt;%response.write(DateDiff("n", Now(), millennium))%&gt;
+minutes to year 3000!
+&lt;br&gt;
+It is
+&lt;%response.write(DateDiff("s", Now(), millennium))%&gt;
+seconds to year 3000!
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+.............................................
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;%
+response.write(DateAdd("d",30,date()))
+%&gt;
+
+&lt;p&gt;
+Syntax for DateAdd: DateAdd(interval,number,date). You can use &lt;b&gt;DateAdd&lt;/b&gt; to for example calculate a date 30 days from today.
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+.......................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+response.write(FormatDateTime(date(),vbgeneraldate))
+response.write("&lt;br /&gt;")
+response.write(FormatDateTime(date(),vblongdate))
+response.write("&lt;br /&gt;")
+response.write(FormatDateTime(date(),vbshortdate))
+response.write("&lt;br /&gt;")
+response.write(FormatDateTime(now(),vblongtime))
+response.write("&lt;br /&gt;")
+response.write(FormatDateTime(now(),vbshorttime))
+%&gt;
+
+&lt;p&gt;
+Syntax for FormatDateTime: FormatDateTime(date,namedformat).
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+............................................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+somedate="10/30/99"
+response.write(IsDate(somedate))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+...................................................
+
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+name = "Bill Gates"
+response.write(ucase(name))
+response.write("&lt;br&gt;")
+response.write(lcase(name))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+......................................
+
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+name = " W3Schools "
+response.write("visit" & name & "now&lt;br /&gt;")
+response.write("visit" & trim(name) & "now&lt;br /&gt;")
+response.write("visit" & ltrim(name) & "now&lt;br /&gt;")
+response.write("visit" & rtrim(name) & "now")
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+............................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+sometext = "Hello Everyone!"
+response.write(strReverse(sometext))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+........................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+i = 48.66776677
+j = 48.3333333
+response.write(Round(i))
+response.write("&lt;br&gt;")
+response.write(Round(j))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+...........................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+randomize()
+response.write(rnd())
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+..............................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+sometext="Welcome to this Web"
+response.write(Left(sometext,5))
+response.write("&lt;br&gt;")
+response.write(Right(sometext,5))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+...............................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+sometext="Welcome to this Web!!"
+response.write(Replace(sometext, "Web", "Page"))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+....................................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+sometext="Welcome to this Web!!"
+response.write(Mid(sometext, 9, 2))
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+.................................................................
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;form action="demo_reqquery.asp" method="get"&gt;
+Your name: &lt;input type="text" name="fname" size="20" /&gt;
+&lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+&lt;%
+dim fname
+fname=Request.QueryString("fname")
+If fname&lt;&gt;"" Then
+      Response.Write("Hello " & fname & "!&lt;br /&gt;")
+      Response.Write("How are you today?")
+End If
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+.................................................................
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;form action="demo_simpleform.asp" method="post"&gt;
+Your name: &lt;input type="text" name="fname" size="20" /&gt;
+&lt;input type="submit" value="Submit" /&gt;
+&lt;/form&gt;
+&lt;%
+dim fname
+fname=Request.Form("fname")
+If fname&lt;&gt;"" Then
+      Response.Write("Hello " & fname & "!&lt;br /&gt;")
+      Response.Write("How are you today?")
+End If
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+.......................................................
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;%
+response.write("&lt;h2&gt;You can use HTML tags to format the text!&lt;/h2&gt;")
+%&gt;
+
+&lt;%
+response.write("&lt;p style='color:#0000ff'&gt;This text is styled with the style attribute!&lt;/p&gt;")
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+......................................................
+
+
+&lt;%
+if Request.Form("select")&lt;&gt;"" then
+       Response.Redirect(Request.Form("select"))
+end if
+%&gt;   
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;form action="demo_redirect.asp" method="post"&gt;
+
+&lt;input type="radio" name="select" 
+value="demo_server.asp"&gt;
+Server Example&lt;br&gt;
+
+&lt;input type="radio" name="select" 
+value="demo_text.asp"&gt;
+Text Example&lt;br&gt;&lt;br&gt;
+&lt;input type="submit" value="Go!"&gt;
+
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt; 
+
+.............................................
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;%
+randomize()
+r=rnd()
+if r&gt;0.5 then
+  response.write("&lt;a href='http://www.w3schools.com'&gt;W3Schools.com!&lt;/a&gt;")
+else
+  response.write("&lt;a href='http://www.refsnesdata.no'&gt;Refsnesdata.no!&lt;/a&gt;")
+end if
+%&gt;
+
+&lt;p&gt;
+This example demonstrates a link, each time you load the page, it will display 
+one of two links: W3Schools.com! OR Refsnesdata.no! There is a 50% chance for 
+each of them.
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+.............................................
+
+&lt;%
+Response.Buffer=true
+%&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;
+This text will be sent to your browser when my response buffer is flushed.
+&lt;/p&gt;
+&lt;%
+Response.Flush
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+..............................................
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;I am writing some text. This text will never be&lt;br&gt;
+&lt;%
+Response.End
+%&gt;
+finished! It's too late to write more!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+.................................
+
+
+&lt;%Response.Expires=-1%&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;This page will be refreshed with each access!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+...............................................
+
+
+
+&lt;%
+Response.ExpiresAbsolute=#May 05,2001 05:30:30#
+%&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;This page will expire on May 05, 2001 05:30:30!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+..........................................
+&lt;%
+Response.ContentType="text/html"
+%&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;This is some text&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+.......................................
+
+&lt;%
+Response.Charset="ISO8859-1"
+%&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;This is some text&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+........................................
+
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;a href="demo_simplequerystring.asp?color=green"&gt;Example&lt;/a&gt;
+
+&lt;%
+Response.Write(Request.QueryString)
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+.........................................
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

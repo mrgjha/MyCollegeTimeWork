@@ -1,0 +1,59 @@
+
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+&lt;script runat="server"&gt;
+Sub Page_Load
+lbl1.Text="The date and time is " & now()
+End Sub
+&lt;/script&gt;&lt;html&gt;
+&lt;body&gt;
+&lt;form runat="server"&gt;
+&lt;h3&gt;&lt;asp:label id="lbl1" runat="server" /&gt;&lt;/h3&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+&lt;script runat="server"&gt;
+
+
+Sub Page_Load
+if Not Page.IsPostBack then
+  lbl1.Text="The date and time is " & now()
+end if
+End Sub
+
+Sub submit(s As Object, e As EventArgs)
+lbl2.Text="Hello World!"
+End Sub
+&lt;/script&gt;
+
+
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;form runat="server"&gt;
+&lt;h3&gt;&lt;asp:label id="lbl1" runat="server" /&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;asp:label id="lbl2" runat="server" /&gt;&lt;/h3&gt;
+&lt;asp:button text="Submit" onclick="submit" runat="server" /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

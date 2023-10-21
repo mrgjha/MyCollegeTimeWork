@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import javax.swing.*;
+
+public class HTMLLabelApplet extends JApplet {
+
+  public void init() {
+  
+    JLabel theText = new JLabel(
+     "&lthtml&gtHello! This is a multiline label with &ltb&gtbold&lt/b&gt "
+     + "and &lti&gtitalic&lt/i&gt text. &ltP&gt "
+     + "It can use paragraphs, horizontal lines, &lthr&gt "
+     + "&ltfont color=red&gtcolors&lt/font&gt "
+     + "and most of the other basic features of HTML 3.2&lt/html&gt");
+   
+    this.getContentPane().add(theText);
+  
+  }
+
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

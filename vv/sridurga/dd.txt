@@ -1,0 +1,10 @@
+<script language="javascript">
+
+function send()
+{
+
+msgWindow=open("orderitem.asp?x=<%Response.write(Str)%>",
+"OpenWindow","width=450,height=400,scrollbars=yes,location=1");
+}
+
+</script>

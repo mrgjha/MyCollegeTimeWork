@@ -1,0 +1,52 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+
+public class JMouseListenerTest extends JCloseableFrame
+    implements MouseListener {
+    public JMouseListenerTest(){
+	super("JMouseListenerTest (Swing)", 300, 100);
+
+	addMouseListener(this);
+    }
+
+    public void mouseClicked(MouseEvent event) {
+	System.out.println("mouseClicked");
+    }
+
+    public void mouseEntered(MouseEvent event) {
+	System.out.println("mouseEntered");
+    }
+
+    public void mouseExited(MouseEvent event) {
+	System.out.println("mouseExited");
+    }
+
+    public void mouseReleased(MouseEvent event) {
+	System.out.println("mouseReleased");
+    }
+
+    public void mousePressed(MouseEvent event) {
+	System.out.println("mousePressed");
+    }
+
+    public static void main(String [] args) {
+	JMouseListenerTest frame = new JMouseListenerTest();
+	frame.setVisible(true);
+    }
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

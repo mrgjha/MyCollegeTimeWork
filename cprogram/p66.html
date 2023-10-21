@@ -1,0 +1,39 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &lt;conio.h&gt;
+
+int main(void)
+{
+  register int i;
+
+  gotoxy(10, 10);
+  cprintf("This is a test of the clreol() function.");
+  getch();
+  gotoxy(10, 10);
+  clreol();
+
+  for(i=0; i&lt;20; i++) cprintf("Hello there\n\r");
+  getch();
+
+  /* clear the screen */
+  clrscr();
+  return 0;
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

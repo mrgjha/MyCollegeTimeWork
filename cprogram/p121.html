@@ -1,0 +1,90 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// Expanding the string type.
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+
+class str_type {
+  char string[80];
+public:
+  str_type(char *str = "") { strcpy(string, str); }
+
+  str_type operator+(str_type str);
+  str_type operator+(char *str);
+
+  str_type operator=(str_type str);
+  str_type operator=(char *str);
+
+  void show_str() { cout &lt;&lt; string; }
+} ;
+
+str_type str_type::operator+(str_type str) {
+  str_type temp;
+
+  strcpy(temp.string, string);
+  strcat(temp.string, str.string);
+  return temp;
+}
+
+str_type str_type::operator=(str_type str) {
+  strcpy(string, str.string);
+  return *this;
+}
+
+str_type str_type::operator=(char *str)
+{
+  str_type temp;
+
+  strcpy(string, str);
+  strcpy(temp.string, string);
+  return temp;
+}
+
+str_type str_type::operator+(char *str)
+{
+  str_type temp;
+
+  strcpy(temp.string, string);
+  strcat(temp.string, str);
+  return temp;
+}
+
+int main()
+{
+  str_type a("Hello "), b("There"), c;
+
+  c = a + b;
+
+  c.show_str();
+  cout &lt;&lt; "\n";
+
+  a = "to program in because";
+  a.show_str();
+  cout &lt;&lt; "\n";
+
+  b = c = "C++ is fun";
+
+  c = c+" "+a+" "+b;
+  c.show_str();
+
+  return 0;
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

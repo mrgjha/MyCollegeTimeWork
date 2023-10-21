@@ -1,0 +1,142 @@
+
+
+<html>
+<head><style type="text/css">
+<!--
+h3{font style:italic;color:red}
+h4{font style:italic;color:white}
+h5{font style:italic;color:black}
+-->
+</style>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+<h3>Inheritance</h3>
+
+
+In C++, a class can inherit from any 
+number of classes, but Java classes can only 
+extend one class. In other words, 
+C++ allows multiple inheritance, but the Java 
+language only allows single inheritance. 
+
+Basically, inheritance is a way to reuse code. 
+When class A inherits from, or extends, 
+another class B, class A automatically 
+inherits all of the public and protected 
+members of class B. If class A is in the 
+same package as class B, class A will also 
+inherit all of the members with default, or 
+package, access. It is important to note, 
+however, that subclasses never inherit 
+the private members of the classes they extend. 
+
+
+Once you extend a class, you can add 
+new fields and methods, which define the 
+attributes and operations that make your 
+new class distinct from the superclass. Also, 
+you can override the operations of the 
+superclass that must behave differently in the 
+subclass. 
+
+You can explicitly extend a class when 
+you define it. 
+To extend a class, you simply 
+follow the name of the class with 
+the extends keyword and the name of the class you 
+want to extend. If you do not explicitly extend a class, 
+the Java compiler will 
+automatically extend the class Object. 
+In this way, all Java objects are ultimately 
+subclasses of class Object. 
+
+
+<h3>Abstract classes </h3>
+
+An abstract class is a class that 
+cannot be instantiated. You may be wondering why 
+anyone would ever want to create a class 
+that you can't use to create objects. The 
+answer is that you want other programmers 
+to extend your class, but never create an 
+instance of it. You can explicitly 
+stop other programmers from instantiating your class 
+by using the abstract modifier. 
+
+You can make any ordinary class 
+an abstract class, just by adding the abstract 
+modifier. However, usually an abstract 
+class will have one or more abstract methods. 
+As you might be able to guess, 
+an abstract method is a method that 
+is declared, but not 
+implemented, much like a C function prototype. 
+When a class extends an abstract 
+class, it must provide an implementation 
+for each abstract method, or else it must also 
+be declared as an abstract class. 
+You can define an abstract method by using the 
+abstract modifier. 
+
+For example, let's define an AbstractAccount class, 
+which represents a very basic 
+bank account. 
+The designer of this class does 
+not want other programmers to use this 
+
+
+
+<h3>Interfaces </h3>
+
+We've already noted that a Java 
+class can only extend one class. 
+If you're coming from 
+a background in C++, where classes 
+can inherit from any number of classes, you may 
+see this as extremely limiting, and you're right. 
+The designers of the Java language felt 
+that multiple inheritance was too complicated, 
+so instead they introduced a new 
+concept: interfaces. 
+
+An interface is like an abstract class, 
+with the following exceptions: 
+
+• All interfaces are implicitly abstract, 
+so you don't need to use the abstract 
+keyword. Methods defined in an interface 
+are also implicitly abstract, so you don't 
+need to use the abstract keyword for methods. 
+If you try to declare a method with 
+a body in an interface, you'll get a compile-time error. 
+
+· All members of an interface are implicitly public. 
+· All fields defined in an interface are implicitly static and final. 
+· An interface cannot be instantiated, so an interface does not define a constructor. 
+
+
+An interface is declared just like a class, 
+except the interface keyword is used 
+instead of the class keyword. 
+An interface can extend any number of 
+superinterfaces. Methods inside an interface cannot 
+include an implementation. 
+Interface methods are simply method definitions; 
+they do not have bodies. 
+
+
+</pre>
+
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

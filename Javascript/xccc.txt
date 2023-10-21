@@ -1,0 +1,11 @@
+This program will help you to generate proper HTML Meta codes, which are required for a search engine. Search Engines lists the query results after scanning the meta codes on Webpages. Hence, if you are interested to promote your website in a big way, use this program to generate Meta codes for every HTML,ASP pages and make your site Search engine friendly. 
+
+Features of MetaCoder 1.0
+
+(1) Generates Meta Codes based on Author name, E-mail ID, keywords, Description etc. 
+
+(2) Selection of the entire code in a single click
+
+(3) Copying of the selected code
+
+Users can contact me through www.learnxpress.com

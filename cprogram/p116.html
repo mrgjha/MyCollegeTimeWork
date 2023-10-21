@@ -1,0 +1,94 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// Overload a unary operator.
+#include &lt;iostream.h&gt;
+
+
+class three_d {
+  int x, y, z; // 3-D coordinates
+public:
+  three_d() { x = y = z = 0; }
+  three_d(int i, int j, int k) {x = i; y = j; z = k; }
+
+  three_d operator+(three_d op2); // op1 is implied
+  three_d operator=(three_d op2); // op1 is implied
+  three_d operator++(); // prefix version of ++
+
+  void show() ;
+} ;
+
+// Overload +.
+three_d three_d::operator+(three_d op2)
+{
+  three_d temp;
+
+  temp.x = x + op2.x; // These are integer additions
+  temp.y = y + op2.y; // and the + retains is original
+  temp.z = z + op2.z; // meaning relative to them.
+  return temp;
+}
+
+// Overload assignment.
+three_d three_d::operator=(three_d op2)
+{
+  x = op2.x; // These are integer assignments
+  y = op2.y; // and the = retains its original
+  z = op2.z; // meaning relative to them.
+  return *this;
+}
+
+// Overload the prefix version of ++.
+three_d three_d::operator++()
+{
+  x++; // increment x, y, and z 
+  y++; 
+  z++;
+  return *this;
+}
+
+// Show X, Y, Z coordinates.
+void three_d::show()
+{
+  cout &lt;&lt; x &lt;&lt; ", ";
+  cout &lt;&lt; y &lt;&lt; ", ";
+  cout &lt;&lt; z &lt;&lt; "\n";
+}
+
+int main()
+{
+  three_d a(1, 2, 3), b(10, 10, 10), c;
+  a.show();
+  b.show();
+
+  c = a + b; // add a and b together
+  c.show();
+
+  c = a + b + c; // add a, b and c together
+  c.show();
+
+  c = b = a; // demonstrate multiple assignment
+  c.show();
+  b.show();
+
+  ++c;  // increment c
+  c.show();
+
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

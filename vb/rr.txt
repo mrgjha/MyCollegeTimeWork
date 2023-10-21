@@ -1,0 +1,686 @@
+
+Why .NET?
+
+Interoperability between languages and execution environments 
+Uniformity in schema or formats for Data Exchange using XML, XSL
+Extend or use existing code that is valid
+Programming complexity of environment is reduced
+
+Let us examine these problems in detail…
+Executing interoperability between languages and execution models is difficult. For e.g., 
+Passing parameters from one process on Machine A on network A to another process on Machine B on Network B is not a trivial task. For example, if the parameter is an integer, it could be 16 bits long on Machine A and 64 bits long on Machine B. If both contexts use different languages, context A may implement the integer as a simple type or a sequence of bits while context B may implement the integer as an object. 
+
+Uniformity in data exchange has been challenging to date. Two fields, First name and last name are represented very differently in different systems. Data types and data lengths could be largely different and hence sharing data is not an intuitive process.
+
+In the programming environments available to us today, it is very difficult and sometimes impossible to inherit or extend code so that we don’t have to start from scratch.  Why can’t we inherit classes from a C++ application so that we can map new functionality to a Visual Basic® application? The main reason is that the object and execution models are sufficiently different that a common execution system cannot be supported. One of the objectives of .NET is to  create this execution system.
+
+The issues we just talked about are those that the .NET framework was created to address. Instead of building Windows® based applications that connect to the Internet, the strategy is aimed at laying the foundation for web services and internet-based applications that can live independently of Windows.
+
+If you have to compare .NET with COM or Corba: COM and Corba both offer a solution in which cross-language calling "just works“. Components were an afterthought in CORBA since the initial focus was really distributed OO RPC. As for EJB, its certainly solves the distributed object problem for Java but not for any other language. 
+
+.NET takes all this one step further, and offers cross-language inheritance and exception capabilities, among other things.
+
+
+The .NET Framework is…
+
+
+A COMPONENT MODEL FOR THE INTERNET
+The new approach to building large scale distributed systems for the Internet
+Provides the capability to integrate multiple devices
+Built around the tools and protocols (XML, WSDL, SOAP, HTTP) that are becoming standard on the Internet
+
+
+To provide a simple definition, the .NET Framework is a component model for the Internet. A component model allows separate software 
+components written in different languages to be combined to form a functioning system. Other component models that are in use today are COM, CORBA and EJB. 
+.NET is the Microsoft® strategy for developing large distributed software systems. A core component of .NET is the .NET Framework. The .NET Framework has been built to address the issues associated with distributed programming from its very inception. 
+
+It provides the ability for multiple devices to ‘talk’ to each other – desktops, wireless devices, PDAs, servers and so on. 
+It is built on today’s standards – XML, WSDL, SOAP, HTTP and the Object Oriented programming model
+
+
+
+The .NET Framework Design Goals
+
+
+
+Component Development for the Internet
+"Cross-Language Development”
+Inheritance, Debugging, Exception handling
+Reliability and Security
+Simple Development and Deployment
+Device-agnostic
+
+
+The .NET Framework is all about cross-language development. Languages supported by .NET (move to next slide and come back) … at last count, over 20 of them. These are languages for which compilers that target the Common Language Specification have been written. 
+
+The code written using Visual C#® .NET (as a matter of fact any .NET compliant language) should be usable in another language such as Visual Basic® .NET. Later on these two code modules should be usable in, yet another language like Jscript® etc and so on.  In order to make the above said statement possible there should be a common run time environment, which can understand all these languages. 
+Some of the architectural details of how distributed objects talk to each other remotely in the .NET framework are very similar to existing architectures (CORBA, COM, RMI in Java). So what makes .NET so different? To repeat a point made earlier, the .NET framework is truly language interoperable. 
+Not just by a standardized calling model similar to what COM and CORBA provide, but by a schema that allows classes and objects in one language to be used at the same level in other languages. 
+
+
+
+Understanding the .NET Framework
+
+
+NET Framework Architecture
+NET Web Services
+Key Benefits
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(When you come to this slide – all you will see is the title until you start clicking. Before clicking, say:)
+The .NET platform is the combination of: .NET Framework, Web Services and .NET Enterprise Servers
+The .NET Framework, as you will learn, comprises three different elements: 
+The common language runtime, Class libraries, organized into easily comprehensible namespaces and ASP.NET
+
+(This is a slide where all the pieces fly in. When the OS component comes in, click until the CLR component comes in. At this point, say: )
+The CLR sits on top of the Operating System. 
+(Keep clicking)
+The base class library sits on top of the CLR. 
+To enable the creation of Web Services as well as the manipulation of data in a web enabled environment, the Framework provides ASP. NET and ADO. NET 
+
+On top of all this sits the Common Language Specification. This spec lays out how to write a compiler for a language such that it targets the .NET framework. The CLS has been standardized by ECMA. Remember that the main reason you would want to do this is so that the language can take advantage of all the features of the Common Language Runtime.
+
+You now know that the .NET Framework is composed of: the common language runtime, class libraries, and ASP.NET. 
+
+(when you click again, the diagram aggregates. More flying boxes ! When the ‘Base Framework’ box covers the CLR and Base Class Library box:)
+
+The Base Framework is composed of the common language runtime and the Base Classes. You will learn more about the common language runtime later, but, in brief, it is the component responsible for making languages natively interoperable. 
+(Click again as you go through the rest)
+The rest of the Framework: 
+Provides for general input/output (I/O) including file access, XML support, and services. 
+Exposes Web technology and services from protocols like HTTP to standards like XML, XSL, HTML etc.
+Provides user interface (UI) elements for building Web pages and/or traditional Windows Forms–based UIs.
+Exposes many other services.
+
+(When the VS. NET rectangle appears)
+Visual Studio® .NET is now a single, unified IDE (integrated development environment) which makes learning simpler, multi-language development more efficient.  Shared tools and designers increase efficiency,  Debugging has been improved, and it now includes the ability to debug across multiple projects and processes. These changes have been incorporated to help developers be more productive. 
+
+Altogether, the .NET Framework provides the functionality and services you need to build any desktop application or Web service solution you can imagine!  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Common Language Runtime	
+
+
+Common Type System
+Metadata
+Execution Engine
+
+Let us look at the key features of the CLR.
+There are three pieces that would enable you to look at the CLR holistically – the type system, the metadata system and the execution engine. 
+
+The Common Type System describes all possible data types supported by the Common Language Runtime, specifies how they can interact with each other, and details how they are represented in Metadata. There are many types in the CLR: value types, class types, pointer types and interface types. It is this type system that enables 20+ programming languages (at last count) to share data and code on the .NET platform. 
+
+There is also a Metadata system that describes the types in the CLR. The metadata is used by compilers to makes types available in their own language in order to manage types during runtime. This metadata is stored in binary format. Tools and programmers can access the metadata via APIs without understanding the binary format. 
+
+The terms ‘Managed Code and Managed Data’ describes code or data that executes in cooperation with the execution engine of the Common Language Runtime. 
+
+This execution system is responsible for controlling the execution flow and managing the garbage collection heap. Managed code provides the CLR with sufficient metadata to allow facilities such as stack tracing and verifying security constraints. Unmanaged code is not controlled by the execution system and therefore cannot use the facilities of the CLR. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(Talk about each element as they come into the screen – this a build-up slide)
+Here are the features we just talked about and some others as well. We will not be addressing all these features in depth today. 
+
+Class Loader : Loads the relevant classes from the libraries into memory.
+
+[Garbage Collector]
+A garbage collector automates memory management. It ensures the references to objects in memory are no longer referenced, and also releases resources tied to this object. 
+
+[Code Manager]
+At run time, the common language runtime is responsible for managing memory, starting up and stopping threads and processes, and enforcing security policies, as well as satisfying any dependencies that one component may have on any other component. 
+
+[MSIL to JIT]
+MS IL (MS Intermediate Language) is a language abstraction layer of the CLR. It is object oriented and any language targeted for the framework is first converted into IL. A just-in-time (JIT) compiler that translates the Microsoft intermediate language (MSIL) code optimizes it for a specific target machine. It does this using metadata. Thus, with .NET, code always executes natively on the system processor. 
+
+
+[Security Engine]
+The runtime provides extensive security based on policies and permissions that allow the dynamic creation of execution environments for dynamically downloaded, mistrusted code. On the other hand, it will grant full access to trusted code.
+
+[Exception Manager]
+The runtime has its own exception-handling model that is integrated with the exception model of the underlying operating system and the exception features of the respective programming languages. This enables you to use a consistent exception model across the entire .NET platform.
+
+[Type Checker]
+The Type checker makes sure that the types used in your language meets the specifications of the framework and will work with the CLR.
+
+The Thread Support features of the CLR manages threading efficiently. The runtime also encapsulates and exposes the threading model of the underlying operating system to .NET applications in an object-oriented way. This makes it easy to write applications that take full advantage of the OS features.
+
+The runtime also provides profiling support for diagnostics, debugging, and optimizing. 
+
+Despite its name, the common language runtime actually has a role in a component’s development time as well as the run-time experience. 
+
+Runtimes are nothing new for programming languages—virtually every programming language has one. The Microsoft Visual Basic development system has a runtime (the aptly named VBRUN), Microsoft Visual C++® has one (MSVCRT), as does Microsoft Visual FoxPro®, JScript, Smalltalk, Perl, Python, and Java and Tcl/Tk. The critical role of the .NET Framework—and what really sets it apart—is that it provides a unified environment across all programming languages.
+
+[Click – to get ‘Base Class Library’ rectangle]
+We won’t address the COM Marshaler today, but we will talk about the Class library later.
+
+
+
+Intermediate Language (IL)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Intermediate language is like the assembly language of the CLR. 
+
+After a program is written in any .NET language, it is converted to IL. The JIT Compiler then converts the IL to native code optimized for the current platform when a call is made to the program executable. 
+
+
+
+
+
+
+
+
+
+
+Namespaces and Classes
+Hierarchical, unified, extensible class libraries
+Provide “system” and base functionality and services
+Everything is an object!
+Interfaces 
+The .NET (Service) contracts
+Types
+Byte, Sbyte, Single, Double, String, Int16, Int32, Int64 etc.
+Common Type System - “Common Type Denominator”
+
+
+
+
+.NET Classes
+
+
+
+[You can use the notes in bold or the notes that are not ‘bolded’]
+So what about .NET Classes? These classes resides in the base class library. The main takeaway from this slide is how classes are organized. Namespaces are a logical way of organizing classes. It implies without ambiguity the functionality the class provides. E.g., System. Web or System.Web.UI. You can also extend an existing namespace. Thus the framework base classes provide you with the base functionality for you to build your solutions. 
+
+Interfaces are a description of the services available from a class – a contract or published guarantee saying that this is the functionality that the class implements.
+
+All types in the framework map to a Common Type System.  Again, this is a very key concept of the Framework architecture. This is what enables all those different languages to work together. 
+…
+….
+….
+
+Namespaces and Classes 
+Namespaces are used to organize the Framework classes. A namespace uses a “dot syntax” notation to logically group related classes together. 
+When classes are organized this way, it is easy to understand the purpose a namespace serves and, thus, what class functionality it will contain. 
+For example, System.Web.Services clearly conveys that the classes will provide a service for some kind of Web-oriented functionality. Likewise, it is easy to conclude that System.Web.UI might (and in fact does) contain HTML controls. 
+In addition to logically grouping classes in easily decipherable, unified classes, namespaces are extensible—you can derive your own namespace from an existing one. For example, System.Web.UI.XyzCorp could be derived from System.Web.UI and provide custom UI elements.
+The Framework namespaces provide the “system,” or base functionality, and services needed to build and run your solutions. 
+It is worth noting that in the .NET Framework, everything is an object, and the .NET system uses exactly the same classes it exposes to you!
+Interfaces 
+Interfaces define a set of functionalities that a class can implement. You may think of interfaces as the published guarantee of the services that a producer provides—a contract for services. The consumer, perhaps your application, can query for the published contract of services and then use them. 
+Thus, interfaces serve as semantically grouped contracts between parties. 
+Types
+Everything in the Framework is an object, including the basic types: Byte, Sbyte, Single, Double, String, Int16, Int32, Int64, and so on. 
+All types map to the common type system, which specifies how object types are defined. It also acts as a “common type denominator” between different languages.
+
+
+Unified Programming Model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+As you have seen until now, .NET and the Framework are designed with a focus on improving the existing development environments and solutions. It certainly achieves this through its unification of the different programming models. 
+
+MFC, Java’s Swing are examples of Class Libraries
+
+What we had before was an OS API. There were many ways to use the OS API. You could use ASP/Jscript/Perl to create Web Interfaces. 
+You could create applications using the Microsoft Foundation Classes or Java’s Swing leverage more of the packaged functionality available in these Class Libraries.
+
+You could also create GUI applications using VB or PowerBuilder.
+
+Now, we have the .NET framework and one entry point to using all this functionality – a unified programming model. 
+
+So, now you can create solutions using all of the technology categories I mentioned just now and your language of choice using one framework. For example, Windows Forms, MFC and ASP with C++. End result – shorter learning curve, and a simplified development environment. 
+
+
+
+Languages 	
+Ada
+APL
+Basic (Visual Basic)
+C#
+C
+C++
+J#
+COBOL
+Component Pascal(Queensland Univ of Tech)
+ECMAScript (JScript)
+Eiffel (Monash University)
+Haskell (Utrecht University)
+lcc (MS Research Redmond)
+Mondrian (Utrecht)
+ML (MS Research Cambridge)
+Mercury (Melbourne U.) 
+Oberon (Zurich University)
+Oz (Univ of Saarlandes)
+Perl
+Python
+Scheme (Northwestern U.)
+SmallTalk
+
+
+Some of these compilers were built as a result of partnerships with academics and companies. Mondrian and Haskell Beta 5 compilers are available for download from the www.mondrian-script.org site. 
+
+Visual J#TM .NET is an implementation of the Java Language sytnax by Microsoft and provides most of the functionality in JDK 1.1.4. 
+
+Lahey Computer Systems, Inc. and Fujitsu Limited have teamed up to integrate Lahey/Fujitsu Fortran with the Microsoft .NET Framework and Visual Studio.NET development environment. 
+
+PerlNET Beta 5 is now available for those with access to .NET Framework SDK Beta 2.
+
+Python: Python is an interpreted, interactive, object-oriented programming language. It incorporates modules, exceptions, dynamic typing, very high level dynamic data types, and classes. Python combines remarkable power with very clear syntax. It has interfaces to many system calls and libraries, as well as to various window systems, and is extensible in C or C++. It is also usable as an extension language for applications that need a programmable interface. Finally, Python is portable: it runs on many brands of UNIX, on the Mac, and on PCs under MS-DOS, Windows, Windows NT, and OS/2. 
+
+Python and .NET: Python for .NET is a compiler and runtime that implements Python on the Microsoft .NET platform. The .NET platform provides a runtime and metadata system designed to allow complete language interoperability, but to achieve that, the languages have to work in that runtime. 
+For example, if a Python class is made public so that a Visual Basic programmer can inherit from it, the Python class has to be implemented and described in .NET terms, not in CPython terms.
+
+www.activestate.com has a production level release of ActivePython for Windows.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Visual Studio .NET
+
+
+
+Increased programming productivity
+Easier to write code: drag and drop Web App and Services Development.
+Fully supports the .NET Framework
+Simplified development
+Multi-language support
+Improved debugging
+Unified IDE
+Powerful design tools
+Windows Forms, Web Forms
+XML and component designers
+Consistent set of tools across languages
+
+
+Single, unified IDE makes learning simpler, multi-language development more efficient. 
+Shared tools and designers increase efficiency,  Debugging has been improved, now includes the ability to debug across multiple projects and processes
+
+Major enhancements to the core Visual Studio languages.  
+
+[Skip if you don’t have time]
+The Server Explorer along with the Component Designer bring RAD to the server.  The server explorer provides access to server based services including database, message queues, event logs, performance counters, exchange servers, and web services.  Used with the component designer, users can build business logic components in the same manner that they build forms.  For example, simply drag and drop a message queue from the server explorer on to the component designer and all of the plumbing code required to access that queue is written for you – all that remains is the implementation specific business logic.
+
+Web Forms will make building web applications as easy as it is to build VB forms based applications today.  Web forms will produce pure HTML 3.2 and can be run on any browser on any platform that supports HTML 3.2.  Developers can also take advantage of higher end features in newer browsers such as IE5 or Netscape 5, or, can dial down to support wireless devices with WAP.  Developers will visually design their web forms applications and then implement the business logic with VB, C++, or C#, completely separated from the UI so that designers can work on the UI while developers code the business logic without stepping on each other.  Performance will be better than ASP script today because business logic is compiled running on the server.  
+
+Support for Web Services is deeply woven into Visual Studio .NET.  You can easily expose any method as a web services and also continue to seamlessly consume web services just like they are COM objects.  Keep in mind that Web Services can be running on any platform and any hardware, so that a customer can expose an IBM mainframe application as a web service and enable their developers to code against it using all of the key productivity features in VS .NET including IntelliSense.
+
+
+
+
+
+The .NET Compact Framework
+
+
+
+Designed specifically for smart devices
+Lightweight architecture
+Compatible subset of desktop platform
+Visual Studio.NET used for app development
+Adaptable to different application needs
+Build Smart Device applications in Visual Studio .NET
+Broad availability 
+Across multiple CPUs
+Across Windows CE and third-party RTOSes
+Across a variety of physical form factors
+
+
+
+To target small devices there is the .NET Compact Framework – which is specifically designed for small footprint battery operated devices 
+
+The .NET Compact Framework has a subset of the functionality available in the .NET Framework itself. 
+
+You can use Visual Studio .NET as the development environment for your .Net Compact Framework applications
+
+The .NET Compact Framework supports many different CPUs, different operating systems, in many different form factors such as PDAs, mobile  phones
+
+Smart Device Programmability for VS .NET 2003 will allow users to build apps for Mobile devices using the .NET CF. The .NET CF is composed of the CLR and the CF class library. The CF class library is a subset of the functionality available in the .NET Framework. Features left out are printing, MDI forms, drag and drop functionality, GDI+, Binary serialization. 
+
+Together with the .NET Framework, the .NET Compact Framework addresses all of the topics areas in the ACM 2001 Curriculum draft for CS. Specifically, it also covers all topics in the area of ‘Net-Centric Computing’ which focuses on Web Applications, Wireless computing, Mobile Computing, Virtual Runtimes, etc
+
+
+
+
+.NET Services
+
+
+
+What is a Web Service?
+Unit of application logic providing data and services over the Web using standard protocols
+XML Web Services expose additional services needed to build solutions
+ASP .NET in the .NET Platform
+Building Block Services
+Basic services used to build applications and Web Service
+Examples: www.xmethods.com
+Access through any Website
+
+
+XML Web Services are software solutions delivered via Internet to any device using the XML language. Today, that means Web browsers on computers, for the most part, but the device-agnostic design of .NET will eliminate this limitation.
+
+A Web Service is a unit of application logic providing data and services to other applications. Applications access Web Services via ubiquitous Web protocols and data formats such as HTTP, XML, and SOAP, with no need to worry about how each Web Service is implemented. Web Services combine the best aspects of component-based development and the Web, and are a cornerstone of the Microsoft .NET programming model. 
+
+
+ASP.NET is the part of the Framework that creates all the plumbing required for Web Services to run. It “resides” in the System.Web.Services namespace. Here you will find the WebService class that provides access to the ASP.NET objects and services. Two .NET services worth mentioning are the session and user management, which are accessed from the WebService properties Session and User, respectively. These are examples of available .NET services.
+Building Block Services
+Building block services are Web Services. The distinction between the terms is a fine one. You may think of building block services as the supplies to build Web Services. If you are familiar with the COM/COM+ development world, they are analogous to COM components. In contrast, you may think of building block services as commercial Web services. 
+
+
+Some Web Services:
+TerraServer is a database built and maintained by Microsoft. It is a large database providing free public access to a vast store of maps and aerial photographs of the United States and runs on SQL Server 2000. You can easily navigate the enormous amount of information in TerraServer by selecting a location on a map or entering a place name. And now, a new Web service--called TerraServer.NET--enables Web developers to easily integrate TerraServer data into their own applications. A useful application of this service is in Real estate businesses to provide aerial views of the location of a home. 
+
+You could make the Campus Yellow pages available on the internet as a service to students
+The Languages Department in a school can make Dictionaries or Thesauruses available in any language to students taking that course
+
+Your University’s Student Registration System could be made into a Web service. Now students can access this service from anywhere on the internet. But the bigger advantage is that if you desire, you can now provide this as a service to other Universities and charge for the use of your systems. All of the infrastructure code needed to do this is provided by the .NET Framework. Also, student information managed by the Registration System can be used to authorize other systems like Charge accounts at the BookStore and Cafeteria. 
+
+Today we have some of these “services,” but only as portal solutions. There are three limitations: 
+It’s hard to charge for the service. 
+The service cannot be accessed from any and every Web site as you browse the Web. 
+You cannot access it with any device, online or offline—this goes back to device dependencies.
+With .NET you will be able to produce and offer Web Services that are deliverable to any device and are portable—you will be able to take the service with you across Web sites. 
+
+Think: “Access Anywhere”
+Now imagine that you can access the solution from any device—PC browser, Macintosh browser, Pocket PC, or some future device.
+Furthermore, imagine that this Web Service is accessible to you no matter what Web site you are visiting.
+Now, that is service!
+
+
+
+
+XML Web Services Foundation Simple, Open, Broad Industry Support
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Web services are built on standard protocols
+Internet – lowest cost way to move bits, broadest reach, deepest investment
+XML – W3C standard – Data exchange format
+SOAP – W3C effort – wire format for 
+UDDI – open, founded by MS, IBM, Ariba, over 200 members
+Easy integration, distributed control
+Vendor, platform, language neutral
+This is the foundation that Web services are built on.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+How .NET Makes Web Services Possible
+
+
+.NET is built on Internet standard protocols
+Uses Framework classes, such as
+System.Web.Services
+Enables communication through open standards
+XML
+Service description expressed with WSDL
+SOAP
+Basic wire format
+Universal Description Discovery Integration (UDDI)
+HTTP
+
+
+Now that you know the “what”, an introduction to the “how” is appropriate.
+.NET is built on the internet standard protocols
+.NET is built not only with the Internet in mind; it is built on the Internet.
+Framework classes are the vehicle
+The Framework offers a variety of “Web” classes that provide Web-based and Web Service features and functionality. Communication through open standards
+The fact that it is built on open, Internet-based standards makes the .NET Framework extensible and enables it to easily communicate with other Web- and non-Web-based solutions.
+The predominant standards that .NET employs to make Web Services possible are:  
+Extensible Markup Language (XML)
+Simple Object Access Protocol (SOAP) 
+Hypertext Transfer Protocol (HTTP)
+XML, a text-based language much like the ubiquitous HTML, defines rules for creating custom HTML-like tags that describe themselves and the data they contain (metadata). 
+.NET also employs a newer XML standard formerly known as the Service Description Language (SDL), and now known as Web Services Description Language (WSDL). As the name implies, WSDL is a language designed for describing your Web Service. It is used to create or generate an .sdl file that other services use to determine the functionalities your Web Service offers and how to use them.
+SOAP is used as the basic wire format for communicating between objects and solutions. Very much like Remote Procedure Calls (RPC) in functionality, SOAP uses XML to describe its contents. Again, XML makes it simple, humanly interpretable, open, and extensible.
+.NET takes advantage of the new Universal Description, Discovery, and Integration (UDDI) specification that is aimed at creating Web Service registries. This will enable companies to register information about their Web Service solutions so that others can find them.
+For more information on UDDI, visit http://uddi.microsoft.com or read the white paper http://uddi.microsoft.com/developer/tech_white_paper.doc 
+Another piece of the puzzle that completes the Web Service picture is HTTP. Used extensively in the Framework itself, .NET also exposes this open communication protocol for you to do with, as you like.
+
+
+.NET Key Benefits 
+
+Ease of Use
+Object-oriented model
+Namespace and Framework structure
+Freedom to Choose
+The language that meets your needs
+The development tool that will make it easier to learn programming
+Stability
+Garbage collection
+Assemblies eliminates DLL compatibility issues
+Security
+Restricting or containing the illegal memory reference
+Comprehensive security model
+Deployment and Management
+Unified Experience
+Web Services
+	
+
+
+Ease of Use
+As you learned, .NET and the .NET Framework are offer functionality, ease of use, and production capabilities not available today. 
+We have already learned that in the .NET Framework everything is an object, and that coupled with the layout of the namespaces, the .NET Framework is easier to use than the existing, competing frameworks or class libraries. Ease of use increases productivity.
+Freedom to Choose
+Certainly, the ability to choose any of the several existing popular languages currently available to the .NET platform makes developing .NET-based solutions more practical, cost efficient, and, dare we say, pleasant!  You can choose the language that meets your needs and the tool you know best. Currently, most development languages are tied to a tool and class libraries are tied to the target platform, perhaps to the tool, and certainly to the language. The common type system and common language runtime empower .NET to break this restrictive chain.
+
+Stability
+We learned that the common language runtime’s garbage collector manages memory. How does this improve stability?  By automating memory management, it eliminates one of the most common sources of system failures (and of development headaches)—the memory leak. The garbage collector also dramatically simplifies the development process by relieving the developer from the need to manually track memory use.
+
+Not only can you wave “goodbye” to the memory leak, but to DLL compatibility issues as well!  
+In .NET, solutions are packaged and delivered in an assembly. In a nutshell, assemblies are a box into which the software vendor dumps all his components. It is a self-contained, self-documented deployment model that is restricted from interfering with other programs or assemblies. While one assembly can use components or services of another, it cannot replace anything that is not in its own box.
+
+Additionally, because the Framework exposes system functionality through its System namespaces and enables you to derive your own specialized version from any other namespace, overwriting operating system–critical libraries is impossible!
+
+Security
+You may agree that software security is the bane of today.  .NET addresses this on two fronts. First, the delegation of memory handling to the garbage collector defends against the illegal memory reference. This makes it virtually impossible for malignant code to reference memory that it does not own.
+Second, the .NET Framework offers a comprehensive security model enforced by the runtime. There are two primary security types: code access and role based. 
+Code-access security is stored with the assembly (that is, within the solution), which is specified by the developer. While the runtime is responsible for verifying security at run time, it does not mean that the developer is guaranteed to receive the requested code rights; the system administrator sets the policies against which any given permission requests are validated.
+Role-based security builds on the same permission model but is based on the user and the user’s role or roles in the system. In other words, role-based security is related to user identity.
+
+
+Deployment and Management
+You have already learned that solutions are assembled and run securely using the assembly and the common language runtime. 
+The assembly also makes version maintenance easier for both the development organization and corporate customer:  .NET permits “side-by-side” deployment of versions, and versions are self-contained, making updates, service fixes, and upgrades more manageable.
+Unified Experience
+.NET is designed using open standards to facilitate integration of disparate .NET solutions and provides functionality to integrate non-.NET technology and solutions such as COM/COM+. You also learned that there is one single .NET Framework and the same classes used to build the .NET platform are also available to you!
+Web Services
+Web Services provide both a means to produce and consume disparate service solutions and do so using different pricing models.
+

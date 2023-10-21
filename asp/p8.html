@@ -1,0 +1,56 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+function GetGreeting( )
+  GetGreeting = "Hello"
+end function
+
+function Button1_onclick() {
+  co = Page11.execute.GetGreeting();
+  textbox1.value = co.return_value;
+}
+
+function callback(co) {
+  Textbox1.value = co.return_value;
+}
+function Button1_onclick() {
+  Page11.execute.GetGreeting(callback);
+}
+
+Sub DatabaseLookup(str)
+  Response.Write("Database Lookup for " & str)
+End Sub
+
+function Button1_onclick() {
+  Page21.navigate.DatabaseLookup(Textbox1.value)
+}
+
+Sub Button1_onclick
+  Page3.setp1(Textbox1.value)
+End Sub
+The handler for the Get button is shown below:
+Sub Button2_onclick
+  textbox1.value = Page3.getp1( )
+End Sub
+
+Sub addBtn_onclick
+  Recordset1.addRecord
+  Recordset1.moveLast
+  Textbox1.value=""
+  Textbox2.value=""
+  Textbox3.value=""
+End Sub
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

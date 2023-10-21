@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE books [
+
+<!ELEMENT books (book)*>
+<!ELEMENT book (author,title,price)>
+<!ATTLIST book category ID #REQUIRED>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+]>
+
+
+<?xml-stylesheet type="text/xsl" href="book.xsl"?>
+
+<books>
+
+<book category="reference">
+<author>Nigel Rees</author>
+<title>Saying of the Century</title>
+<price>22.94</price>
+</book>
+
+<book category="fiction">
+<author>Evelyn waugh</author>
+<title>Swor of Honor</title>
+<price>22.94</price>
+</book>
+
+
+<book category="fiction">
+<author>Herman Melville</author>
+<title>moby dick</title>
+<price>22.94</price>
+</book>
+
+
+<book category="fiction">
+<author>J.R.R</author>
+<title>The lord of the rings</title>
+<price>22.94</price>
+</book>
+
+</books>

@@ -1,0 +1,65 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Private Sub Form_Load()
+ Show
+ ColorChange
+End Sub
+
+Private Sub cmdBKColor_Click()
+ ColorChange
+End Sub
+
+
+Private Sub cmdFrColor_Click()
+ ColorChange
+End Sub
+
+Sub vsbRedBar_Change()
+  ColorChange
+End Sub
+Sub vsbBlueBar_Change()
+  ColorChange
+End Sub
+Sub vsbGreenBar_Change()
+  ColorChange
+End Sub
+Sub ColorChange()
+ If cmdBKColor.Value Then
+    Picture1.BackColor = RGB(vsbRedBar.Value, vsbGreenBar.Value, _
+vsbBlueBar.Value)
+  ElseIf cmdFrColor.Value Then
+    Picture1.ForeColor = RGB(vsbRedBar.Value, vsbGreenBar.Value, _
+vsbBlueBar.Value)
+   Picture1.BackColor = vbWhite
+   Picture1.Cls
+   Picture1.Print "This text is displayed in a white"
+   Picture1.Print "background in the current foreground color."
+   Picture1.Print
+   Picture1.Print "Red value currently is: " & vsbRedBar.Value
+   Picture1.Print "Green value currently is: " & vsbGreenBar.Value
+   Picture1.Print "Blue value currently is: " & vsbBlueBar.Value
+ End If
+   
+End Sub
+
+
+
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

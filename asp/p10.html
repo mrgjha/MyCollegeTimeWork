@@ -1,0 +1,447 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt;%
+
+' Check input
+t = Trim(Request.Form("Title"))
+a = Trim(Request.Form("Author"))
+If t = "" OR a = "" Then
+  str = Server.URLEncode("Complete all entries")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Do apostrophe insertion if necessary
+t = Replace(t, "'", "''")
+a = Replace(a, "'", "''")
+
+' Open database connection
+Set connection = Server.CreateObject("ADODB.Connection")
+connection.Open "LibraryDSN"
+
+' Add record
+sql = "INSERT INTO Books (Title, Author) " & _
+  "VALUES ('" & _
+  t & "', '" & _
+  a & "')"
+Set recordset = connection.Execute(sql)
+
+' Redirect browser
+str = "Title=" & _
+  Server.URLEncode(t) & _
+  "&Author=" & _
+  Server.URLEncode(a)
+Response.Redirect("DisplayBook.asp?" & str)
+
+%&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;b&gt;
+&lt;%= Request.QueryString("message") %&gt;
+&lt;/b&gt;&lt;/center&gt;&lt;/p&gt;
+
+Sub Recordset1_onbeforeopen()
+  t = Request.QueryString("Title")
+  a = Request.QueryString("Author")
+  sql = "SELECT * FROM Books " & _
+    "WHERE (Title = '" & t & "') " & _
+    "AND " & _
+    "(Author = '" & a & "') "
+  Recordset1.setSQLText(sql)
+End Sub
+
+&lt;form action="DeleteBook.asp" method="post"&gt;
+
+&lt;%
+
+' Validate input
+bookID = Request.Form("BookID")
+If Not IsNumeric(bookID) Then
+  str = Server.URLEncode("Enter a valid book id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Open database connection
+Set connection = Server.CreateObject("ADODB.Connection")
+connection.Open "LibraryDSN"
+
+' Check for valid book id
+sql = "SELECT * FROM Books " & _
+  "WHERE (BookID = " & _
+  bookID & _
+  ")"
+Set recordset = connection.Execute(sql)
+If recordset.EOF Then
+  str = Server.URLEncode("Not a valid book id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Delete loan record
+sql = "DELETE FROM Loans " & _
+  "WHERE (BookID = " & _
+  bookID & ")"
+connection.Execute(sql)
+  
+' Delete book record
+sql = "DELETE FROM Books " & _
+  "WHERE (BookID = " & _
+  bookID & ")"
+connection.Execute(sql)
+
+' Redirect browser
+str = Server.URLEncode("Book deleted successfully")
+Response.Redirect("Response.asp?message=" & str)
+
+%&gt;
+
+Sub Recordset1_onbeforeopen()
+
+  ' Obtain title and author
+  t = Trim(Request.Form("Title"))
+  a = Trim(Request.Form("Author"))
+  
+  ' Do apostrophe insertion if necessary
+  t = Replace(t, "'", "''")
+  a = Replace(a, "'", "''")
+  
+  ' Create SQL statement
+  If a = "" And t = "" Then
+    sql = "SELECT * FROM Books"
+  Else 
+    If a = "" Then
+      sql = "SELECT * FROM Books WHERE (Title = '" & t & "')"
+    Else 
+      If t = "" Then
+        sql = "SELECT * FROM Books WHERE (Author = '" & a & "')"
+      Else
+        sql = "SELECT * FROM Books " & _
+          "WHERE (Title = '" & t & "') " & _
+          "AND " & _
+          "(Author = '" & a & "') "
+      End If
+    End If
+  End If
+  
+  ' Set SQL text
+  Recordset1.setSQLText(sql)
+  
+End Sub
+
+&lt;form action="ListBooks.asp" method="post"&gt;
+
+&lt;form action="CheckIn.asp" method="post"&gt;
+
+&lt;%
+
+' Validate input
+bookID = Request.Form("BookID")
+If Not IsNumeric(bookID) Then
+  str = Server.URLEncode("Enter a valid book id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Open database connection
+Set connection = Server.CreateObject("ADODB.Connection")
+connection.Open "LibraryDSN"
+
+' Check for existing loan
+sql = "SELECT * FROM Loans " & _
+  "WHERE (BookID = " & _
+  bookID & _
+  ")"
+Set recordset = connection.Execute(sql)
+If recordset.EOF Then
+  str = Server.URLEncode("No existing loan for this book")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Delete loan record
+sql = "DELETE FROM Loans " & _
+  "WHERE (BookID = " & _
+  bookID & ")"
+connection.Execute(sql)
+
+' Redirect browser
+str = Server.URLEncode("Book checked in successfully")
+Response.Redirect("Response.asp?message=" & str)
+
+%&gt;
+
+&lt;form action="CheckOut.asp" method="post"&gt;
+
+&lt;%
+
+' Validate input
+userID = Request.Form("UserID")
+bookID = Request.Form("BookID")
+If Not IsNumeric(userID) OR Not IsNumeric(bookID) Then
+  str = Server.URLEncode("Enter valid user id and book id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Open database connection
+Set connection = Server.CreateObject("ADODB.Connection")
+connection.Open "LibraryDSN"
+
+' Check for valid UserID
+sql = "SELECT * FROM Users " & _
+  "WHERE (UserID = " & _
+  userID & _
+  ")"
+Set recordset = connection.Execute(sql)
+If recordset.EOF Then
+  str = Server.URLEncode("Not a valid user id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+  
+' Check for valid BookID
+sql = "SELECT * FROM Books " & _
+  "WHERE (BookID = " & _
+  bookID & _
+  ")"
+Set recordset = connection.Execute(sql)
+If recordset.EOF Then
+  str = Server.URLEncode("Not a valid book id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+  
+' Check for existing loan
+sql = "SELECT * FROM Loans " & _
+  "WHERE (BookID = " & _
+  bookID & _
+  ")"
+Set recordset = connection.Execute(sql)
+If Not recordset.EOF Then
+  str = Server.URLEncode("Book is already on loan")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+    
+' Add new record to Loans table
+sql = "INSERT INTO Loans " & _
+  "(BookID, UserID, LoanDate) " & _
+  "VALUES (" & _
+  bookID & ", " & _
+  userID & ", '" & _
+  Now() & _
+  "')"
+connection.Execute(sql)
+str = Server.URLEncode("Book checked out successfully")
+Response.Redirect("Response.asp?message=" & str)
+ 
+%&gt;
+
+&lt;form action="AddUser.asp" method="post"&gt;
+
+&lt;%
+
+' Check input
+n = Trim(Request.Form("Name"))
+l = Trim(Request.Form("Location"))
+p = Trim(Request.Form("Phone"))
+e = Trim(Request.Form("Email"))
+If n = "" OR l = "" OR p = "" OR e = "" Then
+  str = Server.URLEncode("Complete all entries")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Open database connection
+Set connection = Server.CreateObject("ADODB.Connection")
+connection.Open "LibraryDSN"
+
+' Do apostrophe insertion if necessary
+n = Replace(n, "'", "''")
+ 
+' Add record
+sql = "INSERT INTO Users (Name, Location, Phone, Email) " & _
+  "VALUES ('" & _
+  n & "', '" & _
+  l & "', '" & _
+  p & "', '" & _
+  e & "')"
+connection.Execute(sql)
+
+' Redirect browser
+str = "Name=" & _
+  Server.URLEncode(n) & _
+  "&Location=" & _
+  Server.URLEncode(l) & _
+  "&Phone=" & _
+  Server.URLEncode(p) & _
+  "&Email=" & _
+  Server.URLEncode(e)
+Response.Redirect("DisplayUser.asp?" & str)
+
+%&gt;
+
+Sub Recordset1_onbeforeopen()
+  n = Request.QueryString("Name")
+  l = Request.QueryString("Location")
+  p = Request.QueryString("Phone")
+  e = Request.QueryString("Email")
+  sql = "SELECT * FROM Users " & _
+    "WHERE (Name = '" & n & "') " & _
+    "AND " & _
+    "(Location = '" & l & "') " & _
+    "AND " & _
+    "(Phone = '" & p & "') " & _
+    "AND " & _
+    "(Email = '" & e & "')"
+  Recordset1.setSQLText(sql)
+End Sub
+
+&lt;form action="UserRecord.asp" method="post"&gt;
+
+Sub thisPage_onenter()
+  If thisPage.firstEntered Then
+    u = Trim(Request.Form("UserID"))
+    If Not IsNumeric(u) Then
+      str = Server.URLEncode("Enter a valid user id")
+      Response.Redirect("Response.asp?message=" & str)
+    End If
+    sql = "SELECT * FROM Users " & _
+      "WHERE (UserID=" & _
+      u & _
+      ")"
+    Recordset1.setSQLText(sql)
+    Recordset1.open
+  End If
+End Sub
+
+Sub Recordset1_ondatasetcomplete()
+  If Recordset1.getCount() = 0 Then
+    str = Server.URLEncode("Incorrect User ID")
+    Response.Redirect("Response.asp?message=" & str)
+  End If
+End Sub
+
+Sub submitBtn_onclick()
+
+  ' Check input
+  n = Trim(Name.value)
+  l = Trim(Location.value)
+  p = Trim(Phone.value)
+  e = Trim(Email.value)
+  If n = "" OR l = "" OR p = "" OR e = "" Then
+    str = Server.URLEncode("Complete all entries")
+    Response.Redirect("Response.asp?message=" & str)
+  End If
+  
+  ' Create SQL statement
+  sql = "UPDATE Users SET " & _
+    "Name='" & n & "', " & _
+    "Location='" & l & "', " & _
+    "Phone='" & p & "', " & _
+    "Email='" & e & "' " & _
+    "WHERE (UserID=" & UserID.value & ")"
+    
+  ' Set SQL statement
+  Recordset1.setSQLText(sql)
+  
+  ' Update record
+  Recordset1.updateRecord
+  
+End Sub
+
+Sub Recordset1_onafterupdate()
+  Recordset1.close
+  str = Server.URLEncode("User record updated")
+  Response.Redirect("Response.asp?message=" & str)
+End Sub
+
+&lt;form action="DeleteUser.asp" method="post"&gt;
+
+&lt;%
+
+' Validate input
+userID = Request.Form("UserID")
+If Not IsNumeric(userID) Then
+  str = Server.URLEncode("Enter a valid user id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Open database connection
+Set connection = Server.CreateObject("ADODB.Connection")
+connection.Open "LibraryDSN"
+
+' Check for valid user id
+sql = "SELECT * FROM Users " & _
+  "WHERE (UserID = " & _
+  userID & _
+  ")"
+Set recordset = connection.Execute(sql)
+If recordset.EOF Then
+  str = Server.URLEncode("Not a valid user id")
+  Response.Redirect("Response.asp?message=" & str)
+End If
+
+' Delete loan record
+sql = "DELETE FROM Loans " & _
+  "WHERE (UserID = " & _
+  userID & ")"
+connection.Execute(sql)
+  
+' Delete user record
+sql = "DELETE FROM Users " & _
+  "WHERE (UserID = " & _
+  userID & ")"
+connection.Execute(sql)
+
+' Redirect browser
+str = Server.URLEncode("User deleted successfully")
+Response.Redirect("Response.asp?message=" & str)
+
+%&gt;
+
+Sub Recordset1_onbeforeopen()
+
+  ' Validate user id
+  u = Trim(Request.Form("UserID"))
+  If u &lt;&gt; "" Then
+    If Not IsNumeric(u) Then
+      str = Server.URLEncode("Enter a valid user id")
+      Response.Redirect("Response.asp?message=" & str)
+    End If
+  End If
+
+  ' Do apostrophe insertion if necessary
+  n = Trim(Request.Form("Name"))
+  n = Replace(n, "'", "''")
+  
+  ' Create SQL statement
+  If u = "" And n = "" Then
+    sql = "SELECT * FROM Users"
+  Else 
+    If n = "" Then
+      sql = "SELECT * FROM Users WHERE (UserID = " & u & ")"
+    Else 
+      If u = "" Then
+        sql = "SELECT * FROM Users WHERE (Name = '" & n & "')"
+      Else
+        sql = "SELECT * FROM Users " & _
+          "WHERE (UserID = " & u & ") " & _
+          "AND " & _
+          "(Name = '" & n & "') "
+      End If
+    End If
+  End If
+  
+  ' Set SQL text of recordset
+  Recordset1.setSQLText(sql)
+  
+End Sub
+
+&lt;form action="ListUsers.asp" method="post"&gt;
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

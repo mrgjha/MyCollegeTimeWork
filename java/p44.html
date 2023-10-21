@@ -1,0 +1,278 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+//HelloWorld.java
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class HelloWorld extends JFrame implements ActionListener {
+
+	private JButton testButton1;
+
+	public HelloWorld() {
+		super();
+		setTitle("Hello World");		
+		setSize(100,100);
+		testButton1 = new JButton("Click Me");
+		testButton1.addActionListener(this);
+		JPanel panel = new JPanel();
+		panel.add(testButton1);
+		setContentPane(panel);
+		setVisible(true);
+	}
+
+
+
+
+
+	 public void actionPerformed(ActionEvent e) {	
+		if (e.getSource() == testButton1) 
+			System.out.println("testButton1 clicked!");
+	}
+
+
+public static void main (String[] argv) {
+		HelloWorld app = new HelloWorld();
+	}
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+//MyApplet.java
+
+//The Java Event handling package
+import java.awt.event.*;
+//Implement the action listener functions
+public class MyApplet extends java.applet.Applet implements ActionListener {
+//This method is called whenever an event is performed
+	public void actionPerformed(ActionEvent evt) {
+	}
+}
+
+//MyAppletB.java
+//The Java Event Handling Package
+import java.awt.event.*;
+//This one implements two EventListeners: Action Listener and Mouse Listener
+public class MyAppletB extends java.applet.Applet implements ActionListener, MouseListener {
+	//This is called whenever an action is performed
+	public void actionPerformed(ActionEvent evt) {
+	}
+	//This is called whenever the mouse is clicked
+	public void mouseClicked(MouseEvent evt) {
+	}
+	//This is called when a mouse button is pressed
+	public void mousePressed(MouseEvent evt) {
+	}
+	//This is called whenever a mouse button is released
+	public void mouseReleased(MouseEvent evt) {
+	}
+	//This is called whenever the cursor enters the applet
+	public void mouseEntered(MouseEvent evt) {
+	}
+	//This is called whenever the cursor exits the applet
+	public void mouseExited(MouseEvent evt) {
+	}
+}
+
+//EventButton.java
+//The Java Abstract Windowing Toolkit
+//The Java Event Handling Package
+import java.awt.*;
+import java.awt.event.*;
+
+public class EventButton extends java.applet.Applet implements ActionListener {
+
+//Create a button
+Button clearForm = new Button("Clear");
+
+	public void init() {
+//Set it up to generate events
+		clearForm.addActionListener(this);
+		add(clearForm);
+	}
+
+	public void actionPerformed(ActionEvent evt) {
+//We need this here because we implemented the action listener
+	}
+
+}
+
+
+
+//EventObjects.java
+//The Java Abstract Windowing Toolkit
+//The Java Event Handling Package
+import java.awt.*;
+import java.awt.event.*;
+
+public class EventObjects extends java.applet.Applet implements ActionListener {
+
+//Create a button and two text fields
+Button fred = new Button("Fred");
+TextField Texty = new TextField();
+TextField James = new TextField();
+
+	public void init() {
+//Let them all generate events
+		fred.addActionListener(this);
+		Texty.addActionListener(this);
+		James.addActionListener(this);
+//Add them all to the screen
+		add(fred);
+		add(Texty);
+		add(James);
+	}
+
+	public void actionPerformed(ActionEvent evt) {
+//Get the source
+	Object source = evt.getSource();
+//Compare it to all the objects
+		if (source == fred) {
+			//Fred (the button) caused the event
+		}
+		else if (source == Texty) {
+			//Texty (the text field) caused the event
+		}
+		else if (source == James) {
+			//James (the other text field) cause the event
+		}
+	}
+
+}
+
+
+
+//CheckBoxEvents.java
+//The Java Abstract Windowing Toolkit
+//The Java Event Handling Package
+import java.awt.*;
+import java.awt.event.*;
+
+public class CheckBoxEvents extends java.applet.Applet implements ItemListener {
+
+//Create two check boxes
+Checkbox item1 = new Checkbox("Item One's Caption");
+Checkbox item2 = new Checkbox("Item Two's Caption");
+
+	public void init() {
+//Let them generate events
+		item1.addItemListener(this);
+		item2.addItemListener(this);
+//Add them to the screen
+		add(item1);
+		add(item2);
+	}
+
+	public void itemStateChanged(ItemEvent event) {
+//Get the command
+		String command = (String) event.getItem();
+//Check if it was the first one
+		if (command == "Item One's Caption") {
+			boolean value = item1.getState();
+			if (value == true) {
+				//It's selected
+//Show a message in the status bar
+				showStatus("Item 1 true");
+			}
+			else {
+				//It's not selected)
+//Show a message in the status bar
+				showStatus("Item 1 false");
+			}
+		}
+		else if (command == "Item Two's Caption") {
+			boolean value = item2.getState();
+			if (value == true) {
+				//It's selected
+//Show a message in the status bar
+				showStatus("Item 2 true");
+			}
+			else {
+				//It's not selected)
+//Show a message in the status bar
+				showStatus("Item 2 false");
+			}
+		}
+	}
+}
+
+//TextFieldChanged.java
+//The Java Abstract Windowing Toolkit
+//The Java Event Handling Package
+import java.awt.*;
+import java.awt.event.*;
+
+public class TextFieldChanged extends java.applet.Applet implements TextListener {
+//Create two text fields, both 20 characters wide
+TextField name = new TextField(20);
+TextField age = new TextField(20);
+
+	public void init() {
+//Let them generate events
+		name.addTextListener(this);
+		age.addTextListener(this);
+//Add them to the screen
+		add(name);
+		add(age);
+	}
+	
+	public void textValueChanged(TextEvent txt) {
+//Get the object source
+		Object source = txt.getSource();
+//Check if it was the textfield named name
+		if (source == name) {
+//If it was, show whatever they typed in the status bar
+			showStatus("Name: " + name.getText());
+		} 
+		else {
+//Otherwise it was the age textfield, show whatever they typed in the status bar
+			showStatus("Age " + age.getText());
+		}
+	}
+}
+
+//TextFieldSetEditable.java
+//The Java Abstract Windowing Toolkit
+import java.awt.*;
+
+public class TextFieldSetEditable extends java.applet.Applet {
+//Create two text fields both 20 characters long
+TextField fred = new TextField(20);
+TextField Texty = new TextField(20);
+
+	public void init() {
+//Set fred to be non-editable
+	fred.setEditable(false);
+//Let Texty be editable (by default it is, 
+//but just as a demonstration of how to do it)
+	Texty.setEditable(true);
+//Add them both to the screen
+	add(fred);
+	add(Texty);
+	}
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<center>
+<TABLE width=800 BORDER="10" CELLSPACING="0" CELLPADDING="4"  bordercolorlight="#00FF33" bordercolordark=#003300>
+
+<TR bgcolor="#66FFCC">
+   <TH>Item Id</TH>
+   <TH>Item Name</TH>
+   <TH>Unit</TH>
+   <TH>Rate</TH>
+   <TH>Quantity</TH>
+   <TH>Remaining Quantity</TH>
+   
+   <TH>Value</TH>
+   <TH>Tax Paid</TH>
+<TH>Discount</TH>
+
+
+</TR>
+
+<%	
+
+dim strsql
+
+	
+	
+	
+		
+	
+	set conn = server.CreateObject ("ADODB.Connection")		
+	conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & server.MapPath ("db1.mdb")
+	'Response.Write(server.MapPath ("user.mdb"))
+	set rs = server.CreateObject ("ADODB.Recordset")		
+	
+		
+	
+strsql="SELECT * FROM Itemdetails ORDER BY ITEMS;"
+
+rs.Open strsql,conn, 1  
+
+
+
+
+
+	If rs.recordcount = 0 then
+
+		rs.close
+		conn.close
+		set rs=nothing
+		set conn=nothing
+		
+	end if
+	
+
+
+
+Do While Not rs.EOF 
+
+
+    
+
+
+
+%>
+
+
+
+<TR>
+  <TD width=20><b><font size="4" color="#FF0000"></b>
+    <%=rs("item id")%>
+  </TD>
+  <TD width=590><b><font size="4" color="#FF0000"></b>
+    <%=rs("ITEMS")%>
+  </TD>
+  <TD width=60><b><font size="4" color="#FF0000"></b>
+     <%=rs("UNIT")%> 
+  </TD>
+  <TD width=50><b><font size="4" color="#FF0000"></b> 
+     <%=rs("RATE")%> 
+
+  </TD>
+  <TD width=30><b><font size="4" color="#FF0000"></b>
+      <%=rs("QTY")%>
+  </TD>
+
+<TD width=220><b><font size="4" color="#FF0000"></b>
+      <%=rs("RQTY")%>
+
+</TD>
+
+<TD width=60><b><font size="4" color="#FF0000"></b>
+      <%=rs("VALUE")%>
+  </TD>
+
+
+<TD width=50><b><font size="4" color="#FF0000"></b>
+      <%=rs("TOT")%>
+  </TD>
+
+<TD width=10><b><font size="4" color="#FF0000"></b>
+      <%=rs("DISCOUNT")%>
+  </TD>
+
+
+
+
+
+
+</TR> 
+
+<!--  Move to next record and continue loop -->
+
+<% 
+rs.MoveNext
+Loop
+
+
+
+ 
+
+%>
+
+</table>
+</center>
+

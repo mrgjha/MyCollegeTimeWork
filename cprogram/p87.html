@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &lt;conio.h&gt;
+
+int main(void)
+{
+  register int i;
+
+  clrscr();
+
+  for(i=1; i&lt;24; i++) {
+    gotoxy(1, i);
+    cprintf("This is line %d\n\r", i);
+  }
+  getche();
+  gotoxy(1, 10);
+  insline();
+  getch();
+  return 0;
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

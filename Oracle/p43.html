@@ -1,0 +1,197 @@
+<html>
+<head><title>Create Tables with Constraints and Joining Them</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<h3>Create Tables with Constraints and Joining Them</h3>
+<pre>
+
+SQL> create table Ordinals(
+         Ordinal varchar2(10),
+         Abbreviation varchar2(15),
+         primary key(Ordinal));
+
+Table created.
+
+SQL> create table Cardinals(
+       Cardinal varchar2(10),
+       XOrdinal varchar2(10),
+       Abbreviation varchar2(15),
+       foreign key(XOrdinal) references Ordinals(Ordinal));
+
+Table created.
+
+SQL> insert into Ordinals values('&Ordinal','&Abbreviation');
+Enter value for ordinal: First
+Enter value for abbreviation: st
+old   1: insert into Ordinals values('&Ordinal','&Abbreviation')
+new   1: insert into Ordinals values('First','st')
+
+1 row created.
+
+SQL> /
+Enter value for ordinal: Second
+Enter value for abbreviation: nd
+old   1: insert into Ordinals values('&Ordinal','&Abbreviation')
+new   1: insert into Ordinals values('Second','nd')
+
+1 row created.
+
+SQL> /
+Enter value for ordinal: Third
+Enter value for abbreviation: rd
+old   1: insert into Ordinals values('&Ordinal','&Abbreviation')
+new   1: insert into Ordinals values('Third','rd')
+
+1 row created.
+
+SQL> /
+Enter value for ordinal: Forth
+Enter value for abbreviation: th
+old   1: insert into Ordinals values('&Ordinal','&Abbreviation')
+new   1: insert into Ordinals values('Forth','th')
+
+1 row created.
+
+SQL> /
+Enter value for ordinal: Fifth
+Enter value for abbreviation: th
+old   1: insert into Ordinals values('&Ordinal','&Abbreviation')
+new   1: insert into Ordinals values('Fifth','th')
+
+1 row created.
+
+SQL> insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation');
+Enter value for cardinal: One
+Enter value for ordinal: First
+Enter value for abbreviation: 1
+old   1: insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation')
+new   1: insert into Cardinals values('One','First','1')
+
+1 row created.
+
+SQL> /
+Enter value for cardinal: Two
+Enter value for ordinal: Second
+Enter value for abbreviation: 2
+old   1: insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation')
+new   1: insert into Cardinals values('Two','Second','2')
+
+1 row created.
+
+SQL> /
+Enter value for cardinal: Three
+Enter value for ordinal: Third
+Enter value for abbreviation: 3
+old   1: insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation')
+new   1: insert into Cardinals values('Three','Third','3')
+
+1 row created.
+
+SQL> /
+Enter value for cardinal: Four
+Enter value for ordinal: Fourth
+Enter value for abbreviation: 4
+old   1: insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation')
+new   1: insert into Cardinals values('Four','Fourth','4')
+insert into Cardinals values('Four','Fourth','4')
+            *
+ERROR at line 1:
+ORA-02291: integrity constraint (SCOTT.SYS_C00606) violated - parent key not found
+
+
+SQL> /
+Enter value for cardinal: Four
+Enter value for ordinal: Forth
+Enter value for abbreviation: 4
+old   1: insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation')
+new   1: insert into Cardinals values('Four','Forth','4')
+
+1 row created.
+
+SQL> /
+Enter value for cardinal: Five
+Enter value for ordinal: Fifth
+Enter value for abbreviation: 5
+old   1: insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation')
+new   1: insert into Cardinals values('Five','Fifth','5')
+
+1 row created.
+
+SQL> select * from Cardinals;
+
+CARDINAL   XORDINAL   ABBREVIATION
+---------- ---------- ---------------
+One        First      1
+Two        Second     2
+Three      Third      3
+Four       Forth      4
+Five       Fifth      5
+
+SQL> select * from Ordinals;
+
+ORDINAL    ABBREVIATION
+---------- ---------------
+First      st
+Second     nd
+Third      rd
+Forth      th
+Fifth      th
+
+
+
+SQL> select  CARDINAL,
+      C.ABBREVIATION ,O.Ordinal,O.Abbreviation
+      from Ordinals O,Cardinals C
+      where O.Ordinal=C.XOrdinal
+    /
+
+CARDINAL   ABBREVIATION    ORDINAL    ABBREVIATION
+---------- --------------- ---------- ---------------
+One        1               First      st
+Two        2               Second     nd
+Three      3               Third      rd
+Four       4               Forth      th
+Five       5               Fifth      th
+
+SQL> select  CARDINAL,
+      Cardinals.ABBREVIATION ,Ordinals.Ordinal,Ordinals.Abbreviation
+      from Ordinals,Cardinals
+      where Ordinals.Ordinal=Cardinals.XOrdinal
+    /
+
+CARDINAL   ABBREVIATION    ORDINAL    ABBREVIATION
+---------- --------------- ---------- ---------------
+One        1               First      st
+Two        2               Second     nd
+Three      3               Third      rd
+Four       4               Forth      th
+Five       5               Fifth      th
+
+
+
+SQL> drop table Ordinals;
+drop table Ordinals
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys
+
+
+SQL> drop table Cardinals;
+
+Table dropped.
+
+SQL> drop table Ordinals;
+
+Table dropped.
+
+
+</pre>
+
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

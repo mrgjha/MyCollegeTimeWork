@@ -1,0 +1,97 @@
+<html>
+<head>
+
+<style type="text/css">
+<!--
+h3{font style:italic;color:red}
+h5{font style:italic;color:white}
+h4{font style:italic;color:black}
+-->
+</style>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+<h3>File Pointers</h3>
+<h5>
+
+A file pointer works like a bookmark. 
+It essentially helps in accessing any required 
+position in the file. 
+Four functions namely,
+ 
+seekg(), 
+seekp(), 
+tellg(), 
+and tellp() 
+
+help in this regard. Two pointers: 
+get_pointer and put_pointer 
+maintained for every file help in 
+attaining random access in a file. 
+Thus without moving sequentially we can move 
+to any location in the file.
+
+Let us look at the purpose of these functions:
+
+
+Function Accessed through object of class Purpose 
+
+seekg ifstream Moves the get_pointer to given position 
+seekp ofstream Moves the put _pointer to given position 
+tellg ifstream Returns the current position of 
+get_pointer in input file 
+tellp ofstream Returns the current position of 
+put_pointer in output file 
+
+For example:
+ifstream fin("text.dat");
+fin.seekg(30);
+
+
+will move the get_pointer to byte number 30. 
+Similarly fout.seekp(30) 
+will move the put_pointer to byte number 30. 
+The tellg() and tellp() functions 
+return the absolute 
+position of the get_pointer and 
+put_pointer respectively.
+
+There is also an enumeration 
+[a programmer defined data type 
+somewhat similar to a structure] 
+called seek_dir in iostream.h 
+inside the ios class 
+which enables a second form of 
+these functions. 
+It has the following values:
+
+
+ios::beg refers to beginning of file 
+ios::cur refers to current position 
+ios::end refers to end of file 
+
+Hence fin.seekg(30,ios::beg) 
+positions the pointer to byte no 
+30 from the beginning of the file 
+and fin.seekg(-2,ios::cur) 
+backs up 2 places.
+Similarly fin.seekg(0,ios::end) 
+goes to the end of 
+the file and 
+fin.seekp(-5,ios::end) 
+backs up 
+5 bytes from the end. 
+
+</h5>
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

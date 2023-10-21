@@ -1,0 +1,49 @@
+
+<html>
+<head><title>The Relation</title></head>
+
+<body background="MEDAQUA.gif" text="white">
+
+<b>
+<H3>The Relation</H3>
+<P>The <I>Relation</I> is the basic element in a relational data model.</P>
+<DIV>
+<P><A name=figure3>Figure 3 - Relations in the Relational Data Model</A></P><IMG 
+height=145 alt="database-design-03 (1K)" src="database-design-03.png" 
+width=672> </DIV>
+<P>A relation is subject to the following rules:</P>
+<OL>
+  <LI>Relation (file, table) is a two-dimensional table. 
+  <LI>Attribute (i.e. field or data item) is a <B>column</B> in the table. 
+  <LI>Each column in the table has a unique name within that table. 
+  <LI>Each column is homogeneous. Thus the entries in any column are all of the 
+  same type (e.g. age, name, employee-number, etc). 
+  <LI>Each column has a <A name=domain><B>domain</B></A>, the set of possible 
+  values that can appear in that column. 
+  <LI>A Tuple (i.e. record) is a row in the table. 
+  <LI>The order of the rows and columns is not important. 
+  <LI>Values of a row all relate to some thing or portion of a thing. 
+  <LI>Repeating groups (collections of logically related attributes that occur 
+  multiple times within one record occurrence) are not allowed. 
+  <LI>Duplicate rows are not allowed (candidate keys are designed to prevent 
+  this). 
+  <LI>Cells must be single-valued (but can be variable length). Single valued 
+  means the following: 
+  <UL>
+    <LI>Cannot contain multiple values such as 'A1,B2,C3'. 
+    <LI>Cannot contain combined values such as 'ABC-XYZ' where 'ABC' means one 
+    thing and 'XYZ' another. </LI></UL></LI></OL>
+<P>A relation may be expressed using the notation <CODE>R(<U>A</U>,B,C, 
+...)</CODE> where:</P>
+<UL>
+  <LI>R = the name of the relation. 
+  <LI>(A,B,C, ...) = the attributes within the relation. 
+  <LI><U>A</U> = the attribute(s) which form the primary 
+  key</LI></UL>
+</b>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

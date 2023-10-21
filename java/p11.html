@@ -1,0 +1,52 @@
+<html>
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+// An array is an object.
+// An array object has a member length that is the number of elements it has.
+
+
+
+
+import java.io.* ;
+import java.lang.reflect.Array;
+public class inputArray {
+public static void main ( String[] args ) throws IOException {
+
+int[] array = new int[5];
+int data;
+
+BufferedReader inData = new BufferedReader (
+new InputStreamReader( System.in ) );
+
+// input the data
+
+
+for ( int index=0; index < array.length; index++ ) {
+System.out.println( "enter an integer: " );
+data = Integer.parseInt( inData.readLine() );
+array[ index ] = data ;
+}
+
+// write out the data
+for ( int index=0; index < Array.getLength(array); index++ ) {
+System.out.println( "array[ " + index + " ] = " + array[ index ] );
+
+
+}
+}
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

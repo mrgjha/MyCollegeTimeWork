@@ -1,0 +1,51 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import java.io.*;
+public class GenerateData {
+    public static void main(String args[]) {
+        try   {
+            FileOutputStream fos = new FileOutputStream("stuff.dat");
+            DataOutputStream dos = new DataOutputStream(fos);
+            dos.writeInt(2);
+            dos.writeDouble(2.7182818284590451);
+            dos.writeDouble(3.1415926535);
+            dos.close(); fos.close();
+        }
+        catch (FileNotFoundException e) { 
+             System.err.println("File not found");
+        }
+        catch (IOException e) {
+            System.err.println("Read or write failed");
+        }
+    }
+}
+
+
+/*
+Once a stream (e.g., file) has been opened, we can attach filters 
+Filters make reading/writing more efficient
+Most popular filters: 
+	For basic types: 
+DataInputStream, DataOutputStream
+	For objects: 
+ObjectInputStream, ObjectOutputStream
+	
+*/
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

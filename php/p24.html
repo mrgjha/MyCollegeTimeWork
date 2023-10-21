@@ -1,0 +1,87 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+
+
+&lthtml&gt
+&lt!-- this is prefs.html --&gt
+&lthead&gt&lttitle&gtSet Your Preferences&lt/title&gt&lt/head&gt
+&ltbody&gt
+&ltform action="prefs.php" method="post"&gt
+
+Background:
+&ltselect name="background"&gt
+&ltoption value="black"&gtBlack&lt/option&gt
+&ltoption value="white"&gtWhite&lt/option&gt
+&ltoption value="red"&gtRed&lt/option&gt
+&ltoption value="blue"&gtBlue&lt/option&gt
+&lt/select&gt&ltbr /&gt
+
+Foreground:
+&ltselect name="foreground"&gt
+&ltoption value="black"&gtBlack&lt/option&gt
+&ltoption value="white"&gtWhite&lt/option&gt
+&ltoption value="red"&gtRed&lt/option&gt
+&ltoption value="blue"&gtBlue&lt/option&gt
+&lt/select&gt&ltp /&gt
+
+&ltinput type="submit" value="Change Preferences"&gt
+&lt/form&gt
+&lt/body&gt
+&lt/html&gt
+
+
+
+&lt?php
+// this is prefs.php
+  
+$colors = array('black' =&gt '#000000',
+                  'white' =&gt '#ffffff',
+                  'red'   =&gt '#ff0000',
+                  'blue'  =&gt '#0000ff');
+  
+$bg_name = $_POST['background'];  
+$fg_name = $_POST['foreground'];  
+setcookie('bg', $colors[$bg_name]);  
+setcookie('fg', $colors[$fg_name]);
+?&gt
+&lthtml&gt
+&lthead&gt&lttitle&gtPreferences Set&lt/title&gt&lt/head&gt
+&ltbody&gt
+
+Thank you.Your preferences have been changed to:&ltbr /&gt
+Background:&lt?= $bg_name ?&gt&ltbr /&gt
+Foreground:&lt?= $fg_name ?&gt&ltbr /&gt
+Click &lta href="prefs-demo.php"&gthere&lt/a&gtto see the preferences
+in action.
+
+&lt/body&gt
+&lt/html&gt
+
+
+&lthtml&gt
+&lt!-- this is prefs-demo.php --&gt
+&lthead&gt&lttitle&gtFront Door&lt/title&gt&lt/head&gt
+&lt?php
+  $bg = $_COOKIE['bg'];
+  $fg = $_COOKIE['fg'];
+?&gt
+
+&ltbody bgcolor="&lt?= $bg ?&gt" text="&lt?= $fg ?&gt"&gt
+&lth1&gtWelcome to the Store&lt/h1&gt
+We have many fine products for you to view.  Please feel free to browse
+the aisles and stop an assistant at any time.  But remember, you break it
+you bought it!&ltp&gt
+Would you like to &lta href="prefs.html"&gtchange your preferences?&lt/a&gt
+&lt/body&gt
+&lt/html&gt
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</pre>
+</b>
+</body>
+</html>

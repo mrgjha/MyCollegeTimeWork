@@ -1,0 +1,195 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+What is a Cookie? 
+A cookie is often used to identify a user. A cookie is a small file that the server embeds on <br>the user's computer. Each time the same computer requests a page with a browser, it will send<br>the cookie too. With ASP, you can both create and retrieve cookie values.
+
+
+--------------------------------------------------------------------------------
+
+How to Create a Cookie
+The "Response.Cookies" command is used to create cookies.
+
+Note: The Response.Cookies command must appear BEFORE the &lt;html&gt; tag. 
+
+In the example below, we will create a cookie named "firstname" <br>and assign the value "Alex" to it:
+
+&lt;%
+Response.Cookies("firstname")="Alex"
+%&gt; 
+
+It is also possible to assign properties to a cookie, like setting a date<br> when the cookie should expire: 
+
+&lt;%
+Response.Cookies("firstname")="Alex" 
+Response.Cookies("firstname").Expires=#May 10,2002#
+%&gt; 
+
+
+--------------------------------------------------------------------------------
+
+How to Retrieve a Cookie Value
+The "Request.Cookies" command is used to retrieve a cookie value. 
+
+In the example below, we retrieve the value of the cookie named "firstname" <br>and display it on a page:
+
+&lt;%
+fname=Request.Cookies("firstname")
+response.write("Firstname=" & fname)
+%&gt; 
+
+Output: 
+Firstname=Alex
+
+
+--------------------------------------------------------------------------------
+
+A Cookie with Keys 
+If a  cookie contains a collection of multiple values, we say that the cookie has Keys. 
+
+In the example below, we will create a cookie collection named "user". <br>The "user" cookie has Keys that contains information about a user:
+
+&lt;%
+Response.Cookies("user")("firstname")="John"
+Response.Cookies("user")("lastname")="Smith"
+Response.Cookies("user")("country")="Norway"
+Response.Cookies("user")("age")="25"
+%&gt; 
+
+
+--------------------------------------------------------------------------------
+
+Read all Cookies
+Look at the following code:
+
+&lt;%
+Response.Cookies("firstname")="Alex"
+Response.Cookies("user")("firstname")="John"
+Response.Cookies("user")("lastname")="Smith"
+Response.Cookies("user")("country")="Norway"
+Response.Cookies("user")("age")="25"
+%&gt; 
+
+Assume that your server has sent all the cookies above to a user.
+
+Now we want to read all the cookies sent to a user.<br> The example below shows how to do it (note that the code below checks if a cookie has Keys with the HasKeys property):
+
+&lt;html&gt;
+&lt;body&gt;&lt;%
+dim x,yfor each x in Request.Cookies
+  response.write("&lt;p&gt;")
+  if Request.Cookies(x).HasKeys then
+    for each y in Request.Cookies(x)
+      response.write(x & ":" & y & "=" & Request.Cookies(x)(y))
+      response.write("&lt;br /&gt;")
+    next
+  else
+    Response.Write(x & "=" & Request.Cookies(x) & "&lt;br /&gt;")
+  end if
+  response.write "&lt;/p&gt;"
+next
+%&gt;&lt;/body&gt;
+&lt;/html&gt; 
+
+Output:
+
+firstname=Alex
+
+user:firstname=John
+user:lastname=Smith
+user:country=Norway
+user:age=25
+
+
+--------------------------------------------------------------------------------
+
+What if a Browser Does NOT Support Cookies?
+If your application deals with browsers that do not support cookies, <br>you will have to use other methods to pass information from one page to another in your application.<br>There are two ways of doing this: 
+
+1. Add parameters to a URL
+You can add parameters to a URL:
+
+&lt;a href="welcome.asp?fname=John&lname=Smith"&gt;
+Go to Welcome Page&lt;/a&gt; 
+
+And retrieve the values in the "welcome.asp" file like this:
+
+&lt;%
+fname=Request.querystring("fname")
+lname=Request.querystring("lname")
+response.write("&lt;p&gt;Hello " & fname & " " & lname & "!&lt;/p&gt;")
+response.write("&lt;p&gt;Welcome to my Web site!&lt;/p&gt;")
+%&gt; 
+
+2. Use a form
+You can use a form. The form passes the user input to "welcome.asp" when <br>the user clicks on the Submit button: 
+
+&lt;form method="post" action="welcome.asp"&gt;
+First Name:  &lt;input type="text" name="fname" value=""&gt;
+Last Name: &lt;input type="text" name="lname" value=""&gt;
+&lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt; 
+
+Retrieve the values in the "welcome.asp" file like this:
+
+&lt;%
+fname=Request.form("fname")
+lname=Request.form("lname")
+response.write("&lt;p&gt;Hello " & fname & " " & lname & "!&lt;/p&gt;")
+response.write("&lt;p&gt;Welcome to my Web site!&lt;/p&gt;")
+%&gt; 
+
+
+
+
+...............................................................
+
+
+&lt;%
+dim numvisits
+response.cookies("NumVisits").Expires=date+365 
+numvisits=request.cookies("NumVisits")
+
+if numvisits="" then
+   response.cookies("NumVisits")=1
+   response.write("Welcome! This is the first time you are visiting this Web page.")
+else
+   response.cookies("NumVisits")=numvisits+1
+   response.write("You have visited this ")
+   response.write("Web page " & numvisits)
+   if numvisits=1 then
+     response.write " time before!"
+   else
+     response.write " times before!"
+   end if
+end if
+%&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

@@ -1,0 +1,102 @@
+It seems we meet again. Or for the first time perhaps? Either way, I’ve come to enjoy your company. So lets talk over some Java. Remember to include the java.net and java.io packages!
+
+ 
+
+You want to learn about sockets? Here are there basic steps to help that go throw the connection process:
+
+ 
+
+1) Server (Tim) - Creates a new socket listening on port 4444. 
+
+ 
+
+2)Client (Chris) – Creates a new socket connecting to Tim on port 4444.
+
+ 
+
+3) Data transfer begins.
+
+ 
+
+ 
+
+Initializing a client socket looks like this.
+
+ 
+
+Socket clientSocket = null;
+
+clientSocket = new Socket("Tim", 4444);
+
+ 
+
+This socket is connecting to a computer called Tim on port 4444. Now, Tim can be either the name of a computer on a network or an IP address. But before a client connects to a server socket, there has to be a server socket.
+
+ 
+
+Socket serverSocket = null;
+
+serverSocket = new Socket(4444); //Notice no user to connect to this time.
+
+serverSocket.accept(); //Accept a client.
+
+ 
+
+Not too hard is it? Now lets explain step three: Data Transfer.
+
+ 
+
+From the socket you must receive input and you must send output. Clear? Good. To do this you must declare a PrintWriter for output and a BufferedReader for input. The following good is used for both a client and a server socket. For the sake of simplicity I will use a client socket.
+
+ 
+
+PrintWriter out = null;
+
+BufferedReader in = null;
+
+Socket clientSocket = null;
+
+ 
+
+clientSocket = new Socket("Tim", 4444);
+
+out = new PrintWriter(clientSocket.getOutputStream(), true); //get the socket’s ouput
+
+in = new BufferedReader( new inputStreamReader( clientSocket.getInputStream() ) ); //get the socket’s input
+
+ 
+
+Looking back, I think I overdid the color. Oh well. All you really need to look at are the last two lines. The PrintWriter out will be the new front door for the socket’s output. Calling out.println(“Hello”) would send the string hello to the server. Not too hard. I am going to finish this showing you how to use a loop to receive information. 
+
+ 
+
+PrintWriter out = null;
+
+BufferedReader in = null;
+
+Socket clientSocket = null;
+
+String fromServer;
+ 
+
+ 
+
+clientSocket = new Socket("Tim", 4444);
+
+out = new PrintWriter(clientSocket.getOutputStream(), true); 
+
+in = new BufferedReader(new inputStreamReader( clientSocket.getInputStream() ) );
+
+ 
+
+while ((fromServer = in.readLine()) != null) { //Loop while we are still getting messages
+            System.out.println("Server: " + fromServer); //Display message we got
+            
+                }
+
+            
+
+            out.close();
+      in.close();
+      clientSocket.close();
+

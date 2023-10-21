@@ -1,0 +1,19 @@
+This is ASP.NET script to enable lookup of country, region, city, latitude, longitude, ISP and domain name from IP address by using IP2Location database. Free sample database available at http://www.ip2location.com.
+
+ The script supports several database types such as Microsoft Access, MS SQL and mySQL. Internet geolocation has been widely used in the products or projects below.
+
+ 
+
+   1) Select the geographically closest mirror
+
+   2) Analyze your web server logs to determine the countries
+
+   3) Credit card fraud detection
+
+   4) Software export controls
+
+   5) Display native language and currency 
+
+   6) Prevent password sharing and abuse of service 
+
+   7) Geo-targeting in advertisement 

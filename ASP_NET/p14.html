@@ -1,0 +1,40 @@
+
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<pre>
+
+&lt;%@ Page Language=VB Debug=true %&gt;
+&lt;script runat=server&gt;
+Sub Anchor_Click(Source As Object, E as EventArgs)
+    Anchor1.InnerHtml = "&lt;B&gt;Thanks for clicking " _
+        & "the link!&lt;/B&gt;"
+End Sub
+&lt;/SCRIPT&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Creating an HTMLAnchor Control that is a Button&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY LEFTMARGIN="40" TOPMARGIN="80"&gt;
+&lt;form runat="server"&gt;
+&lt;a 
+    id="Anchor1"
+    onserverclick="Anchor_Click" 
+    runat=server
+&gt;
+Click Me
+&lt;/a&gt;
+&lt;/Form&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

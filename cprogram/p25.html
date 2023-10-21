@@ -1,0 +1,78 @@
+<html>
+<head>
+
+<title>Variables can be declared everywhere inside the code without using hooks</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+//Variables can be declared everywhere inside the code without using hooks: 
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+
+int main ()
+
+{  
+
+double a;   
+
+cout << "Hello, this is a test program." << endl;   
+
+cout << "Type parameter a: ";   
+cin >> a;                                                                                                    
+a = (a + 1) / 2;   
+double c;   
+c = a * 5 + 1;   
+cout << "c contains      : " << c << endl;   
+int i, j;   
+i = 0;   
+j = i + 1;   
+cout << "j contains      : " << j << endl;  
+return 0;
+}
+
+Maybe try to use this feature to make your source codes more readable 
+and not to mess them up.
+Like in C, variables can be encapsulated between { } hooks. 
+Then they are local to the zone encapsulated between the { and }.
+Whatever happens with such variables inside the encapsulated zone 
+will have no effect outside the zone: 
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+
+int main ()
+{   
+
+double a;   
+cout << "Type a number: ";   
+cin >> a;   
+{      
+int a = 1;      
+a = a * 10 + 4;      
+cout << "Local number: " << a << endl;   
+}   
+cout << "You typed: " << a << endl;   
+return 0;
+
+}
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

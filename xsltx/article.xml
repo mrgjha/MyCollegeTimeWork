@@ -1,0 +1,39 @@
+
+<?xml version="1.0"?>
+
+<!DOCTYPE article [
+<!ELEMENT article  (title,date,author,summary,content)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT author (fname,lname)>
+<!ELEMENT fname (#PCDATA)>
+<!ELEMENT lname (#PCDATA)>
+
+<!ELEMENT summary (#PCDATA)>
+<!ELEMENT content (#PCDATA)>
+
+
+
+]>
+
+
+
+
+
+
+
+<article>
+	<title>Simple XML</title>
+	<date>December 6, 2000</date>
+	<author>
+		<fname>Jane</fname>
+		<lname>Doe</lname>
+	</author>
+	<summary>XML is pretty easy.</summary>
+	<content>
+		Once you have mastered HTML, XML is easily
+      learned. You must remember that XML is not for
+      displaying information but for managing 			information.
+   </content>
+</article>
+

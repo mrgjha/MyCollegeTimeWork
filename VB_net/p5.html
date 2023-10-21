@@ -1,0 +1,42 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+
+<h3>Structure/user-defined type declarations</h3>
+<ul>
+<li>In VB 6, a structure or user-defined type is declared using the Type...End Type structure.
+<li>In VB .NET, the Type statement is not supported.<br>Structures are declared using the Structure...End Structure construct.
+<li>Also, each member of the structure must be assigned an access modifier, which can be Public, Protected, Friend, Protected Friend, or Private.
+<li>(The Dim keyword is equivalent to Public in this context.)
+</ul>
+
+<pre>
+For instance, the VB 6 user-defined type:
+
+Type RECT
+   Left As Long
+   Top As Long
+   Right As Long
+   Bottom As Long
+End Type
+
+is defined in VB .NET as:
+
+Structure RECT
+   Public Left As Long
+   Public Top As Long
+   Public Right As Long
+   Public Bottom As Long
+End Structure
+</pre>
+
+<p align="left">
+Actually, the VB .NET Structure type is far more reaching than its VB 6 user-defined type predecessor. Indeed, structures have many properties in common with classes; for instance, structures can have members (properties and methods). </p>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

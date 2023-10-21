@@ -1,0 +1,48 @@
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<b>
+<pre>
+print "Content-Type: text/html\n\n";
+
+$lo = 'global';  
+$m  = 'global';  
+A();
+
+
+
+
+
+sub A {
+  local $lo = 'string';
+  my    $m  = 'string';
+  B();
+}
+
+
+
+
+
+
+
+sub B {
+
+  print "&lthtml&gt";
+  print "&ltbody&gt";
+  print "B ", ($lo eq 'string' ?'can' :'cannot'),
+        " see the value of lo set by A.&ltbr&gt";
+  print "B ", ($m eq 'string' ?'can' :'cannot'),
+        " see the value of m set by A.";
+
+  
+  print "&lt/html&gt";
+  print "&lt/body&gt";
+
+
+}
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</pre>
+</body>
+</html>

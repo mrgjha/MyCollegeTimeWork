@@ -1,0 +1,91 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<h3>Changes Related to Procedures</h3>
+<p align="left">
+VB .NET features a number of changes to the way in which procedures are defined and called, most of which tend to make the language more streamlined and consistent.
+</p>
+
+<h3>Calling a procedure</h3>
+<p align="left">
+In VB 6, parentheses are required around arguments when making function calls. When calling a subroutine, parentheses are required when using the Call statement and proscribed when not using the Call statement.,/p>
+<p align="left">
+In VB .NET, parentheses are always required around a nonempty argument list in any procedure call--function or subroutine. (In subroutine calls, the Call statement is optional.) When calling a parameterless procedure, empty parentheses are optional.</p>
+
+<h3>Default Method of Passing Arguments</h3>
+<p align="left">
+In VB 6, if the parameters to a function or subroutine were not explicitly prefaced with the ByVal or ByRef keywords, arguments were passed to that routine by reference, and modifications made to the argument in the function or subroutine were reflected in the variable's value once control returned to the calling routine. In VB .NET, on the other hand, if the ByRef or ByVal keyword is not used in a parameter, the argument is passed to the routine by value, and modifications made to the argument in the function or subroutine are discarded once control returns to the calling program.
+</p>
+
+<h3>Optional arguments</h3>
+
+<p align="left">
+
+In VB 6, a procedure parameter can be declared as Optional without specifying a default value. For optional Variant parameters, the IsMissing function can be used to determine whether the parameter is present.</p>
+<p align="left">
+In VB .NET, an optional parameter must declare a default value, which is passed to the procedure if the calling program does not supply an argument for that parameter. The IsMissing function is not supported. The following example shows an optional parameter declaration:
+</p><br><br>
+
+Sub Calculate(Optional ByVal Switch As Boolean = False) <br>
+
+<h3>Return statement</h3>
+<p align="left">
+In VB .NET, the Return statement is used to return control to the calling program from a function or subroutine. The GoSub statement is not supported. Note that the Return statement is used to return a value from a function.</p><br><br>
+<pre>
+The following function illustrates the Return statement:
+
+Public Function Test(  ) As Integer
+    If MsgBox("Return", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+        Return 0
+    Else
+        MsgBox("Continue")
+        Return 1
+    End If
+End Function
+</pre>
+
+
+<h3>Passing property parameters in procedures</h3>
+
+<pre>
+Consider passing a property to a procedure by reference, as in:
+
+Sub ShrinkByHalf(ByRef lSize As Long)
+   lSize = CLng(lSize/2)
+End Sub
+ 
+Call ShrinkByHalf(Text1.Height)
+</pre><br><br>
+
+<p align="left">
+
+In VB 6, when passing the value of a property by reference, the property is not updated. In other words, passing a property by reference is equivalent to passing it by value. Hence, in the previous example, the property Text1.Height will not be changed.
+
+</p>
+
+<p align="left">
+
+In VB .NET, passing a property by reference does update the property, so in this case, the Text1.Height property will be changed. Note, however, that the value of the property is not changed immediately, but rather when the called procedure returns.
+
+</p>
+
+<h3>ParamArray parameters</h3>
+
+<ul>
+
+<li>In VB 6, if the ParamArray keyword is used on the last parameter of a procedure declaration,<br> the parameter can accept an array of Variant parameters.<br> In addition, ParamAarray parameters are always passed by reference.
+
+
+
+
+<li>In VB .NET, ParamArray parameters are always passed by value, and the parameters in the array may be of any data type.
+
+</ul>
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

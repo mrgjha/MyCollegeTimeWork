@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Holidays>
+
+<hotel city="Newyork">
+
+<name>Cfeteria</name>
+<Grade>Fivestar</Grade>
+
+</hotel>
+
+
+<hotel city="California">
+
+<name>Indiana</name>
+<Grade>Fourstar</Grade>
+
+</hotel>
+
+<Hotel city="Orlando">
+<name>Entertainment</name>
+<Grade>Threestar</Grade>
+</Hotel>
+</Holidays>

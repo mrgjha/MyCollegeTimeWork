@@ -1,0 +1,48 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import javax.swing.*;
+import javax.swing.event.*;
+
+public class JListEventTest extends JCloseableFrame
+    implements ListSelectionListener {
+    public JListEventTest() {
+	super("JListEventTest (Swing)", 250, 100);
+
+	String [] items = {"One", "Two", "Three", "Four", "Five"};
+	JList list = new JList(items);
+	list.addListSelectionListener(this);
+
+	//Note: JList doesn't support scrolling directly.
+	JScrollPane scrollPane = new JScrollPane(list);
+
+	getContentPane().add(scrollPane);
+    }
+
+    public void valueChanged(ListSelectionEvent event) {
+	if (event.getValueIsAdjusting())
+	    return;
+
+	JList list = (JList)event.getSource();
+	System.out.println(list.getSelectedValue());
+    }
+
+    public static void main(String [] args) {
+	JListEventTest frame = new JListEventTest();
+	frame.setVisible(true);
+    }
+}
+	
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &lt;graphics.h&gt;
+#include &lt;conio.h&gt;
+
+int main(void)
+{
+  int driver, mode;
+  int i;
+
+  driver = DETECT; /* autodetect */
+  mode = 0;
+  initgraph(&driver, &mode, "c:\\tc\\bgi");
+
+  /* write two lines at CP */
+  outtext("this is an example ");
+  outtext("another line");
+
+  /* use "cursor" positioning */
+  for(i=100; i&lt;200; i+=8) outtextxy(200, i, "hello");
+
+  getch();
+  restorecrtmode();
+  return 0; 
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

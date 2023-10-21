@@ -1,0 +1,24 @@
+'Within the Page_Load for the form1 (Financial.aspx.cs)
+
+// Add a parameter to pass volume checkbox data
+string s = "";
+if (VolumeCheckbox.Checked == true)
+  s = s + "Volume=1";
+else
+  s = s + "Volume=0";
+
+// Add a parameter to pass symbol combobox data
+s = s + "&Symbol=" + SymbolComboBox.Value.ToString();
+
+PegoWeb1.ImageUrl = "Financial2.aspx?" + s;
+
+
+Within the Page_Load of the form2.
+string sVolume;
+string sSymbol;
+sVolume = this.Request.QueryString.Get("Volume");
+sSymbol = this.Request.QueryString.Get("Symbol");
+
+
+Note the "?" at end of ImageUrl = "Financial2.aspx?".
+Note you can string together multiple parameters separating with "&" symbol.

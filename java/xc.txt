@@ -1,0 +1,88 @@
+import java.io.*;
+import java.lang.*;
+
+
+    class WebPageReader {
+
+
+        	public static void main(String[] args) throws IOException {
+        		
+        		char c;
+        		int pos;
+        		int uniChar;
+        		int count = 0;
+        		String line;
+        		String text;
+        		String header;
+        		int tagPlace;
+        		
+        		BufferedReader in = new BufferedReader(new FileReader("file.txt"));
+        		File o = new File("output.txt");
+        		StringBuffer sb = new StringBuffer();
+        		StringBuffer capitalBuffer = new StringBuffer();
+        		FileWriter out = new FileWriter(o,true);
+        		FileWriter fileWiper = new FileWriter(o);
+        				
+        		fileWiper.write("");
+        		
+
+
+            		while ((line = in.readLine())!= null) {
+            			line=in.readLine();
+            			sb.append(line);
+            		}
+            		text=sb.toString();
+            				
+            		System.out.println("Text file read in\nNow Parsing...");
+            		in.close();
+            		
+
+
+                		for(int i=1;i<text.length();i++) {
+
+
+                    			if (text.regionMatches(true,i,"<P>",0,3)==true) {
+                    				tagPlace=i;
+
+
+                        				for(int j=tagPlace+3;text.charAt(j)!='<';j++) {
+                        					out.write(text.charAt(j));
+                        					tagPlace++;
+                        				}
+                        				out.write("\n\n");
+                        			}
+
+
+                            			if (text.regionMatches(true,i,"<TITLE>",0,7)==true) {
+                            				tagPlace=i;
+                            				capitalBuffer.delete(0,(capitalBuffer.capacity()-1));
+
+
+                                				for(int k=tagPlace+8;text.charAt(k)!='<';k++) {
+                                				 capitalBuffer.append(text.charAt(k));
+                                					tagPlace++;
+                                				}
+                                				header = capitalBuffer.toString();
+                                				out.write(header.toUpperCase());
+                                				out.write("\n\n");
+                                			}
+
+
+                                    			if (text.regionMatches(true,i,"<B>",0,3)==true) {
+                                    				tagPlace=i;
+                                    				capitalBuffer.delete(0,(capitalBuffer.capacity()-1));
+
+
+                                        				for(int l=tagPlace+3;text.charAt(l)!='<';l++) {
+                                        					capitalBuffer.append(text.charAt(l));
+                                        					tagPlace++;
+                                        				}
+                                        				header = capitalBuffer.toString();
+                                        				out.write(header.toUpperCase());
+                                        				out.write("\n\n");
+                                        			}
+                                        		}
+                                        		System.out.println("Tags removed\nFile is Ready!");
+                                        		out.close();
+                                        	}
+                                    }

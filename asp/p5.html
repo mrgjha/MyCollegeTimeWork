@@ -1,0 +1,245 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt;img src="kids.gif" style="filter: alpha(opacity=40)"&gt;
+
+&lt;div 
+  style="
+  width: 320; 
+  height: 320; 
+  filter: dropshadow(color=#000000, offx=15, offy=15)"
+&gt;
+&lt;img src="kids.gif"&gt;
+&lt;/div&gt;
+
+&lt;img src="kids.gif" style="filter: fliph"&gt;
+
+&lt;img src="kids.gif" style="filter: flipv"&gt;
+
+&lt;img src="kids.gif" style="filter: gray"&gt;
+
+&lt;img src="kids.gif" style="filter: invert"&gt;
+
+&lt;div 
+  style="
+  width: 320; 
+  height: 320; 
+  filter: shadow(color=#000000, direction=135)"
+&gt;
+&lt;img src="kids.gif"&gt;
+&lt;/div&gt;
+
+&lt;img src="kids.gif" style="filter: xray"&gt;
+ 
+&lt;script language="vbscript"&gt;
+sub b1_onclick
+  img1.filters(0).apply()
+  img1.src="art.gif"
+  img1.filters(0).play()
+end sub
+&lt;/script&gt;
+
+&lt;img id="img1" src="kids.gif" 
+  style="filter: blendTrans(duration=2)"&gt;
+&lt;br&gt;
+&lt;input type="button" id="b1" value="Blend"&gt;
+
+&lt;script language="vbscript"&gt;
+sub b1_onclick
+  img1.filters(0).apply()
+  img1.src="art.gif"
+  img1.filters(0).play()
+end sub
+&lt;/script&gt;
+
+&lt;img id="img1" src="kids.gif" 
+  style="filter: revealTrans(duration=5, transition=0)"&gt;
+&lt;br&gt;
+&lt;input type="button" id="b1" value="Box In"&gt;
+
+&lt;script language="vbscript"&gt;
+Sub div1_onmouseover
+  img1.style.visibility = "hidden"
+End Sub
+Sub div1_onmouseout
+  img1.style.visibility = "visible"
+End Sub
+&lt;/script&gt;
+
+&lt;body&gt;
+Before the image
+&lt;div id="div1" style="width: 100pt"&gt;
+&lt;img name="img1" src="germany.gif"&gt;
+&lt;/div&gt;
+After the image
+&lt;/body&gt;
+
+&lt;style type="text/css"&gt;
+body { background-color: #cfcfcf }
+.country { cursor: default; font-weight: bold; font-size: 20pt }
+&lt;/style&gt;
+
+&lt;script language="vbscript"&gt;
+Sub hideShowFlag(divid)
+  if divid.style.display = "none" Then
+    divid.style.display = ""
+  Else
+    divid.style.display = "none"
+  End If
+End Sub
+&lt;/script&gt;
+
+&lt;span class="country" onclick="hideShowFlag(flag1)"&gt;France&lt;/span&gt;&lt;br&gt;
+&lt;div id="flag1" style="display: none"&gt;
+&lt;img src="france.gif"&gt;
+&lt;/div&gt;
+
+&lt;span class="country" onclick="hideShowFlag(flag2)"&gt;Germany&lt;/span&gt;&lt;br&gt;
+&lt;div id="flag2" style="display: none"&gt;
+&lt;img src="germany.gif"&gt;
+&lt;/div&gt;
+
+&lt;span class="country" onclick="hideShowFlag(flag3)"&gt;Italy&lt;/span&gt;&lt;br&gt;
+&lt;div id="flag3" style="display: none"&gt;
+&lt;img src="italy.gif"&gt;
+&lt;/div&gt;
+
+&lt;span class="country" onclick="hideShowFlag(flag4)"&gt;Japan&lt;/span&gt;&lt;br&gt;
+&lt;div id="flag4" style="display: none"&gt;
+&lt;img src="japan.gif"&gt;
+&lt;/div&gt;
+
+&lt;script language="vbscript"&gt;
+Sub span1_onmouseover
+  span1.style.fontStyle = "italic"
+End Sub
+Sub span1_onmouseout
+  span1.style.fontStyle = "normal"
+End Sub
+&lt;/script&gt;
+
+&lt;span id="span1" style="font-size: 30pt; font-weight: Bolder"&gt;
+Dynamic styles
+&lt;/span&gt;
+
+&lt;script language="vbscript"&gt;
+Option Explicit
+Dim radians 
+Sub timeout
+  Dim color
+  radians = radians + 2 * 3.141529/100
+  color = 127 * Sin(radians) + 127
+  div1.style.color = color
+  SetTimeout "timeout()", 100
+End Sub
+&lt;/script&gt;
+
+&lt;style type="text/css"&gt;
+#div1 { font-size: 40pt; font-weight: bold }
+&lt;/style&gt;
+
+&lt;body onload="timeout()"&gt;
+&lt;div id="div1"&gt;
+Color Changer
+&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;script language="vbscript"&gt;
+Sub moveText
+  moveDiv1
+  SetTimeout "moveText()", 40
+End Sub
+Sub moveDiv1
+  div1.style.posTop = div1.style.posTop - 2
+  if div1.style.posTop &lt; -80 then
+    div1.style.posTop = screen.height
+  end if
+End Sub
+&lt;/script&gt;
+
+&lt;body onLoad="moveText()"&gt;
+&lt;div id="div1" style="position: absolute; color: blue; font-size: 60px"&gt;
+This string moves up
+&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;object 
+  id=tdc1
+  classid="clsid:333c7bc4-460f-11d0-bc04-0080c7055a83"
+  width=0 
+  height=0
+&gt;
+&lt;param name="DataURL" value="tdc.txt"&gt;
+&lt;param name="UseHeader" value="true"&gt;
+&lt;/object&gt;
+
+&lt;object 
+  id=tdc1
+  classid="clsid:333c7bc4-460f-11d0-bc04-0080c7055a83"
+  width=0 
+  height=0
+&gt;
+&lt;param name="DataURL" value="tdc.txt"&gt;
+&lt;param name="UseHeader" value="true"&gt;
+&lt;/object&gt;
+
+&lt;table datasrc=#tdc1&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;td&gt;Mass&lt;/td&gt;
+  &lt;td&gt;Radius&lt;/td&gt;
+  &lt;td&gt;Color&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+  &lt;td&gt;&lt;div datafld="Mass"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div datafld="Radius"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div datafld="Color"&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;table&gt;
+
+&lt;object 
+  id=tdc1
+  classid="clsid:333c7bc4-460f-11d0-bc04-0080c7055a83"
+  width=0 
+  height=0
+&gt;
+&lt;param name="DataURL" value="tdc.txt"&gt;
+&lt;param name="UseHeader" value="true"&gt;
+&lt;param name="Sort" value="-Radius"&gt;
+&lt;/object&gt;
+
+&lt;table datasrc=#tdc1&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+  &lt;td&gt;Mass&lt;/td&gt;
+  &lt;td&gt;Radius&lt;/td&gt;
+  &lt;td&gt;Color&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+  &lt;td&gt;&lt;div datafld="Mass"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div datafld="Radius"&gt;&lt;/div&gt;&lt;/td&gt;
+  &lt;td&gt;&lt;div datafld="Color"&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;table&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

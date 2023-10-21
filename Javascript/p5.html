@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<script>
+
+function check()
+{
+
+var fname;
+var lname;
+
+fname=prompt("Hai give your first name");
+lname=prompt("Hai give your Lastname");
+
+theform.text1.value=fname;
+theform.text2.value=lname;
+}
+</script>
+</head>
+
+
+<body>
+<form name="theform">
+
+FirstName:<input type="text" name="text1" onfocus="check()">
+LastName:<input type="text" name="text2">
+
+<input type="submit" value="submit">
+</form>
+</body>
+</html>
+
+

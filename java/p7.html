@@ -1,0 +1,53 @@
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import java.io.*;
+
+class HotWheels {
+
+public static void main (String[] args) throws IOException {
+
+InputStreamReader inStream = new InputStreamReader( System.in ) ;
+BufferedReader stdin = new BufferedReader( inStream );
+
+String inData;
+int cash, credit ;
+
+// get the cash
+
+System.out.println("How much cash?");
+inData = stdin.readLine();
+cash = Integer.parseInt( inData );
+
+// get the credit line
+System.out.println("How much credit do you have?");
+inData = stdin.readLine();
+credit = Integer.parseInt( inData );
+
+// check that at least one qualification is met
+
+if (cash>=1200000||credit>=1200000)
+System.out.println("Enough to buy this car!" );
+else
+System.out.println("Have you considered a Yugo?" );
+
+}
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

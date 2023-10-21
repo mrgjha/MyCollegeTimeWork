@@ -1,0 +1,56 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+
+public class TestTextFields extends Frame
+{
+   TextField tfield1;
+   TextField tfield2;
+   
+   /** Creates new TestTextField */
+   public TestTextFields()
+   {
+      tfield1 = new TextField(15);
+      tfield2 = new TextField(20);
+      tfield1.setEchoChar('*');
+      tfield2.setText("Some Sample Text");
+      tfield2.setFont(new Font("Courier",Font.BOLD,16));
+      tfield2.setEditable(false);
+      tfield2.select(12,15);
+
+      Panel p1 = new Panel();
+      p1.add(tfield1);
+      p1.add(tfield2);
+      add(p1);
+      addWindowListener(new WinCloser());
+      setTitle("Using TextFields");
+      setBounds( 100, 100, 300, 300);
+      setVisible(true);
+   }
+   
+   public static void main(String[] args)
+   {
+      TestTextFields tp = new TestTextFields();
+   }   
+}
+
+class WinCloser extends WindowAdapter
+{
+   public void windowClosing(WindowEvent e)
+   {
+      System.exit(0);
+   }
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

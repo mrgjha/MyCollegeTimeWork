@@ -1,0 +1,138 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Applets extend from the applet class.
+Since Java doesn't support multiple
+inheritance ,a class cannot be inherited
+from the applet class as well as the thread class.
+
+Java Provides the runnable interface
+to solve this problem
+
+The Runnable interface consists of a single
+method, run(),which is executed when the
+thread is activated.
+
+Hence We can extend from the applet class,
+implement the runnable interface and code
+the run method
+
+With applications,you have a choice of extending
+from the thread class.
+
+In other words,when a program needs to inherit
+from a class apart from the thread class,
+We need to implement the Runnable interface.
+
+
+
+&lt;HTML&gt;&lt;HEAD&gt;&lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;APPLET
+        CODE     = "SimpleBanner.class"
+        WIDTH    = 400
+        HEIGHT   = 300&gt;
+        
+    &lt;/APPLET&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+/* A simple banner applet.
+
+   This applet creates a thread that scrolls
+   the message contained in msg right to left
+   across the applet's window.
+*/
+import java.awt.*;
+import java.applet.*;
+
+
+public class SimpleBanner extends Applet implements Runnable {
+  String msg = " A Simple Moving Banner.";
+  Thread t = null;
+  int state;
+  boolean stopFlag;
+
+  // Set colors and initialize thread.
+  public void init() {
+    setBackground(Color.cyan);
+    setForeground(Color.red);
+  }
+
+  // Start thread
+  public void start() {
+    t = new Thread(this);
+    stopFlag = false;
+    t.start();
+  }
+
+  // Entry point for the thread that runs the banner.
+  public void run() {
+    char ch;
+
+    // Display banner 
+    for( ; ; ) {
+      try {
+        repaint();
+        Thread.sleep(250);
+        ch = msg.charAt(0);
+        msg = msg.substring(1, msg.length());
+        msg += ch;
+        if(stopFlag)
+          break;
+      } catch(InterruptedException e) {}
+    }
+  }
+
+  // Pause the banner.
+  public void stop() {
+    stopFlag = true;
+    t = null;
+  }
+
+  // Display the banner.
+  public void paint(Graphics g) {
+    g.drawString(msg, 50, 30);
+  }
+}
+
+
+
+//MyThread.java
+
+
+
+
+class MyThread implements Runnable  {
+    public void run() { System.out.println("This is MyThread"); }
+}
+
+class YourThread implements Runnable  {
+    public void run() { System.out.println("This is YourThread");  }
+}
+
+class ThreadEx4 {
+    public static void main(String [] args  ) {
+         Thread t1 = new Thread(new MyThread());
+         Thread t2 = new Thread(new YourThread());
+         t1.start(); 
+         t2.start();
+   } 
+}   
+
+    // end class ThreadEx4
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

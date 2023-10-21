@@ -1,0 +1,180 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include&lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;graphics.h&gt;
+#include&lt;dos.h&gt;
+#include&lt;ctype.h&gt;
+
+void INPUT_AREA(int x1,int y1,int x2,int y2)
+//Before You Use Getstring Create
+//A White Box TO Write In(Each Char Takes 8 Pixels)
+ {
+ int Temp=getcolor();
+
+ setcolor(BLACK);
+ rectangle(x1,y1,x2,y2);
+ setfillstyle(SOLID_FILL,WHITE);
+ floodfill(x1+2,y1+2,BLACK);//Create Wite Bar To Write On
+ setcolor(WHITE); //Depression Effect
+ line(x2,y1,x2,y2);
+ line(x1,y2,x2,y2);
+
+ setcolor(Temp);  //Restore Previous Color
+ }
+
+/************************************************************************/
+ int k=0;
+
+void ReadString(int x1,int y1,int endx,int color,int N,char *A)
+{
+settextstyle(SMALL_FONT,HORIZ_DIR,4);
+
+char ch;
+
+int i=0,ycur=y1+5,xcur=x1+2,h=textheight("Ip");
+	do
+	{
+			while (!kbhit())
+			 //If No Key Is Pressed Display A Cursor
+			{
+			setcolor(color);
+			line(xcur+1,y1+3,xcur+1,y1+5+h);
+			delay(150);
+			setcolor(WHITE);
+			line(xcur+1,y1+3,xcur+1,y1+5+h);
+			delay(50);
+			}
+
+	ch=getch();
+	if ( ch==13)//Enter Is Pressed
+		     break;
+		else if (ch=='\b' && i&gt;0 )//BackSpace Pressed
+		{
+		setcolor(WHITE);
+		outtextxy(x1+2,ycur,A);//Display Previous String In White
+		A[--i]='\0';//Last Char Of String
+		setcolor(color);
+		outtextxy(x1+2,ycur,A);//Display New String
+		xcur=x1+textwidth(A)+3;
+
+		}
+		else //Any Other Key is Pressed
+		{
+		setcolor(WHITE);
+		outtextxy(x1+2,ycur,A);//Display Previous String in White
+		A[i]=tolower(ch);
+	       //	cout&lt;&lt;A[i];
+		i++;//Push Ch into Array
+
+		A[i]='\0';//Last char Of String
+
+		setcolor(color);
+		outtextxy(x1+2,ycur,A);//Display New Line
+		xcur=x1+textwidth(A)+3;
+
+
+
+
+
+
+
+		}
+
+
+
+	} while ( i&lt;N && xcur&lt;endx );
+
+
+	 int a=atoi(A);
+
+	 k=k+a;
+
+
+
+
+
+flushall();
+
+
+
+}
+
+
+
+void graphics()
+{
+ int gdriver=DETECT,gmode;
+
+ initgraph(&gdriver,&gmode,"c:\\tc\\bgi");
+}
+
+ void insert()
+{
+
+
+
+		 cleardevice();
+
+		 flushall();
+
+		setcolor(LIGHTGRAY);
+		rectangle(0,0,400,250);
+		setfillstyle(SOLID_FILL,RED);
+		floodfill(12,12,LIGHTGRAY);
+		settextstyle(SMALL_FONT,HORIZ_DIR,5);
+		setcolor(14);
+
+
+
+
+/*Create InPut Box's For Various Fields*/
+outtextxy(15,53,"1st Number :");
+INPUT_AREA(100,50,200,70);
+
+
+outtextxy(15,83,"2nd Number :");
+INPUT_AREA(100,80,340,100);
+
+outtextxy(15,113,"3rd Number :");
+INPUT_AREA(100,110,200,130);
+
+
+
+char x[6],y[6],z[6];
+ReadString(100,50,200,BLACK,7,x);
+ReadString(100,80,330,BLACK,7,y);
+ReadString(100,110,340,BLACK,7,z);
+
+
+}
+
+void main()
+{
+graphics();
+insert();
+gotoxy(25,280);
+cout&lt;&lt;"Sum of three numbers="&lt;&lt;k;
+
+getch();
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

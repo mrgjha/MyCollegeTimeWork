@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+using System;
+public class Messages {
+
+public void Hello(string name) {
+Console.WriteLine("Hello {0}!",name);
+}
+
+public void Goodbye(string name) {
+Console.WriteLine("Goodbye {0}!",name);
+}
+}
+
+delegate void Notifier(string str);
+
+//delegate "return type" DelegateName("parameter type list");
+
+class DelegateExample {
+
+public static void Main()
+{
+
+Messages m = new Messages(); 
+Notifier notify = null;
+notify += new Notifier(m.Hello);
+
+//we add an object and method
+
+notify += new Notifier(m.Goodbye);
+
+notify("Harry");
+
+//all stored methods are invoked
+
+}
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

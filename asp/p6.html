@@ -1,0 +1,334 @@
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+&lt;% Randomize %&gt;
+Here is a random number between 0 and 1:
+&lt;%= Rnd %&gt;
+&lt;br&gt;
+Here is a random integer between 0 and 100: 
+&lt;%= Int(100 * Rnd) %&gt;
+
+&lt;%
+Application.Lock
+Application("Counter") = Application("Counter") + 1
+Application.Unlock
+%&gt;
+Application("Counter") = &lt;%= Application("Counter") %&gt;
+
+&lt;%
+Session("Counter") = Session("Counter") + 1
+%&gt;
+Session("Counter") = &lt;%= Session("Counter") %&gt;
+$eol
+
+Session.SessionId = &lt;%= Session.SessionId %&gt;&lt;br&gt;
+Session.Timeout = &lt;%= Session.Timeout %&gt;
+$eol
+
+&lt;SCRIPT LANGUAGE="VBScript" RUNAT="Server"&gt;
+Sub Application_OnStart
+  
+End Sub
+Sub Application_OnEnd
+  
+End Sub
+Sub Session_OnStart
+  
+End Sub
+Sub Session_OnEnd
+  
+End Sub
+&lt;/SCRIPT&gt;
+
+&lt;%
+If Len(Request.ClientCertificate("Subject")) = 0 Then
+%&gt;
+  A client certificate was not presented.
+&lt;%
+Else
+  Response.Write Request.ClientCertificate("Issuer")
+  Response.Write Request.ClientCertificate("SerialNumber")
+  Response.Write Request.ClientCertificate("ValidFrom")
+  Response.Write Request.ClientCertificate("ValidUntil")
+End If
+%&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;form name="form1" method="post" action="post.asp"&gt;
+&lt;select name="direction"&gt;
+&lt;option&gt;North
+&lt;option&gt;South
+&lt;option&gt;East
+&lt;option&gt;West
+&lt;/select&gt;
+&lt;select name="colors" multiple&gt;
+&lt;option&gt;Red
+&lt;option&gt;Green
+&lt;option&gt;Blue
+&lt;option&gt;Yellow
+&lt;option&gt;Orange
+&lt;/select&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/form&gt;
+
+
+Request.Form("direction") = 
+&lt;%= Request.Form("direction") %&gt;
+&lt;br&gt;
+Request.Form("colors").Count =
+&lt;%= Request.Form("colors").Count %&gt;
+&lt;br&gt;
+&lt;%
+for i = 1 to Request.Form("colors").Count 
+%&gt;
+&lt;%= Request.Form("colors")(i) %&gt;&lt;br&gt;
+&lt;% next %&gt;
+$eol
+
+
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;form name="form1" method="get" action="query.asp"&gt;
+&lt;select name="direction"&gt;
+&lt;option&gt;North
+&lt;option&gt;South
+&lt;option&gt;East
+&lt;option&gt;West
+&lt;/select&gt;
+&lt;select name="colors" multiple&gt;
+&lt;option&gt;Red
+&lt;option&gt;Green
+&lt;option&gt;Blue
+&lt;option&gt;Yellow
+&lt;option&gt;Orange
+&lt;/select&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/form&gt;
+
+
+Request.QueryString("direction") = 
+&lt;%= Request.QueryString("direction") %&gt;
+&lt;br&gt;
+Request.QueryString("colors").Count =
+&lt;%= Request.QueryString("colors").Count %&gt;
+&lt;br&gt;
+&lt;%
+for i = 1 to Request.QueryString("colors").Count 
+%&gt;
+&lt;%= Request.QueryString("colors")(i) %&gt;&lt;br&gt;
+&lt;% next %&gt;
+
+&lt;%
+for each v in Request.ServerVariables
+%&gt;
+  &lt;%= v %&gt; = &lt;%= Request.ServerVariables(v) %&gt;
+  &lt;br&gt;
+&lt;%
+next
+%&gt;
+
+&lt;%
+Response.write "This is a string"
+%&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;form name="Form1" action="color.asp"&gt;
+&lt;B&gt;Color:&lt;/B&gt;
+&lt;select name="Color" size="1"&gt;
+&lt;option value="Red"&gt;Red&lt;/option&gt;
+&lt;option value="Green"&gt;Green&lt;/option&gt;
+&lt;option value="Blue"&gt;Blue&lt;/option&gt;
+&lt;option value="Orange"&gt;Orange&lt;/option&gt;
+&lt;option value="Yellow"&gt;Yellow&lt;/option&gt;
+&lt;option value="Pink"&gt;Pink&lt;/option&gt;
+&lt;option value="Purple"&gt;Purple&lt;/option&gt;
+&lt;/select&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;%
+Session("Color") = Request("Color")
+Response.redirect "shape.htm"
+%&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;form name="Form1" action="shape.asp"&gt;
+&lt;B&gt;Shape:&lt;/B&gt;
+&lt;select name="Shape" size="1"&gt;
+&lt;option value="Circle"&gt;Circle&lt;/option&gt;
+&lt;option value="Ellipse"&gt;Ellipse&lt;/option&gt;
+&lt;option value="Rectangle"&gt;Rectangle&lt;/option&gt;
+&lt;option value="Square"&gt;Square&lt;/option&gt;
+&lt;option value="Trapezoid"&gt;Trapezoid&lt;/option&gt;
+&lt;/select&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;%
+Session("Shape") = Request("Shape")
+Response.redirect "size.htm"
+%&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;center&gt;
+&lt;form name="Form1" action="size.asp"&gt;
+&lt;B&gt;Size:&lt;/B&gt;
+&lt;select name="Size" size="1"&gt;
+&lt;option value="Large"&gt;Large&lt;/option&gt;
+&lt;option value="Medium"&gt;Medium&lt;/option&gt;
+&lt;option value="Small"&gt;Small&lt;/option&gt;
+&lt;/select&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;%
+Session("Size") = Request("Size")
+Response.redirect "summary.asp"
+%&gt;
+
+
+&lt;H1&gt;SUMMARY&lt;/H1&gt;
+Color: &lt;%= Session("Color") %&gt;&lt;br&gt;
+Shape: &lt;%= Session("Shape") %&gt;&lt;br&gt;
+Size: &lt;%= Session("Size") %&gt;
+
+
+&lt;%= Server.HTMLEncode("Use &lt;B&gt; to indicate boldface") %&gt;
+$eol
+
+
+Server.Mappath("/") = &lt;%= Server.Mappath("/") %&gt;&lt;br&gt;
+Server.Mappath("images") = &lt;%= Server.Mappath("images") %&gt;
+$eol
+
+
+&lt;form name="form1" method="post" action="writecookie.asp"&gt;
+Enter a value for MyCookie:
+&lt;input type=textbox name="data" size=25 value=""&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+
+
+&lt;%
+Response.Cookies("MyCookie") = Request.Form("data")
+%&gt;
+MyCookie has been set to &lt;%= Request.Form("data") %&gt;
+
+
+
+&lt;%
+If Request.Cookies("MyCookie") = "" Then
+%&gt;
+  MyCookie has no value.
+&lt;%
+Else
+%&gt;
+  MyCookie equals &lt;%= Request.Cookies("MyCookie") %&gt;
+&lt;%
+End If
+%&gt;
+
+&lt;form name="form1" method="post" action="writedictionarycookie.asp"&gt;
+&lt;table&gt;
+&lt;tr&gt;
+  &lt;td&gt;Name&lt;/td&gt;
+  &lt;td&gt;&lt;input name="name" size=20 value=""&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Age&lt;/td&gt;
+  &lt;td&gt;&lt;input name="age" size=20 value=""&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Height&lt;/td&gt;
+  &lt;td&gt;&lt;input name="height" size=20 value=""&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;Weight&lt;/td&gt;
+  &lt;td&gt;&lt;input name="weight" size=20 value=""&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;input type=submit value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;%
+Response.Cookies("Profile")("Name") = Request.Form("name")
+Response.Cookies("Profile")("Age") = Request.Form("age")
+Response.Cookies("Profile")("Height") = Request.Form("height")
+Response.Cookies("Profile")("Weight") = Request.Form("weight")
+%&gt;
+The dictionary cookie named "Profile" has been written.
+
+
+Name: &lt;%= Request.Cookies("Profile")("Name") %&gt;&lt;br&gt;
+Age: &lt;%= Request.Cookies("Profile")("Age") %&gt;&lt;br&gt;
+Height: &lt;%= Request.Cookies("Profile") ("Height") %&gt;&lt;br&gt;
+Weight: &lt;%= Request.Cookies("Profile") ("Weight") %&gt;&lt;br&gt;
+
+&lt;%
+n = Now
+y = Year(n)
+m = Month(n)
+d = Day(n)
+Response.Cookies("LastVisit") = n
+Response.Cookies("LastVisit").Expires = DateSerial(y, m, d + 1)
+%&gt;
+LastVisit has been set to &lt;%= n %&gt;
+
+&lt;%
+If Request.Cookies("LastVisit") = "" Then
+%&gt;
+  LastVisit has no value
+&lt;%
+Else
+%&gt;
+  LastVisit equals &lt;%= Request.Cookies("LastVisit") %&gt;
+&lt;%
+End If
+%&gt;
+
+This is Page 0
+&lt;br&gt;&lt;br&gt;
+&lt;!--#include file="notice.inc"--&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

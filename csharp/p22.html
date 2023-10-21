@@ -1,0 +1,126 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+using System;
+    namespace ConAppPoint
+    {
+    	class Test
+    	{
+    		
+    		static void Main(string[] args)
+    		{
+    			Point spot = new Point();
+    			Point X = new Point();
+    			Point Y = new Point();
+
+    			Console.WriteLine("1/ ");
+
+    			spot.Pr(spot);
+    			spot.Add(spot);
+
+    			Console.WriteLine("2/ ");
+
+    			spot.Pr(spot);
+    			X+=spot;
+
+    			Console.WriteLine("3/ ");
+
+    			X.Pr(X);
+    			spot=X+Y;
+
+    			Console.WriteLine("4/ ");
+
+			spot.Pr(spot);
+    			MyPoint myspot = new MyPoint();
+    			myspot.name=GiveType();
+    			
+                        Console.WriteLine("5/ ");
+    			Console.WriteLine("X: " + myspot.X);
+    			Console.WriteLine("Y: " + myspot.Y);
+    			Console.WriteLine("Name: " + myspot.name);
+    			Console.Read();
+    		}
+    		public static string GiveType()
+    		{
+    			string c;
+    			Console.Write("What type is this object? : ");
+    			c=Console.ReadLine();
+    			return c;
+    		}
+    	}
+    		class Point
+    		{
+    			private int xkoord=42;
+    			private int ykoord=21;
+    		public int X
+    		{
+    			get
+    			{
+    				return xkoord;
+    				}
+    			set
+    			{
+    				xkoord=value;
+    			}
+    		}
+    		public int Y
+    		{
+    			get
+    			{
+    				return ykoord;
+    			}
+    			set
+    			{
+    				ykoord=value;
+    			}
+    		}
+    	
+    		public void Pr(Point n){
+    			Console.WriteLine("X:" + n.X);
+    			Console.WriteLine("Y:" + n.Y);
+    		}
+    		public void Add(Point c){
+    			X +=c.X;
+    			Y+=c.Y;
+    		}
+    		
+    		public static Point operator +(Point x,Point y)
+    		{
+    			Point temp = new Point();
+    			temp.X=x.X+y.X;
+    			temp.Y=x.Y+y.Y;
+    			return temp;
+    		}
+    	}
+    	class MyPoint : Point 
+    	{	
+    		private string type;
+    		
+    		public string name
+    		{
+    			get
+    			{
+    				return type;
+    			}
+    			set
+    			{
+    				type=value;
+    			}
+    		}
+    	}
+    }
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

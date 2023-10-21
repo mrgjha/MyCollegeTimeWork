@@ -1,0 +1,53 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include&ltgraphics.h&gt
+#include&ltdos.h&gt
+#include&ltconio.h&gt
+void main()
+{
+int gd=DETECT,gm;
+int i;
+initgraph(&gd,&gm,"c:\\tc\\bgi");
+cleardevice();
+setcolor(4);
+setbkcolor(7);
+settextstyle(COMPLEX_FONT,0,4);
+outtextxy(140,180,"LOADING PROJECT...........");
+setcolor(8);
+rectangle(60,380,580,400);
+rectangle(59,379,581,401);
+setcolor(1);
+for( i=62;i&lt=580;i+=10)
+{
+rectangle(i,382,i+8,398);
+setfillstyle(1,1);
+floodfill(i+2,386,1);
+delay(55);
+}
+settextstyle(0,0,2);
+outtextxy(20,430,"PROJECT LOADED SUCCESFULLY PRESS ANY  ");
+outtextxy(120,450,"KEY TO RUN THE PROJECT");
+getch();
+closegraph();
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Private Sub Form_Load()
+Dim TestString As String
+Dim A() As String
+Dim I As Integer
+
+TestString = "William    Jefferson     Clinton"
+A = Split(SuperTrim(TestString))
+
+For I = LBound(A) To UBound(A)
+  MsgBox A(I)
+Next
+End
+End Sub
+
+
+Public Function SuperTrim(TheString As String) As String
+  Dim Temp As String, DoubleSpaces As String
+  DoubleSpaces = Chr(32) & Chr(32)
+  Temp = Trim(TheString)
+  Temp = Replace(Temp, DoubleSpaces, Chr(32))
+  Do Until InStr(Temp, DoubleSpaces) = 0
+    Temp = Replace(Temp, DoubleSpaces, Chr(32))
+  Loop
+  SuperTrim = Temp
+End Function
+
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

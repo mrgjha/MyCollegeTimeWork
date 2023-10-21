@@ -1,0 +1,83 @@
+//**************************************
+//     
+// Name: Using Java to communicate with 
+//     a CGI script
+// Description:Web browsers display form
+//     s, read user input, encode that input in
+//     to a standard format called a "query str
+//     ing", and send that data to CGI programs
+//     that live on the web server. When you wr
+//     ite an applet that talks to a CGI progra
+//     m, you have to do all this yourself.
+The first thing to know is that there are two ways a CGI program can accept data from a web browser, GET and POST. CGIs that use GET take their arguments from the URL. Programs that use POST read their arguments from standard input. 
+The second thing to know is that when you submit data to a form through a web browser, the web browser encodes the data for you. In an applet, however, you need to encode the data yourself. The data is encoded like this: Each form entry is a name-value pair. Names and values are separated from each other by equals signs (=). Pairs are separated from each other by ampersands (&).
+(Java FAQ:found on the web at:http://sunsite.unc.edu/javafaq/javafaq.html)
+// By: 
+//**************************************
+//     
+
+(&). for example, consider this form: 
+<FORM method=GET action="http://sunsite.unc.edu/javafaq/cgi-bin/getform.pl"> 
+Email: <INPUT NAME="email" size=40>
+Name: <INPUT NAME="realname" size=40> 
+<INPUT TYPE="submit" VALUE="Subscribe">
+</FORM>
+You see that this uses the GET method to communicate with a cgi-bin program at http://sunsite.unc.edu/javafaq/cgi-bin/getform.pl. It sends two fields to the CGI program, email and realname. Let's say you want to send the string "elharo@sunsite.unc.edu" for the email address, and the string "Elliotte Harold" for the real name. Then the query string would look like this:
+String qs = "email=elharo%40sunsite.unc.edu&realname=Elliotte%20Harold"; 
+The spaces in "Elliotte Harold" and the @ in "elharo@sunsite.unc.edu" have been converted into percent escapes. All non-alphanumeric characters in the values must be replaced with a % followed by their ASCII value. Thus a space becomes %20 and the @ becomes %40. 
+To send this data to the server, append a question mark (?) and the query string to the URL of the CGI program, and request that URL from the server. Thus the URL you want is:
+http://sunsite.unc.edu/javafaq/cgi-bin/getform.pl?email=elharo%40sunsite.unc.edu;realname=Elliotte%20Harold";
+in Java terms this requires constructing a URL object from this string, and opening that URL's InputStream to read the response. The following code fragment demonstrates:
+
+
+    try {
+    String thisLine;
+    String qs = ""email=elharo%40sunsite.unc.edu&realname=Elliotte%20Harold";
+    URL u = new URL("http://sunsite.unc.edu/javafaq/cgi-bin/getform.pl?" + qs);
+    DataInputStream theHTML = new DataInputStream(u.openStream());
+
+
+        while ((thisLine = theHTML.readLine()) != null) {
+        System.out.println(thisLine);
+    } 
+}
+
+
+    catch (Exception e) {
+    System.err.println(e);
+}
+Communicating with CGI programs that use POST is somewhat more complex, and it doesn't work very well in Java 1.0.2. It may be improved in Java 1.1. When POSTing to a CGI, you encode the query string exactly as you do for GET requests. However instead of merely requesting a URL's InputStream, you open a URLConnection to the CGI program. 
+do not append the query string to the URL as you did with GET. Instead set the URLConnection's doOutput and doInput fields to true and set AllowUserInteraction to false. Chain the URLConnection's OutputStream to a DataOutputStream and use the DataOutputStream's writeBytes() method to send the query string to the server. 
+if you want to read the response, then chain the URLConnection's InputStream to a DataInputStream, and use the DataInputStream's readLine() method to read the response in a while loop. The following code fragment demonstrates:
+String query = "email=elharo%40sunsite.unc.edu;realname=Elliotte%20Harold";
+
+
+    try {
+    // open the connection and prepare it to
+    //     POST
+    URL u = new URL("http://sunsite.unc.edu/javafaq/cgi-bin/postform.pl");
+    URLConnection uc = u.openConnection();
+    uc.setDoOutput(true);
+    uc.setDoInput(true);
+    uc.setAllowUserInteraction(false);
+    DataOutputStream dos = new DataOutputStream(uc.getOutputStream());
+    // Send the data
+    dos.writeBytes(query);
+    dos.close();
+    // Read the response
+    DataInputStream dis = new DataInputStream(uc.getInputStream());
+    String nextline;
+
+
+        while((nextline = dis.readLine()) != null) {
+        System.out.println(nextline);
+    }
+    dis.close();
+}
+
+
+    catch (Exception e) {
+    System.err.println(e);
+}
+As you see, posting forms is considerably more complex than using the GET method. However on some platforms, GET has an annoying habit of failing once the query string grows past 200 characters. The exact point where GET fails varies depending on the operating system and the web server. 
+

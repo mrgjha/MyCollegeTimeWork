@@ -1,0 +1,42 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include &ltstdio.h&gt
+int   old_number;     /* previous Fibonacci number */
+int   current_number; /* current Fibonacci number */
+int   next_number;    /* next number in the series */
+
+int main()
+{
+    /* start things out */
+    old_number = 1;
+    current_number = 1;
+
+    printf("1\n");    /* Print first number */
+
+    while (current_number &lt 100) {
+
+        printf("%d\n", current_number);
+        next_number = current_number + old_number;
+
+        old_number = current_number;
+        current_number = next_number;
+    }
+    return (0);
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

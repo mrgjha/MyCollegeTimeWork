@@ -1,0 +1,40 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import java.net.*;
+
+public class MyLocalIPAddress
+{
+     public static void main(String[] args) 
+      {
+	try 
+	{
+          	        InetAddress address = InetAddress.getLocalHost();
+ 	        System.out.println (address);
+        	}
+        	catch (UnknownHostException e) 
+	{
+                    System.out.println("Could not find local address!");
+        	}
+       }
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

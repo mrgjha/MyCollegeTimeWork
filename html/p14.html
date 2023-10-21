@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt;?xml version="1.0" standalone="yes"?&gt;
+&lt;!DOCTYPE PURCHASE [
+  &lt;!ELEMENT PURCHASE (HEADER, TERMS, FOOTER)&gt;
+  &lt;!ELEMENT HEADER (#PCDATA)&gt;
+  &lt;!ELEMENT TERMS (#PCDATA)&gt;
+  &lt;!ELEMENT FOOTER (#PCDATA)&gt;
+  &lt;!ENTITY company
+   "&lt;COMPANY&gt;
+      &lt;COMPANY_NAME&gt; Web Ravin Consulting &lt;/COMPANY_NAME&gt;
+      &lt;ADDRESS&gt; 555 Wilsonville Lane, Okey, OR 99999&lt;/ADDRESS&gt;
+      &lt;PHONE&gt; (555) 555-1111 &lt;/PHONE&gt;
+      &lt;FAX&gt; (555) 555-2222&lt;/FAX&gt;
+      &lt;WEB&gt; http://www.webravin.com&lt;/WEB&gt;
+   &lt;/COMPANY&gt;"
+&gt;
+  &lt;!ENTITY  pt "Payment Terms: "&gt;
+  &lt;!ENTITY  questions "This project has been completed. Please let us know if you have any questions."&gt;
+]&gt;
+&lt;PURCHASE&gt;
+    &lt;HEADER&gt; &company;&lt;/HEADER&gt;
+   &lt;TERMS&gt;&pt; Due upon Receipt&lt;/TERMS&gt;
+    &lt;FOOTER&gt;&questions;&lt;/FOOTER&gt;
+&lt;/PURCHASE&gt;
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

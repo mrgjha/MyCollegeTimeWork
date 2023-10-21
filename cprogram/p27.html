@@ -1,0 +1,79 @@
+<html>
+<head>
+
+<title>C++ allows to declare a variable to be local to a loop: 
+</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+//C++ allows to declare a variable to be local to a loop: 
+
+
+
+using namespace std;
+#include&lt;iostream&gt
+
+int main ()
+{      
+
+int i;                       // Simple declaration of i   
+
+i = 487;   
+
+for (int i = 0; i < 4; i++)  // Local declaration of i    
+
+{      
+
+cout << i << endl;        // This outputs 0, 1, 2 and 3   
+
+}   
+cout << i << endl;           // This outputs 487   
+
+return 0;
+
+}
+
+
+In case the variable is not declared somewhere above the loop, 
+you may be tempted to use it below the loop. Some early C++ compilers accept this. 
+Then the variable has the value it had when the loop ended. You shouldn't do this.
+It's a bad practice:
+
+
+
+using namespace std;
+#include&lt;iostream&gt
+
+int main ()
+
+{   
+for (int i = 0; i < 4; i++)   
+{      
+cout << i << endl;   
+}   
+
+cout << i << endl;           // Bad practice!   
+i += 5;                      // Bad practice!   
+
+cout << i << endl;           // Bad practice!   
+return 0;
+
+}
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

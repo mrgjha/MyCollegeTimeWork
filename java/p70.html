@@ -1,0 +1,64 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+import java.awt.event.*;
+import javax.swing.*;
+
+
+
+public class QuitButtonApp extends JFrame {
+
+public QuitButtonApp() {
+super("Quitter");
+this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		// QuitButton defined below
+JButton quit = new QuitButton();
+
+		// place it in its container and display
+JPanel panel = new JPanel();
+panel.add(quit);
+this.getContentPane().add(panel);
+this.pack(); // resize frame to fit panel
+this.setVisible(true); 
+	}
+
+
+public class QuitButton extends JButton {
+
+public QuitButton() {
+super("Quit");
+addActionListener(new QuitListener());
+	}
+}
+
+	
+
+
+
+	
+private class QuitListener implements ActionListener {
+public void actionPerformed(ActionEvent e)
+	{
+	System.exit(0);  // exit program
+	}
+	}
+
+public static void main (String[] argv) {
+		QuitButtonApp app = new QuitButtonApp();
+	}
+
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

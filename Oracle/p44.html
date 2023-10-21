@@ -1,0 +1,101 @@
+<html>
+<head><title>Create Tables with Constraints and Joining Them</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<h3>Create Tables with Constraints and Joining Them</h3>
+<pre>
+SQL> create table Ordinals(
+    Ordinal varchar2(10) primary key,
+    Abbreviation varchar2(10
+    )
+    );
+
+Table created.
+
+SQL> create table Cardinals(
+    Cardinal varchar2(10),
+    Ordinal varchar2(10) references Ordinals(Ordinal),
+    Abbreviation varchar2(10));
+
+Table created.
+
+
+SQL>insert into Ordinals values('&Ordinal','&Abbreviation')
+  2  /
+
+SQL> insert into Cardinals values('&Cardinal','&Ordinal','&Abbreviation')
+  2  /
+
+SQL> select * from Cardinals;
+
+CARDINAL   ORDINAL    ABBREVIATI
+---------- ---------- ----------
+One        First      1
+Two        Second     2
+Three      Third      3
+Four       Fourth     4
+Five       Fifth      5
+
+SQL> select * from Ordinals;
+
+ORDINAL    ABBREVIATI
+---------- ----------
+First      st
+Second     nd
+Third      rd
+Fourth     th
+Fifth      th
+
+
+SQL> alter table Cardinals modify Abbreviation varchar2(15);
+
+Table altered.
+
+SQL> alter table Ordinals modify Abbreviation varchar2(15);
+
+Table altered.
+
+SQL> select * from Cardinals;
+
+CARDINAL   ORDINAL    ABBREVIATION
+---------- ---------- ---------------
+One        First      1
+Two        Second     2
+Three      Third      3
+Four       Fourth     4
+Five       Fifth      5
+
+SQL> select * from Ordinals;
+
+ORDINAL    ABBREVIATION
+---------- ---------------
+First      st
+Second     nd
+Third      rd
+Fourth     th
+Fifth      th
+
+SQL> select  CARDINAL,
+    C.ABBREVIATION ,O.Ordinal,O.Abbreviation
+    from Ordinals O,Cardinals C
+    where O.Ordinal=C.Ordinal
+    /
+
+CARDINAL   ABBREVIATION    ORDINAL    ABBREVIATION
+---------- --------------- ---------- ---------------
+One        1               First      st
+Two        2               Second     nd
+Three      3               Third      rd
+Four       4               Fourth     th
+Five       5               Fifth      th
+
+</pre>
+
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

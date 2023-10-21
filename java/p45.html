@@ -1,0 +1,131 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Containers
+
+Every element of a UI must be a Component
+A Container is a Component which may 
+hold other Components, including other Containers
+Components are added to Containers 
+using Container’s add() method
+Note that all overloads of the add() 
+method require a Component parameter
+
+java.awt.Frame
+
+Frame creates a window on the screen, 
+with borders and resize controls
+it is the top-level container 
+for application GUIs
+(the browser itself provides 
+the Frame for applet GUIs)
+Frames are created invisible, with zero size
+Frames must be made visible and given a size
+
+import java.awt.*;
+import javax.swing.*;
+
+public class DemoJ {
+public static void main (String[] args) {
+   JFrame f = new JFrame ("Test Program");
+   Container cp = f.getContentPane();
+   cp.setLayout (new FlowLayout());
+   cp.add (new Label ("Name"));
+   // cp.add (…);  add more components
+   f.pack();  // shrink-wrap alternative
+   f.setSize(300, 400);//size alternative
+   f.setVisible (true);
+   
+}
+}
+
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class BorderExample extends JApplet
+{
+        JFrame frame;
+        JTextArea middle;
+        JTextField bottom;
+        JButton left, right;
+        JLabel title;
+
+ 
+ private void makeComponents()
+ {
+     frame=new JFrame("BorderExample");
+     middle=new JTextArea(10, 40);
+     bottom=new JTextField();
+     left=new JButton("left");
+     right=new JButton("right");
+     title=new JLabel("Title");
+ }
+
+ private void makeLayout()
+ {
+    Container container=frame.getContentPane();
+    container.setLayout(new BorderLayout());
+    container.add(new JScrollPane(middle),BorderLayout.CENTER);
+    container.add(title, BorderLayout.NORTH);
+    container.add(left, BorderLayout.WEST);
+    container.add(right, BorderLayout.EAST);
+    container.add(bottom, BorderLayout.SOUTH);
+    frame.pack();
+ }
+
+ public BorderExample()
+ {
+    makeComponents();
+    makeLayout();
+ }
+
+ public void setVisible(boolean vis)
+ {
+    frame.setVisible(vis);
+ }
+
+
+ public void init()
+ {
+    main(null);
+ }
+
+ public static void main(String[] args)
+ {
+    BorderExample example=new BorderExample();
+    example.setVisible(true);
+ }
+
+}
+
+
+JLabel
+text/image display
+
+JTextField
+single line for text input/output
+
+JTextArea
+multiple lines for text input/output
+
+JButton
+used for decisions
+
+JFrame
+a basic window
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<pre>
+&lt;?xml version="1.0"?&gt;
+&lt;?xml-stylesheet type="text/css" href="project.css" ?&gt;
+&lt;!DOCTYPE PROJECT_DB SYSTEM "project.dtd"&gt;
+&lt;PROJECT_DB&gt;
+  &lt;PROJECT pid="0511-001" director="Kell Attain" 
+           type="Web Development" start_date="11/1/05"&gt;
+    &lt;PROJ_NAME&gt; Xray Mind Learners Web Site &lt;/PROJ_NAME&gt;
+    &lt;CONTACT cid="kat001" contractor="WebRavin" pref_contact="email" type="primary"&gt;
+     &lt;NAME&gt; Kell Attain &lt;/NAME&gt;
+      &lt;ADDRESS&gt; Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999&lt;/ADDRESS&gt;
+      &lt;PHONE type="business"&gt; 111-555-1111 &lt;/PHONE&gt;
+      &lt;FAX type="business"&gt; 111-555-2222 &lt;/FAX&gt;
+      &lt;EMAIL type="business"&gt; kattain@webravin.com &lt;/EMAIL&gt;
+    &lt;/CONTACT&gt;
+    &lt;CONTACT cid="fch001" contractor="WebRavin" 
+             pref_contact="phone" type="marketing"&gt;
+     &lt;NAME &gt; Francis Chillington &lt;/NAME&gt;
+      &lt;ADDRESS&gt; Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999&lt;/ADDRESS&gt;
+      &lt;PHONE type="business"&gt; 111-555-1112 &lt;/PHONE&gt;
+      &lt;FAX type="business"&gt; 111-555-2222 &lt;/FAX&gt;
+      &lt;EMAIL type="business"&gt; fchillington@webravin.com &lt;/EMAIL&gt;
+    &lt;/CONTACT&gt;
+    &lt;CONTACT cid="lfi001" contractor="WebRavin" pref_contact="email" type="graphics"&gt;
+     &lt;NAME &gt; Lara Firewalker &lt;/NAME&gt;
+      &lt;ADDRESS&gt; Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999&lt;/ADDRESS&gt;
+      &lt;PHONE type="business"&gt; 111-555-1113 &lt;/PHONE&gt;
+      &lt;FAX type="business"&gt; 111-555-2222 &lt;/FAX&gt;
+      &lt;EMAIL type="business"&gt; lfirewalker@webravin.com &lt;/EMAIL&gt;
+    &lt;/CONTACT&gt;
+    &lt;NOTES&gt;
+      &lt;ENTRY date="11/03/05" contact="kta001"&gt; Development on the Web site 
+      has started. The primary graphics - logo | backgrounds | navigation 
+      system - should be done by 11/8/00.
+      &lt;/ENTRY&gt;
+    &lt;/NOTES&gt;
+  &lt;/PROJECT&gt;
+  &lt;PROJECT pid="0511-002" director="Tom Phannon" type="Database Development"&gt;
+    &lt;PROJ_NAME&gt; XML Database for Site Visitors &lt;/PROJ_NAME&gt;
+    &lt;CONTACT cid="tph001" contractor="WebRavin" 
+             pref_contact="telephone" type="primary"&gt;
+     &lt;NAME&gt; Tom Phannon &lt;/NAME&gt;
+      &lt;ADDRESS&gt; Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999&lt;/ADDRESS&gt;
+      &lt;PHONE type="business"&gt; 111-555-1122 &lt;/PHONE&gt;
+      &lt;FAX type="business"&gt; 111-555-2222 &lt;/FAX&gt;
+      &lt;EMAIL type="business"&gt; tphannon@webravin.com &lt;/EMAIL&gt;
+    &lt;/CONTACT&gt;
+    &lt;NOTES&gt;
+      &lt;ENTRY date="11/10/05" contact="tph001"&gt; 
+        Database structure is complete. Ready to start propagating the data.
+      &lt;/ENTRY&gt;
+    &lt;/NOTES&gt;
+  &lt;/PROJECT&gt;
+  &lt;PROJECT pid="0511-003" contractor="Lara Firewalker" type="Tech Support AI"&gt;
+    &lt;PROJ_NAME&gt; House of Glass &lt;/PROJ_NAME&gt;
+    &lt;CONTACT cid="swi001" contractor="WebRavin" 
+             pref_contact="email" type="primary"&gt;
+     &lt;NAME&gt; Shamu Wagonride &lt;/NAME&gt;
+      &lt;ADDRESS&gt; Web Ravin Consulting, 661 Oakey Rd, Antilles, OR 99999&lt;/ADDRESS&gt;
+      &lt;PHONE type="business"&gt; 111-555-1133 &lt;/PHONE&gt;
+      &lt;FAX type="business"&gt; 111-555-2222 &lt;/FAX&gt;
+      &lt;EMAIL type="personal"&gt; shamu@wagonride.com &lt;/EMAIL&gt;
+    &lt;/CONTACT&gt;
+    &lt;NOTES&gt;
+      &lt;ENTRY date="11/01/05" contact="swa001"&gt; 
+      AI logic model software has been picked out and ordered, as well 
+      as the equipment required to run it. Networking (MIS) has been notified 
+      of the machine's arrival and networking needs.
+      &lt;/ENTRY&gt;
+      &lt;ENTRY date="11/11/05" contact="swa001"&gt; 
+      MIS has received equipment and software and is starting the installation.
+      Expected date for network connection is 11/15/05.
+      &lt;/ENTRY&gt;
+    &lt;/NOTES&gt;
+  &lt;/PROJECT&gt;
+&lt;/PROJECT_DB&gt;
+
+
+
+
+&lt;!ELEMENT PROJECT_DB (PROJECT+)&gt;
+  &lt;!ELEMENT PROJECT (PROJ_NAME, CONTACT+, NOTES)&gt;
+    &lt;!ATTLIST PROJECT pid ID #REQUIRED&gt;
+    &lt;!ATTLIST PROJECT directory CDATA #REQUIRED&gt;
+    &lt;!ATTLIST PROJECT type CDATA #IMPLIED&gt;
+    &lt;!ATTLIST PROJECT start_date CDATA "getDate()" &gt;
+  &lt;!ELEMENT PROJ_NAME (#PCDATA)&gt;
+  &lt;!ELEMENT CONTACT (NAME, EMAIL, ADDRESS, PHONE, FAX)&gt;
+    &lt;!ATTLIST CONTACT cid ID #REQUIRED
+           pref_contact (email | telephone | fax | in_person) #REQUIRED
+           type (primary | graphics | developer | marketing) #REQUIRED
+           contractor CDATA #FIXED "WebRavin"&gt;
+  &lt;!ELEMENT NAME (#PCDATA)&gt;
+  &lt;!ELEMENT EMAIL (#PCDATA)&gt;
+    &lt;!ATTLIST EMAIL type (business | personal) "business"&gt;
+  &lt;!ELEMENT ADDRESS (#PCDATA)&gt;
+  &lt;!ELEMENT PHONE (#PCDATA)&gt;
+    &lt;!ATTLIST EMAIL type (business | personal) "business"&gt;
+  &lt;!ELEMENT FAX (#PCDATA)&gt;
+    &lt;!ATTLIST EMAIL type (business | personal) "business"&gt;
+  &lt;!ELEMENT NOTES (ENTRY+)&gt;
+  &lt;!ELEMENT ENTRY (#PCDATA)&gt;
+    &lt;!ATTLIST ENTRY cid IDREF #REQUIRED
+                    date CDATA "getDate()"&gt;
+
+
+
+
+PROJECT_DB { font-style: normal;
+             color: 000000 }
+             
+PROJECT    { display: block;
+             background: blue;
+             font-family: sans-serif;
+             margin: 1cm }
+               
+PROJ_NAME  { display: block; 
+             background: #FF0000;
+             font-size: larger;
+             font-weight: bold;        
+             word-spacing: 2em;
+             color: white ; 
+             font-family: Arial, Helvetica, sans-serif; 
+             border: #FF0000; 
+             border-style: double; 
+             border-top-width: medium; 
+             border-right-width: medium; 
+             border-bottom-width: medium; 
+             border-left-width: medium}
+                
+CONTACT    { display: block;
+             padding: 5pt;
+             text-indent: 1cm }
+
+NAME       { display: block;
+             font-variant: small-caps;
+             font-size: medium;
+             font-weight: bold;
+             color: red;
+             text-decoration: overline;}
+
+ADDRESS    { display: block;
+             font-style: italic;
+             font-size: smaller;
+             color: white}
+
+PHONE      { display: block;
+             font-weight: bold;
+             font-size: smaller;
+             color: white}
+
+FAX        { display: block;
+             font-weight: bold;
+             font-size: smaller;
+             color: white}
+
+EMAIL      { display: block;
+             font-weight: bold;
+             font-style: italic;
+             color: white}
+
+NOTES      { display: block;
+             font-weight: bold;
+             font-style: italic;
+             color: white;
+             padding: 3em}
+
+ENTRY      { display: block;}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

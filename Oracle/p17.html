@@ -1,0 +1,41 @@
+
+<html>
+<head><title>Write a function to add two number using in parameter</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<H2>Write a function to add two number using in parameter</H2>
+ <pre>
+ 
+
+create or replace function addnum(a in number,b in number)
+return number
+is
+c number(3);
+begin
+c:=a+b;
+return c;
+end;
+
+<h3>Calling Function </h3>
+
+SQL>declare
+c number(3);
+begin
+c:=addnum(2,3);
+dbms_output.put_line(c);
+end;
+
+SQL>exec dbms_output.put_line(addnum(2,3));
+
+ /
+<pre>
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

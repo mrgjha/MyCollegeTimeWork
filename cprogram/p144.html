@@ -1,0 +1,222 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include&lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+#include&lt;process.h&gt;
+void adbox(int,int,int,int);
+void abox(int,int,int,int);
+void clear(int,int,int,int);
+void samanue();
+
+char *submanue[]={"YOUR SUB MANUES TITLES STARTS HERE",
+		  "SMANU01           ", //WRITE YOUR SUB MANUE TITLES HERE
+		  "SMANU02           ",
+		  "SMANU03           ",
+		  "SMANU04           ",
+		  "SMANU05           ",
+		  "SMANU06           ",
+		  "SMANU07           ",
+		  "SMANU08           ",
+		  "SMANU09           ",
+		  "SMANU10           ",
+		  "SMANU11           ",
+		  "SMANU12           ",
+		  "SMANU13           ",
+		  "SMANU14           ",
+		  "SMANU15           ",
+		   };
+
+
+
+void main()
+{
+int fslot=0,op,key;
+clrscr();
+samanue();
+
+
+	while((key=getch())!=(0+107))
+{
+_setcursortype(_NOCURSOR);
+clear(2,21,2,10);
+//abox(2,21,2,10);
+
+switch (key)
+{
+case (0+33):
+{
+abox(2,21,2,10);
+gotoxy(4,1); textcolor(0); textbackground(GREEN);cprintf("File");
+
+textbackground(GREEN); textcolor(0);gotoxy(3,3); cprintf("%s",*(submanue+1));
+gotoxy(3,5);textbackground(WHITE); cprintf("%s",*(submanue+2)); gotoxy(3,7);
+cprintf("%s",*(submanue+3)); gotoxy(3,9); cprintf("Exit        ALT+F4");
+
+fslot=1;
+do
+{
+op=getch();
+if(op==13&&fslot==4)
+{
+//cout&lt;&lt;"exit";
+exit(1);
+}
+textbackground(0); textcolor(15);
+if(op==13&&fslot==1)
+{clear(2,21,2,10); }
+if(op==13&&fslot==2)
+{  }
+if(op==13&&fslot==3)
+{  }
+
+
+switch (fslot)
+{
+case 1:
+{
+if(op==(0+80))
+{
+gotoxy(3,3); textcolor(0);
+textbackground(WHITE);  cprintf("%s",*(submanue+1));
+gotoxy(3,5); textbackground(GREEN);
+cprintf("%s",*(submanue+2));
+fslot=2;
+}
+break;
+}
+case 2:
+{
+if(op==(0+80))
+{
+gotoxy(3,5); textcolor(0); textbackground(WHITE);
+cprintf("%s",*(submanue+2)); gotoxy(3,7);
+textbackground(GREEN); cprintf("%s",*(submanue+3));
+fslot=3;
+}
+break;
+}
+case 3:
+{
+if(op==(0+80))
+{
+gotoxy(3,9); textcolor(0); textbackground(GREEN);
+cprintf("Exit        ALT+F4"); gotoxy(3,7);
+textbackground(WHITE); cprintf("%s",*(submanue+3));
+fslot=4;
+}
+break;
+}
+case 4:
+{
+if(op==(0+80))
+{
+gotoxy(3,3); textcolor(0); textbackground(GREEN);
+cprintf("%s",*(submanue+1));  gotoxy(3,9);
+textbackground(WHITE);  cprintf("Exit        ALT+F4");
+fslot=1;
+}
+break;
+}
+}
+
+} while(op!=13);
+
+
+}}}
+}
+
+//&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;ABOX FUNCTION STARTS&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+//THIS FUNCTION DRAWS A SINGLE LINED RECTANGULAR
+void abox(int c1,int c2,int r1,int r2)
+{
+auto int a,temp,b;
+temp=r2-r1;
+	for(a=0;a&lt;temp;a++)
+		{
+		gotoxy(c1,r1); cprintf("%c",179);
+		gotoxy(c2,r1); cprintf("%c",179);
+		r1++;
+		}
+for(a=0;a&lt;temp;a++)
+{
+r1--;
+}
+b=c2-c1;
+	for(a=0;a&lt;b;a++)
+		{
+		gotoxy(c1,r1); cprintf("%c",196);
+		gotoxy(c1,r2); cprintf("%c",196);
+		c1++;
+		}
+for(a=0;a&lt;b;a++)
+{
+c1--;
+}
+	gotoxy(c2,r2); cprintf("%c",217);
+	gotoxy(c1,r1); cprintf("%c",218);
+	gotoxy(c2,r1); cprintf("%c",191);
+	gotoxy(c1,r2); cprintf("%c",192);
+}
+//&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;CLEAR FUNCTION START&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+//THIS FUNCTION CLEAR THE SPACIFIC AREA IN RECTANGLUR
+//SHAPE MEANS PRINT SPACES IN RECTANGULAR SHAPE
+void clear(int c1,int c2,int r1,int r2)
+{
+auto int a,b;
+gotoxy(c1,r1);
+	for(b=r1;b&lt;=r2;b++)
+		{
+		for(a=c1;a&lt;=c2;a++)
+		{
+gotoxy(a,b); cprintf(" ");
+}
+}
+}
+
+
+
+
+void samanue()
+{
+
+textbackground(0);
+clrscr();
+char *manu[]={"File"};
+		textcolor(BLACK);
+		textbackground(7);
+		clear(0,10,0,0);
+		gotoxy(3,1);
+		textbackground(7); textcolor(0);
+		for(int i=0;i&lt;1;i++)
+		{
+		cprintf(" %s    ",*(manu+i));
+		}
+textcolor(RED);
+gotoxy(4,1);
+cprintf("F");
+textbackground(BLACK);
+textbackground(0);
+textcolor(1);
+
+textcolor(WHITE);
+_setcursortype(_NOCURSOR);
+}
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

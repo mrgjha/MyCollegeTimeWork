@@ -1,0 +1,69 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+//program with two threads and shared object
+
+
+class MyThread implements Runnable  {
+        Shared  so;
+        public MyThread (Shared s) {  so = s;}
+        public void run() { so.method1(); }
+} // end class MyThread
+
+class YourThread implements Runnable  {
+        Shared  so;
+        public YourThread (Shared s) { so = s; }
+        public void run() { so.method2(); }     
+} // end class YourThread
+
+class HerThread implements Runnable  {
+        Shared  so;
+        public HerThread (Shared s) { so = s; }
+        public void run() {so.method3(); }
+} // end class HerThread
+class Shared {   // the 'monitor'
+
+// if 'synchronized' is removed, the outcome is unpredictable
+        public synchronized void method1( ) {
+           for (int i = 0; i < 5; i++) { System.out.print("   [1] :: " + i ) ; }
+        } 
+
+// if the 'synchronized' is removed, the outcome is unpredictable
+        public  synchronized void method2( ) {
+          for (int i = 0; i < 5; i++) { System.out.print("   [2] :: " + i ) ;  }
+        } 
+
+// if the 'synchronized' is removed, the outcome is unpredictable
+        public  synchronized void method3( ) {
+          for (int i = 0; i < 5; i++) { System.out.print("   [3] :: " + i ) ; }
+        }
+
+} // end class Shared
+class MyMainClass {
+        public static void main(String [] args  ) {
+            Shared sharedObject = new Shared (); 
+            Thread t1 = new Thread(new MyThread(sharedObject));
+               Thread t2 = new Thread(new YourThread(sharedObject));
+               Thread t3 = new Thread(new HerThread(sharedObject));
+              
+            t1.start();
+            t2.start();
+            t3.start();
+        
+       } // end main()
+
+}       // end class ThreadEx5
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

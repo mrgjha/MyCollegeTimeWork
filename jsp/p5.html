@@ -1,0 +1,30 @@
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<b>
+<pre>
+
+
+&lt%@ page language="java" contentType="text/html" %&gt
+&lthtml&gt
+   &ltbody&gt
+       &lt% java.util.Date clock = new java.util.Date(); %&gt
+       &lt% if (clock.getHours() &lt 12) { %&gt
+           &lth1&gtGood morning!&lt/h1&gt
+       &lt% } else if (clock.getHours() &lt 18) { %&gt
+           &lth1&gtGood afternoon!&lt/h1&gt
+       &lt% } else { %&gt
+           &lth1&gtGood evening!&lt/h1&gt
+       &lt% } %&gt
+       Welcome to the test site!
+       &ltp&gtThe time is: 
+       &lt%= java.text.DateFormat.getTimeInstance().format(clock) %&gt
+      
+   &lt/body&gt
+&lt/html&gt
+</pre>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

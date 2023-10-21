@@ -1,0 +1,65 @@
+<html>
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+// Overload ().
+#include &lt;iostream.h&gt;
+
+class three_d {
+  int x, y, z; // 3-D coordinates
+public:
+  three_d() { x = y = z = 0; }
+  three_d(int i, int j, int k) {x = i; y = j; z = k; }
+  three_d operator()(int a, int b, int c);
+  void show() ;
+};
+
+// Overload ().
+three_d three_d::operator()(int a, int b, int c)
+{
+  three_d temp;
+
+  temp.x = x + a;
+  temp.y = y + b;
+  temp.z = z + c;
+
+  return temp;
+}
+
+// Show X, Y, Z coordinates.
+void three_d::show()
+{
+  cout &lt;&lt; x &lt;&lt; ", ";
+  cout &lt;&lt; y &lt;&lt; ", ";
+  cout &lt;&lt; z &lt;&lt; "\n";
+}
+
+int main()
+{
+  three_d ob1(1, 2, 3), ob2;
+
+  ob2 = ob1(10, 11, 12); // invoke operator()
+
+  cout &lt;&lt; "ob1: ";
+  ob1.show();
+
+  cout &lt;&lt; "ob2: ";
+  ob2.show();
+
+  return 0;
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

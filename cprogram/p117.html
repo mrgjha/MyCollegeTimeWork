@@ -1,0 +1,69 @@
+<html>
+<head>
+
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include &lt;iostream.h&gt;
+
+class CL {
+public:
+  int count;
+  CL operator=(CL obj);
+  friend CL operator+(CL ob, int i);
+  friend CL operator+(int i, CL ob);
+};
+
+CL CL::operator=(CL obj)
+{
+  count = obj.count;
+  return *this;
+}
+
+// This handles ob + int.
+CL operator+(CL ob, int i)
+{
+  CL temp;
+
+  temp.count = ob.count + i;
+  return temp;
+}
+
+// This handles int + ob.
+CL operator+(int i, CL ob)
+{
+  CL temp;
+
+  temp.count = ob.count + i;
+  return temp;
+}
+
+int main()
+{
+  CL O;
+
+  O.count = 10;
+  cout &lt;&lt; O.count &lt;&lt; " "; // outputs 10
+
+  O = 10 + O; // add object to integer
+  cout &lt;&lt; O.count &lt;&lt; " "; // outputs 20
+
+  O = O + 12; // add integer to object
+  cout &lt;&lt; O.count;        // outputs 32
+
+  return 0;
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

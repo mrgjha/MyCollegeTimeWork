@@ -1,0 +1,385 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+
+struct address {
+  char name[30];
+  char street[40];
+  char city[20];
+  char state[3];
+  char zip[11];
+  struct address *next;  /* pointer to next entry */
+
+};
+
+
+struct address *start;  /* pointer to first entry in list */
+struct address *last;
+
+struct address *find(char *);
+
+void enter(void), search(void), save(void);
+void load(void), list(void),edit();
+void store(struct address *,
+	     struct address **,struct address **);
+
+void delete(struct address **,struct address **);/* end of list */
+
+void inputs(char *, char *, int), display(struct address *);
+int menu_select(void);
+
+void main(void)
+{
+
+start= NULL;  /* initialize start and end pointers */
+last=NULL;
+  
+
+clrscr();
+
+  for(;;) {
+switch(menu_select()) {
+
+
+case 1: enter(); /* enter an address */
+	break;
+case 2: delete(&start,&last); /* remove an address */
+	break;
+case 3: list(); /* display the list */
+	break;
+case 4: search(); /* find an address */
+	break;
+case 5: edit();  /* save list to disk */
+	break;
+case 6: save();  /* read from disk */
+	break;
+case 7: load();
+        break;
+case 8: exit(0);
+    }
+  }
+
+}
+
+/* Select an operation. */
+int menu_select(void)
+{
+  char s[80];
+  int c;
+
+  printf("1. Enter a name\n");
+  printf("2. Delete a name\n");
+  printf("3. List the file\n");
+  printf("4. Search\n");
+  printf("5. Edit a name\n");
+  printf("6. Save the file\n");
+  printf("7. Load the file\n");
+  printf("8. Quit\n");
+  do {
+    printf("\nEnter your choice: ");
+    gets(s);
+    c = atoi(s);
+  } while(c&lt;0 || c&gt;8);
+  return c;
+}
+
+/* Enter names and addresses. */
+void enter(void)
+{
+  struct address *info;
+
+if(!start)
+{  start= NULL;  /* initialize start and end pointers */
+   last=NULL;
+   }
+  for(;;) {
+    info = (struct address *)malloc(sizeof(struct address));
+    if(!info) {
+      printf("\nout of memory");
+      return;
+    }
+
+    inputs("Enter name: ", info-&gt;name, 30);
+    if(!info-&gt;name[0]) break;  /* stop entering */
+    inputs("Enter street: ", info-&gt;street, 40);
+    inputs("Enter city: ", info-&gt;city, 20);
+    inputs("Enter state: ", info-&gt;state, 3);
+    inputs("Enter zip: ", info-&gt;zip, 10);
+
+    store(info,&start,&last);
+  } /* entry loop */
+}
+
+/* This function will input a string up to
+   the length in count and will prevent
+   the string from being overrun.  It will also
+   display a prompting message. */
+void inputs(char *prompt, char *s, int count)
+{
+  char p[255];
+
+  do {
+    printf(prompt);
+    fgets(p, 254, stdin);
+    if(strlen(p) &gt; count) printf("\nToo Long\n");
+  } while(strlen(p) &gt; count);
+
+  p[strlen(p)-1] = 0; /* remove newline character */
+  strcpy(s, p);
+}
+/* This function actually prints the fields in each address. */
+void display(struct address *info)
+{
+    printf("%s\n", info-&gt;name);
+    printf("%s\n", info-&gt;street);
+    printf("%s\n", info-&gt;city);
+    printf("%s\n", info-&gt;state);
+    printf("%s\n", info-&gt;zip);
+    printf("\n\n");
+}
+
+
+
+void store(struct address *i,struct address **start,
+             struct address **last)
+{
+  struct address *old, *p;
+
+  p = *start;
+
+  if(!*last) { /* first element in list */
+    i-&gt;next = NULL;
+    *last = i;
+    *start = i;
+    return;
+  }
+
+  old = NULL;
+
+  while(p) {
+    if(strcmp(p-&gt;name, i-&gt;name)&lt;0) {
+      old = p;
+      p = p-&gt;next;
+    }
+    else {
+      if(old) { /* goes in middle */
+        old-&gt;next = i;
+	i-&gt;next = p;
+	return;
+      }
+      i-&gt;next = p; /* new first element */
+      *start = i;
+      return;
+    }
+  }
+  (*last)-&gt;next = i; /* put on end */
+  i-&gt;next = NULL;
+  *last = i;
+}
+
+
+
+
+/* Display the entire list. */
+void list(void)
+{
+  struct address *info;
+info=start;
+
+
+  while(info) {
+display(info);
+getch();
+    info = info-&gt;next;  /* get next address */
+  }
+
+}
+
+
+/* Find an address. */
+struct address *find( char *name)
+{
+struct address *info;
+
+info = start;
+while(info) {
+if(!strcmp(name, info-&gt;name)) return info;
+info = info-&gt;next;  /* get next address */
+}
+printf("Name not found.\n");
+return NULL;  /* not found */
+}
+
+
+
+/* Look for a name in the list. */
+void search(void)
+{
+char name[40];
+struct address *info;
+
+printf("Enter name to find: ");
+gets(name);
+info = find(name);
+if(!info) printf("Not Found\n");
+else display(info);
+}
+
+
+/* Save the file to disk. */
+void save(void)
+{
+struct address *info;
+
+FILE *fp;
+
+fp = fopen("mlist", "wb");
+if(!fp) {
+printf("Cannot open file.\n");
+exit(1);
+}
+printf("\nSaving File\n");
+
+info = start;
+while(info) {
+fwrite(info, sizeof(struct address), 1, fp);
+info = info-&gt;next;  /* get next address */
+}
+fclose(fp);
+}
+
+/* Load the address file. */
+void load()
+{
+struct address *info;
+FILE *fp;
+fp = fopen("mlist", "rb");
+if(!fp) {
+printf("Cannot open file.\n");
+exit(1);
+}
+
+  /* free any previously allocated memory */
+while(start) {
+info = start-&gt;next;
+free(info);
+start = info;
+  }
+
+/* reset top pointers */
+start =last=NULL;
+
+printf("\nLoading File\n");
+while(!feof(fp)) {
+info = (struct address *) malloc(sizeof(struct address));
+if(!info) {
+printf("Out of Memory");
+return;
+}
+
+if(1 != fread(info, sizeof(struct address), 1, fp)) break;
+store(info,&start,&last);
+}
+fclose(fp);
+}
+
+
+void delete(struct address **start,struct address **last) /* end of list */
+{
+
+char s[80];
+
+struct address *p1,*p2; /* previous item */
+struct address *i; /* item to delete */
+
+inputs("Enter name: ", s, 30);
+i = find(s);
+if(!i)
+{
+printf("Not Found\n");
+return;
+}
+else display(i);
+if((*start)==i)
+{
+free(*start);
+(*start)=(*start)-&gt;next;
+}
+else
+{
+p1=(*start);
+p2=p1-&gt;next;
+
+while(p2-&gt;next!=NULL)
+{
+
+if (p1-&gt;next==i)
+{
+
+
+
+free(p1-&gt;next);
+p1-&gt;next=i-&gt;next;
+}
+p1=p2;
+p2=p1-&gt;next;
+
+
+}
+if (p1-&gt;next==i)
+{
+
+
+free(p1-&gt;next);
+p1-&gt;next=NULL;
+*last=p1;
+
+}
+
+}
+}
+
+
+void edit()
+{
+
+char s[80];
+struct address *e; /* item to delete */
+inputs("Enter name: ", s, 30);
+e = find(s);
+
+if(!e)
+  {
+printf("Not Found\n");
+return;
+   }
+
+else display(e);
+
+inputs("Enter name: ", e-&gt;name, 30);
+inputs("Enter street: ", e-&gt;street, 40);
+inputs("Enter city: ", e-&gt;city, 20);
+inputs("Enter state: ", e-&gt;state, 3);
+inputs("Enter zip: ", e-&gt;zip, 10);
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

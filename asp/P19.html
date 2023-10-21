@@ -1,0 +1,186 @@
+
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Registration Form that Stores Cookies&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#ADD8E6"&gt;
+  &lt;center&gt;&lt;h1&gt;HTML &amp; Web Design Tips &amp; Techniques&lt;/h1&gt;&lt;hr /&gt;
+
+    &lt;form name="RegistrationForm" action="RegisterVisitor.asp"
+          method="POST"&gt;
+      &lt;table border="0" cellspacing="1" width="408" height="183"&gt;
+        &lt;tr&gt;
+          &lt;td width="127" height="22" align="right"&gt;First Name&lt;/td&gt;
+          &lt;td width="274" colspan="4" height="22"&gt;
+            &lt;input type="text" name="firstName" size="40" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td width="127" height="22" align="right"&gt;Last Name&lt;/td&gt;
+          &lt;td width="274" colspan="4" height="22"&gt;
+            &lt;input type="text" name="lastName" size="40" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td width="127" height="22" align="right"&gt;Address&lt;/td&gt;
+          &lt;td width="274" colspan="4" height="22"&gt;
+            &lt;input type="text" name="streetAddress1" size="40" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td width="127" height="22" align="right"&gt;&nbsp;&lt;/td&gt;
+          &lt;td width="274" colspan="4" height="22"&gt;
+            &lt;input type="text" name="streetAddress2" size="40" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td width="127" height="22" align="right"&gt;City&nbsp;&lt;/td&gt;
+          &lt;td width="274" colspan="4" height="22"&gt;
+            &lt;input type="text" name="City" size="40" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td width="127" height="1" align="right"&gt;&lt;/td&gt;
+          &lt;td width="31" height="1"&gt;State&lt;/td&gt;
+          &lt;td width="29" height="1"&gt;
+	    &lt;input type="text" name="state" size="4" /&gt;&lt;/td&gt;
+          &lt;td width="68" height="1"&gt;Zip Code&lt;/td&gt;
+          &lt;td width="146" height="1"&gt;
+	    &lt;input type="text" name="zipCode" size="10" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+
+        &lt;tr&gt;
+          &lt;td width="127" height="22" align="right"&gt;E-Mail Address&lt;/td&gt;
+          &lt;td width="274" colspan="4" height="22"&gt;
+	    &lt;input type="text" name="eMailAddress" size="40" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+
+
+        &lt;tr&gt;
+          &lt;td width="313" colspan="5" height="46"&gt;&lt;br /&gt;
+            &lt;input type="submit" value="Save" /&gt;&nbsp; &lt;input type="reset" /&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/form&gt;
+  &lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;Registration Form that Loads Cookies&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body bgcolor="#ADD8E6"&gt;
+  &lt;center&gt;&lt;h1&gt;HTML &amp; Web Design Tips &amp; Techniques&lt;/h1&gt;&lt;/center&gt;
+  &lt;hr /&gt;
+
+  &lt;center&gt;&lt;h2&gt;Welcome Back!&lt;/h2&gt;&lt;/center&gt;
+  &lt;hr /&gt;
+
+  &lt;form name="RegistrationForm" action="RegisterVisitor.asp"
+        method="POST"&gt;
+&lt;%
+  With Response
+   .Write "First Name: &lt;input type='text' name='firstName'" & _
+      "size='40' value='" & request.Cookies("firstName") & _
+      "'&gt;&lt;br&gt;"
+   .Write "Last Name: &lt;input type='text' name='lastName'" & _
+      "size='40' value='" & request.Cookies("lastName") & _
+      "'&gt;&lt;br&gt;"
+   .Write "Address 1: &lt;input type='text' " & _
+      "name='streetAddress1' size='40' value='" & _
+      request.Cookies("streetAddress1") &"'&gt;&lt;br&gt;"
+   .Write "Address 2: &lt;input type='text' " & _
+      "name='streetAddress2' size='40' value='" & _
+      request.Cookies("streetAddress2") &"'&gt;&lt;br&gt;"
+   .Write "City: &lt;input type='text' name='city'" & _
+      "size='40' value='" & request.Cookies("city") &"'&gt;&lt;br&gt;"
+   .Write "State: &lt;input type='text' name='state'" & _
+      "size='4' value='" & request.Cookies("state") & _
+      "'&gt;&nbsp;&nbsp;"
+   .Write "Zip Code: &lt;input type='text' name='zipCode'" & _
+      "size='10' value='" & request.Cookies("zipCode") &"'&gt;&lt;br&gt;"
+   .Write "E-Mail Address: &lt;input type='text' " & _
+      "name='eMailAddress' size='40' value='" & _
+      request.Cookies("eMailAddress") & "'&gt;&lt;br&gt;&lt;br&gt;"
+  End With
+%&gt;
+    &lt;input type="submit" value="Save" /&gt; &nbsp;&nbsp;
+    &lt;input type="reset" /&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+&lt;%
+
+' *********************************************************
+' **** Subroutine: "StoreCookie" stores a cookie value ****
+' *********************************************************
+
+  Sub StoreCookie(cookieName, cookieValue, expDate)
+    Response.Cookies(cookieName) = cookieValue
+    Response.Cookies(cookieName).Expires = expDate
+  end sub
+
+'*********************************************
+'** store the name, street address, and     **
+'** e-mail address in cookies for later use **
+'*********************************************
+
+  StoreCookie "firstName",Request.Form("firstName"), Date + 30
+  StoreCookie "lastName",Request.Form("lastName"), Date + 30
+  StoreCookie "streetAddress1",Request.Form("streetAddress1"), _
+    Date + 30
+  StoreCookie "streetAddress2",Request.Form("streetAddress2"), _
+    Date + 30
+  StoreCookie "city",Request.Form("city"), Date + 30
+  StoreCookie "state",Request.Form("state"), Date + 30
+  StoreCookie "zipCode",Request.Form("zipCode"), Date + 30
+  StoreCookie "eMailAddress",Request.Form("eMailAddress"), _
+    Date + 30
+
+  Response.Redirect "Figure11-04Welcome.asp" 
+%&gt;
+
+
+
+
+
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+&lthtml&gt 
+&lthead&gt&lttitle&gtAppending to a file in PHP&lt/title&gt&lt/head&gt 
+&ltbody&gt 
+&lth1&gtAppending to a file in PHP&lt/h1&gt 
+
+&lt?php 
+
+// Open the file for appending. If the file does not exist an 
+// attempt will be made to create it. 
+
+$out_file = @fopen("test.dat", "a") or die("Cannot open test.dat");   
+
+
+fwrite($out_file, "This is line 1" . "\n"); 
+fwrite($out_file, "This is line 2" . "\n"); 
+fwrite($out_file, sin(1.0) . "\n"); 
+fwrite($out_file, sin(2.0) . "\n"); 
+
+// Close the output file 
+
+fclose($out_file); 
+?&gt 
+
+&lta href="read.php"&gtRead the file&lt/a&gt 
+
+&lt/body&gt 
+&lt/html&gt 
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</pre>
+</body>
+</html>

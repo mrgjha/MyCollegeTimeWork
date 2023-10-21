@@ -1,0 +1,25 @@
+#include <iostream.h>
+
+class three_d {
+public:
+  int x, y, z; // 3-d coordinates
+  three_d(int a, int b, int c) {x=a; y=b; z=c;}
+} ;
+
+// Display X, Y, Z coordinates - three_d inserter.
+ostream &operator<<(ostream &stream, three_d obj)
+{
+  stream << obj.x << ", ";
+  stream << obj.y << ", ";
+  stream << obj.z << "\n";
+  return stream;  // return the stream
+}
+
+int main()
+{
+  three_d a(1, 2, 3), b(3, 4, 5), c(5, 6, 7);
+
+  cout << a << b << c;
+
+  return 0;
+}

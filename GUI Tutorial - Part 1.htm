@@ -1,0 +1,2210 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 10">
+<meta name=Originator content="Microsoft Word 10">
+<link rel=File-List href="GUI%20Tutorial%20-%20Part%201_files/filelist.xml">
+<link rel=Edit-Time-Data href="GUI%20Tutorial%20-%20Part%201_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>GUI Tutorial – Part One</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Daniel</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>Gyanendra Jha</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>2</o:TotalTime>
+  <o:Created>2006-03-02T05:17:00Z</o:Created>
+  <o:LastSaved>2006-03-02T05:17:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>1645</o:Words>
+  <o:Characters>9382</o:Characters>
+  <o:Company>Home</o:Company>
+  <o:Lines>78</o:Lines>
+  <o:Paragraphs>22</o:Paragraphs>
+  <o:CharactersWithSpaces>11005</o:CharactersWithSpaces>
+  <o:Version>10.3311</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DoNotHyphenateCaps/>
+  <w:PunctuationKerning/>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;
+	font-weight:bold;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-weight:bold;
+	font-style:italic;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;
+	font-weight:bold;}
+h4
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+h5
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	font-size:13.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;
+	font-style:italic;}
+h6
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:7;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:8;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:9;
+	font-size:11.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex1, li.MsoIndex1, div.MsoIndex1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex2, li.MsoIndex2, div.MsoIndex2
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex3, li.MsoIndex3, div.MsoIndex3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex4, li.MsoIndex4, div.MsoIndex4
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex5, li.MsoIndex5, div.MsoIndex5
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:60.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex6, li.MsoIndex6, div.MsoIndex6
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex7, li.MsoIndex7, div.MsoIndex7
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:84.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex8, li.MsoIndex8, div.MsoIndex8
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:96.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndex9, li.MsoIndex9, div.MsoIndex9
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.5in;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:60.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:84.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{mso-style-update:auto;
+	mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:96.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.0in right 6.0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoIndexHeading, li.MsoIndexHeading, div.MsoIndexHeading
+	{mso-style-noshow:yes;
+	mso-style-next:"Index 1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-24.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoEnvelopeAddress, li.MsoEnvelopeAddress, div.MsoEnvelopeAddress
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:2.0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-element:frame;
+	mso-element-frame-width:5.5in;
+	mso-element-frame-height:99.0pt;
+	mso-element-frame-hspace:9.0pt;
+	mso-element-wrap:auto;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:center;
+	mso-element-top:bottom;
+	mso-height-rule:exactly;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoEnvelopeReturn, li.MsoEnvelopeReturn, div.MsoEnvelopeReturn
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToa, li.MsoToa, div.MsoToa
+	{mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoMacroText, li.MsoMacroText, div.MsoMacroText
+	{mso-style-noshow:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:24.0pt 48.0pt 1.0in 96.0pt 120.0pt 2.0in 168.0pt 192.0pt 3.0in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoToaHeading, li.MsoToaHeading, div.MsoToaHeading
+	{mso-style-noshow:yes;
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoList, li.MsoList, div.MsoList
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{mso-style-update:auto;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l9 level1 lfo12;
+	tab-stops:list .25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l8 level1 lfo17;
+	tab-stops:list .25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList2, li.MsoList2, div.MsoList2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList3, li.MsoList3, div.MsoList3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList4, li.MsoList4, div.MsoList4
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList5, li.MsoList5, div.MsoList5
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-update:auto;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l7 level1 lfo13;
+	tab-stops:list .5in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-update:auto;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l6 level1 lfo14;
+	tab-stops:list .75in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-update:auto;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l5 level1 lfo15;
+	tab-stops:list 1.0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet5, li.MsoListBullet5, div.MsoListBullet5
+	{mso-style-update:auto;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l4 level1 lfo16;
+	tab-stops:list 1.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l3 level1 lfo18;
+	tab-stops:list .5in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l2 level1 lfo19;
+	tab-stops:list .75in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo20;
+	tab-stops:list 1.0in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber5, li.MsoListNumber5, div.MsoListNumber5
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-indent:-.25in;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo21;
+	tab-stops:list 1.25in;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	font-weight:bold;}
+p.MsoClosing, li.MsoClosing, div.MsoClosing
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:3.0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoSignature, li.MsoSignature, div.MsoSignature
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:3.0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue, li.MsoListContinue, div.MsoListContinue
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue2, li.MsoListContinue2, div.MsoListContinue2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.5in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.75in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue4, li.MsoListContinue4, div.MsoListContinue4
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue5, li.MsoListContinue5, div.MsoListContinue5
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:1.25in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoMessageHeader, li.MsoMessageHeader, div.MsoMessageHeader
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.75in;
+	margin-bottom:.0001pt;
+	text-indent:-.75in;
+	mso-pagination:widow-orphan;
+	background:#CCCCCC;
+	mso-shading:windowtext;
+	mso-pattern:gray-20 auto;
+	border:none;
+	mso-border-alt:solid windowtext .75pt;
+	padding:0in;
+	mso-padding-alt:1.0pt 1.0pt 1.0pt 1.0pt;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoSalutation, li.MsoSalutation, div.MsoSalutation
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoDate, li.MsoDate, div.MsoDate
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextFirstIndent, li.MsoBodyTextFirstIndent, div.MsoBodyTextFirstIndent
+	{mso-style-parent:"Body Text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	text-indent:10.5pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextFirstIndent2, li.MsoBodyTextFirstIndent2, div.MsoBodyTextFirstIndent2
+	{mso-style-parent:"Body Text Indent";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	text-indent:10.5pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoNoteHeading, li.MsoNoteHeading, div.MsoNoteHeading
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent2, li.MsoBodyTextIndent2, div.MsoBodyTextIndent2
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	line-height:200%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent3, li.MsoBodyTextIndent3, div.MsoBodyTextIndent3
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:.25in;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
+	{margin-top:0in;
+	margin-right:1.0in;
+	margin-bottom:6.0pt;
+	margin-left:1.0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	background:navy;
+	font-size:12.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoAutoSig, li.MsoAutoSig, div.MsoAutoSig
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+address
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	font-style:italic;}
+pre
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:.5in;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-noshow:yes;
+	mso-style-parent:"Comment Text";
+	mso-style-next:"Comment Text";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-footer:url("GUI%20Tutorial%20-%20Part%201_files/header.htm") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:-132;
+	mso-list-type:simple;
+	mso-list-template-ids:-1104793474;}
+@list l0:level1
+	{mso-level-style-link:"List Number 5";
+	mso-level-tab-stop:1.25in;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:-131;
+	mso-list-type:simple;
+	mso-list-template-ids:-738309862;}
+@list l1:level1
+	{mso-level-style-link:"List Number 4";
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:-130;
+	mso-list-type:simple;
+	mso-list-template-ids:-1638863298;}
+@list l2:level1
+	{mso-level-style-link:"List Number 3";
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:-129;
+	mso-list-type:simple;
+	mso-list-template-ids:-1519462842;}
+@list l3:level1
+	{mso-level-style-link:"List Number 2";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:-128;
+	mso-list-type:simple;
+	mso-list-template-ids:1248483788;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"List Bullet 5";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.25in;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l5
+	{mso-list-id:-127;
+	mso-list-type:simple;
+	mso-list-template-ids:1783629278;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"List Bullet 4";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l6
+	{mso-list-id:-126;
+	mso-list-type:simple;
+	mso-list-template-ids:2124204044;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"List Bullet 3";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.75in;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l7
+	{mso-list-id:-125;
+	mso-list-type:simple;
+	mso-list-template-ids:-449534368;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"List Bullet 2";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l8
+	{mso-list-id:-120;
+	mso-list-type:simple;
+	mso-list-template-ids:-1372292288;}
+@list l8:level1
+	{mso-level-style-link:"List Number";
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;}
+@list l9
+	{mso-list-id:-119;
+	mso-list-type:simple;
+	mso-list-template-ids:1899022714;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"List Bullet";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.25in;
+	mso-level-number-position:left;
+	margin-left:.25in;
+	text-indent:-.25in;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l10
+	{mso-list-id:392969281;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2111790112 67698699 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0D8;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-bidi-font-family:Wingdings;}
+@list l10:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l10:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-bidi-font-family:Wingdings;}
+@list l10:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l10:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l10:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-bidi-font-family:Wingdings;}
+@list l10:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Symbol;
+	mso-bidi-font-family:Symbol;}
+@list l10:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:"Courier New";}
+@list l10:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	font-family:Wingdings;
+	mso-bidi-font-family:Wingdings;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><u><span
+style='font-size:20.0pt'>GUI Tutorial – Part One<o:p></o:p></span></u></p>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span
+style='font-size:14.0pt'>Ðonny Nadolny<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><u><span style='font-size:16.0pt'>Introduction<o:p></o:p></span></u></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><span style='mso-tab-count:
+1'>          </span>This tutorial will teach you about Graphical User
+Interfaces, or GUI’s. GUI’s are important because it’s an effective way for the
+user to interact with the program. The way Java allows you to create GUI’s is
+the Abstract Windowing Toolkit, or AWT. The </span><span style='font-family:
+Arial;color:blue'>java.awt</span><span style='font-size:14.0pt'> package
+includes:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo11;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
+Wingdings'><span style='mso-list:Ignore'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>Buttons,
+checkboxes, labels, other basic components<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo11;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
+Wingdings'><span style='mso-list:Ignore'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>Text fields, text
+areas, and other more complex components<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo11;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
+Wingdings'><span style='mso-list:Ignore'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>Dialog boxes and
+other windows<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;mso-list:l10 level1 lfo11;
+tab-stops:list .5in'><![if !supportLists]><span style='font-size:14.0pt;
+font-family:Wingdings;mso-fareast-font-family:Wingdings;mso-bidi-font-family:
+Wingdings'><span style='mso-list:Ignore'>Ø<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:14.0pt'>Drop down boxes
+and other menus<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This tutorial is divided into
+two parts – The first one (which you’re reading right now) will teach you about
+the different AWT components. It will teach you what they are, how to use them,
+give a complete working example of it (located in the Part 1 folder in the Code
+directory), and give a screenshot of what it looks like. The second one will
+teach you about all the events that these different objects have. You’ll learn
+how to set up event handling, how to detect which object the event belongs to,
+and more.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><span style='font-size:14.0pt'>Well,
+it’s time to start coding!<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><a
+name=TableOfContents><u><span style='font-size:16.0pt'>Table of Contents<o:p></o:p></span></u></a></p>
+
+<p class=MsoNormal><span style='mso-bookmark:TableOfContents'><u><span
+style='font-size:16.0pt'><o:p><span style='text-decoration:none'>&nbsp;</span></o:p></span></u></span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-yfti-tbllook:480;mso-padding-alt:0in 5.4pt 0in 5.4pt;mso-border-insideh:
+ .5pt solid windowtext;mso-border-insidev:.5pt solid windowtext'>
+ <tr style='mso-yfti-irow:0'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:16.0pt'>Section<o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border:solid windowtext 1.0pt;
+  border-left:none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:16.0pt'>Page #<o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#Button"
+  title="Buttons - These are objects that the user can click to perform an action."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Buttons</span></b></span><span
+  style='mso-bookmark:TableOfContents'></span></a><span style='mso-bookmark:
+  TableOfContents'><u><span style='font-size:16.0pt'><o:p></o:p></span></u></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>3<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#Label"
+  title="Labels - These are used to display one line of text to the user."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Labels</span></b></span><span
+  style='mso-bookmark:TableOfContents'></span></a><span style='mso-bookmark:
+  TableOfContents'><u><span style='font-size:16.0pt'><o:p></o:p></span></u></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>4<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#TextField"
+  title="Text Fields - These allow the user to enter one line of text."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Text
+  Fields</span></b></span><span style='mso-bookmark:TableOfContents'></span></a><span
+  style='mso-bookmark:TableOfContents'><u><span style='font-size:16.0pt'><o:p></o:p></span></u></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>4<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#TextArea"
+  title="Text Areas - These allow the user to enter more than one line of text."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Text
+  Areas</span></b></span><span style='mso-bookmark:TableOfContents'></span></a><span
+  style='mso-bookmark:TableOfContents'><u><span style='font-size:16.0pt'><o:p></o:p></span></u></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>4<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#CheckBox"
+  title="Check Boxes - These have two states: Checked and Unchecked."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Check
+  Boxes</span></b></span><span style='mso-bookmark:TableOfContents'></span></a><span
+  style='mso-bookmark:TableOfContents'><u><span style='font-size:16.0pt'><o:p></o:p></span></u></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>5<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#RadioButton"
+  title="Radio Buttons - These are always in groups, only one of them may be selected."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Radio
+  Buttons</span></b></span><span style='mso-bookmark:TableOfContents'></span></a><span
+  style='mso-bookmark:TableOfContents'><u><span style='font-size:16.0pt'><o:p></o:p></span></u></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>5<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#DropDownList"
+  title="Drop Down Lists - These allow the user to select from a list of options."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Drop
+  Down Lists</span></b></span><span style='mso-bookmark:TableOfContents'></span></a><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'><o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>6<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#Panel"
+  title="Panels - These are used to hold other objects, to organize code or use different layout managers."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Panels</span></b></span><span
+  style='mso-bookmark:TableOfContents'></span></a><span style='mso-bookmark:
+  TableOfContents'><b><span style='font-size:14.0pt'><o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>6<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+ <tr style='mso-yfti-irow:9;mso-yfti-lastrow:yes'>
+  <td width=463 valign=top style='width:347.4pt;border:solid windowtext 1.0pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal><span style='mso-bookmark:TableOfContents'></span><a
+  href="#LayoutManager"
+  title="Layout Managers - These are different ways of having your objects layed out on the screen."><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'>Layout
+  Managers</span></b></span><span style='mso-bookmark:TableOfContents'></span></a><span
+  style='mso-bookmark:TableOfContents'><b><span style='font-size:14.0pt'><o:p></o:p></span></b></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+  <td width=127 valign=top style='width:95.4pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=MsoNormal align=center style='text-align:center'><span
+  style='mso-bookmark:TableOfContents'><span style='font-size:16.0pt'>7<o:p></o:p></span></span></p>
+  </td>
+  <span style='mso-bookmark:TableOfContents'></span>
+ </tr>
+</table>
+
+<span style='mso-bookmark:TableOfContents'></span>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><a name=Button><b><u><span style='font-size:14.0pt'>Buttons<o:p></o:p></span></u></b></a></p>
+
+<span style='mso-bookmark:Button'></span>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>First, here’s an example of
+code to produce a basic AWT component – the button:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>import
+java.awt.*;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>public class SimpleButton
+extends java.applet.Applet {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'><span
+style='mso-tab-count:1'>            </span>Button helloButton = new
+Button(“Hello World!”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'><span
+style='mso-tab-count:1'>            </span>public void init() {<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'><span
+style='mso-tab-count:2'>                        </span>add(helloButton);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'><span
+style='mso-tab-count:1'>            </span>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>First, you need to import the
+java AWT package by typing:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>import
+java.awt.*;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This is required in every bit
+of code you make that has these components!<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Next, you need to declare the
+class, this one will be named <b>SimpleButton </b>and it’s an applet so it
+needs to extend the Applet code.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, you need to declare the
+button like this:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Button helloButton
+= new Button(“Hello World!”);</span><span style='font-size:14.0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>The <b>new Button(“</b> part
+tells Java that the button’s caption will be Hello World!<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, to let the button show
+up, you need to add it during the init method:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(helloButton);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, because it’s an applet,
+you need to create a web page to show it. Here’s the code:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>&lt;HTML&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>&lt;BODY&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>&lt;APPLET
+CODE=SimpleButton.class WIDTH=100 HEIGHT=100&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>&lt;/APPLET&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>&lt;/BODY&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>&lt;/HTML&gt;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>The result of this code is
+this:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:68.25pt;
+ height:24.75pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image001.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=91 height=33
+src="GUI%20Tutorial%20-%20Part%201_files/image002.jpg" v:shapes="_x0000_i1025"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>After we cover all of the
+basic AWT components you’ll learn how to make them do stuff using events. Until
+then, just play around with them.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Also, because of the number
+of components, rather than writing out all the code all the time, I’ll just
+write out the main parts of it, refer to the Code directory for the complete
+listing.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><a href="#TableOfContents"
+title="Table of Contents">Table of Contents</a><o:p></o:p></span></p>
+
+<p class=MsoNormal><a name=Label><b><u><span style='font-size:14.0pt'>Labels<o:p></o:p></span></u></b></a></p>
+
+<span style='mso-bookmark:Label'></span>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, labels... Labels just
+give information to the user. They can’t be changed, you set their text when
+you initialize them. For example, a label might say what to enter into a text
+field.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Label eMailLabel
+= new Label(&quot;E-mail address: &quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(eMailLabel);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>The result of that is:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:75pt;height:16.5pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image003.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=100 height=22
+src="GUI%20Tutorial%20-%20Part%201_files/image004.jpg" v:shapes="_x0000_i1026"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=TextField><b><u><span style='font-size:14.0pt'>Text Fields<o:p></o:p></span></u></b></a></p>
+
+<span style='mso-bookmark:TextField'></span>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Next is text fields. Text
+fields allow the user to input data in such as their name. Text fields allow
+only one line of text. You decide how big the text box is by telling it how big
+in characters wide. So if you put it to be 10 characters wide, it’d be big
+enough to fit 10 characters, NOT 10 pixels wide. Also, you can give it a
+starting text when you initialize it.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>TextField txtName
+= new TextField(“Donny”, 10);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(txtName);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This is what that looks like:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1027" type="#_x0000_t75" style='width:79.5pt;height:27.75pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image005.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=106 height=37
+src="GUI%20Tutorial%20-%20Part%201_files/image006.jpg" v:shapes="_x0000_i1027"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=TextArea><b><u><span style='font-size:14.0pt'>Text
+Areas<o:p></o:p></span></u></b></a></p>
+
+<span style='mso-bookmark:TextArea'></span>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, text fields can only
+hold one line of text. What if you want to have a multi-line input area? Well,
+you can use a text area for that. With a text area, you specify how high and
+how wide in characters the text area is. So, lets say you wanted one 20
+characters wide and 3 characters tall:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>TextArea comments
+= new TextArea(“This is on line 1\nThis is on line 2”, 3,20);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(comments);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This is the result of that:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1028" type="#_x0000_t75" style='width:128.25pt;height:57.75pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image007.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=171 height=77
+src="GUI%20Tutorial%20-%20Part%201_files/image008.jpg" v:shapes="_x0000_i1028"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>You may have noticed, to
+display the default text on multiple lines you use a forward slash followed by
+an n (\n) this goes to the next line.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=CheckBox></a><a href="#TableOfContents"
+title="Table of Contents"><span style='mso-bookmark:CheckBox'><span
+style='font-size:14.0pt'>Table of Contents</span></span><span style='mso-bookmark:
+CheckBox'></span></a><span style='mso-bookmark:CheckBox'><span
+style='font-size:14.0pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal><span style='mso-bookmark:CheckBox'><b><u><span
+style='font-size:14.0pt'>Check Boxes<o:p></o:p></span></u></b></span></p>
+
+<span style='mso-bookmark:CheckBox'></span>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, another common AWT
+component is a checkbox and an option box. A check box is a box which has two
+values, true or false, and a label beside it describing what it is. Another
+thing is the option box, or radio button. Radio buttons can only be in groups,
+and only one of them can be selected at a time. First, a checkbox:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Checkbox
+goodTutorial = new Checkbox(“Is this a good tutorial?”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(goodTutorial);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>The above code will create a
+checkbox with no value (False)<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1029" type="#_x0000_t75" style='width:110.25pt;height:20.25pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image009.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=147 height=27
+src="GUI%20Tutorial%20-%20Part%201_files/image010.jpg" v:shapes="_x0000_i1029"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, you can also set the
+default value to true if you want by changing it to this:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Checkbox
+goodTutorial = new Checkbox(“Is this a good tutorial?”, true);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(goodTutorial);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1030" type="#_x0000_t75" style='width:111.75pt;height:18.75pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image011.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=149 height=25
+src="GUI%20Tutorial%20-%20Part%201_files/image012.jpg" v:shapes="_x0000_i1030"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=RadioButton><b><u><span style='font-size:14.0pt'>Radio
+Buttons (or Option Boxes)</span></u></b></a><b><u><span style='font-size:14.0pt'><o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Radio buttons are a bunch of
+option boxes in a group. Only one of then can be checked at a time. This is
+useful if you need to give the user a few options where only one will apply,
+for example what age range they are. First, you need to create a checkbox group
+and then specify that certain checkboxes are part of the group. Finally, you
+add the checkboxes to the screen.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>CheckboxGroup age
+= new CheckboxGroup();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Checkbox
+chkUnder10 = new Checkbox(“Under 10 years old”, false, age);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Checkbox chk10to15
+= new Checkbox(“10 to 14 years old”, false, age);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Checkbox
+chk15to20 = new Checkbox(“15 to 19 years old”, true, age);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Checkbox
+chkOver20 = new Checkbox(“Over 20 years old”, false, age);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(chkUnder10);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(chk10to15);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(chk15to20);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(chkOver20);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>The result of the above code
+is this:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1031" type="#_x0000_t75" style='width:98.25pt;height:87pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image013.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=131 height=116
+src="GUI%20Tutorial%20-%20Part%201_files/image014.jpg" v:shapes="_x0000_i1031"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=DropDownList></a><a href="#TableOfContents"
+title="Table of Contents"><span style='mso-bookmark:DropDownList'><span
+style='font-size:14.0pt'>Table of Contents</span></span><span style='mso-bookmark:
+DropDownList'></span></a><span style='mso-bookmark:DropDownList'><span
+style='font-size:14.0pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal><span style='mso-bookmark:DropDownList'><b><u><span
+style='font-size:14.0pt'>Drop Down</span></u></b></span><b><u><span
+style='font-size:14.0pt'> Lists<o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Drop down lists are lists of
+different options that you can select. Only one is shown until you click to
+bring up the rest. These are the same as radio buttons except it’s in a list.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>First, you need to create the
+choice object, and then you add different text to the choice. Finally, you add
+the choice object to the screen.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Choice
+textAlignment = new Choice();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>textAlignment.add(“Left”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>textAlignment.add(“Center”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>textAlignment.add(“Right”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>textAlignment.add(“Random”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(textAlignment);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>By default it will look like
+this:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1032" type="#_x0000_t75" style='width:65.25pt;height:23.25pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image015.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=87 height=31
+src="GUI%20Tutorial%20-%20Part%201_files/image016.jpg" v:shapes="_x0000_i1032"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>But after you click on the
+arrow, it expands to show all option:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1033" type="#_x0000_t75" style='width:66pt;height:73.5pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image017.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=88 height=98
+src="GUI%20Tutorial%20-%20Part%201_files/image018.jpg" v:shapes="_x0000_i1033"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=Panel><b><u><span style='font-size:14.0pt'>Panels<o:p></o:p></span></u></b></a></p>
+
+<span style='mso-bookmark:Panel'></span>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>A panel is an object which
+holds other objects. It’s just a container to organize and arrange your GUI
+better. Once, you learn about Layout Managers you’ll see why panels are a
+useful tool. For now, just know that they’re useful. Here’s an example of a set
+of buttons added into a panel:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Panel myPanel = new Panel();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>myPanel.add(helloButton);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>myPanel.add(goodbyeButton);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>add(myPanel);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>It looks no different than if
+you just added the buttons regularly, but you’ll see why you might want to use
+panels later on... This is what it looks like:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1034" type="#_x0000_t75" style='width:122.25pt;height:26.25pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image019.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=163 height=35
+src="GUI%20Tutorial%20-%20Part%201_files/image020.jpg" v:shapes="_x0000_i1034"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><a name=LayoutManager></a><a href="#TableOfContents"
+title="Table of Contents"><span style='mso-bookmark:LayoutManager'><span
+style='font-size:14.0pt'>Table of Contents</span></span><span style='mso-bookmark:
+LayoutManager'></span></a><span style='mso-bookmark:LayoutManager'><span
+style='font-size:14.0pt'><o:p></o:p></span></span></p>
+
+<p class=MsoNormal><span style='mso-bookmark:LayoutManager'><b><u><span
+style='font-size:14.0pt'>Layout Managers</span></u></b></span><b><u><span
+style='font-size:14.0pt'><o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Up until now, all the objects
+on screen have been displayed on screen in no particular fashion. They’re added
+in the order you use the <b>add(</b> command. If you’ve experimented with the
+code and added more of any object, you’ll see that they’re left to right until
+there’s no more room, and then they go to the next line. But layout managers
+allow you to organize the objects more. The default layout manager is the <b>FlowLayout</b>.
+You set the layout by creating a layout object and setting the layout to that
+object. This would set the layout to <b>FlowLayout</b>:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>FlowLayout
+myLayout = new FlowLayout();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>setLayout(myLayout);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Here’s an example of a bunch
+of buttons using the <b>FlowLayout</b> manager:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Button btnHey =
+new Button(“Hey”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Button btnHow =
+new Button(“how”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Button btnAre =
+new Button(“are”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Button btnYou =
+new Button(“you”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>Button
+btnQuestion = new Button(“?”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnHey);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnHow);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnAre);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnYou);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnQuestion);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This is what that code looks
+like with the default layout manager:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1035" type="#_x0000_t75" style='width:93pt;height:48.75pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image021.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=124 height=65
+src="GUI%20Tutorial%20-%20Part%201_files/image022.jpg" v:shapes="_x0000_i1035"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, there are other layout
+managers. There’s the <b>GridLayout</b> manager which, as you might have
+guessed, arranges the objects on the screen like a grid. You specify how many
+spaces high and how many wide. This will create a grid 2 spaces high and 3
+wide:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>GridLayout
+myLayout = new GridLayout(2, 3);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>setLayout(myLayout);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>And this is what all of the
+buttons look like when you use the <b>GridLayout</b> above:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1036" type="#_x0000_t75" style='width:119.25pt;height:86.25pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image023.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=159 height=115
+src="GUI%20Tutorial%20-%20Part%201_files/image024.jpg" v:shapes="_x0000_i1036"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><a href="#TableOfContents"
+title="Table of Contents">Table of Contents</a><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>There is yet another layout
+manager: the <b>BorderLayout</b> manager. It lets you choose where the objects
+are placed – north, south, east, west, and center.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>With this layout manager, it
+nothing changes when you create the buttons, but when you add them to the
+screen you must specify where they go:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>BorderLayout myLayout
+= new BorderLayout();<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnHey,
+“North”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnHow, “West”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnAre,
+“Center”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnYou, “East”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>add(btnQuestion,
+“South”);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>This is what the buttons look
+like:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1037" type="#_x0000_t75" style='width:123pt;height:86.25pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image025.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=164 height=115
+src="GUI%20Tutorial%20-%20Part%201_files/image026.jpg" v:shapes="_x0000_i1037"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Also, you can specify how far
+apart the objects are by adding a few parameters to the constructor. This would
+make all objects 10 pixels apart from each other on the X axis and 15 apart on
+the Y axis:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial;color:blue'>BorderLayout
+myLayout = new BorderLayout(10,15);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>And this is what it looks
+like:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><!--[if gte vml 1]><v:shape
+ id="_x0000_i1038" type="#_x0000_t75" style='width:124.5pt;height:89.25pt'>
+ <v:imagedata src="GUI%20Tutorial%20-%20Part%201_files/image027.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=166 height=119
+src="GUI%20Tutorial%20-%20Part%201_files/image028.jpg" v:shapes="_x0000_i1038"><![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Now, you’re probably
+wondering “Well, I’ve learned about panels... I’ve learned about layout
+managers... but I still don’t know why I’d want to use a panel!” Well, this is
+why you’d want to use a panel – you can use different layout managers in
+different panels. So, if it’s easier to layout one part with the <b>GridLayout</b>
+and another part with the <b>BorderLayout</b>, you can create two panels and
+use different layout managers where appropriate. Then you put all the panels
+together under whatever manager you like!<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Well, this concludes part one
+of the GUI tutorial. Check out the next part to find out how to make your
+buttons and text fields do stuff.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'>Also, please remember to vote
+for this tutorial, and leave a comment if there’s anything I should do to
+improve this. Thank you!<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt'><a href="#TableOfContents"
+title="Table of Contents">Table of Contents</a><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

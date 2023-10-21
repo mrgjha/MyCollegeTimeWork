@@ -1,0 +1,46 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+<h3>Compiling and Executing C# Using Visual Studio.net</h3>
+<ol>
+<li>Start Visual Studio.net. Select new project.
+<li>The new project dialog box pops up. There are several things to set within this dialog. First, select "Visual C# Projects".
+<li>The select console application. A console application accepts input and displays output via a command window such as a DOS window. It has no graphical user interface.
+<li>In the name box, type HelloWorld. If you have a solution box, type Lesson2. Click OK
+
+<p align="left">
+This builds a solution named Lesson2. Lesson2 will hold all the namespaces and classes developed for this particular task or program. In this particular example, there will be only one class within one namespace. Please see lesson one for a discussion of namespaces. It is also important to note that a namespace corresponds to a directory on your file system (hard drive). In this case, the HelloWorld namespace corresponds to a HelloWorld directory.
+</p>
+<li>Visual Studio creates a source code file containing a class named Class1 as a starting point. Notice that a "using System" directive is included by default. This use of this directive is very common and it allows us to use the .NET class library without specifying the System namespace explicitly. See lesson one for details on the using directive.
+
+<li>The next thing to notice is that Visual Studio has named out class, Class1. Let's rename it to "Hello". Click on Class1 in the Solution Explorer window. In the Properties window, click on file name and rename the file to Hello.cs. Hit enter after typing "Hello.cs". C# source files, by convention, end with the ".cs" extension.
+
+<li>Within the Hello.cs source file, rename the class to "Hello".
+
+<li>Remove the line [STAThread]. We'll discuss this in later lessons.
+
+<li>Notice that Visual Studio has created an empty Main method. Let's put our HelloWorld code from lesson one in place of the "TODO" comment.
+
+<li>Type "Console.". (Console followed by a period). Notice that a pop up window is presented with possible completions. Visual Studio refers to this as Intellisense. Type W, then select WriteLine. Hit Enter.
+
+<li>Type "(". WriteLine can accept arguments of many different types. You can use the up and down arrow keys to see this. A method that can accept multiple sets of parameters is called "overloaded". We'll explore this more in later lessons.
+
+<li>In this case, we will be using the version of WriteLine that accepts a single string. Type "Hello World", followed by a closing parenthesis, ")", followed by a semicolon, ";". All C# expressions are terminated with a semicolon.
+
+<li>Now, let's compile our program. Click on Build on the menu, then click on Build Solution. You should see a message in the output screen that the build was successful.
+
+
+
+
+
+
+
+</ol>
+<br><br><br>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

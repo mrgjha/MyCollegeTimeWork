@@ -1,0 +1,38 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Public Function OpenPasswordProtectedDatabase(DBPath As String, Password As String) As Object
+
+   'Usage: Open Password protected database
+   'Parameters: DBPath: Full Path to Access Database
+   'Password: the Password
+   'returns the database, in it's open state if successful.
+   'Otherwise return value will evalute to nothing
+
+   On Error Resume Next
+   Dim db As DAO.Database
+
+   Set db = DAO.OpenDatabase(DBPath, False, False, _
+      ";pwd=" & Password)
+
+   If Err.Number = 0 Then
+      Set OpenPasswordProtectedDatabase = db
+   Else
+      Set OpenPasswordProtectedDatabase = Nothing
+   End If
+
+End Function
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

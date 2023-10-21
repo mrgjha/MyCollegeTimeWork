@@ -1,0 +1,107 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+The program belows demonstrates how to force 
+the computer into a certain mode.  
+You might have to do this if you’re ever faced with 
+hardware limitations.  The following program loops through 
+the available colors and prints out a text message with the 
+16 bit numerical value of that color.  This numerical value 
+will change with the graphics mode you are in.  
+To see a list of the different colors in their 
+coresponding graphics mode search for color in the help index.  
+Have this program loop through the available text colors in 
+reverse order that the background color does and output 
+a message referencing this number 5 
+pixels below the graphics message.
+
+#include &lt;graphics.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main(void)
+{
+   /* select a driver and mode that supports */
+   /* multiple background colors.            */
+   int gdriver = EGA, gmode = EGAHI, errorcode;
+   int bkcol, maxcolor, x, y;
+   char msg[80];
+
+   /* initialize graphics and local variables */
+   initgraph(&gdriver, &gmode, "C:/tc/bgi");
+
+   /* read result of initialization */
+   errorcode = graphresult();
+   if (errorcode != grOk)  /* an error occurred */
+   {
+      printf("Graphics error: %s\n", grapherrormsg(errorcode));
+      printf("Press any key to halt:");
+      getch();
+      exit(1); /* terminate with an error code */
+   }
+   /* end of init graph */
+   /* maximum color index supported */
+   maxcolor = getmaxcolor();
+
+   /* for centering text messages */
+   settextjustify(CENTER_TEXT, CENTER_TEXT);
+   x = getmaxx() / 2;
+   y = getmaxy() / 2;
+
+   /* loop through the available colors */
+   for (bkcol=0; bkcol&lt;=maxcolor; bkcol++)
+   {
+      /* clear the screen */
+      cleardevice();
+
+      /* select a new background color */
+      setbkcolor(bkcol);
+
+      /* output a messsage */
+      if (bkcol == WHITE)
+         setcolor(EGA_BLUE);
+      sprintf(msg, "Background color: %d", bkcol);
+      outtextxy(x, y, msg);
+      getch();
+   }
+
+   /* clean up */
+   closegraph();
+   return 0;
+}
+
+	
+
+The sprintf is needed to send formatted 
+output to the string msg which is then printed out 
+on the next line at the defined x, y co-ordinates 
+as cout won’t work in graphics mode.  The setcolor 
+function is used to set the color of any object 
+besides the background.  Using the setcolor function 
+in a loop have the text output in the opposite order 
+than the background.  For example when the backgound 
+is at the minimum value have the text color be the maximum one.  
+Let it be noted that you may have difficulty displaying black 
+text on any background color.
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

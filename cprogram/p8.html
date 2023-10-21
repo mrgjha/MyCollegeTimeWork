@@ -1,0 +1,49 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+//whether the number is armstrong or not
+
+#include&lt;stdio.h&gt;
+
+
+void main()
+{
+
+int n,m,sum=0,rem;
+clrscr();
+printf("\n\n\nEnter the number:");
+scanf("%d",&n);
+m=n;
+do
+{
+rem=n%10;
+sum+=rem*rem*rem;
+n/=10;
+}
+while(n>0);
+
+if(m==sum)
+printf("\n\nnumber=%d is armstong\n",m);
+else
+printf("\n\nnumber=%d is not armstong\n",m);
+
+getch();
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

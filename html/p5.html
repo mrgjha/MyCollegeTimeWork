@@ -1,0 +1,90 @@
+
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="note.xsl"?&gt;
+
+&lt;note&gt;
+
+&lt;date&gt;
+&lt;day&gt;17&lt;/day&gt;
+&lt;month&gt;05&lt;/month&gt;
+&lt;year&gt;2002&lt;/year&gt;
+
+
+&lt;/date&gt;
+
+
+&lt;to&gt;Michaela&lt;/to&gt;
+&lt;from&gt;Justin&lt;/from&gt;
+&lt;heading&gt;Reminder&lt;/heading&gt;
+&lt;body&gt;You have a meeting today&lt;/body&gt;
+
+
+&lt;/note&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;?xml version="1.0"?&gt;
+&lt;xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+
+&lt;xsl:template match="/"&gt;
+
+&lt;html&gt;
+
+&lt;center&gt;
+Message:
+&lt;xsl:value-of select="note/heading"/&gt;
+&lt;/center&gt;
+
+&lt;br/&gt;
+&lt;br/&gt;
+
+Date:
+&lt;xsl:value-of select="note/date/month"/&gt;
+/
+&lt;xsl:value-of select="note/date/day"/&gt;
+/
+&lt;xsl:value-of select="note/date/year"/&gt;
+&lt;br/&gt;
+
+To:
+&lt;xsl:value-of select="note/to"/&gt;
+&lt;br/&gt;
+
+From:
+&lt;xsl:value-of select="note/from"/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;xsl:value-of select="note/body"/&gt;
+
+&lt;/html&gt;
+
+&lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

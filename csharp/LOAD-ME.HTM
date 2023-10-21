@@ -1,0 +1,20 @@
+<HTML>
+<HEAD><TITLE>JavaScript Site Search</TITLE></HEAD>
+<!-- This hidden form *must* appear before the HTML specifying
+     the framesets. This insures that it is loaded prior to any
+     of the search documents -- important because it contains
+     your database for searching. One final note: do not omit 
+     the asterisk at the end of the "find" value, or the parser
+     will miss "seeing" your last record. -->
+<FORM NAME="searcher">
+<INPUT TYPE="hidden" NAME="test" VALUE="a">
+<INPUT TYPE="hidden" NAME="find" VALUE='p1.html~ c#|Operator loading funvtion over loading array*p2.html~data type|int double float*p3.html~ c# Function|Counter Prog*'>
+</FORM>
+<!-- CAUTION! When you change these file names for your own web
+     site, be sure to change any references in the two "child"
+     documents below to match the file names you are using! -->
+<FRAMESET ROWS="*,100">
+  <FRAME SRC="newsrch.htm" SCROLLING="yes" NAME="main">
+  <FRAME SRC="newsrd.htm" SCROLLING="no" NAME="results">
+</FRAMESET>
+</HTML>

@@ -1,0 +1,328 @@
+<html>
+<head><style type="text/css">
+<!--
+h3{font style:italic;color:red}
+h5{font style:italic;color:white}
+h4{font style:italic;color:black}
+-->
+</style>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+<h5>
+The first thing you need to know before
+you start programming is what is the header file you require for file handling.
+It is fstream.h. (fstream.h also includes the iostream.h header file so there is
+no need for you to include iostream.h header file explicitly.
+
+
+A file can be created in C++ through two methods:
+<ol>
+<li>Using the open function.
+<li>Using the constructor of the stream
+class.
+</ol>
+Files can be created using the open()
+function. The only requirement is that you should know what you intend to do
+with the file. The compiler must know whether you wish to read data from it,
+write to it, append data to it etc.
+
+The open function is a member of 5 classes
+namely iostream, ofstream, fstream, filebuf and fstreambase. All of these
+classes are defined inside the fstream.h header file. <b>The ofstream and
+ifstream classes are used to write and read data to a file respectively</b>. The
+fstream class can perform single-handedly both these functions provided it knows
+what operation (reading, writing…) etc you wish to perform.
+
+</h5>
+
+#include&lt;fstream.h&gt; 
+
+void main() 
+
+{ 
+
+ofstream obj1; 
+
+obj1.open(“test.ghf”); 
+
+obj1.close(); 
+
+} 
+
+<h5>
+
+Here an object obj1 of the class ofstream
+is created. When you will run the program a file by the name of test.ghf will be
+created. The close function is used just to close the file objects.
+
+
+
+
+If you wished to write data to the file you 
+could have done so before closing it.
+We will learn about this in a moment. 
+The program will compile also if you 
+change the word ofstream to ifstream, 
+but this will mean that the compiler 
+will treat the created file as one from 
+which data can be read not written. 
+(This will be so because obj1 will 
+then become an object of the ifstream class, 
+which deals with writing data only.)  
+However if you change the ofstream to 
+simply fstream the compiler will flag an error. 
+This is because the fstream class can both enable 
+reading and writing to a file and the compiler does 
+not know which one you want. To specify to the compiler 
+that you wish to read and write data to the file modify 
+the open function as such: obj1.open(“test.ghf”,ios::in) 
+for reading and obj1.open(“test.ghf”,ios::out) 
+for writing data to it. 
+If you wish to perform both these operations 
+
+
+(ie both read and write to the file use a vertical 
+bar between them to 
+logically OR them together, ie: 
+obj1.open (“test.ghf”,ios::in|ios::out) 
+
+These in and out are known as mode bits. Other mode bits possible are: 
+ 
+app            To read or write at the end of the file
+ate            To erase contents of the file if it exists 
+nocreate       To signal an error if the file doesn’t exist previously 
+noreplace      To signal an error if the file does exist previously  
+binary         To open a file in binary mode 
+
+These mode bits can be used in the open function in any order 
+by just Oring them together. For example  if you wish 
+to write data to the end of a file 
+in binary mode you can write: 
+obj1.open(“test.ghf”,ios::out|ios::app|ios::binary); 
+
+A point to note is that if obj1 is the object of 
+the ofstream class (ie the previous line was ofstream obj1) 
+then ios::out is not required. The file by default will be 
+opened in the writing mode. Similarly ios::in is not required 
+when your object is of the ifstream class. Opening files by 
+using the constructor of the stream class is simpler. 
+An example will illustrate it. 
+
+</h5>
+
+#include&lt;fstream.h&gt; 
+
+void main() 
+
+{ 
+
+ofstream obj2(“test1.ghf”); 
+
+obj2.close(); 
+
+} 
+
+<h5>
+The file is created for writing. 
+If you wish to open it for reading use: 
+ifstream obj2(“test.ghf”); instead. 
+For opening it both for reading and writing use: 
+
+fstream obj2(“test1.ghf”,ios::in|ios::out); 
+
+Similarly you can add more mode bits as you require. 
+
+</h5>
+
+
+
+
+<h5>
+
+Suppose you wish to write a program that asks the user 
+a few simple questions and then stores the data collected 
+in a text file that can then be opened 
+independently for viewing. The code is: 
+</h5>
+
+
+#include&lt;fstream.h&gt; 
+
+#include&lt;conio.h&gt; 
+
+#include&lt;stdio.h&gt; 
+
+void main() 
+
+{ 
+
+char name[100],add[100]; 
+
+int age; 
+
+//This part deals with getting data from the user 
+
+//It has nothing to do with file handling 
+
+clrscr(); 
+
+cout&lt;&lt;"ENTER YOUR NAME: "; 
+
+gets(name); 
+
+fflush(stdin); 
+
+cout&lt;&lt;"\nENTER YOUR AGE: "; 
+
+cin&gt;&gt;age; 
+
+cout&lt;&lt;"\nENTER YOUR EMAIL ADDRESS: "; 
+
+gets(add); 
+
+fflush(stdin); 
+
+//file handling part begins here 
+
+ofstream file; 
+
+file.open("biodata.txt"); 
+
+file&lt;&lt;"BIO DATA\n"; 
+
+file&lt;&lt;"NAME:      "&lt;&lt;name&lt;&lt;"\n"; 
+
+file&lt;&lt;"AGE:       "&lt;&lt;age&lt;&lt;"\n"; 
+
+file&lt;&lt;"EMAIL ADD: "&lt;&lt;add&lt;&lt;"\n"; 
+
+file.close(); 
+
+} 
+
+
+
+<h5>
+
+The part before the open function is clear. 
+The user is asked for his name, age and e-mail address. 
+This is stored in the variables: name, age and add. 
+After that this data is written to a text file. 
+
+Firstly a file is created using the open function. 
+I use the open function because it shows a more clear 
+and precise approach. You can modify the program so 
+that the file is created using the constructor of the ofstream 
+class if you wish but it would not make any difference. 
+
+Now we come the statement file<<. Isn’t it similarly to 
+cout<< which you must have encountered during 
+your I/O programming with C++. 
+The fact of the matter is that it is the same. 
+
+Like your file object, cout is also an object. 
+The difference being that it is already defined 
+and you need not define it each time. 
+Also the insertion operatror (<<) 
+is appropriately overloaded in the ostream class 
+and it is used to output text. 
+While cout is associated with the console 
+(screen, cout is short for consoleout) 
+file has been associated with the output stream 
+directed towards the file you created. So in effect, 
+file will work in the same way as cout, but instead 
+of writing text to the screen, it will write it to biodata.txt. 
+After all the data is written this program will close. 
+You can now open biodata.txt manually and view it’s contents. 
+
+Reading from a file [strings] 
+
+Let us try and display the contents of biodata.txt 
+on the screen using a C++ program. The code is as follows: 
+
+</h5>
+#include&lt;fstream.h&gt; 
+
+#include&lt;conio.h&gt; 
+
+void main() 
+
+{ 
+
+char ch; 
+
+clrscr(); 
+
+ifstream file; 
+
+file.open("biodata.txt",ios::nocreate); 
+
+if(!file) 
+
+  { 
+
+  cout&lt;&lt;"UNABLE TO OPEN FILE!!"; 
+
+  goto end; 
+
+  } 
+
+while(file) 
+
+     { 
+
+     file.get(ch); 
+
+     cout&lt;&lt;ch; 
+
+     } 
+
+getch(); 
+
+end: 
+
+file.close(); 
+
+} 
+<h5>
+In this program we first open a file biodata.txt for reading, 
+if the file doesn’t exist or the compiler cannot 
+find it an error will be flagged. 
+Then we enter a while loop whose duration 
+is the point where the object file exists. 
+The get() function extracts a single character 
+from the file and stores it in a variable ch. 
+The statement cout<<ch displays this 
+character on the screen. In this way every character is extracted, 
+one by one and displayed. After the last character is extracted, 
+i.e. the email address is displayed, 
+no more bytes of data are available to the compiler, 
+hence file ceases to exist and we break out of the loop. 
+After waiting for a key press the program terminates. 
+There is no need for the file.close() function here, 
+but I use it just to be clear and avoid ambiguity. 
+
+Another point of note: If your file has moved to another 
+folder the compiler might experience problems in trying to 
+read it. A solution to it is that you enter the entire file 
+path in the open function, such as: 
+
+file.open(“c:\\mark\\biodata\\biodata.txt”,ios::nocreate); 
+
+  \\ must be used instead of \ and if the folder name 
+is more then 8 characters then MS-DOS names must 
+be entered[i.e. c:\cool filez might 
+be expressed as c:\\coolfi~1]. 
+</h5>
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

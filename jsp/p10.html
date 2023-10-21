@@ -1,0 +1,292 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+program 1
+StringBean.java
+***********************
+
+package jspbean;
+
+public class StringBean {
+  private String message = "No message specified";
+  
+
+
+public String getMessage() {
+    return(message);
+  }
+  
+
+
+
+public void setMessage(String message) {
+    this.message = message;
+  }
+}
+
+
+
+StringBean.jsp
+*********************
+
+&lthtml&gt
+&lthead&gt
+&lttitle&gt&lt/title&gt
+&lt/head&gt
+
+&ltbody&gt
+
+&ltjsp:useBean id="stringBean" class="jspbean.StringBean" scope="session"/&gt
+&ltOL&gt
+&ltLI&gtInitial value (getProperty):
+    &ltI&gt&ltjsp:getProperty name="stringBean" 
+                        property="message"/&gt&lt/I&gt
+&ltLI&gtInitial value (JSP expression):
+    
+
+&ltI&gt&lt%= stringBean.getMessage() %&gt&lt/I&gt
+
+&ltLI&gt&ltjsp:setProperty name="stringBean" 
+                     property="message" 
+                     value="Best string bean: Fortex"/&gt
+
+    Value after setting property with setProperty:    
+&ltI&gt&ltjsp:getProperty name="stringBean" 
+                        property="message"/&gt&lt/I&gt
+&ltLI&gt
+
+&lt% stringBean.setMessage("My favorite: Kentucky Wonder");%&gt
+    Value after setting property with scriptlet:
+    &ltI&gt&lt%= stringBean.getMessage() %&gt&lt/I&gt
+
+&lt/OL&gt
+&lt/body&gt
+&lt/html&gt
+
+
+program 2
+VendingBean.java
+*********************
+package vending ;
+import java.util.ArrayList;
+public class VendingBean {
+    final String [] snacks = {"Chips", "Popcorn", "Peanuts", "Snickers bar",
+                                          "Twix", "Pop Tarts", "Chocolate Donut"} ;
+    public int getNumSnacks()  { return snacks.length ; }
+    public String getSnacks(int i)  { return snacks [i] ; }
+    ArrayList selections = new ArrayList() ;
+    public int getNumSelections() {
+        return selections.size() ;
+    }
+    public String getSelections(int i) {
+        return (String) selections.get(i) ;
+    }
+    public void addSelection(String selection) {
+        selections.add(selection) ;
+    }
+}
+
+
+
+
+
+
+
+
+vendingmachine.jsp
+****************************
+
+
+&lthtml&gt&lthead&gt&lt/head&gt&ltbody&gt
+&ltjsp:useBean id="vendingBean" class="vending.VendingBean"             
+                       scope="session"/&gt
+&lt%
+    String snack = request.getParameter("selection") ;
+    if(snack != null)  vendingBean.addSelection(snack) ;
+%&gt
+&lt%
+   for (int i = 0 ; i &lt vendingBean.getNumSnacks() ; i++) {
+%&gt
+    &ltform action="vendingmachine.jsp"&gt
+        &ltinput type="submit"  name="selection"
+                   value="&lt%= vendingBean.getSnacks(i) %&gt" /&gt
+    &lt/form&gt
+&lt%
+   }
+%&gt
+&lta href="checkout.jsp"&gtProceed to checkout&lt/a&gt
+&lt/body&gt&lt/html&gt
+
+
+
+
+
+
+
+
+
+
+checkout.jsp
+*********************
+
+
+
+
+&lthtml&gt
+&lthead&gt&lt/head&gt
+&ltbody&gt
+
+
+&lth3&gtYour selections were:&lt/h3&gt
+&ltjsp:useBean id="vendingBean" class="vending.VendingBean" scope="session"/&gt
+&ltul&gt
+
+&lt%
+    for (int j = 0 ; j &lt vendingBean.getNumSelections() ; j++)
+
+ {
+
+%&gt
+      &ltli&gt&lt%= vendingBean.getSelections(j) %&gt&lt/li&gt
+&lt%
+  
+  }
+%&gt
+&lt/ul&gt
+&ltp&gtEnjoy!&lt/p&gt
+&lt%
+    session.invalidate() ;
+%&gt
+
+&ltp&gt&lta href="vendingmachine.jsp"&gtBack&lt/a&gt&lt/p&gt
+
+
+
+&lt/body&gt
+&lt/html&gt
+
+program 3
+
+userName.java
+************************
+package Hello;
+
+public class userName {
+
+private String username;
+
+public userName() {
+
+username=null;
+
+}
+
+public void setUsername(String name) {
+username=name;
+}
+
+public String getUsername() {
+
+return username;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+a.jsp
+**************
+
+
+&lthtml&gt
+&lthead&gt
+&lttitle&gtJsp bean&lt/title&gt
+&lt/head&gt
+
+&ltbody&gt
+&lttable border="0" width="700"&gt
+&lttr&gt
+&lttd width="150"&gt&nbsp;&lt/td&gt
+&lttd width="550"&gt
+
+&lth1&gtHello ,&ltjsp:getProperty name="mybean" property="username" /&gt!
+&lt/h1&gt
+&lt/td&gt
+&lt/tr&gt
+&lt/table&gt
+&lt/body&gt
+&lt/html&gt
+
+
+hellouser.jsp
+
+********************
+
+
+&lt%@ page import="Hello.userName" %&gt
+
+&ltjsp:useBean id="mybean" scope="page"
+class="Hello.userName" /&gt
+&ltjsp:setProperty name="mybean" property="*" /&gt
+
+
+&lthtml&gt
+&lthead&gt&lttitle&gtHello, User&lt/title&gt&lt/head&gt
+
+&ltbody bgcolor="#ffffff" background="background.gif"&gt
+
+&lt%@ include file="b.html" %&gt
+
+
+&lttable border="0" width="700"&gt
+&lttr&gt
+&lttd width="150"&gt &nbsp; &lt/td&gt
+&lttd width="550"&gt
+&lth1&gtMy name is Duke. What’s yours?&lt/h1&gt
+&lt/td&gt
+&lt/tr&gt
+&lttr&gt
+&lttd width="150" &nbsp; &lt/td&gt
+&lttd width="550"&gt
+&ltform method="get"&gt
+&ltinput type="text" name="username" size="25"&gt
+&ltbr&gt
+&ltinput type="submit" value="Submit"&gt
+&ltinput type="reset" value="Reset"&gt
+&lt/td&gt
+&lt/tr&gt
+&lt/form&gt
+&lt/table&gt
+
+
+&lt%
+if ( request.getParameter("username") != null ) {
+%&gt
+&lt%@ include file="a.jsp" %&gt
+&lt%
+}
+%&gt
+
+
+&lt/body&gt
+&lt/html&gt
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

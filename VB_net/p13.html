@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<h3>Visual Studio.Net</h3>
+<pre>
+
+Switch Function
+Syntax
+Switch(expr1, value1[, expr2, value2…[,exprn, valuen]])
+E.g.
+intAbsValue=Switch(intValue<0, -1 * intValue, intValue>=0, intValue)
+Choose Function
+Syntax
+Choose(index, choice1[, choice2,…[,choicen]])
+Note: unlike array index, choose index from 1 to n
+E.g.
+Str=Choose(intValue, “Thank you!”, “That is good!”)
+
+
+
+Module Module1
+  Sub Main()
+      Dim intInput As Integer
+      System.Console.WriteLine(“Enter an interger…”)        
+      intInput=Val(System.Console.ReadLine())
+      Select Case intInput
+           Case 1
+                 System.Console.WriteLine(“Thank you!”)
+           Case 2
+                 System.Console.WriteLine(“That’s good!”)
+           Case 3 To 7
+                 System.Console.WriteLine(“OK”)
+           Case Is> 7
+                System.Console.WriteLine(“Too Big”)
+           Case Else
+                System.Console.WriteLine(“Not a right number!”)
+       End Select
+  End Sub
+End Module
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

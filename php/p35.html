@@ -1,0 +1,124 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+
+&lt?php 
+
+// Two forms using hidden fields to communicate between them. 
+// Here we use GET method in forms so you can see query string 
+// in the address bar. 
+
+if ( isset($_REQUEST['page1']) ) 
+{ 
+   // First form was submitted so display page two 
+
+   display_page_two(); 
+} 
+elseif ( isset($_REQUEST['page2']) ) 
+{ 
+   // Second form was submitted so display results page 
+
+   display_result_page(); 
+} 
+else // No forms submitted yet so display page with first form 
+{ 
+   display_page_one(); 
+} 
+
+// -------------------------------------------------------- 
+
+function display_page_one() 
+{ 
+   $self = $_SERVER['PHP_SELF'];    
+?&gt 
+   &lthtml&gt 
+   &lthead&gt&lttitle&gtPage 1&lt/title&gt&lt/head&gt 
+   &ltbody&gt 
+      &lth1&gtPage 1&lt/h1&gt 
+   &ltform action="&lt?php echo $self ?&gt" method="GET"&gt 
+      &lttable&gt 
+      &lttr&gt 
+         &lttd&gtName: &lt/td&gt 
+         &lttd&gt&ltinput type="text" name="name"&gt&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+         &lttd&gtAge: &lt/td&gt 
+         &lttd&gt&ltinput type="text" name="age"&gt&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+         &lttd&gt&ltinput type="submit" name="page1" value="Next Page"&gt&lt/td&gt 
+      &lt/tr&gt 
+      &lt/table&gt 
+      &lt/form&gt 
+   &lt/body&gt 
+   &lt/html&gt 
+   &lt?php 
+} 
+
+function display_page_two() 
+{ 
+   // get the values just submitted from form one 
+
+   $name = $_REQUEST['name']; 
+   $age = $_REQUEST['age']; 
+   $self = $_SERVER['PHP_SELF']; 
+
+   // insert them in form 2 as hidden fields 
+
+   ?&gt 
+   &lthtml&gt 
+   &lthead&gt&lttitle&gtPage 2&lt/title&gt&lt/head&gt 
+   &ltbody&gt 
+   &lth1&gtPage 2&lt/h1&gt 
+   &ltform action="&lt?php echo $self ?&gt" method="GET"&gt 
+      &lt!-- START HIDDEN FIELDS --&gt 
+      &ltinput type="hidden" name="name" value="&lt?php echo $name ?&gt"&gt 
+      &ltinput type="hidden" name="age" value="&lt?php echo $age ?&gt"&gt 
+      &lt!-- END HIDDEN FIELDS --&gt 
+      &lttable&gt 
+      &lttr&gt 
+         &lttd&gtFavourite book: &lt/td&gt 
+         &lttd&gt&ltinput type="text" name="book"&gt&lt/td&gt 
+      &lt/tr&gt 
+      &lttr&gt 
+         &lttd&gt&ltinput type="submit" name="page2" value="Show Results"&gt&lt/td&gt 
+      &lt/tr&gt 
+      &lt/table&gt 
+   &lt/form&gt 
+   &lt/body&gt 
+   &lt/html&gt 
+   &lt?php 
+} 
+
+function display_result_page() 
+{ 
+   // Form 2 was just submitted so get results for all fields 
+
+   $name = $_REQUEST['name']; 
+   $age = $_REQUEST['age']; 
+   $book = $_REQUEST['book']; 
+   ?&gt 
+   &lthtml&gt 
+   &lthead&gt&lttitle&gtResults&lt/title&gt&lt/head&gt 
+   &ltbody&gt 
+   &lth1&gtResults&lt/h1&gt 
+   &lttable border="1"&gt 
+   &lttr&gt&lttd&gtName&lt/td&gt&lttd&gt&lt?php echo $name ?&gt&lt/td&gt&lt/tr&gt 
+   &lttr&gt&lttd&gtAge&lt/td&gt&lttd&gt&lt?php echo $age ?&gt&lt/td&gt&lt/tr&gt 
+   &lttr&gt&lttd&gtFavourite book&lt/td&gt&lttd&gt&lt?php echo $book ?&gt&lt/td&gt&lt/tr&gt 
+   &lt/table&gt 
+   &lt/body&gt 
+   &lt/html&gt 
+   &lt?php 
+} 
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+
+
+</pre>
+</body>
+</html>

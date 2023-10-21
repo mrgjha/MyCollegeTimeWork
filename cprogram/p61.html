@@ -1,0 +1,67 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+// Demonstrate inheriting a protected base class.
+#include &lt; iostream.h&gt; 
+#include &lt; conio.h &gt; 
+
+class base {
+  int i;
+protected:
+  int j;
+public:
+  int k;
+  void seti(int a) { i = a; }
+  int geti() { return i; }
+};
+
+// Inherit base as protected.
+class derived : protected base {
+public:
+  void setj(int a) { j = a; } // j is protected here
+  void setk(int a) { k = a; } // k is also protected
+  int getj() { return j; }
+  int getk() { return k; }
+};
+
+int main()
+{
+  derived ob;
+  clrscr();
+  /* This next line is illegal because seti() is
+     a protected member of derived, which makes it
+     inaccessible outside of derived. */
+//  ob.seti(10);
+
+//  cout &lt; &lt;  ob.geti(); // illegal -- geti() is protected
+//  ob.k = 10; // also illegal because k is protected
+
+  // these next statements are OK
+  ob.setk(10);
+  cout &lt; &lt;  ob.getk() &lt; &lt;  ' ';
+  ob.setj(12);
+  cout &lt; &lt;  ob.getj() &lt; &lt;  ' ';
+  getch();
+  return 0;
+}
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

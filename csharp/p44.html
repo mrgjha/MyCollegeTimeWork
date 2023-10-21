@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+using System;
+
+ namespace StringManipulation
+ {
+    class Tester
+    {
+       public void Run()
+       {
+           string s1 = "abcd";
+           string s2 = "ABCD";
+
+           // concatenation method
+           string s3 = string.Concat(s1,s2);
+           Console.WriteLine(
+               "s3 concatenated from s1 and s2: {0}", s3);
+
+           // use the overloaded operator
+           string s4 = s1 + s2;
+           Console.WriteLine(
+               "s4 concatenated from s1 + s2: {0}", s4);
+
+       }
+
+       static void Main()
+       {
+          Tester t = new Tester();
+          t.Run();
+       }
+    }
+ }
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

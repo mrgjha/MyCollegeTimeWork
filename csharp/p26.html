@@ -1,0 +1,72 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+class zzz
+
+{
+
+public static void Main()
+
+{
+
+yyy a = new yyy();
+
+a.abc(10);    
+
+a.abc("bye");
+
+a.abc("no",100);   //C# does not know a function by name, but by its signature.
+                   //A signature denotes the full name of the function. 
+                   //Thus the name of a function or its signature is the original function name 
+                   //plus the number and data types of its individual parameters.
+
+
+}
+
+}
+
+class yyy
+
+{
+
+public void abc(int i)
+
+{
+
+System.Console.WriteLine("abc" + i);
+
+}
+
+public void abc(string i)
+
+{
+
+System.Console.WriteLine("abc" + i);
+
+}
+
+public void abc(string i,int j)
+
+{
+
+System.Console.WriteLine("abc" + i + j);
+
+}
+
+}
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

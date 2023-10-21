@@ -1,0 +1,91 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+class base {
+protected:
+  int i, j; // private to base, but accessible to derived
+public:
+  void set(int a, int b) { i = a; j = b; }
+  void show() { cout &lt;&lt; i &lt;&lt; " " &lt;&lt; j &lt;&lt; "\n"; }
+};
+
+class derived : public base {
+  int k;
+public:
+  // derived may access base's i and j
+  void setk() { k = i*j; }
+
+  void showk() { cout &lt;&lt; k &lt;&lt; "\n"; }
+};
+
+int main()
+{
+  derived ob;
+   clrscr();
+  ob.set(2, 3); // OK, known to derived
+  ob.show();    // OK, known to derived
+
+  ob.setk();
+  ob.showk();
+   getch();
+  return 0;
+}
+
+
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+
+class X {
+protected:
+  int a;
+public:
+  void make_a(int i) { a = i; }
+};
+
+class Y {
+protected:
+  int b;
+public:
+  void make_b(int i) { b = i; }
+} ;
+
+// Z inherits both X and Y
+class Z : public X, public Y {
+public:
+  int make_ab() { return a*b; }
+} ;
+
+int main()
+{
+  Z i;
+clrscr();
+  i.make_a(10);
+  i.make_b(12);
+  cout &lt;&lt; i.make_ab();
+getch();
+  return 0;
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

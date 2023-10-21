@@ -1,0 +1,4 @@
+The need for developing the system is to include security for controlling the mailing transactions, periodically reply for the received mails automatically, self extract e-mail ids from the company's webpage with necessary details to be entered, categorizing the positive replies in three levels and storing it in corresponding folders. The application consists of an enhanced web browser.
+
+Username: admin
+Password: admin

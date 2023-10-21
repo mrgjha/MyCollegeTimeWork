@@ -1,0 +1,23 @@
+<html>
+<head><style type="text/css">
+<!--
+h1{font style:italic;color:red}
+h4{font style:italic;color:white}
+h5{font style:italic;color:black}
+-->
+</style>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+<h1>Learn to use I wish....would </h1>
+<pre>
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<html>
+<head><title>Write a PL/SQL to sum the integers of the number</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<h3>Dispaly data from employee and depat</h3>
+<pre>
+
+SQL> select * from employee;
+
+    EMPNO ENAME                DESIG      CADERNO DOJ             SAL      COMM    DEPTNO
+--------- -------------------- -------- --------- --------- --------- --------- ---------
+        7 vijay                Manager        101 09-MAY-02    100000       200       301
+        2 Valli                GM             102 10-MAY-02     20000       300       302
+        3 shalini              AGM            103 11-MAY-02     30000       400       303
+        4 Bhaskar              PM             104 12-MAY-02     40000       500       304
+        5 jai                  Manager        105 13-MAY-02     50000       600       301
+
+SQL> select * from depat
+  2  /
+
+   DEPTNO DNAME                LOCATION
+--------- -------------------- ---------------
+      301 WEB                  Chennai
+      302 Accts                Bombay
+      303 HR                   Bangalore
+      304 Marketing            Chennai
+      305 Sales                Chennai
+
+
+
+
+
+SQL> select empno,ename,deptno from employee;
+
+    EMPNO ENAME                   DEPTNO
+--------- -------------------- ---------
+        7 vijay                      301
+        2 Valli                      302
+        3 shalini                    303
+        4 Bhaskar                    304
+        5 jai                        301
+
+SQL> save ex1;
+Created file ex1
+SQL> edit ex1
+
+
+SQL> select * from employee where empno=002;
+
+    EMPNO ENAME                DESIG      CADERNO DOJ             SAL      COMM    DEPTNO
+--------- -------------------- -------- --------- --------- --------- --------- ---------
+        2 Valli                GM             102 10-MAY-02     20000       300       302
+
+
+
+SQL> select empno,name from emp;
+select empno,name from emp
+             *
+ERROR at line 1:
+ORA-00904: invalid column name
+
+
+SQL> c/name/ename
+  1* select empno,ename from emp
+SQL> /
+
+    EMPNO ENAME
+--------- ----------
+     7369 SMITH
+     7499 ALLEN
+     7521 WARD
+     7566 JONES
+     7654 MARTIN
+     7698 BLAKE
+     7782 CLARK
+     7788 SCOTT
+     7839 KING
+     7844 TURNER
+     7876 ADAMS
+     7900 JAMES
+     7902 FORD
+     7934 MILLER
+     1000 john
+
+15 rows selected.
+
+
+
+
+SQL> select * from employee where desig='Manager';
+
+    EMPNO ENAME                DESIG      CADERNO DOJ             SAL      COMM    DEPTNO
+--------- -------------------- -------- --------- --------- --------- --------- ---------
+        7 vijay                Manager        101 09-MAY-02    100000       200       301
+        5 jai                  Manager        105 13-MAY-02     50000       600       301
+
+SQL> select empno,ename desig,sal from employee where desig='Manager' or sal>10000;
+
+    EMPNO DESIG                      SAL
+--------- -------------------- ---------
+        7 vijay                   100000
+        2 Valli                    20000
+        3 shalini                  30000
+        4 Bhaskar                  40000
+        5 jai                      50000
+</pre>
+<br>
+<br>
+
+
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

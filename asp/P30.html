@@ -1,0 +1,133 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt;% @LANGUAGE = VBScript %&gt;
+&lt;% Option Explicit %&gt;
+
+&lt;% ' Fig. 25.12 : guestbook.asp %&gt;
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;GuestBook Example&lt;/TITLE&gt;
+&lt;BODY&gt;
+&lt;FONT SIZE = "4" FACE = "Arial" COLOR = "blue"&gt;
+
+&lt;% 
+   Dim fileObject, textFile, guestBook, mailtoUrl
+  
+   ' If user has made an entry and thus the page is
+   ' reloading, then process this entry
+   If Request( "entry" ) = "true" Then
+   
+      ' Print a thank you
+      Call Response.Write( "Thanks for your entry, " )
+      Call Response.Write( Request( "name" ) & "!" ) 
+%&gt;    
+&lt;HR COLOR = "blue" SIZE = "1"&gt; 
+&lt;%    ' Instantiate a FileSystemObject
+      Set fileObject = Server.CreateObject( _
+         "Scripting.FileSystemObject" )
+      
+      ' Guestbook path must be modified to reflect the file 
+      ' structure of the server.
+      guestBook = "E:\Inetpub\Wwwroot\ch25\" & "guestbook.txt"
+
+      ' Check if the file exists. If not, create it.
+      If fileObject.FileExists( guestbook ) &lt;&gt; True Then
+         Call fileObject.CreateTextFile( guestBook )
+      End If
+
+      ' Guestbook must be open for writing.
+      ' Open the guestbook 8 is for appending. 
+      Set textFile = fileObject.OpenTextFile( guestbook, 8, True )
+
+      ' Build the mailtoUrl
+      mailtoUrl = Date() & " &lt;A HREF = " & Chr( 34 ) _
+         & "mailto:" & Request( "email" ) & Chr( 34 ) _
+         & "&gt;" & Request( "name" ) & "&lt;/A&gt;:  "
+
+      ' Write data to guestbook.txt
+      Call textFile.WriteLine( "&lt;HR COLOR = " & Chr( 34 ) _ 
+         & "blue" & Chr( 34 ) & " SIZE = " & Chr( 34 ) _ 
+         & "1" & Chr( 34 ) & "&gt;" )
+      Call textFile.WriteLine( mailtoUrl )    
+      Call textFile.WriteLine( Request( "comment" ) )
+      Call textFile.Close()             
+   End If 
+%&gt;
+   
+Please leave a message in our guestbook.
+
+&lt;/FONT&gt;
+&lt;FORM ACTION = "guestbook.asp?entry=true" METHOD = "POST"&gt;
+&lt;CENTER&gt;
+&lt;TABLE&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;FONT FACE = "Arial" SIZE = "2"&gt;Your Name:  &lt;/FONT&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;INPUT TYPE = "text" FACE = "Arial" 
+     SIZE = "60" NAME = "name"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;FONT FACE = "Arial" SIZE = "2"&gt;Your email address:
+&lt;/FONT&gt;&lt;/TD&gt;
+&lt;TD&gt;&lt;INPUT TYPE = "text" FACE = "Arial" SIZE = "60" 
+     NAME = "email" VALUE = "user@isp.com"&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;TR&gt;
+&lt;TD&gt;&lt;FONT FACE = "Arial" SIZE = "2"&gt;Tell the world:  &lt;/FONT&gt;
+&lt;/TD&gt;
+&lt;TD&gt;&lt;TEXTAREA NAME = "comment" ROWS = "3" COLS = "50"&gt;
+Replace this text with the information 
+you would like to post.
+&lt;/TEXTAREA&gt;&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;INPUT TYPE = "submit" VALUE = "SUBMIT"&gt; 
+&lt;INPUT TYPE = "reset" VALUE = "CLEAR"&gt; 
+&lt;/CENTER&gt;
+&lt;/FORM&gt;
+
+&lt;%  
+   Dim fileObject2, textFile2
+
+    ' Instantiate a FileSystemObject
+    Set fileObject2 = Server.CreateObject( _
+       "Scripting.FileSystemObject" )
+
+    ' Guestbook path must be modified to reflect 
+    ' the file structure of the server.
+    guestBook = "E:\Inetpub\wwwroot\ch25\" & "guestbook.txt"
+
+    ' Check if the file exists. If not, create it.
+    If fileObject2.FileExists( guestBook ) = True Then
+
+       ' Guestbook must be open for writing.
+       ' Open the guestbook, "1" is for reading.
+       Set textFile2 = fileObject2.OpenTextFile( guestbook, 1 )
+
+       ' Read the entries from the file and write them to 
+       ' the client. 
+       Call Response.Write( "Guestbook Entries:&lt;BR&gt;" )
+       Call Response.Write( textFile2.ReadAll() )
+       Call textFile2.Close()
+    End If
+%&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

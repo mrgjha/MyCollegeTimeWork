@@ -1,0 +1,60 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+
+<h3>Visual Basic.Net Variables and Their Declaration</h3>
+
+<p align="left">
+The changes in variable declarations and related issues are described here.
+The syntax used to declare variables has changed for VB .NET, making it more flexible. Indeed, these are long awaited changes.<br>
+In VB .NET, when multiple variables are declared on the same line, if a variable is not declared with a type explicitly, then its type is that of the next variable with an explicit type declaration. Thus, in the line:<br><br><br>
+
+Dim x As Long, i, j, k As Integer, s As String<br><br>
+
+the variables i, j, and k have type Integer. (In VB 6, the variables i and j would have type Variant, and only the variable k would have type Integer.)<br>
+
+When declaring external procedures using the Declare statement, VB .NET does not support the As Any type declaration. All parameters must have a specific type declaration.</p>
+<p align="left">
+
+
+<h3>Variable initialization</h3>
+<p align="left">
+VB .NET permits the initialization of variables in the same line as their declaration (at long last). Thus, we may write:<br>
+
+Dim x As Integer = 5<br><br>
+
+to declare an Integer variable and initialize its value to 5. Similarly, we can declare and initialize more than one variable on a single line:<br><br>
+
+Dim x As Integer = 6, y As Integer = 9<br><br>
+</p>
+
+<h3>Variable scope changes</h3>
+
+<p align="left">
+In VB 6, a variable that is declared anywhere in a procedure has procedure scope; that is, the variable is visible to all code in the procedure.<br>
+
+In VB .NET, if a variable is defined inside a code block (a set of statements that is terminated by an End..., Loop, or Next statement), then the variable has block-level scope; that is, it is visible only within that block.<br>
+
+For example, consider the following VB .NET code:<br>
+<pre>
+Sub Test(  )
+   If x <> 0 Then
+      Dim rec As Integer
+      rec = 1/x
+   End If
+ 
+   MsgBox CStr(rec)
+End Sub
+</pre>
+In this code, the variable rec is not recognized outside the block in which it is defined, so the final statement will produce an error.<br><br>
+
+It is important to note that the lifetime of a local variable is always that of the entire procedure, even if the variable's scope is block-level. This implies that if a block is entered more than once, a block-level variable will retain its value from the previous time the code block was executed.<br><br>
+
+</p>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>

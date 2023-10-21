@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt%@ Page Language=VB Debug=true %&gt
+&lt%@ Import Namespace="System.Data" %&gt
+&lt%@ Import Namespace="System.Data.OLEDB" %&gt
+&ltscript runat=server&gt
+Sub Page_Load(ByVal Sender as Object, ByVal E as EventArgs)
+    Dim DBConn as OleDbConnection
+    Dim DBCommand As OleDbDataAdapter
+    Dim DSPageData as New DataSet
+    DBConn = New OleDbConnection( _
+        "PROVIDER=Microsoft.Jet.OLEDB.4.0;" _
+        & "DATA SOURCE=" & Server.MapPath _
+        ("EmpDB.mdb;"))
+    DBCommand = New OleDbDataAdapter _
+        ("Select * From " _
+        & "Emps Where EmpOfTheMonth = 1", DBConn)
+    DBCommand.Fill(DSPageData, _
+        "TheEmployee")
+    If DSPageData.Tables("TheEmployee"). _
+        Rows.Count = 0 Then
+        lblEmpInfo.Text = "There is no current employee " _
+            & "of the month. Please try again."
+    Else
+        lblEmpInfo.Text = "Congratulations to " _
+            & DSPageData.Tables("TheEmployee"). _
+            Rows(0).Item("FirstName") & " " _
+            & DSPageData.Tables("TheEmployee"). _
+            Rows(0).Item("LastName") & " who is the " _
+            & "current Employee of the month.&ltBR&gtCall " _
+            & DSPageData.Tables("TheEmployee"). _
+            Rows(0).Item("FirstName") & " at " _
+            & DSPageData.Tables("TheEmployee"). _
+            Rows(0).Item("Phone") & " to say how " _
+            & "proud you are!"
+    End If
+End Sub
+&lt/SCRIPT&gt
+
+
+
+
+&ltHTML&gt
+&ltHEAD&gt
+&ltTITLE&gtEmployee of the Month Page&lt/TITLE&gt
+&lt/HEAD&gt
+&ltBody LEFTMARGIN="40"&gt
+&ltform runat="server"&gt
+&ltBR&gt&ltBR&gt
+&ltasp:label 
+    id="lblEmpInfo" 
+    font-size="10pt"
+    font-name="Lucida Console"
+    runat="server"
+/&gt
+&lt/form&gt
+&lt/BODY&gt
+&lt/HTML&gt
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

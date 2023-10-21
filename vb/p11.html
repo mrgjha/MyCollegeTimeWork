@@ -1,0 +1,28 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+Private Sub ChangeAccessPassword()
+
+   Dim Db               As Database
+
+   Set Db = OpenDatabase("C:\My Documents\northwind.mdb", True, _
+      False, ";pwd=OriginalPassword")
+   
+   Db.NewPassword "OriginalPassword", "NewPassword"
+   Db.Close
+End Sub
+ 
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

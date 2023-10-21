@@ -1,0 +1,62 @@
+
+
+<html>
+<head>
+
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+class VideoTape {
+
+String title;  // name of the item
+int length;    // number of minutes
+boolean avail; // is the tape in the store?
+
+public VideoTape( String ttl, int lngth ) {
+title = ttl; length = lngth; avail = true;
+}
+
+public void show() {
+
+System.out.println( title + ", " + length + " min. available:" + avail );
+
+}
+}
+
+
+class Movie extends VideoTape {
+
+String director; // name of the director
+String rating; // G, PG, R, or X
+
+public Movie( String ttl, int lngth, String dir, String rtng ) {
+
+super( ttl, lngth ); // use the super class' constuctor
+
+director = dir; rating = rtng; // initialize what's new to Movie
+
+
+}
+}
+
+
+public class TapeStore {
+public static void main ( String args[] ) {
+VideoTape item1 = new VideoTape("Microcosmos", 90 );
+Movie item2 = new Movie("Jaws", 120, "Spielberg", "PG" );
+item1.show();
+item2.show();
+}
+}
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

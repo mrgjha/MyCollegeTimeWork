@@ -1,0 +1,47 @@
+<html>
+<head>
+<script>
+
+function check()
+{
+
+if(theform.text1.value=="")
+{
+alert("Please enter a value for the \"Name\" field.");
+
+theform.text1.select();
+theform.text1.focus();
+
+return(false);
+
+}
+
+if(theform.pass.value=="")
+
+{
+
+alert("Please enter a value for the \"Password\" field:");
+
+theform.pass.select();
+theform.pass.focus();
+
+}
+return true;
+}
+
+
+</script>
+
+</head>
+
+<body>
+
+<form name="theform">
+
+Name:<input type="text" name="text1">
+Password:<input type="password" name="pass">
+
+<input type="submit" value="submit" onclick="return check()">
+</form>
+</body>
+</html>

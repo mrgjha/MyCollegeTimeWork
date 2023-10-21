@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+
+
+Sub Form_Load()
+  ' demonstrates the difference between using a ; and not
+  Show
+  Me.Font.Name = "Courier"
+  Me.Print "This is a test"
+  Me.Print "of the Print method"
+  Me.Print                       'blank line
+
+  Me.Print "This is a test";
+  Me.Print "of the Print method"
+  Me.Print                       'blank line
+End Sub
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

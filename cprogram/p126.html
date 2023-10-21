@@ -1,0 +1,80 @@
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+//Program to store BGI graphic file to disk 
+
+#include&lt;fstream.h&gt; 
+#include&lt;graphics.h&gt; 
+#include&lt;conio.h&gt; 
+void main() 
+{ 
+int a=DETECT,b; 
+long int pixel,i,j; 
+initgraph(&a,&b,"c:\\tc\\bgi"); 
+/*IMAGE*/ 
+setcolor(14); 
+for(int ii=5;ii&lt;=25;ii++) 
+{circle(100,100,ii);ii++;} 
+setcolor(13); 
+for(ii=5;ii&lt;=25;ii++) 
+{circle(200,100,ii);ii++;} 
+setcolor(12); 
+for(ii=5;ii&lt;=25;ii++) 
+{circle(300,100,ii);ii++;} 
+setcolor(11); 
+for(ii=5;ii&lt;=25;ii++) 
+{circle(400,100,ii);ii++;} 
+setcolor(10); 
+for(ii=5;ii&lt;=25;ii++) 
+{circle(500,100,ii);ii++;} 
+
+//save file to disk 
+ofstream afile("pict");
+for (i=0;i&lt;=getmaxx();i++) 
+    { 
+    for(j=0;j&lt;=getmaxy();j++) 
+       { 
+       pixel=getpixel(i,j); 
+       afile&lt;&lt;pixel&lt;&lt;" "; 
+       } 
+    } 
+afile.close(); 
+//file is now saved 
+cleardevice(); 
+outtext("Press a key to continue..."); 
+getch(); 
+cleardevice(); 
+//retrieve file 
+ifstream file("pict"); 
+for (i=0;i&lt;=639;i++) 
+    { 
+    for(j=0;j&lt;=479;j++) 
+       { 
+       file&gt;&gt;pixel; 
+       putpixel(i,j,pixel); 
+       } 
+    } 
+file.close(); 
+outtext("File is now retrieved"); 
+getch(); 
+closegraph(); 
+} 
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

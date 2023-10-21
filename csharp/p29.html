@@ -1,0 +1,81 @@
+ 
+
+<html>
+<head>
+<title>C# Function</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+ using System;
+
+ namespace Teststudentweight
+ {
+
+     // declare a student class
+     // stripped down
+     public class student
+     {
+         // a private static member to keep
+         // track of how many student objects have
+         // been created
+         private static int instances = 0;
+         private int weight;
+         private String name;
+
+         // student constructor
+         // increments the count of students
+         public student(String name, int weight)
+         {
+             instances++;
+             this.name = name;
+             this.weight = weight;
+         }
+
+         // Static method to retrieve
+         // the current number of students
+         public static void HowManystudents()
+         {
+             Console.WriteLine("{0} students weighed",
+                 instances);
+         }
+         public void TellWeight()
+         {
+             Console.WriteLine("{0} is {1} KG weight",
+                 name, weight);
+         }
+     }
+
+    class studentrecord
+    {
+       public void Run()
+       {
+           student.HowManystudents();
+           student rana = new student("rana", 5);
+           rana.TellWeight();
+           student.HowManystudents();
+           student tara = new student("tara", 7);
+           tara.TellWeight();
+           student.HowManystudents();
+       }
+
+       static void Main()
+       {
+          studentrecord r = new studentrecord();
+          r.Run();
+       }
+    }
+ }
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

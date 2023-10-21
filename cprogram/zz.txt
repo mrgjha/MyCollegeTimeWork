@@ -1,0 +1,1380 @@
+// This program prints the alphabet in reverse order.
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char letter;
+  clrscr();
+  for(letter = 'Z'; letter &gt;= 'A'; letter--)
+    cout &lt;&lt; letter;
+
+
+  getch();
+  return 0;
+}
+
+
+
+
+
+// Using cin to read a string from the keyboard.
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+int main()
+{
+  char str[80];
+  clrscr();
+  cout &lt;&lt; "Enter a string: ";
+  cin &gt;&gt; str; // read string from keyboard
+  cout &lt;&lt; "Here is your string: ";
+  cout &lt;&lt; str;
+  getch();
+  return 0;
+}
+
+
+
+
+// Using gets() to read a string from the keyboard.
+
+#include &lt;iostream.h&gt;
+#include &lt;conio.h&gt;
+#include&lt;stdio.h&gt;
+
+int main()
+{
+  char str[80];
+  clrscr();
+  cout &lt;&lt; "Enter a string: ";
+  gets(str); // read a string from the keyboard
+  cout &lt;&lt; "Here is your string: ";
+  cout &lt;&lt; str;
+  getch();
+  return 0;
+}
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char str[80];
+  clrscr();
+
+  strcpy(str, "hello");
+  cout &lt;&lt; str;
+
+
+  getch();
+  return 0;
+}
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char s1[20], s2[10];
+  clrscr();
+
+  strcpy(s1, "hello");
+  strcpy(s2, " there");
+  strcat(s1, s2);
+  cout &lt;&lt; s1;
+  getch();
+  return 0;
+}
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+bool password();
+
+int main()
+{
+  if(password()) cout &lt;&lt; "Logged on.\n";
+  else cout &lt;&lt; "Access denied.\n";
+
+  return 0;
+}
+
+// Return true if password accepted; false otherwise.
+bool password()
+{
+  char s[80];
+
+  cout &lt;&lt; "Enter password: ";
+  gets(s);
+
+  if(strcmp(s, "password")) {  // strings differ
+    cout &lt;&lt; "Invalid password.\n";
+    return false;
+  }
+
+  // strings compared the same 
+  return true;
+}
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char s[80];
+  clrscr();
+  for(;;) {
+    cout &lt;&lt; "Enter a string: ";
+    gets(s);
+    if(!strcmp("quit", s)) break;
+  }
+  getch();
+  return 0;
+
+}
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char str[80];
+  clrscr();
+
+  cout &lt;&lt; "Enter a string: ";
+
+  gets(str);
+
+  cout &lt;&lt; "Length is: " &lt;&lt;  strlen(str);
+  getch();
+  return 0;
+}
+
+
+
+
+
+// Print a string backwards.
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char str[80];
+  int i;
+  clrscr();
+
+  cout &lt;&lt; "Enter a string: ";
+  gets(str);
+
+  for(i=strlen(str)-1; i&gt;=0; i--) cout &lt;&lt; str[i];
+  getch();
+  return 0;
+}
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char s1[80], s2[80];
+  clrscr();
+  cout &lt;&lt; "Enter two strings: ";
+
+  gets(s1); gets(s2);
+
+  cout &lt;&lt; "lengths: " &lt;&lt; strlen(s1);
+  cout &lt;&lt; ' ' &lt;&lt; strlen(s2) &lt;&lt; '\n';
+
+  if(!strcmp(s1, s2))
+     cout &lt;&lt; "The strings are equal\n";
+  else cout &lt;&lt; "not equal\n";
+
+  strcat(s1, s2);
+  cout &lt;&lt; s1 &lt;&lt; '\n';
+
+  strcpy(s1, s2);
+  cout &lt;&lt; s1 &lt;&lt; " and " &lt;&lt; s2 &lt;&lt; ' ';
+  cout &lt;&lt; "are now the same\n";
+  getch();
+  return 0;
+}
+
+
+// Convert a string to uppercase.
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+#include&lt;conio.h&gt;
+int main()
+{
+  char str[80];
+  int i;
+  clrscr();
+  strcpy(str, "this is a test");
+  str[i] = toupper(str[i]);
+  cout&lt;&lt;str;
+  getch();
+  return 0;
+}
+
+
+
+
+
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+void f1();
+
+int main()
+{
+clrscr();
+  f1();
+  f1();
+  getch();
+  return 0;
+}
+
+void f1()
+{
+  char s[80]="this is a test\n";
+
+  cout &lt;&lt; s;
+  strcpy(s, "CHANGED\n"); // change s
+  cout &lt;&lt; s;
+}
+
+
+// Enter and display strings.
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main()
+{
+  int t, i;
+  char text[100][80];
+  clrscr();
+  for(t=0; t&lt;100; t++) {
+    cout &lt;&lt; t &lt;&lt; ": ";
+    gets(text[t]);
+    if(!text[t][0]) break; // quit on blank line
+  }
+
+  // redisplay the strings
+  for(i=0; i&lt;t; i++)
+    cout &lt;&lt; text[i] &lt;&lt; '\n';
+  getch();
+  return 0;
+}
+
+
+
+// A simple employee database program.
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+char name[10][80];  // this array holds employee names
+char phone[10][20]; // their phone numbers
+float hours[10];    // hours worked per week
+float wage[10];     // wage
+
+int menu();
+void enter(), report();
+
+int main()
+{
+  int choice;
+
+  do {
+    choice = menu(); // get selection
+    switch(choice) {
+      case 0: break;
+      case 1: enter();
+	break;
+      case 2: report();
+	break;
+      default: cout &lt;&lt; "Try again.\n\n";
+    }
+  } while(choice != 0);
+
+  return 0;
+}
+
+// Return a user's selection.
+int menu()
+{
+  int choice;
+
+  cout &lt;&lt; "0. Quit\n";
+  cout &lt;&lt; "1. Enter information\n";
+  cout &lt;&lt; "2. Report information\n";
+  cout &lt;&lt; "\nChoose one: ";
+  cin &gt;&gt; choice;
+
+  return choice;
+}
+
+// Enter information.
+void enter()
+{
+  int i;
+  char temp[80];
+
+  for(i=0; i&lt;3; i++) {
+    cout &lt;&lt; "Enter last name: ";
+    cin &gt;&gt; name[i];
+    cout &lt;&lt; "Enter phone number: ";
+    cin &gt;&gt; phone[i];
+    cout &lt;&lt; "Enter number of hours worked: ";
+    cin &gt;&gt; hours[i];
+    cout &lt;&lt; "Enter wage: ";
+    cin &gt;&gt; wage[i];
+  }
+}
+
+// Display report.
+void report()
+{
+  int i;
+
+  for(i=0; i&lt;3; i++) {
+    cout &lt;&lt; name[i] &lt;&lt; ' ' &lt;&lt; phone[i] &lt;&lt; '\n';
+    cout &lt;&lt; "Pay for the week: " &lt;&lt; wage[i] * hours[i];
+    cout &lt;&lt; '\n';
+  }
+}
+
+
+// Tokenizing program: pointer version.
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char str[80];
+  char token[80];
+  char *p, *q;
+  clrscr();
+  cout &lt;&lt; "Enter a sentence: ";
+  gets(str);
+
+  p = str;
+
+  // Read a token at a time from the string.
+  while(*p) {
+    q = token;  // set q pointing to start of token
+
+    /* Read characters until either a space or the
+       null terminator is encountered. */
+    while(*p!=' ' && *p) {
+      *q = *p;
+       q++; p++;
+    }
+    if(*p) p++; // advance past the space
+    *q = '\0'; // null terminate the token
+    cout &lt;&lt; token &lt;&lt; '\n';
+  }
+  getch();
+  return 0;
+}
+
+
+
+
+// Tokenizing program: array-indexing version.
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char str[80];
+  char token[80];
+  int i, j;
+  clrscr();
+
+  cout &lt;&lt; "Enter a sentence: ";
+  gets(str);
+
+  // Read a token at a time from the string.
+  for(i=0; ; i++) {
+    /* Read characters until either a space or the
+       null terminator is encountered. */
+    for(j=0; str[i]!=' ' && str[i]; j++, i++)
+      token[j] = str[i];
+
+    token[j] = '\0'; // null terminate the token
+    cout &lt;&lt; token &lt;&lt; '\n';
+    if(!str[i]) break;
+  }
+  getch();
+  return 0;
+}
+
+
+// Indexing a pointer like an array.
+
+#include &lt;iostream.h&gt;
+#include &lt;ctype.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char str[20] = "hello tom";
+  char *p;
+  int i;
+  clrscr();
+  p = str;
+
+  // index a pointer
+  for(i=0; p[i]; i++) p[i] = toupper(p[i]);
+  cout &lt;&lt; p; // display the string
+  getch();
+  return 0;
+}
+
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char *s;
+  clrscr();
+
+  s = "Pointers are fun to use.\n";
+
+  cout &lt;&lt; s;
+  getch();
+  return 0;
+}
+
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  int num[10];
+  int *start, *end;
+  clrscr();
+
+  start = num;
+  end = &num[9];
+
+  while(start &lt;= end) {
+    cout &lt;&lt; "Enter a number: ";
+    cin &gt;&gt; *start;
+    start++;
+  }
+  start = num;  /* reset the starting pointer */
+  while(start &lt;= end) {
+    cout &lt;&lt; *start &lt;&lt; ' ';
+    start++;
+  }
+  getch();
+  return 0;
+}
+
+
+#include &lt;iostream.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;conio.h&gt;
+
+
+char *fortunes[] = {
+  "Soon, you will come into some money.\n",
+  "A new love will enter your life.\n",
+  "You will live long and prosper.\n",
+  "Now is a good time to invest for the future.\n",
+  "A close friend will ask for a favor.\n"
+};
+
+int main()
+{
+  int chance;
+  clrscr();
+  cout &lt;&lt; "To see your fortune, press a key: ";
+
+  // randomize the random number generator
+  while(!kbhit())
+  {
+  rand();
+   }
+  cout &lt;&lt; '\n';
+
+  chance = rand();
+  chance = chance % 5;
+  cout &lt;&lt; fortunes[chance];
+  getch();
+  return 0;
+}
+
+// A simple C++ keyword synopsis program.
+
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+char *keyword[][2] = {
+  "for", "for(initialization; condition; increment)",
+  "if", "if(condition) ... else ...",
+  "switch", "switch(value) { case-list }",
+  "while", "while(condition) ...",
+  // add the rest of the C++ keywords here
+  "", ""  // terminate the list with nulls 
+};
+
+int main()
+{
+  char str[80];
+  int i;
+  clrscr();
+  cout &lt;&lt; "Enter keyword: ";
+  cin &gt;&gt; str;
+
+  // display syntax
+  for(i=0; *keyword[i][0]; i++)
+    if(!strcmp(keyword[i][0], str))
+      cout &lt;&lt; keyword[i][1];
+  getch();
+
+  return 0;
+}
+
+// Multiple indirection.
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+  int x, *p, **q;
+
+  x = 10;
+  p = &x;
+  q = &p;
+
+  cout &lt;&lt; **q; // prints the value of x
+
+  return 0;
+}
+
+
+#include &lt;iostream.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+
+int main()
+{
+  char s[80];
+  char *p1;
+
+  do {
+    p1 = s; // reset p1 each time through the loop
+
+    cout &lt;&lt; "Enter a string: ";
+    gets(p1); // read a string 
+    // print the ASCII values of each character
+    while(*p1) cout &lt;&lt; (int) *p1++ &lt;&lt; ' ';
+    cout &lt;&lt; '\n';
+  } while(strcmp(s, "done"));
+  
+  return 0;
+}
+
+
+
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+void f1();
+
+int main()
+{
+  char str[]="this is str in main()";
+  clrscr();
+  cout &lt;&lt; str &lt;&lt; '\n';
+  f1();
+  cout &lt;&lt; str &lt;&lt; '\n';
+  getch();
+  return 0;
+}
+
+void f1()
+{
+  char str[80];
+
+  cout &lt;&lt; "Enter something: ";
+  cin &gt;&gt; str;
+  cout &lt;&lt; str &lt;&lt; '\n';
+}
+
+
+
+#include &lt;iostream&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int main()
+{
+  int choice;
+
+  cout &lt;&lt; "(1) add numbers or ";
+  cout &lt;&lt; "(2) concatenate strings?: ";
+
+  cin &gt;&gt; choice;
+  if(choice == 1) {
+    int a, b;  /* activate two integer vars */
+    cout &lt;&lt; "Enter two numbers: ";
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; "Sum is " &lt;&lt; a+b &lt;&lt; '\n';
+  }
+  else {
+    char s1[80], s2[80];  /* activate two strings */
+    cout &lt;&lt; "Enter two strings: ";
+    cin &gt;&gt; s1;
+    cin &gt;&gt; s2;
+    strcat(s1, s2);
+    cout &lt;&lt; "Concatenation is " &lt;&lt; s1 &lt;&lt; '\n';
+  }
+
+  return 0;
+}
+
+// Pass a string to a function.
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;conio.h&gt;
+
+void stringupper(char *str);
+
+int main()
+{
+  char str[80];
+  clrscr();
+  strcpy(str, "this is a test");
+
+  stringupper(str);
+  cout &lt;&lt; str; // display uppercase string
+  getch();
+  return 0;
+}
+
+void stringupper(char *str)
+{
+  while(*str) {
+    *str = toupper(*str); // uppercase one char
+    str++; // move on to next char
+  }
+}
+
+
+// A custom version of strlen().
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int mystrlen(char *str);
+
+int main()
+{
+  clrscr();
+  cout &lt;&lt; "Length of Hello There is: ";
+  cout &lt;&lt; mystrlen("Hello There");
+  getch();
+  return 0;
+}
+
+// A custom version of strlen().
+int mystrlen(char *str)
+{
+  int i;
+
+  for(i=0; str[i]; i++) ; // find the end of the string
+
+  return i;
+}
+
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+
+int main(int argc, char *argv[])
+{
+clrscr();
+  if(argc!=2) {
+    cout &lt;&lt; "You forgot to type your name.\n";
+    return 1;
+  }
+  cout &lt;&lt; "Hello " &lt;&lt; argv[1] &lt;&lt; '\n';
+  getch();
+  return 0;
+}
+
+/* The program prints all command line arguments it is
+   called with one character at a time. */
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int main(int argc, char *argv[])
+{
+  int t, i;
+  clrscr();
+  for(t=0; t&lt;argc; ++t) {
+    i = 0;
+    while(argv[t][i]) {
+      cout &lt;&lt; argv[t][i];
+      ++i;
+    }
+    cout &lt;&lt; ' ';
+  }
+  getch();
+  return 0;
+}
+
+
+
+
+#include &lt;iostream&gt;
+using namespace std;
+
+int find_substr(char *sub, char *str);
+
+int main()
+{
+  int index;
+
+  index = find_substr("three", "one two three four");
+
+  cout &lt;&lt; "Index of three is " &lt;&lt; index; // index is 8
+
+  return 0;
+}
+
+// Return index of substring or -1 if not found.
+int find_substr(char *sub, char *str)
+{
+  int t;
+  char *p, *p2;
+
+  for(t=0; str[t]; t++) {
+    p = &str[t]; // reset pointers 
+    p2 = sub;
+    while(*p2 && *p2==*p) { // check for substring
+      p++;
+      p2++;
+    } 
+
+    /* If at end of p2 (i.e., substring), then
+       a match has been found. */
+    if(!*p2) return t; // return index of match
+  }
+  return -1; // no match found
+}
+
+
+#include &lt;iostream&gt;
+using namespace std;
+
+void print_vertical(char *str); 
+
+int main(int argc, char *argv[])
+{
+  if(argc==2) print_vertical(argv[1]);
+
+  return 0;
+}
+
+void print_vertical(char *str)
+{
+  while(*str) 
+    cout &lt;&lt; *str++ &lt;&lt; '\n';
+}
+
+
+
+
+// Rework find_substr() to return a pointer.
+#include &lt;iostream&gt;
+using namespace std;
+
+char *find_substr(char *sub, char *str);
+
+int main()
+{
+  char *substr;
+
+  substr = find_substr("three", "one two three four");
+
+  cout &lt;&lt; "substring found: " &lt;&lt; substr;
+
+  return 0;
+}
+
+// Return pointer to substring or null if not found.
+char *find_substr(char *sub, char *str)
+{
+  int t;
+  char *p, *p2, *start;
+
+  for(t=0; str[t]; t++) {
+    p = &str[t]; // reset pointers 
+    start = p; 
+    p2 = sub;    
+    while(*p2 && *p2==*p) { // check for substring
+      p++;
+      p2++;
+    } 
+
+    /* If at end of p2 (i.e., substring), then
+       a match has been found. */
+    if(!*p2)
+      return start; // return pointer to beginning of substring
+  }
+  return 0; // no match found
+}
+
+
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int factr(int n);
+int fact(int n);
+
+int main()
+{
+clrscr();
+  // use recursive version
+  cout &lt;&lt; "4 factorial is " &lt;&lt; factr(4);
+  cout &lt;&lt; '\n';
+
+  // use iterative version
+  cout &lt;&lt; "4 factorial is " &lt;&lt; fact(4);
+  cout &lt;&lt; '\n';
+  getch();
+  return 0;
+}
+
+// Recursive version.
+int factr(int n)
+{
+  int answer;
+
+  if(n==1) return(1);
+  answer = factr(n-1)*n;
+  return(answer);
+}
+
+// Iterative version.
+int fact(int n)
+{
+  int t, answer;
+
+  answer = 1;
+  for(t=1; t&lt;=n; t++) answer = answer*(t);
+  return(answer);
+}
+
+
+// Print a string backwards using recursion.
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+
+void reverse(char *s);
+
+int main()
+{
+  char str[] = "this is a test";
+  clrscr();
+  reverse(str);
+  getch();
+  return 0;
+}
+
+// Print string backwards.
+void reverse(char *s)
+{
+  if(*s)
+    reverse(s+1);
+  else
+    return;
+
+  cout &lt;&lt; *s;
+}
+
+
+
+
+
+// A customized version of strcat().
+#include &lt;iostream.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+void mystrcat(char *s1, char *s2, int len = -1);
+
+int main()
+{
+  char str1[80] = "This is a test";
+  char str2[80] = "0123456789";
+  clrscr();
+  mystrcat(str1, str2, 5); // concatenate 5 chars
+  cout &lt;&lt; str1 &lt;&lt; '\n';
+
+  strcpy(str1, "this is a test"); // reset str1
+
+  mystrcat(str1, str2); // concatenate entire string
+  cout &lt;&lt; str1 &lt;&lt; '\n';
+  getch();
+  return 0;
+}
+
+// A custom version of strcat().
+void mystrcat(char *s1, char *s2, int len)
+{
+  // find end of s1
+  while(*s1) s1++;
+
+  if(len == -1) len = strlen(s2);
+
+  while(*s2 && len) {
+    *s1 = *s2; // copy chars
+    s1++;
+    s2++;
+    len--;
+  }
+
+  *s1 = '\0'; // null terminate s1
+}
+
+
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+void code(const char *str);
+
+int main()
+{
+clrscr();
+  code("this is a test");
+getch();
+  return 0;
+}
+
+/* Use of const ensures str cannot modify the
+   argument to which it points. */
+void code(const char *str)
+{
+  while(*str) {
+    cout &lt;&lt; (char) (*str+1);
+    str++;
+  }
+}
+
+
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+enum  apple {Jonathan, Golden_Del, Red_Del, Winesap,
+	     Cortland, McIntosh};
+
+// Array of strings that correspond to the apple enumeration.
+char name[][20] = {
+  "Jonathan",
+  "Golden Delicious",
+  "Red Delicious",
+  "Winesap",
+  "Cortland",
+  "McIntosh"
+};
+
+int main()
+{
+  apple fruit;
+  clrscr();
+
+  fruit = Jonathan;
+  cout &lt;&lt; name[fruit] &lt;&lt; '\n';
+
+  fruit = Winesap;
+  cout &lt;&lt; name[fruit] &lt;&lt; '\n';
+
+  fruit = McIntosh;
+  cout &lt;&lt; name[fruit] &lt;&lt; '\n';
+  getch();
+  return 0;
+}
+
+
+
+// Uppercase letters.
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char ch;
+  clrscr();
+  do {
+    cin &gt;&gt; ch;
+
+    // This statement turns off the 6th bit.
+    ch = ch & 223; // ch is now uppercase
+
+    cout &lt;&lt; ch;
+  } while(ch!='Q');
+  getch();
+  return 0;
+}
+
+
+// Lowercase letters.
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+
+int main()
+{
+  char ch;
+  clrscr();
+  do {
+    cin &gt;&gt; ch;
+
+    /* This lowercases the letter by turning
+       on bit 6.
+    */
+    ch = ch | 32;
+
+    cout &lt;&lt; ch;
+  } while(ch != 'q');
+  getch();
+  return 0;
+}
+
+
+/* A simple inventory program that uses an array
+   of structures. */
+
+#include &lt;iostream&gt;
+#include &lt;cctype&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+const int SIZE = 100;
+
+struct inv_type {
+  char item[40]; // name of item
+  double cost;   // cost
+  double retail; // retail price
+  int on_hand;   // amount on hand
+  int lead_time; // number of days before resupply
+}  invtry[SIZE];
+
+void enter(), init_list(), display();
+void update(), input(int i);
+int menu();
+
+int main()
+{
+  char choice;
+
+  init_list();
+
+  for(;;) {
+    choice = menu();
+    switch(choice) {
+      case 'e': enter();
+        break;
+      case 'd': display();
+        break;
+      case 'u': update();
+        break;
+      case 'q': return 0;
+    }
+  }
+}
+
+// Initialize the inv_type_info array.
+void init_list()
+{
+  int t;
+
+  // a zero length name signifies empty
+  for(t=0; t&lt;SIZE; t++) *invtry[t].item = '\0';
+}
+
+// Get a menu selection.
+int menu()
+{
+  char ch;
+
+  cout &lt;&lt; '\n';
+  do {
+    cout &lt;&lt; "(E)nter\n";
+    cout &lt;&lt; "(D)isplay\n";
+    cout &lt;&lt; "(U)pdate\n";
+    cout &lt;&lt; "(Q)uit\n\n";
+    cout &lt;&lt; "choose one: ";
+    cin &gt;&gt; ch;
+  } while(!strchr("eduq", tolower(ch)));
+  return tolower(ch);
+}
+
+// Enter items into the list.
+void enter()
+{
+  int i;
+
+  // find the first free structure
+  for(i=0; i&lt;SIZE; i++)
+    if(!*invtry[i].item) break;
+
+  // i will equal SIZE if the list is full
+  if(i==SIZE) {
+    cout &lt;&lt; "List full.\n";
+    return;
+  }
+
+  input(i);
+}
+
+// Input the information.
+void input(int i)
+{
+  // enter the information
+  cout &lt;&lt; "Item: ";
+  cin &gt;&gt; invtry[i].item;
+
+  cout &lt;&lt; "Cost: ";
+  cin &gt;&gt; invtry[i].cost;
+
+  cout &lt;&lt; "Retail price: ";
+  cin &gt;&gt; invtry[i].retail;
+
+  cout &lt;&lt; "On hand: ";
+  cin &gt;&gt; invtry[i].on_hand;
+
+  cout &lt;&lt; "Lead time to resupply (in days): ";
+  cin &gt;&gt; invtry[i].lead_time;
+}
+
+// Modify an existing item.
+void update()
+{
+  int i;
+  char name[80];
+
+  cout &lt;&lt; "Enter item: ";
+  cin &gt;&gt; name;
+
+  for(i=0; i&lt;SIZE; i++)
+    if(!strcmp(name, invtry[i].item)) break;
+
+  if(i==SIZE) {
+    cout &lt;&lt; "Item not found.\n";
+    return;
+  }
+
+  cout &lt;&lt; "Enter new information.\n";
+  input(i);
+}
+
+// Display the list.
+void display()
+{
+  int t;
+
+  for(t=0; t&lt;SIZE; t++) {
+    if(*invtry[t].item) {
+      cout &lt;&lt; invtry[t].item &lt;&lt; '\n';
+      cout &lt;&lt; "Cost: $" &lt;&lt; invtry[t].cost;
+      cout &lt;&lt; "\nRetail: $";
+      cout &lt;&lt; invtry[t].retail &lt;&lt; '\n';
+      cout &lt;&lt; "On hand: " &lt;&lt; invtry[t].on_hand;
+      cout &lt;&lt; "\nResupply time: ";
+      cout &lt;&lt; invtry[t].lead_time &lt;&lt; " days\n\n";
+    }
+  }
+}
+
+
+/* Print a string backwards using dynamic allocation. */
+
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+int main(void)
+{
+  char *s;
+  register int t;
+  clrscr();
+  s = (char *) malloc(80);
+
+  if(!s) {
+    printf("Memory request failed.\n");
+    return 1;
+  }
+
+  gets(s);
+  for(t=strlen(s)-1; t&gt;=0; t--) printf("%c", s[t]);
+  free(s);
+  getch();
+  return 0;
+}
+
+
+#include &lt;stdio.h&gt;
+#include&lt;iostream.h&gt;
+
+
+void sp_to_dash(const char *str);
+
+int main(void)
+{
+  sp_to_dash("this is a test");
+
+  return 0;
+}
+
+void sp_to_dash(const char *str)
+{
+  while(*str) {
+    if(*str == ' ') printf("%c", '-');
+    else printf("%c", *str);
+    str++;
+  }
+}
+
+/* This program is correct. */
+
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+int main(void)
+{
+  char *p1, s[80];
+  clrscr();
+  do {
+    p1 = s; /* assign p1 the starting address of s */
+    gets(s);  /* read a string */
+
+    /* print the decimal equivalent of each
+       character */
+    while(*p1) printf(" %d", *p1++);
+
+  } while(strcmp(s, "done"));
+  getch();
+  return 0;
+}
+
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;conio.h&gt;
+
+
+char *p = "hello world";
+
+int main(void)
+{
+  register int t;
+clrscr();
+  /* print the string forward and backwards */
+  printf(p);
+  for(t=strlen(p)-1; t&gt;-1; t--) printf("%c", p[t]);
+  getch();
+  return 0;
+}
+
+#include &lt;iostream.h&gt;
+#include &lt;strstream.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char s[] = "One 2 3.00";
+  clrscr();
+  istrstream ins(s);
+
+  int i;
+  char str[80];
+  float f;
+
+  // reading: one 2
+  ins &gt;&gt; str;
+  ins &gt;&gt; i;
+  cout &lt;&lt; str &lt;&lt; " " &lt;&lt; i &lt;&lt; endl;
+
+  // reading 3.00
+  ins &gt;&gt; f;
+  cout &lt;&lt; f &lt;&lt;  '\n' ;
+  getch();
+  return 0;
+}
+
+#include &lt;strstrea.h&gt;
+#include &lt;iostream.h&gt;
+#include&lt;conio.h&gt;
+
+int main()
+{
+  char str[80];
+  clrscr();
+  ostrstream outs(str, sizeof(str));
+
+  outs &lt;&lt; "Hello ";
+  outs &lt;&lt; 34 &lt;&lt; " " &lt;&lt; 1234.23;
+  outs &lt;&lt; ends;  // null terminate
+
+  cout &lt;&lt; outs.pcount(); // display how many chars in outs
+
+  cout &lt;&lt; " " &lt;&lt; str;
+  getch();
+  return 0;
+}
+
+
+

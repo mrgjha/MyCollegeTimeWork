@@ -1,0 +1,57 @@
+
+<html>
+<head>
+
+<title>Print 1 to 10 number</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"&gt;
+&lt;HTML&gt;
+
+&lt;HEAD&gt;
+&lt;TITLE&gt;Our first VBScript&lt;/TITLE&gt;
+
+&lt;SCRIPT LANGUAGE = "VBScript"&gt;
+&lt;!--
+   Option Explicit
+   Dim intTotal
+
+   Sub cmdAdd_OnClick()
+      Dim intValue
+   
+      intValue = InputBox("Enter an integer", "Input Box", , _
+                          1000, 1000)
+      intTotal = CInt( intTotal ) + CInt( intValue )
+      Call MsgBox("You entered " & intValue & _
+                  "; total so far is " & intTotal, , "Results")
+   End Sub
+--&gt;
+&lt;/SCRIPT&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+Click the button to add an integer to the total.
+&lt;HR&gt;
+&lt;FORM&gt;
+&lt;INPUT NAME = "cmdAdd" TYPE = "BUTTON" 
+       VALUE = "Click Here to Add to the Total"&gt;
+&lt;/FORM&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

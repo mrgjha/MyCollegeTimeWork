@@ -1,0 +1,81 @@
+BODY {
+	FONT: 10pt Helvetica
+}
+TABLE {
+	FONT: 10pt Helvetica
+}
+PRE {
+	FONT: 10pt Helvetica
+}
+A:active {
+	COLOR: #4d2c72; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #4d2c72; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #4d2c72; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #c0660e; TEXT-DECORATION: underline
+}
+.tblNavBar {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; FONT: 12pt Helvetica; PADDING-TOP: 0px
+}
+INPUT {
+	BORDER-RIGHT: #fdbd78 1px solid; BORDER-TOP: #fdbd78 1px solid; BORDER-LEFT: #fdbd78 1px solid; COLOR: #336699; BORDER-BOTTOM: #fdbd78 1px solid; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffee; TEXT-DECORATION: none
+}
+.inSELECT {
+	BORDER-RIGHT: #fdbd78 1px solid; BORDER-TOP: #fdbd78 1px solid; BORDER-LEFT: #fdbd78 1px solid; COLOR: #336699; BORDER-BOTTOM: #fdbd78 1px solid; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffee; TEXT-DECORATION: none
+}
+SELECT {
+	BORDER-RIGHT: #fdbd78 1px solid; BORDER-TOP: #fdbd78 1px solid; BORDER-LEFT: #fdbd78 1px solid; COLOR: #336699; BORDER-BOTTOM: #fdbd78 1px solid; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffee; TEXT-DECORATION: none
+}
+TEXTAREA {
+	BORDER-RIGHT: #fdbd78 2px solid; BORDER-TOP: #fdbd78 1px solid; BACKGROUND-IMAGE: url(../images/input_background.gif); BORDER-LEFT: #fdbd78 1px solid; COLOR: #336699; BORDER-BOTTOM: #fdbd78 2px solid; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffee; TEXT-DECORATION: none
+}
+OPTION {
+	COLOR: #336699; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffee; TEXT-DECORATION: none
+}
+.noStyle {
+	BORDER-RIGHT: #ffffff 0px solid; BORDER-TOP: #ffffff 0px solid; BORDER-LEFT: #ffffff 0px solid; BORDER-BOTTOM: #ffffff 0px solid; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffff; TEXT-DECORATION: none
+}
+.inputSubmit {
+	BORDER-RIGHT: #fdbd78 1px solid; BORDER-TOP: #fdbd78 1px solid; FONT-WEIGHT: bolder; BORDER-LEFT: #fdbd78 1px solid; CURSOR: hand; COLOR: #eeeecc; BORDER-BOTTOM: #fdbd78 1px solid; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #8184b6; TEXT-DECORATION: none
+}
+.tdResourceDetail {
+	FONT-SIZE: 8pt; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffff
+}
+.tdResourceSmall {
+	FONT-SIZE: 8pt; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #ffffee
+}
+.tdSortby {
+	BORDER-RIGHT: #ffffee 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 10pt; BORDER-LEFT: #ffffee 1px solid; COLOR: #ffffff; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #9999cc
+}
+.tdTitle {
+	FONT-SIZE: 10pt; COLOR: #8184b6; FONT-FAMILY: Helvetica; BACKGROUND-COLOR: #eeeecc
+}
+.tblShowResource {
+	BORDER-RIGHT: #fdbd78 1px solid; BORDER-TOP: #fdbd78 1px solid; BORDER-LEFT: #fdbd78 1px solid; BORDER-BOTTOM: #fdbd78 1px solid
+}
+.tdLabel {
+	FONT-FAMILY: Helvetica
+}
+.divParent {
+	FONT-SIZE: 12pt; FONT-FAMILY: Helvetica
+}
+.divChild {
+	FONT-SIZE: 10pt; FONT-FAMILY: Helvetica
+}
+.Shadow {
+	BORDER-RIGHT: #8184b6 1px solid; BORDER-TOP: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #8184b6 1px solid; FONT-FAMILY: Helvetica
+}
+.RevShadow {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #8184b6 1px solid; BORDER-LEFT: #8184b6 1px solid; BORDER-BOTTOM: #ffffff 1px solid; FONT-FAMILY: Helvetica
+}
+.tblResourceManager {
+	BORDER-RIGHT: #fdbd78 1px solid; BORDER-TOP: #fdbd78 1px solid; BORDER-LEFT: #fdbd78 1px solid; BORDER-BOTTOM: #fdbd78 1px solid
+}
+.tblResourceManager TD {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; BORDER-BOTTOM: #fdbd78 1px solid; BACKGROUND-COLOR: #eeeecc
+}

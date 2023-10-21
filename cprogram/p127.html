@@ -1,0 +1,442 @@
+
+<html>
+<head>
+
+<title>template demo</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+#include&lt;Graphics.h&gt;
+#include&lt;String.h&gt;
+#include&lt;Fstream.h&gt;
+#include&lt;Ctype.h&gt;
+#include&lt;Conio.h&gt;
+#include&lt;Process.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;iostream.h&gt;
+
+
+struct Phone  //Structure For Information
+{       char Id[5];
+	char FirstName[30];
+	char LastName[30];
+	char Add[50];
+	char Email[30];
+	char PhoneNo[20];
+}Record;
+
+const int SIZE=sizeof(Phone);
+//Size Of Structure To Be Stored in File
+char  *PATH="D:\\cpp\\Phone.dat";
+//Edit Path Of File Phone.dat To Suit Your Needs
+char *PATH2="D:\\cpp\\Temp.DAT";
+//Temp File To Delete Record
+
+
+
+
+		/*Phone Book Function*/
+
+//Create A Record And Save If User Wants
+void Create_New_Record();
+//Find By Name In A File
+void Search_Name(); 
+//If Record Is Found Dispay It On The Lower Right 
+//Side Of The Screen
+void Edit_Record();
+//Edit Record As Per Users Choice
+void Delete_Record();
+//Search And Delete Record
+
+/***********************************************************/
+
+void Create_New_Record()
+{
+		cout&lt;&lt;"ID"&lt;&lt;endl;
+		cin&gt;&gt;Record.Id;
+		cout&lt;&lt;"FIRST NAME"&lt;&lt;endl;
+		cin&gt;&gt;Record.FirstName;
+		cout&lt;&lt;"LAST NAME"&lt;&lt;endl;
+		cin&gt;&gt;Record.LastName;
+		cout&lt;&lt;"ADDRESS"&lt;&lt;endl;
+		gets(Record.Add);
+		cout&lt;&lt;"E-MAIL ID"&lt;&lt;endl;
+		cin&gt;&gt;Record.Email;
+		cout&lt;&lt;"PHONE"&lt;&lt;endl;
+		cin&gt;&gt;Record.PhoneNo;
+
+flushall();
+ofstream finout(PATH,ios::binary|ios::ate);
+//Open File And Go To End
+finout.write ( (char *)&Record , SIZE );
+//Write To File
+finout.close();//Close File
+}
+
+void Search_Name()
+	{
+
+	char Find_Name[30];
+	cout&lt;&lt;"Enter Name to find"&lt;&lt;endl;
+	cin&gt;&gt;Find_Name;
+
+
+	int counter=0;
+	ifstream finout(PATH,ios::binary); 
+//Open file in Binary Mode
+	finout.seekg(0,ios::beg); 
+//Go To Begining
+
+		while ( finout )   
+//Loop To Search
+		{
+		finout.read((char *)&Record,SIZE); 
+//Read File
+		if (strcmp(Record.FirstName,Find_Name)==0) 
+//Check For Match
+				{
+				counter++;
+
+		/*Print Various Fields*/
+		/*Display The Found Record*/
+		cout&lt;&lt;"Id"&lt;&lt;endl;
+		cout&lt;&lt;Record.Id&lt;&lt;endl;
+		cout&lt;&lt;"FIRST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.FirstName&lt;&lt;endl;
+		cout&lt;&lt;"LAST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.LastName&lt;&lt;endl;
+		cout&lt;&lt;"ADDRESS"&lt;&lt;endl;
+		cout&lt;&lt;Record.Add&lt;&lt;endl;
+		cout&lt;&lt;"E-MAIL ID"&lt;&lt;endl;
+		cout&lt;&lt;Record.Email&lt;&lt;endl;
+		cout&lt;&lt;"PHONE"&lt;&lt;endl;
+		cout&lt;&lt;Record.PhoneNo;
+
+				break;
+//End Function
+				}
+		}
+		finout.close();
+		if (counter==0)  
+//Record Not Found
+		{
+	     cout&lt;&lt;"SORRY RECORD NOT FOUND";
+		getch();
+		}
+
+	}
+
+
+
+/***********************************************************/
+
+void Edit_Record()
+{
+
+char Edit_Name[30];
+int counter=0;
+cout&lt;&lt;"Enter Name to be edited"&lt;&lt;endl;
+cin&gt;&gt;Edit_Name;
+fstream finout(PATH,ios::binary|ios::in|ios::out); 
+//Open file in Binary Mode
+finout.seekg(0,ios::beg); 
+//Go To Begining
+
+		while ( finout )   
+//Loop To Search
+		{
+		finout.read((char *)&Record,SIZE); 
+//Read File
+		if (strcmpi(Record.FirstName,Edit_Name)==0) 
+//Check For Match
+		{
+		finout.seekp(finout.tellg()-SIZE,ios::beg);
+//Move File Pointer To Starting Of Record To Add New Data
+				counter++;
+
+		/*Print Various Fields*/
+		/*Display The Found Record*/
+		cout&lt;&lt;"ID"&lt;&lt;endl;
+		cout&lt;&lt;Record.Id&lt;&lt;endl;
+		cout&lt;&lt;"FIRST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.FirstName&lt;&lt;endl;
+		cout&lt;&lt;"LAST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.LastName&lt;&lt;endl;
+		cout&lt;&lt;"ADDRESS"&lt;&lt;endl;
+		cout&lt;&lt;Record.Add&lt;&lt;endl;
+		cout&lt;&lt;"E-MAIL ID"&lt;&lt;endl;
+		cout&lt;&lt;Record.Email&lt;&lt;endl;
+		cout&lt;&lt;"PHONE"&lt;&lt;endl;
+		cout&lt;&lt;Record.PhoneNo&lt;&lt;endl;
+
+
+				break;//End Function
+				}
+		} 
+//End Of While
+		if (counter==0)   
+//Record Not Found Exit Function
+		{
+		finout.close();
+	       cout&lt;&lt;"SORRY RECORD NOT FOUND";
+	       cout&lt;&lt;"PRESS ANY KEY";
+		getch();
+		return;
+		}
+
+		else  
+//Edit The Record If User Wants
+		{
+		/*Ask If User Wants To Edit This Record*/
+		cout&lt;&lt;"EDIT THIS RECORD (Y/N) ";
+		char Choice=getch();
+
+			if (Choice=='N' || Choice=='n') 
+//Do Not Edit
+			{
+			return;
+			}
+
+
+		/*Enter New Info And Write To File*/
+		cout&lt;&lt;"ID"&lt;&lt;endl;
+		cin&gt;&gt;Record.Id;
+		cout&lt;&lt;"FIRST NAME"&lt;&lt;endl;
+		cin&gt;&gt;Record.FirstName;
+		cout&lt;&lt;"LAST NAME"&lt;&lt;endl;
+		cin&gt;&gt;Record.LastName;
+		cout&lt;&lt;"ADDRESS"&lt;&lt;endl;
+		cin&gt;&gt;Record.Add;
+		cout&lt;&lt;"E-MAIL ID"&lt;&lt;endl;
+		cin&gt;&gt;Record.Email;
+		cout&lt;&lt;"PHONE"&lt;&lt;endl;
+		cin&gt;&gt;Record.PhoneNo;
+	/*Write New Data To File*/
+		finout.write( (char *)&Record, SIZE );
+		finout.close();
+
+		/*Print Message*/
+	      cout&lt;&lt;"CHANGES MADE";
+	       //	delay(1000);
+		//flushall();
+		}
+
+}
+
+
+/***********************************************************/
+
+		/*Delete A Entry In The File*/
+
+
+	void Show_And_Ask(char *Del_Name)
+	{
+
+
+		  flushall();
+	      //setcolor(GREEN);
+		/*Print Various Fields*/
+		/*Display The Found Record*/
+
+		cout&lt;&lt;"ID"&lt;&lt;endl;
+		cout&lt;&lt;Record.Id&lt;&lt;endl;
+		cout&lt;&lt;"FIRST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.FirstName&lt;&lt;endl;
+		cout&lt;&lt;"LAST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.LastName&lt;&lt;endl;
+		cout&lt;&lt;"ADDRESS"&lt;&lt;endl;
+		cout&lt;&lt;Record.Add&lt;&lt;endl;
+		cout&lt;&lt;"E-MAIL ID"&lt;&lt;endl;
+		cout&lt;&lt;Record.Email&lt;&lt;endl;
+		cout&lt;&lt;"PHONE"&lt;&lt;endl;
+		cout&lt;&lt;Record.PhoneNo;
+
+
+
+
+
+
+
+		cout&lt;&lt;"\nDELETE THIS RECORD (Y/N) ";
+
+		char Choice=getch();
+
+			if (Choice=='N' || Choice=='n')
+//Do Not Edit
+			{
+			return;
+			}
+	       /*Delete Routine*/
+
+
+		ofstream fin(PATH2,ios::binary);
+//File To Write
+		ifstream finout(PATH,ios::binary);
+//File To Read
+		finout.seekg(0,ios::beg);
+		while ( finout.read( (char *)&Record,SIZE ) )
+		{
+		if (strcmpi(Del_Name,Record.FirstName)!=0)
+//Do Not Write Matching Record
+			{
+		fin.write( (char *)&Record,SIZE );
+			}
+		}
+
+		finout.close();
+		fin.close();
+		remove(PATH);
+		rename(PATH2,PATH);
+
+		/*Print Message*/
+		cout&lt;&lt;"CHANGES MADE";
+
+		flushall();
+
+	  }
+
+/******************************************************/
+
+
+void Delete_Record()
+{
+char Del_Name[30];
+cout&lt;&lt;"\nENTER FIRST NAME OF RECORD TO DELETE"&lt;&lt;endl;
+cin&gt;&gt;Del_Name;
+
+int Counter=0;
+	ifstream finout(PATH,ios::binary);
+	finout.seekg(0,ios::beg);
+	while ( finout.read( (char *)&Record,SIZE ) )
+	{
+		if (strcmpi(Del_Name,Record.FirstName)==0)
+//Record Is Found
+		{
+		finout.close();
+		Counter++;
+		Show_And_Ask(Del_Name);
+		return;
+		}
+	}
+		finout.close();
+		if (Counter==0) //Record Is not Found
+		{
+	      cout&lt;&lt;"SORRY RECORD NOT FOUND";
+	      cout&lt;&lt;"PRESS ANY KEY TO CONTINUE";
+		getch();
+		flushall();
+		return;
+		}
+
+}
+
+
+/*******************************************************/
+
+
+void showall()
+{
+
+ifstream finout(PATH,ios::binary|ios::in|ios::out); 
+//Open file in Binary Mode
+finout.seekg(0,ios::beg); 
+//Go To Begining
+
+		while (finout)   
+//Loop To Search
+		{
+		clrscr();
+		 finout.read((char *)&Record,SIZE);
+
+		cout&lt;&lt;"ID"&lt;&lt;endl;
+		cout&lt;&lt;Record.Id&lt;&lt;endl;
+		cout&lt;&lt;"FIRST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.FirstName&lt;&lt;endl;
+		cout&lt;&lt;"LAST NAME"&lt;&lt;endl;
+		cout&lt;&lt;Record.LastName&lt;&lt;endl;
+		cout&lt;&lt;"ADDRESS"&lt;&lt;endl;
+		cout&lt;&lt;Record.Add&lt;&lt;endl;
+		cout&lt;&lt;"E-MAIL ID"&lt;&lt;endl;
+		cout&lt;&lt;Record.Email&lt;&lt;endl;
+		cout&lt;&lt;"PHONE"&lt;&lt;endl;
+		cout&lt;&lt;Record.PhoneNo&lt;&lt;endl;
+	       getch();
+		   }
+
+
+				}
+
+/*********************************************************/
+
+
+
+void main()
+{
+clrscr();
+ifstream fin(PATH,ios::binary);
+	if (!fin)
+	{
+	
+	cout<<"FILE  PHONE.DAT DOES NOT EXITS";
+	
+	cout<<"PROGRAM CANNOT CONTINUE";
+	getch();
+	exit(0);
+	}
+
+
+while(1)
+{
+int choice;
+
+  cout << "Help on:\n\n";
+  cout << "1. Add  Record\n";
+  cout << "2. Find Record\n";
+  cout <<  3. Edit Record\n";
+  cout <<  4. Delete Record\n";
+  cout <<  5. Show All Record\n\n
+  
+  
+  cout << "Enter choice (1-5): ";
+  cin >> choice;
+  cout << "\n";
+
+  switch(choice) {
+    case 1: 
+      Create_New_Record();
+      break;
+    case 2: 
+      Search_Name();
+      break;
+    case 3:
+      Edit_Record();
+      break;
+    case 4:
+      Delete_Record();
+      break;
+    case 5:
+      showall();
+      break;
+    default: 
+      cout << "You must enter a number between 1 and 3.\n";
+  }
+
+
+
+
+}
+
+getch();
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

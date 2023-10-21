@@ -1,0 +1,428 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<h3>Java Vs. C#</h3>
+
+<h3>Java</h3>
+<ul>
+<li>Compiles to byte-code
+<li>Byte-code runs on any JVM
+<li>JVM interfaces directly with Operating System
+<li>JVM’s have been written for most OS’s (Windows, Linux, Unix, Irix, etc.)
+<li>Does a good job “wrapping” the OS
+<li>Compiles to byte-code
+<li>Byte-code is Java-dependent
+<li>No other languages compile to Java byte-code
+<li>Some support is offered for inter-language development based on dll-related entry points
+<li>Communication is not seamless
+</ul>
+
+<h3>C#</h3>
+
+<ul>
+<li>Compiles to IL (Intermediate Language)
+<li>IL runs in the .NET environment
+<li>.NET interfaces directly with Operating System
+<li>.NET framework has currently only been ported to Windows OS’s
+<li>Supports many “windows-only” features
+<li>Compiles to IL
+<li>Equally supports all languages that compile to IL – language independent
+<li>Interface at the function level between languages
+<li>Developer must be cautious about inter-language communication
+<li>Debug/Step seamlessly between languages
+<h3>Java</h3>
+
+<li>“Sandbox” approach
+<li>Limit functionality of code to one standard
+<li>Applets (run via Internet) are severely limited
+<li>Guard memory by disallowing pointers
+<h3>C#</h3>
+<li>Personalized approach
+<li>Each application has a unique security level
+<li>Level based on IP address, Digital Signing, location, or any other criteria desired
+<li>Applications can request a certain security level, or certain access options
+
+<h3>Java</h3>
+<li>Standard deployment model
+<li>Updates to java compiler, classes or other java libraries must be downloaded and installed by user
+<li>Modules not digitally signed
+<li>Isolated updates – may break legacy code
+
+
+<h3>C#</h3>
+<li>Innovative deployment model
+<li>.NET searches for updated classes and modules locally and remotely
+<li>Downloads and installs digitally signed modules
+<li>Runs multiple versions side-by-side for legacy code
+
+<h3>Java</h3>
+<li>Explicitly “wrapped” by an object – can’t change value
+
+<pre>
+// Create an int
+int n = 7801;
+
+// Cast to an object
+Integer d = new Integer(n);
+Object o = (Object)d;
+
+// Print the value (2 methods)
+System.out.println(d.intValue());
+System.out.println(d.toString());
+</pre>
+
+<h3>C#</h3>
+
+<li>structs – already treated like an object
+<pre>
+// Create an int
+int n = 7801;
+
+// Cast to an object
+object o = (object)n;
+
+// Print the value (2 methods)
+System.Console.WriteLine(“{0}”, d);
+System.Console.WriteLine(d.ToString());
+
+</pre>
+
+<h3>Java</h3>
+
+<li>int, float, double, etc.
+<li>Allocated on stack
+<li>Not an Object
+<li>Not extensible
+
+<pre>
+// C#
+struct Point
+{
+	int x;
+	int y;
+	Point(int x, int y)	{
+		this.x = x;
+		this.y = y;
+	}
+}
+
+</pre>
+
+<h3>C#</h3>
+<li>int, float, double, etc.
+<li>structs
+<li>Allocated on stack
+<li>Inherited from object class
+<li>structs can implement interfaces
+<li>Cannot inherit from another class
+
+<h3>Java</h3>
+
+<li>Public – free access to anyone
+<li>Protected – access to derived classes
+<li>Private – no access to other classes
+<h3>C#</h3>
+<li>Public – free access to anyone
+<li>Protected – access to derived classes
+<li>Private – no access to other classes
+<li>Internal – access to same assembly
+<li>Protected internal – access to same assembly OR to derived classes
+
+
+
+<h3>Java</h3>
+
+<li>Explicit parameters for get and set methods
+<pre>
+class Test
+{
+    private int property;
+
+    public int getProperty()
+    { 
+        return this.property; 
+    }
+    public void setProperty(int p) 
+    { 
+        this.property = p; 
+    }
+}
+</pre>
+
+<h3>C#</h3>
+
+<li>Implicit parameters for get and set methods
+<pre>
+class Test
+{
+    private int property;
+    public int Property 
+    {
+        get 
+        { 
+            return this.property; 
+        }
+        set 
+        {
+            this.property = value; 
+        }
+    }
+}
+</pre>
+<h3>Java</h3>
+
+<li>No overloaded operator support
+<h3>C#</h3>
+<li>Can overload operators, for some operators
+<li>Only overload pairs of operators
+<li>< and >, <= and >=
+<li>Cannot directly overload composite operators
+<li>*=, /=, +=, -=
+<li>But these operators indirectly use *, /, +, -
+
+
+
+<h3>Java<h3>
+<li>All methods are implicitly virtual
+<pre>
+
+class B 
+{ 
+    public void foo() { }
+}
+
+class D extends B 
+{
+    public void foo() { } 
+}
+
+// D’s foo() overrides B’s foo()
+
+<pre>
+
+<h3>C#</h3>
+<li>Explicitly use ‘virtual’ and ‘override’ keywords
+<pre>
+class B 
+{
+    public virtual void foo() { }
+}
+
+class D:B 
+{
+    public override void foo() { }
+}
+
+// D’s foo() overrides B’s foo()
+
+</pre>
+<h3>Java</h3>
+
+<li>Single inheritance
+<li>Multiple interfaces
+<pre>
+interface IB 
+{ 
+    public void foo();
+}
+
+class D implements IB 
+{
+    public void foo() { } 
+}
+
+// D’s foo() is the body for IB’s foo()
+</pre>
+
+<h3>C#</h3>
+
+<li>Single inheritance
+<li>Multiple interfaces
+
+<pre>
+interface IB 
+{ 
+    public void foo();
+}
+
+class D: IB 
+{
+    public void foo() { }
+}
+
+// D’s foo() is the body for IB’s foo()
+
+
+</pre>
+
+<h3>Java</h3>
+
+<li>C++ style implicit fall through
+<li>C++ style primitive types: byte, char, short, int
+
+<pre>
+int grade = 95;
+switch(grade)
+{
+	case 95:
+		// …
+	case 90:
+		// …
+		break;
+}
+
+</pre>
+<h3>C#</h3>
+
+<li>Explicit break or goto for each case
+<li>Primitive types, strings – hashes the string for efficient searching
+<pre>
+string tag = “foo”;
+switch(tag)
+{
+	case “foo”:
+		// …
+		goto “bar”;
+	case “bar”:
+		// …
+		break;
+}
+</pre>
+<h3>Java</h3>
+
+<li>for, do while, while
+
+
+<h3>C#</h3>
+<li>for, do while while
+<li>foreach (ideal for arrays)
+<li>Objects that implement the Collections.Ienumerable interface
+<li>C# - ‘goto’ Different from C++ - cannot jump into a statement block
+
+<pre>
+int[ ] array = // something…
+foreach(int m in array)
+  Console.WriteLine( m.ToString() );
+</pre>
+
+<h3>Java</h3>
+<li>Explicit parameter lists
+<pre>
+public void myCaller(int a, int b);
+public void myCaller(int a);
+
+// Examples: can be called using
+myCaller(1, 2);
+myCaller(1);
+
+</pre>
+
+<h3>C#</h3>
+
+<li>‘params’ keyword
+<li>Allows any number of same-type objects
+
+<pre>
+public void myCaller(params int[] a);
+
+// Examples: can be called using
+myCaller(1);
+myCaller(1, 2, 3, 4, 5);
+
+</pre>
+
+<h3>Java</h3>
+<li>All parameters are by default pass by reference
+<pre>
+// will increment a
+public void myCaller(int a)
+{
+	a++;
+}
+
+</pre>
+
+<h3>C#</h3>
+
+<li>Has 2 different options:
+
+<pre>
+‘ref’ – passed by reference
+‘out’ – compiler ensures that a value is assigned
+
+// will increment a
+public void myCaller(ref int a) 
+{
+	a++;
+}
+
+// compiler will complain!!!
+public void myCaller(out int a) 
+{
+	// a = 3;
+}
+</pre>
+
+<h3>Java</h3>
+<li>C++-style try/catch blocks
+<li>finally– action done even after an exception is caught
+<li>throws – methods identify what exceptions they throw
+
+<pre>
+// Java – throws an IOException
+public void myFunc(int a) throws IOException
+{
+	// Work…
+}
+</pre>
+
+<h3>C#</h3>
+
+<li>C++-style try/catch blocks
+<li>finally – same as Java
+<li>Does not support throws clause
+<pre>
+// Java and C#
+try {
+	// Stuff…
+}
+catch {
+	// Ack!
+}
+finally {
+	// Always!
+}
+
+</pre>
+
+<h3>Java<h3>
+
+<li>Does not support generics
+
+<pre>
+// C#
+class C<U,V>
+{	public virtual void M1(U x, List<V> y) {...}
+}
+interface I1<V> {	V M2(V);
+}
+class D: C<string,int>, I1<string> {	public override void M1(string x, List<int> y) {...}
+	public string M2(string x) {...}
+}
+
+
+</pre>
+<h3>C#</h3>
+
+<li>Version 2.0 supports Generics
+<li>Specification released a few weeks ago
+</ul>
+<br><br><br>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

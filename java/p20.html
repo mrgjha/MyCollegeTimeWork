@@ -1,0 +1,49 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+&ltHTML&gt
+	&ltHEAD&gt
+		&lttitle&gtSimple&lt/title&gt
+	&lt/HEAD&gt
+	&ltBODY&gt
+		&ltapplet code="Simple.class"
+                        width=300
+                        height=150&gt
+		&lt/applet&gt
+	&lt/BODY&gt
+&lt/HTML&gt
+
+import javax.swing.*;
+import java.awt.*;
+public class Simple extends JApplet {
+	public void init() {
+		Container contentPane = getContentPane();
+		Icon icon = new ImageIcon("balls10.gif", 
+			"An animated GIF on a swing");
+		JLabel label = new JLabel("Swing!", icon,
+			SwingConstants.CENTER);
+		contentPane.add(label, BorderLayout.CENTER);
+	}
+}
+
+
+
+//JApplet has an instance of BorderLayout set for it’s 
+//content pane.  BorderLayout.CENTER is default.
+//Contrast: AWT’s Applet class uses FlowLayout.
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

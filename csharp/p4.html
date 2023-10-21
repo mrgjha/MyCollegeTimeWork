@@ -1,0 +1,282 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+//Java
+
+class parent {
+public void me() {
+System.out.println("Base");
+}
+}
+
+
+class child extends parent {
+
+public void me() {
+System.out.println("Sub");
+
+}
+}
+
+
+public class test {
+public static void main(String[] args) {
+
+
+parent b = new child();
+b.me();
+parent s = new child();
+s.me();
+
+
+}
+}
+
+Sub
+Sub
+
+
+
+
+
+//C#
+
+using System;
+
+class parent {
+public void me() {
+Console.WriteLine("Base");
+}
+}
+
+
+class child : parent {
+
+public new void me() {
+Console.WriteLine("Sub");
+
+}
+}
+
+
+public class test {
+public static void Main() {
+
+
+parent b = new child();
+b.me();
+parent s = new child();
+s.me();
+
+
+}
+}
+
+
+Base
+Base
+
+
+
+
+using System;
+
+class parent {
+public virtual void me() {
+Console.WriteLine("Base");
+}
+}
+
+
+class child : parent {
+
+public override void me() {
+Console.WriteLine("Sub");
+
+}
+}
+
+
+public class test {
+public static void Main() {
+
+
+parent b = new child();
+b.me();
+parent s = new child();
+s.me();
+
+
+}
+}
+
+Sub
+Sub
+
+//inheritance
+
+class zzz
+
+{
+
+public static void Main()
+
+{
+
+yyy a = new yyy();
+
+xxx b = new xxx();
+
+a = b;
+
+b = (xxx) a;
+
+}
+
+}
+
+class yyy
+
+{
+
+public int i=10;
+
+}
+
+class xxx : yyy
+
+{
+
+public int j=10;
+
+}
+
+//inheritance
+
+class zzz
+
+{
+
+public static void Main()
+
+{
+
+xxx a = new xxx();
+
+a.abc();
+
+}
+
+}
+
+class yyy
+
+{
+
+public int i = 10;
+
+public void abc()
+
+{
+
+System.Console.WriteLine("yyy abc");
+
+}
+
+public void pqr()
+
+{
+
+System.Console.WriteLine("yyy pqr");
+
+}
+
+}
+
+class xxx : yyy
+
+{
+
+public void abc()
+
+{
+
+System.Console.WriteLine("xxx abc");
+
+base.pqr();
+
+}
+
+}
+
+//inheritance
+
+class zzz
+
+{
+
+public static void Main()
+
+{
+
+xxx a = new xxx();
+
+a.abc();
+
+}
+
+}
+
+class yyy
+
+{
+
+public int i = 10;
+
+public void abc()
+
+{
+
+System.Console.WriteLine("yyy abc");
+
+}
+
+public void pqr()
+
+{
+
+System.Console.WriteLine("yyy pqr");
+
+}
+
+}
+
+class xxx : yyy
+
+{
+
+public void abc()
+
+{
+
+System.Console.WriteLine("xxx abc");
+
+base.abc();
+
+}
+
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

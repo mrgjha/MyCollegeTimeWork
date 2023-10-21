@@ -1,0 +1,243 @@
+<html>
+<head>
+
+<title>It is possible to make one variable be another: 
+</title>
+
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+
+//It is possible to make one variable be another: 
+
+
+
+int main ()
+{   
+double a = 3.1415927;   
+double &b = a;                            // b is a   
+b = 89;   
+cout << "a contains: " << a << endl;     // Displays 89.   
+return 0;
+}
+
+
+(If you are used at pointers and absolutely want to know what happens, 
+simply think double &b = a is translated to double *b = &a and 
+all subsequent b are replaced by *b.) 
+
+The value of REFERENCE b cannot be changed after its declaration.
+For example you cannot write, a few lines further, &b = c expecting now b is c. 
+It won't work. Everything is said on the declaration line of b. 
+Reference b and variable a are married on that line and nothing will separate them. 
+
+References can be used to allow a function to modify a calling variable:
+
+using namespace std;
+#include&lt;iostream&gt;
+
+void change (double &r, double s)
+{   
+
+r = 100;   s = 200;}
+
+int main ()
+
+{   
+
+double k, m;   
+
+
+k = 3;   m = 4;   
+
+
+change (k, m);   
+cout << k << ", " << m << endl;        // Displays 100, 4.   
+
+return 0;
+
+}
+
+
+If you are used at pointers in C and wonder how exactly the program above works,
+here is how the C++ compiler would translate it to C: 
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+
+void change (double *r, double s)
+
+{   
+
+*r = 100;   
+ s = 200;
+
+}
+
+
+int main ()
+
+{   
+
+double k, m;   
+
+
+k = 3;   m = 4;   
+
+
+change (&k, m);   
+
+cout << k << ", " << m << endl;        // Displays 100, 4.   
+
+return 0;}
+
+
+A reference can be used to let a function return a variable:
+
+using namespace std;
+#include&lt;iostream&gt;
+
+double &biggest (double &r, double &s)
+
+{   if (r > s) 
+
+return r;   
+
+else       
+
+return s;}
+
+int main ()
+
+{   
+
+double k = 3;  
+
+double m = 7;   
+
+cout << "k: " << k << endl;       // Displays  3   
+
+cout << "m: " << m << endl;       // Displays  7   
+
+cout << endl;   
+
+biggest (k, m) = 10;   
+
+cout << "k: " << k << endl;       // Displays  3   
+
+cout << "m: " << m << endl;       // Displays 10   
+
+cout << endl;   biggest (k, m) ++;   
+
+cout << "k: " << k << endl;       // Displays  3   
+cout << "m: " << m << endl;       // Displays 11   
+
+cout << endl;   
+return 0;
+
+}
+
+
+Again, provided you're used at pointer arithmetics and 
+if you wonder how the program above works,
+just think the compiler translated it into the following standard C program: 
+
+
+
+using namespace std;
+#include&lt;iostream&gt;
+
+double *biggest (double *r, double *r)
+
+{
+
+if (*r > *s) 
+
+return r; 
+
+else
+
+return s;
+}
+
+
+int main ()
+
+{ 
+
+
+double k = 3;
+double m = 7;
+
+cout << "k: " << k << endl;
+cout << "m: " << m << endl;
+
+cout << endl;
+(*(biggest (&k, &m))) = 10;  
+
+cout << "k: " << k << endl;
+cout << "m: " << m << endl; 
+
+cout << endl;  
+
+(*(biggest (&k, &m))) ++;
+cout << "k: " << k << endl;
+cout << "m: " << m << endl;
+
+cout << endl;   
+
+return 0;
+
+}
+
+
+To end with, for people who have to deal with pointers yet do not like it,
+
+references are useful to un-pointer variables. Beware this is considered a bad practice.
+
+
+
+using namespace std;#include <iostream>
+
+double *silly_function ()    // This function returns a pointer to a double
+
+{  
+
+static double r = 342;
+return &r;}int main ()
+
+{ 
+
+double *a;
+a = silly_function();
+
+double &b = *a;          // Now b is the double towards which a points!
+b += 1;                  // Great!   
+b = b * b;               // No need to write *a everywhere!  
+b += 4;   
+cout << "Content of *a, b and r: " << b << endl;
+return 0;
+
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

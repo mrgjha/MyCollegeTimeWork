@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;form runat="server"&gt;
+
+A basic TextBox:
+&lt;asp:TextBox id="tb1" runat="server" /&gt;
+&lt;br /&gt;&lt;br /&gt;
+
+A password TextBox:
+&lt;asp:TextBox id="tb2" TextMode="password" runat="server" /&gt;
+&lt;br /&gt;&lt;br /&gt;
+
+A TextBox with text:
+&lt;asp:TextBox id="tb4" Text="Hello World!" runat="server" /&gt;
+&lt;br /&gt;&lt;br /&gt;
+
+A multiline TextBox:
+&lt;asp:TextBox id="tb3" TextMode="multiline" runat="server" /&gt;
+&lt;br /&gt;&lt;br /&gt;
+
+A TextBox with height:
+&lt;asp:TextBox id="tb6" rows="5" TextMode="multiline"
+runat="server" /&gt;
+&lt;br /&gt;&lt;br /&gt;
+
+A TextBox with width:
+&lt;asp:TextBox id="tb5" columns="30" runat="server" /&gt;
+
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+
+
+
+&lt;script runat="server"&gt;
+Sub submit(sender As Object, e As EventArgs)
+lbl1.Text="Your name is " & txt1.Text
+End Sub
+&lt;/script&gt;&lt;html&gt;
+&lt;body&gt;&lt;form runat="server"&gt;
+Enter your name:
+&lt;asp:TextBox id="txt1" runat="server" /&gt;
+&lt;asp:Button OnClick="submit" Text="Submit" runat="server" /&gt;
+&lt;p&gt;&lt;asp:Label id="lbl1" runat="server" /&gt;&lt;/p&gt;
+&lt;/form&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+&lt;script runat="server"&gt;
+Sub change(sender As Object, e As EventArgs)
+lbl1.Text="You changed text to " & txt1.Text
+End Sub
+&lt;/script&gt;&lt;html&gt;
+&lt;body&gt;&lt;form runat="server"&gt;
+Enter your name:
+&lt;asp:TextBox id="txt1" runat="server"
+text="Hello World!"
+ontextchanged="change" autopostback="true"/&gt;
+&lt;p&gt;&lt;asp:Label id="lbl1" runat="server" /&gt;&lt;/p&gt;
+&lt;/form&gt;&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,414 @@
+<html>
+<head>
+<title>C#</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&lt;style type="text/css"&gt;
+P { color: blue; font-style: italic }
+&lt;/style&gt;
+This is a demo of cascading style sheets.
+&lt;P&gt;
+This is the first paragraph.
+&lt;/P&gt;
+This is ordinary text.
+&lt;P&gt;
+This is the second paragraph.
+&lt;/P&gt;
+
+&lt;style type="text/css"&gt;
+LI { color: green }
+&lt;/style&gt;
+This is an unordered list
+&lt;UL&gt;
+&lt;LI&gt;
+First element
+&lt;LI&gt;
+Second element
+&lt;LI&gt;
+Third element
+&lt;/UL&gt;
+
+
+&lt;style type="text/css"&gt;
+UL, OL { font-style: italic; font-weight: bold }
+&lt;/style&gt;
+This is an unordered list
+&lt;UL&gt;
+&lt;LI&gt;
+First element
+&lt;LI&gt;
+Second element
+&lt;LI&gt;
+Third element
+&lt;/UL&gt;
+This is an ordered list
+&lt;OL&gt;
+&lt;LI&gt;
+First element
+&lt;LI&gt;
+Second element
+&lt;LI&gt;
+Third element
+&lt;/UL&gt;
+
+&lt;style type="text/css"&gt;
+#table1 { font-style: italic; font-weight: bold}
+#table2 { font-weight: bold; color: red }
+&lt;/style&gt;
+
+&lt;table id="table1" border=1&gt;
+&lt;tr&gt;
+  &lt;td&gt;one&lt;/td&gt;&lt;td&gt;two&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;three&lt;/td&gt;&lt;td&gt;four&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;br&gt;
+&lt;table id="table2" border=1&gt;
+&lt;tr&gt;
+  &lt;td&gt;five&lt;/td&gt;&lt;td&gt;six&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+  &lt;td&gt;seven&lt;/td&gt;&lt;td&gt;eight&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;style type="text/css"&gt;
+.question { font-weight: bold }
+.answer { font-style: italic }
+&lt;/style&gt;
+
+&lt;P class=question&gt;
+This is the first question.
+&lt;/P&gt;
+&lt;P class=answer&gt;
+This is the first answer.
+&lt;/P&gt;
+&lt;P class=question&gt;
+This is the second question.
+&lt;/P&gt;
+&lt;P class=answer&gt;
+This is the second answer.
+&lt;/P&gt;
+
+&lt;style type="text/css"&gt;
+UL LI { color: green }
+OL LI { color: red }
+&lt;/style&gt;
+This is an unordered list
+&lt;UL&gt;
+&lt;LI&gt;
+First element
+&lt;LI&gt;
+Second element
+&lt;LI&gt;
+Third element
+&lt;/UL&gt;
+This is an ordered list
+&lt;OL&gt;
+&lt;LI&gt;
+First element
+&lt;LI&gt;
+Second element
+&lt;LI&gt;
+Third element
+&lt;/OL&gt;
+
+&lt;style type="text/css"&gt;
+LI.correct { font-weight: bold; color: red }
+&lt;/style&gt;
+
+&lt;P&gt;
+This is the first question.
+&lt;/P&gt;
+&lt;OL&gt;
+&lt;LI class=correct&gt;
+Option A1
+&lt;LI&gt;
+Option A2
+&lt;LI&gt;
+Option A3
+&lt;/OL&gt;
+
+&lt;P&gt;
+This is the second question.
+&lt;/P&gt;
+&lt;OL&gt;
+&lt;LI&gt;
+Option B1
+&lt;LI&gt;
+Option B2
+&lt;LI class=correct&gt;
+Option B3
+&lt;/OL&gt;
+
+&lt;P&gt;
+This is the third question.
+&lt;/P&gt;
+&lt;OL&gt;
+&lt;LI&gt;
+Option C1
+&lt;LI class=correct&gt;
+Option C2
+&lt;LI&gt;
+Option C3
+&lt;/OL&gt;
+
+&lt;style type="text/css"&gt;
+div { 
+  text-decoration: underline; 
+  font-style: italic; 
+  font-size: 25pt; 
+  font-weight: bolder 
+}
+&lt;/style&gt;
+
+Before the division.
+&lt;div&gt;
+Inside the division.
+&lt;/div&gt;
+After the division.
+
+
+&lt;style type="text/css"&gt;
+span { 
+  text-decoration: underline; 
+  font-style: italic; 
+  font-size: 25pt; 
+  font-weight: bolder 
+}
+&lt;/style&gt;
+
+Before the span.
+&lt;span&gt;Inside the span.&lt;/span&gt;
+After the span.
+
+
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;style type="text/css"&gt;
+BODY { font-weight: bold }
+OL { color: maroon }
+UL { font-style: italic }
+&lt;/style&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+&lt;OL&gt;
+&lt;LI&gt;
+Category 1
+&lt;UL&gt;
+&lt;LI&gt;
+Category 1A
+&lt;LI&gt;
+Category 1B
+&lt;LI&gt;
+Category 1C
+&lt;/UL&gt;
+&lt;LI&gt;
+Category 2
+&lt;LI&gt;
+Category 3
+&lt;/OL&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+This is an example of an
+&lt;span style="text-decoration: underline; font-weight: bold"&gt;
+inline style
+&lt;/span&gt;
+
+Listing type="text/css"&gt;
+BODY { color: green }
+OL LI { color: blue }
+&lt;/style&gt;
+
+&lt;OL&gt;
+&lt;LI&gt;
+Category 1
+&lt;LI&gt;
+Category 2
+&lt;LI&gt;
+Category 3
+&lt;/OL&gt;
+
+&lt;style type="text/css"&gt;
+LI { text-decoration: none }
+&lt;/style&gt;
+
+&lt;OL&gt;
+&lt;LI id="li1" style="text-decoration: underline" &gt;
+Category 1
+&lt;LI&gt;
+Category 2
+&lt;LI&gt;
+Category 3
+&lt;/OL&gt;
+
+
+&lt;style type="text/css"&gt;
+body { background-color: yellow }
+&lt;/style&gt;
+This is a string that appears on top of the background.
+
+&lt;style type="text/css"&gt;
+body { background-image: url(john.gif) }
+&lt;/style&gt;
+
+&lt;style type="text/css"&gt;
+div
+{
+  border: green double thin;
+  margin: 1cm;
+  padding: 1cm
+}
+&lt;/style&gt;
+
+&lt;div&gt;
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+This is text that fits inside the padding.
+&lt;/div&gt;
+
+
+&lt;style type="text/css"&gt;
+h1
+{
+  font-family: 'Times New Roman Bold';
+  color: blue;
+  font-size: xx-large;
+  text-transform: capitalize
+}
+h2
+{
+  font-style: italic;
+  text-decoration: underline
+}
+p
+{
+  font-size: medium;
+}
+&lt;/style&gt;
+&lt;h1&gt;This is a heading 1&lt;/h1&gt;
+&lt;h2&gt;This is a heading 2&lt;/h2&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+
+&lt;style type="text/css"&gt;
+div {
+  width: 2in;
+  height: 3in;
+  text-align: center;
+  line-height: 1cm
+}
+&lt;/style&gt;
+&lt;div&gt;
+This is a string inside the division.
+This is a string inside the division.
+This is a string inside the division.
+This is a string inside the division.
+This is a string inside the division.
+This is a string inside the division.
+&lt;/div&gt;
+
+&lt;style type="text/css"&gt;
+OL {
+  list-style: square inside
+}
+&lt;/style&gt;
+
+&lt;OL&gt;
+&lt;LI&gt;
+This is the first list item.
+This is the first list item.
+This is the first list item.
+This is the first list item.
+This is the first list item.
+This is the first list item.
+This is the first list item.
+&lt;LI&gt;
+This is the second list item.
+&lt;LI&gt;
+This is the third list item.
+&lt;/OL&gt;
+
+
+&lt;style type="text/css"&gt;
+#img1 {
+  position: absolute;
+  top: 1cm;
+  left: 1cm;
+  z-index: 5
+}
+#img2 {
+  position: absolute;
+  top: 2cm;
+  left: 2cm;
+  z-index: 4
+}
+#img3 {
+  position: absolute;
+  top: 3cm;
+  left: 3cm;
+  z-index: 3
+}
+&lt;/style&gt;
+&lt;img id="img1" src="kids.gif"&gt;
+&lt;img id="img2" src="kids.gif"&gt;
+&lt;img id="img3" src="kids.gif"&gt;
+
+
+&lt;style type="text/css"&gt;
+#img1 { float: left }
+#img2 { float: right }
+&lt;/style&gt;
+&lt;img id="img1" src="germany.gif"&gt;
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+&lt;img id="img2" src="germany.gif"&gt;
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+text text text text text text text text text text text text text
+
+&lt;style type="text/css"&gt;
+#img1 {
+  position: absolute;
+  top: 1cm;
+  left: 1cm;
+  clipBottom: 4cm;
+  clipLeft: 0cm;
+  clipRight: 4cm;
+  clipTop: 0cm;
+}
+&lt;/style&gt;
+&lt;img id="img1" src="kids.gif"&gt; 
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

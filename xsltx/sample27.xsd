@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2000/10/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:complexType name="Item">
+		<xsd:annotation>
+			<xsd:documentation>Individual Item Entry</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ItemName" type="xsd:string"/>
+			<xsd:element name="ItemNum">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value=".\d\d-\d\d"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ItemDesc" type="xsd:string"/>
+			<xsd:element name="ItemCost" type="xsd:decimal"/>
+			<xsd:element name="ItemLocation">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Chicago"/>
+						<xsd:enumeration value="SanDiego"/>
+						<xsd:enumeration value="Over-seas"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="NumInStock" type="xsd:int"/>
+		</xsd:sequence>
+		<xsd:attribute name="LastUpdated" type="xsd:date" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="Inventory">
+		<xsd:annotation>
+			<xsd:documentation>Inventory list - root element</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="ItemInfo" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:element name="InvList" type="Inventory"/>
+	<xsd:element name="ItemInfo" type="Item"/>
+</xsd:schema>

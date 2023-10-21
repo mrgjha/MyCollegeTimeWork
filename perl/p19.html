@@ -1,0 +1,81 @@
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<b>
+<pre>
+
+&lthtml&gt
+&lthead&gt
+&lthtml&gt
+   &lthead&gt
+      &lttitle&gtWriting a cookie to the client computer&lt/title&gt
+   &lt/head&gt
+
+&ltbody background = "images/back.gif"&gt
+&ltbasefont face = "arial,sans-serif" size = "2"&gt
+
+   &ltfont size = "+2"&gt
+      &ltb&gtClick Write Cookie to save your cookie data.&lt/b&gt
+   &lt/font&gt&ltbr&gt 
+   
+
+&ltform method="post" action="/cgi-bin/x.pl"&gt
+&ltstrong&gtName:&lt/strong&gt&ltbr&gt
+
+&ltinput type="text" name="name"&gt&ltbr&gt
+&ltstrong&gtHeight:&lt/strong&gt&ltbr&gt
+
+&ltinput type="text" name="height"&gt&ltbr&gt
+&ltstrong&gtFavorite Color&lt/strong&gt&ltbr&gt
+
+&ltinput type="text" name="color"&gt&ltbr&gt
+
+&ltinput type="submit" value="Write Cookie"&gt
+&lt/form&gt
+&lt/body&gt
+&lt/html&gt
+
+
+use CGI qw/:standard/;
+
+my $name = param(name);
+my $height = param(height);
+my $color = param(color);
+
+$expires = "Saturday, 25-sat-06 16:00:00 GMT";
+$path = ""; 
+
+
+
+print "Set-Cookie:";
+print "Name","=",$name,";expires=",$expires,";path=",$path,"\n";
+
+
+print "Set-Cookie:";
+
+print "Height","=",$height,";expires=",$expires,";path=",$path,"\n";
+
+print "Set-Cookie:";
+print "Color","=",$color,";expires=",$expires,";path=",$path,"\n";
+
+print header;
+
+print "&ltBODY BACKGROUND = \"/images/back.gif\"&gt";
+print "The cookie has been set with the folowing data:";
+print "&ltBR&gt&ltBR&gt";
+print "&ltFONT COLOR=BLUE&gtName:&lt/FONT&gt $name &ltBR&gt";
+print "&ltFONT COLOR = BLUE&gtHeight:&lt/FONT&gt $height&ltBR&gt";
+print "&ltFONT COLOR = BLUE&gtFavorite Color:&lt/FONT&gt ";
+print "&ltFONT COLOR = $color&gt $color&ltBR&gt";
+print "&lt/body&gt";
+
+print "&lta href='readcookie.pl'&gtClick here&lt/a&gt"
+
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</b>
+</pre>
+</body>
+</html>

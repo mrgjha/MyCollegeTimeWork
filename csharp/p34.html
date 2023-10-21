@@ -1,0 +1,57 @@
+ 
+
+<html>
+<head>
+<title>C# Function</title>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+  using System;
+
+ namespace StringManipulation
+ {
+    class Tester
+    {
+       public void Run()
+       {
+           // create some strings to work with
+           string s1 = "abcd";
+           string s2 = "ABCD";
+           int result;  // hold the results of comparisons
+
+           // compare two strings, case sensitive
+           result = string.Compare(s1, s2);
+           Console.WriteLine(
+               "compare s1: {0}, s2: {1}, result: {2}\n",
+               s1, s2, result);
+
+           // overloaded compare, takes boolean "ignore case"
+           //(true = ignore case)
+           result = string.Compare(s1,s2, true);
+           Console.WriteLine("Compare insensitive. result: {0}\n",
+               result);
+
+       }
+
+       [STAThread]
+       static void Main()
+       {
+          Tester t = new Tester();
+          t.Run();
+       }
+    }
+ }
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

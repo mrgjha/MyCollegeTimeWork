@@ -1,0 +1,84 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import java.awt.*;
+import java.awt.event.*;
+
+public class TestLists extends Frame implements ItemListener
+{
+   List lstBread;
+   
+   TextField tField;
+   
+   /** Creates new TestLists*/
+   public TestLists()
+   {
+      lstBread = new List(3, true);
+      lstBread.add("White Bread");
+      
+      lstBread.add("Wheat Bread");
+      
+      lstBread.add("Rye Bread");
+      lstBread.addItemListener(this);
+      
+      tField = new TextField(" ",30);
+      
+      setLayout(new FlowLayout());
+      add(lstBread);
+      add(tField);
+      
+      addWindowListener(new WinCloser());
+      setTitle("Using Lists");
+      setBounds( 100, 100, 300, 300);
+      setVisible(true);
+   }
+   
+   public void itemStateChanged(ItemEvent ie)
+   {
+      List selBread = (List)ie.getItemSelectable();
+      if (selBread.getSelectedItem()!= null)
+         tField.setText("You selected " + selBread.getSelectedItem());
+      else
+      {
+         tField.setText("");
+         for (int i=0; i< selBread.getItemCount() ; i++)
+         {
+            if (selBread.isIndexSelected(i))
+            {
+               String oldString = tField.getText();
+               tField.setText( oldString + " " +
+                                 selBread.getItem(i));
+            }
+         }
+      }
+      
+   }
+   
+   public static void main(String[] args)
+   {
+      TestLists tc = new TestLists();
+   }
+   
+}
+
+class WinCloser extends WindowAdapter
+{
+   public void windowClosing(WindowEvent e)
+   {
+      System.exit(0);
+   }
+}
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

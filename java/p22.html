@@ -1,0 +1,56 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+&ltHTML&gt&ltHEAD&gt&lt/HEAD&gt
+	&ltBODY&gt
+		&ltAPPLET code="GUI2.class"
+			   WIDTH="100" 
+			   HEIGHT="100"&gt
+                Any text placed here shows in 
+		non-Java enabled browsers	
+		&lt/APPLET&gt
+	&lt/BODY&gt
+	&lt/HTML&gt
+
+
+import javax.swing.JApplet;
+import java.awt.*;
+import java.awt.event.*;
+public class GUI2 extends JApplet implements ActionListener {
+        Button one;
+        boolean toggle = true;
+    public void init() {
+        one = new Button("push me");
+        Container pane = getContentPane();
+        pane.add(one);
+        one.addActionListener(this);
+        one.setBackground(Color.yellow);
+    }
+	public void actionPerformed(ActionEvent e){
+        if (toggle) {
+           one.setBackground(Color.white);
+           toggle = false;
+        } else {
+           one.setBackground(Color.yellow);
+           toggle = true;
+        }	   
+     }
+  }//end of class
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

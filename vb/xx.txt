@@ -1,0 +1,10 @@
+Introduction
+
+In the early days of Microsoft Access,  DAO (Data Access Objects) was the only interface that exposed the Jet Engine, and VB developers could directly connect to Access through ODBC. This worked best with local deployments of applications. RDO, which is an acronym fro Remote Database Objects, is an object oriented data access interface to ODBC working similar to the familiar DAO. RDO is the access method of choice when connecting to larger databases such as SQL Server, Oracle and others because it supports properties and methods that are suitable for these servers. These sophisticated servers can run complicated queries and stored procedures. It can also, however, access JET and ISAM databases through existing ODBC drivers which have limited SQL capability.
+
+ADO, another acronym for ActiveX Data Objects, succeeded the DAO/RDO duo and maps more or less to RDO methods. The object model of ADO is simplicity itself, but it has a large number of properties, methods and events. While ADO is hierarchical like DAO and RDO, it allows the creation of objects outside the hierarchy. It should be emphasized that Microsoft support for DAO/RDO  is only for backward compatibility.
+
+Another direction in the evolution of data access as visualized by Microsoft is to move slowly away from MDAC, which bundles all the three letter acronym methodologies. The reason it is being bundled as it is with the Windows OS, is that different versions of MDAC can give rise to problems during deployment.  It is for this reason that the SQLClient is not a part of the MDAC series, but a stand alone data access method.
+
+This tutorial is about using the RDO control which is similar to the ADO control to access a Microsoft Access Database on a network drive from a machine on another node of the network. The steps involved in creating a Visual Basic application which accesses a Nwind.mdb file on a machine Hodentek from an application running on another machine XPHTEK connected to the network will be described.
+

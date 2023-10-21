@@ -1,0 +1,46 @@
+
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+&lt;HTML&gt;&lt;HEAD&gt;&lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;APPLET
+        CODE     = "MyAppletSound.class"
+        WIDTH    = 400
+        HEIGHT   = 300&gt;
+        
+    &lt;/APPLET&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;
+
+
+import java.applet.*;
+import java.awt.*;
+public class MyAppletSound  extends Applet {
+        AudioClip ac; 
+        public void init () {
+                        		// load
+          ac = getAudioClip(getDocumentBase(), "bburg1_1.mid");
+        }
+        public void start() {
+          ac.loop();		// play
+        }
+        public void stop() {
+          ac.stop(); 	// stop the sound upon leaving this web page
+        }
+} // end class MyAppletSound 
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
+

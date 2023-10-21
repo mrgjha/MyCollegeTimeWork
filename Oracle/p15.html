@@ -1,0 +1,41 @@
+
+<html>
+<head><title>PL/SQL program to check return value using function call </title></head>
+
+<body background="MEDAQUA.gif" text="black">
+
+<b>
+<H2>Write a PL/SQL program to check return value using function call</H2>
+ <pre>
+ 
+
+ create or replace function does_nothing
+
+ return
+ boolean 
+
+ is
+
+ begin
+
+ return true;
+
+ end;
+ 
+
+ begin
+ if does_nothing then
+ dbms_output.put_line('true');
+ else
+ dbms_output.put_line('false');
+ end if;
+ end;
+<pre>
+</b>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</body>
+</html>
+
+

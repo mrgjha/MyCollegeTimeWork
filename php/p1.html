@@ -1,0 +1,108 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+
+PHP is a server-side scripting language 
+designed specifically for the Web. 
+Within an HTML page, 
+you can embed PHP code that will be executed 
+each time the page is visited. 
+Your PHP code is interpreted at 
+the Web server and generates HTML 
+or other output that the visitor will see” 
+
+1994: Created by Rasmis Lesdorf, software engineer (part of Apache Team)
+1995: Called Personal Home Page Tool, 
+then released as version 2 with name PHP/FI 
+(Form Interpreter, to analyze SQL queries)
+
+Half 1997: used by 50,000 web sites
+October 1998: used by 100,000 websites
+End 1999: used by 1,000,000 websites
+
+
+
+Open-source
+Easy to use ( C-like and Perl-like syntax)
+Stable and fast
+Multiplatform
+Many databases support
+Many common built-in libraries
+Pre-installed in Linux distributions
+
+
+To use or assign variable $ must be present 
+before the name of the variable
+The assign operator is '='
+There is no need to declare the type of the variable 
+the current stored value produces an 
+implicit type-casting of the variable.
+A variable can be used before to be assigned 
+
+
+
+$A = 1;
+$B = “2”;
+$C = ($A + $B); // Integer sum
+$D = $A . $B; // String concatenation
+echo $C; // prints 3
+echo $D;//  prints 12
+
+Function isset tests if a variable is assigned or not
+$A = 1;
+if (isset($A))
+print “A isset”
+if (!isset($B))
+print “B is NOT set”;
+
+Using $$
+$help = “hiddenVar”;
+$$help = “hidden Value”;
+echo $$help; // prints  hidden Value
+$$help = 10;
+$help = $$help * $$help;
+echo $help; // print 100
+		
+A string is a sequence of chars
+	$stringTest = “this is a sequence of chars”;
+	echo $stringTest[0]; output: t
+	echo $stringTest; output: this is a sequence of chars
+A single quoted strings is displayed “as-is”
+	$age = 37;
+	$stringTest = 'I am $age years old'; // output: I am $age years old
+	$stringTest = “I am $age years old”; // output: I am 37 years old
+Concatenation
+	$conc = ”is “.”a “.”composed “.”string”;
+	echo $conc; // output: is a composed string
+	$newConc = 'Also $conc '.$conc;
+	echo $newConc; // output: Also $conc is a composed string
+
+
+
+ Explode function
+	$sequence = “A,B,C,D,E,F,G”;
+	$elements = explode (“,”,$sequence);
+	// Now elements is an array with all substrings between “,” char
+	echo $elemets[0]; // output: A;
+	echo $elemets[1]; // output: B;
+	echo $elemets[2]; // output: C;
+	echo $elemets[3]; // output: D;
+	echo $elemets[4]; // output: E;
+	echo $elemets[5]; // output: F;
+	echo $elemets[6]; // output: G;
+
+&lthtml&gt
+&ltbody&gt
+&lt?php echo "Hello World"; ?&gt
+&lt/body&gt
+&lt/html&gt
+</b>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+
+</pre>
+</body>
+</html>

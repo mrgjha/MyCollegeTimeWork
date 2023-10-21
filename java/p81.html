@@ -1,0 +1,191 @@
+<HTML>
+<head>
+<TITLE>How to Package Java Class files</TITLE><style type="text/css">
+<!--
+h3{font style:italic;color:red}
+h4{font style:italic;color:white}
+h5{font style:italic;color:black}
+-->
+</style>
+</HEAD>
+<body background="MEDAQUA.gif" TEXT="black">
+<b>
+<PRE>
+<h3>How to set the path for Windows 2000/NT/XP</h3>
+
+1. Go to the Start menu, point to Settings, 
+and select the Control Panel.
+2. Edit the environment variables for your system. 
+For NT, select the System icon, and the
+Environment tab. For 2000, select the System icon, 
+the Advanced tab, and the Environment
+Variables button. 
+For XP, 
+select the Performance and Maintenance icon, 
+the System icon, the Advanced tab, 
+and the Environment Variables button.
+3. Add c:\j2sdk1.4.0\bin to the far right side 
+of the current path in System Variables and
+select OK.
+
+4.For CLASSPATH 
+click New
+Enter Variable Name  CLASSPATH
+Enter Variable Value c:\j2sdk1.4.0\bin
+
+Then
+Restart
+
+How to check the current path and classpath
+
+
+Start a DOS prompt and enter the set command. 
+
+
+When you do, the DOS window will
+display various configuration data including the path 
+and classpath.
+
+
+
+<h3>How to Package Java Class files</h3>
+
+
+package pkgA;
+
+
+public class Hello
+{
+public void dispA()
+{
+System.out.println(&quot;Hello&quot;);
+}
+}
+
+
+c:\>javac -d c:\j2sdk1.4.0\bin Hello.java
+
+
+
+
+
+
+
+package pkgB;
+
+
+public class World
+{
+public void dispB()
+{
+System.out.println(&quot;World&quot;);
+}
+}
+
+
+
+
+
+C:\>javac -d c:\j2sdk1.4.0\bin World.java
+
+
+
+
+
+
+
+//place SayHello.java in the parent directory of pkgA
+
+
+import pkgA.Hello;
+
+class SayHello
+{
+
+public static void main(String args[])
+
+{
+
+Hello h=new Hello();
+h.dispA();
+}
+}
+
+
+C:\>javac SayHello.java
+C:\>java  SayHello
+
+<font color="red">Output</font>
+Hello
+
+//place SayHelloWorld.java in the parent directory of pkgA 
+
+
+import pkgA.Hello;
+import pkgB.*;
+
+class SayHelloWorld
+{
+
+public static void main(String args[])
+
+{
+
+Hello h=new Hello();
+World w=new World();
+h.dispA();
+w.dispB();
+}
+}
+
+C:\>javac SayHelloWorld.java
+C:\>java  SayHelloWorld
+
+<font color="red">Output</font>
+
+Hello
+World
+
+
+//SubClassing
+
+
+import pkgA.Hello;
+
+
+public class MyName extends Hello
+{
+ void dispC()
+{
+System.out.println(&quot;My name is Gyanendra Jha&quot;);
+}
+}
+
+
+class SayYourName
+{
+
+public static void main(String args[])
+
+{
+
+MyName mn=new MyName();
+mn.dispA();
+mn.dispC();
+}
+}
+
+C:\>javac SayYourName.java
+C:\>java  SayYourName
+
+<font color="red">Output</font>
+
+Hello
+My name is Gyanendra Jha
+
+
+</PRE>
+</b>
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</BODY></HTML>

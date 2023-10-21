@@ -1,0 +1,36 @@
+
+<html>
+<head><title>Hello World</title></head>
+
+<body background="MEDAQUA.gif" text="black">
+<pre>
+<b>
+&lt?php 
+   // A Simple Example of Session Management 
+   // Start a session and register a session variable 
+   // Display session information. 
+    
+   // NOTE: The SID is included in the link to page two 
+   // in case cookies are disabled. 
+    
+   session_start(); 
+   $_SESSION['greeting'] = "Hello World"; 
+?&gt 
+
+&lthtml&gt 
+&lthead&gt&lttitle&gtSession Management Page 1&lt/title&gt&lt/head&gt 
+&ltbody&gt 
+&lth1&gtSession Management Page 1&lt/h1&gt  
+&ltp&gtValue of session variable is &lt?php echo $_SESSION['greeting']?&gt&lt/p&gt 
+&ltp&gtThe session id is &lt?php echo session_id()?&gt&lt/p&gt 
+&ltp&gtThe session save path is &lt?php echo session_save_path()?&gt&lt/p&gt 
+&ltp&gt&lta href = "page2.php?&lt?php echo SID?&gt"&gtGo to page 2&lt/a&gt&lt/p&gt 
+&lt/body&gt 
+&lt/html&gt 
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+
+
+</pre>
+</body>
+</html>

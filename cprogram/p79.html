@@ -1,0 +1,69 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+/* This program demonstrates how a graphics image can be
+   moved using getimage(), imagesize(), and putimage().
+*/
+  #include &lt;conio.h&gt;
+  #include &lt;graphics.h&gt;
+  #include &lt;stdlib.h&gt;
+void box(int, int, int, int, int);
+
+int main(void)
+{
+  int driver, mode;
+  unsigned size;
+  void *buf;
+
+  driver = DETECT; /* autodetect */
+  mode = 0;
+  initgraph(&driver, &mode, "c:\\tc\\bgi");
+
+  box(20, 20, 200, 200, 15);
+  setcolor(RED);
+  line(20, 20, 200, 200);
+  setcolor(GREEN);
+  line(20, 200, 200, 20);
+  getch();
+
+  /* move the image */
+
+  /* first, get the image's size */
+  size = imagesize(20, 20, 200, 200);
+  if(size != 0xffff) { /* alloc memory for the image */
+    buf = malloc(size);
+    if(buf) {
+      getimage(20, 20, 200, 200, buf);
+      putimage(100, 100, buf, COPY_PUT);
+      putimage(300, 50, buf, COPY_PUT);
+    }
+  }
+  outtext("Press a key.");
+  getch();
+  restorecrtmode();
+  return 0;
+}
+
+/* Draw a box given the coordinates of its two corners. */
+void box(int startx, int starty, int endx, int endy,
+         int color)
+{
+  setcolor(color);
+
+  line(startx, starty, startx, endy);
+  line(startx, starty, endx, starty);
+  line(endx, starty, endx, endy);
+  line(endx, endy, startx, endy);
+}
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

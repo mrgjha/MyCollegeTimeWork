@@ -1,0 +1,42 @@
+
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+
+Private Sub Form_Load()
+  Dim PeriodCount%, Length%, I%
+  Dim StringExpression$
+    
+StringExpression$ = InputBox("Enter a string expression that may or may not contain periods.")
+    
+PeriodCount% = 0
+    Length% = Len(StringExpression$)
+
+For I% = 1 To Length%
+
+    If Mid(StringExpression$, I%, 1) = "." Then
+
+       PeriodCount% = PeriodCount% + 1
+
+    End If
+  
+Next I%
+
+  MsgBox "You had " & PeriodCount% & " periods in that string"
+End
+End Sub
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

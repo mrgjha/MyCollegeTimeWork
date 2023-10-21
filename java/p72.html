@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+
+
+
+import javax.swing.*; import java.awt.*;
+
+public class Painting extends JPanel {
+    public Painting() {}
+
+    public void paintComponent(Graphics g) {
+	super.paintComponent(g); // Paint background
+	g.setColor( Color.yellow ); g.fillOval( 10,10,50,50 );
+	g.setColor( Color.black ); g.drawOval( 10,10,50,50 );
+    }
+
+    public static void main( String args[] ) {
+	JFrame win = new JFrame( "Painting" );
+	win.setSize(100, 100);
+	win.getContentPane().add( new Painting() );
+	win.show();
+    }}
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+
+<body background="MEDAQUA.gif" text="black" link="white" vlink="#FFFF00">
+<b>
+
+<pre>
+import java.io.DataOutputStream;
+import java.io.FileOutputStream;
+
+public class DataOutput2{
+   public static void main(String[] args) throws Exception{
+       String file = args[0];
+        double[] data = {1.1,1.2,1.3,1.4,1.5};
+        DataOutputStream dout = new DataOutputStream
+                (new FileOutputStream(file));
+
+        for (int i = 0; i < data.length; ++i){
+            dout.writeDouble(data[i]);
+        }
+        dout.close();}}
+
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.EOFException;
+public class DataInput2{
+   public static void main(String[] args) throws Exception{
+        String file = args[0];
+        DataInputStream din = new DataInputStream(new FileInputStream(file));
+        double data;
+         try{
+            while (true){
+                data = din.readDouble();
+                System.out.println(data);
+            }
+        }
+        catch (EOFException eofe){}
+        din.close();}}
+
+
+
+
+</pre>
+
+<center><A HREF=Javascript:history.go(-1)><img src=previous.gif width="89" height="16"></A></center>
+</b>
+</body>
+</html>
